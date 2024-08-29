@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragments/general.html :: header('Pemetaan')}"></head>
+
+<body class="nav-fixed">
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="trash-can" viewBox="0 0 448 512">
+        <path d="M170.5 51.6L151.5 80l145 0-19-28.4c-1.5-2.2-4-3.6-6.7-3.6l-93.7 0c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80 368 80l48 0 8 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-8 0 0 304c0 44.2-35.8 80-80 80l-224 0c-44.2 0-80-35.8-80-80l0-304-8 0c-13.3 0-24-10.7-24-24S10.7 80 24 80l8 0 48 0 13.8 0 36.7-55.1C140.9 9.4 158.4 0 177.1 0l93.7 0c18.7 0 36.2 9.4 46.6 24.9zM80 128l0 304c0 17.7 14.3 32 32 32l224 0c17.7 0 32-14.3 32-32l0-304L80 128zm80 64l0 208c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-208c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0l0 208c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-208c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0l0 208c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-208c0-8.8 7.2-16 16-16s16 7.2 16 16z"/>
+        </symbol>
+        <symbol id="pencil" viewBox="0 0 512 512">
+        <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1 0 32c0 8.8 7.2 16 16 16l32 0zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"/>
+        </symbol>
+        <symbol id="binoculars" viewBox="0 0 512 512">
+        <path d="M128 32l32 0c17.7 0 32 14.3 32 32l0 32L96 96l0-32c0-17.7 14.3-32 32-32zm64 96l0 320c0 17.7-14.3 32-32 32L32 480c-17.7 0-32-14.3-32-32l0-59.1c0-34.6 9.4-68.6 27.2-98.3C40.9 267.8 49.7 242.4 53 216L60.5 156c2-16 15.6-28 31.8-28l99.8 0zm227.8 0c16.1 0 29.8 12 31.8 28L459 216c3.3 26.4 12.1 51.8 25.8 74.6c17.8 29.7 27.2 63.7 27.2 98.3l0 59.1c0 17.7-14.3 32-32 32l-128 0c-17.7 0-32-14.3-32-32l0-320 99.8 0zM320 64c0-17.7 14.3-32 32-32l32 0c17.7 0 32 14.3 32 32l0 32-96 0 0-32zm-32 64l0 160-64 0 0-160 64 0z"/>
+        </symbol>
+    </svg>
+
+    <nav th:replace="~{fragments/general.html :: navigation}"></nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav" th:include="~{fragments/general.html :: layoutSidenav_nav}"></div>
+
+        <div id="layoutSidenav_content">
+            <main>
+                <header
+                    th:replace="~{fragments/content-header.html :: content-header('Pemetaan','','map')}">
+                </header>
+                <!-- Main page content-->
+                <div class="container-fluid px-4 mt-n10">
+                    <div th:if="${success_msg} != null" th:text="${success_msg}" class="alert alert-success" role="alert">
+                    </div>
+
+                    <div class="card mb-4">
+                        <div class="card-header">Data Pemetaan</div>
+                        <div class="card-body">
+
+                            <!-- FILTER -->
+                            <div class="d-flex flex-row align-items-center mb-3">
+                                <label for="filterTahun" class="me-3 col-form-label">Filter Tahun</label>
+                                <input id="filterTahun" class="form-control form-control-md" type="text" style="width: 100px;"/>
+                            </div>
+
+                            <table id="pemetaan"
+                                class="table table-bordered table-striped table-responsive table-compact table-sm custom-table"
+                                style="width: 100%">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">No</th>
+                                        <th class="text-center">Tahun</th>
+                                        <th class="text-center">Bagian</th>
+                                        <th class="text-center">Perangkat Daerah</th>
+                                        <th class="text-center">Urusan Pemerintahan</th>
+                                        <th class="text-center">Kegiatan / Program Kerja Sama</th>
+                                        <th class="text-center">Jangka Waktu</th>
+                                        <th class="text-center">Nama Calon Mitra</th>
+                                        <th class="text-center">Nomor Kontrak</th>
+                                        <th class="text-center">Waktu Pelaksanaan</th>
+                                        <th class="text-center">Skala Prioritas</th>
+                                        <th class="text-center">TW1</th>
+                                        <th class="text-center">TW2</th>
+                                        <th class="text-center">TW3</th>
+                                        <th class="text-center">TW4</th>
+                                        <th class="text-center">PIC</th>
+                                        <th class="text-center">Pembiayaan</th>
+                                        <th class="text-center">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+
+                            </table>
+                        </div>
+                    </div>
+
+                    <!--Confirmation Dialog sebelum delete-->
+                    <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog"
+                        aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="confirmationModalLabel">Konfirmasi</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Anda yakin untuk menghapus dokumen pemetaan <span id="alertDokTitle" style="color:red;"></span> ?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Batal</button>
+                                    <button type="button" class="btn btn-primary" id="confirmAction">Ya</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <footer th:replace="~{fragments/general.html :: footer}"></footer>
+        </div>
+    </div>
+    <div th:include="~{fragments/general.html :: script}"></div>
+
+
+    <script>
+        $(document).ready(function () {
+
+            $("#logout").on("click", function (e) {
+                $("#logout-form").submit();
+
+            });
+
+            var docTable = $("#pemetaan").dataTable({
+                "processing": true,
+                "serverSide": true,
+                "responsive": true,
+                "ordering": false,
+                "searchDelay": 1000,
+                "initComplete": function () {
+                    var searchInput = $('#dt-search-0');
+                    searchInput.css('width', '400px'); // Adjust the width as needed
+                },                
+
+                "ajax": {
+                    "url": "/dokumen/pemetaan/list",
+                    "type": "POST",
+                    "dataType": "json",
+                    "cache": "no-cache",
+                    "contentType": "application/json",
+                    "data": function(d) {
+                        var filterTahun = $('#filterTahun').val();
+                        d.filterTahun = filterTahun;
+
+                        return JSON.stringify(d);
+                    },
+                    "dataSrc": function (json) {
+                        console.log(json);
+                        if (json.redirect) {
+                            window.location.href = json.location;
+                        }
+                        return json.data;
+                    },
+                    "error": function (xhr, error, thrown) {
+                        if (xhr.status === 401) {
+                            window.location.href = "/dokumen/logout"; // Redirect to login page
+                        }
+                    }
+                },
+
+                "columns": [
+
+                    {
+                        "data": null,
+                        "targets": 1,
+                        "render": function (data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1
+                        }
+                    },
+                    { "data": "tahun"},
+                    { "data": "bagian",
+                    "render" : function (data, type, row, meta) {
+                            if (data!=null) {
+                                return data.nama;
+                            } else {
+                                return "";
+                            }
+                      }
+                    },
+                    { "data": "opd",
+                      "render" : function (data, type, row, meta) {
+                            return data.nama; 
+                      }
+                     },
+                    { "data": "urusanPemerintahan" },
+                    {
+                        "data": "kegiatan",
+                        "width": "150px",
+                        "render": function (data, type, row, meta) {
+                            // const lines = data.split("NOMOR: ");
+                            // const formattedText = lines.join("\n");
+                            // return formattedText;
+                            return data;
+                        }
+                    },
+                    {
+                        "data": "jangkaWaktu"
+                    },
+                    { "data": "namaCalonMitra" },
+                    { "data": "noKontrakCalonMitra"
+                     },
+                     {"data": "waktuPelaksanaan"},
+                    { "data": "skalaPrioritas" },
+                    { "data": "waktuPelaksanaanTW1" },
+                    {
+                        "data": "waktuPelaksanaanTW2"
+                    },
+                    {"data": "waktuPelaksanaanTW3"},
+                    {"data": "waktuPelaksanaanTW4"},
+                    {"data": "pic"},
+                    {"data": "sumberPembiayaan"},
+                    {
+                        "data": null,
+                        "responsivePriority": 2,
+                        "render": function (data, type, row, meta) {
+                            //console.log(row);
+                            return "<a class='btn btn-sm btn-success mb-sm-1' href='" + contextPath + "pemetaan/view/" + row.id + "' data-bs-toggle='tooltip' data-bs-placement='top' title='Lihat'><svg class='myicon'><use xlink:href='#binoculars'></use></svg> <span class='ms-sm-2'>Lihat</span></a>" + "&nbsp" +
+                                "<a class='btn btn-sm btn-warning mb-sm-1' href='" + contextPath + "pemetaan/edit/" + row.id + "' data-bs-toggle='tooltip' data-bs-placement='top' title='Edit'><svg class='myicon'><use xlink:href='#pencil'></use></svg> <span class='ms-sm-2'>Rubah</span></a>" + "&nbsp" +
+                                "<a class='btn btn-sm btn-danger mb-sm-1' id='delete'  onclick='showDeleteConfirmation(\"" + row.kegiatan + "\")' href='#' data-bs-toggle='tooltip' data-bs-placement='top' title='Hapus'><svg class='myicon'><use xlink:href='#trash-can'></use></svg> <span class='ms-sm-2'>Hapus</span></a>";
+
+                        }
+                    }
+                ],
+                "layout": {
+                    "top2Start": {
+                        "buttons": [
+                            {
+                                text: '<i class="fa-solid fa-plus"></i> Tambah Dokumen',
+                                className: 'btn btn-sm btn-tambah',
+                                action: function (e, dt, node, config) {
+                                    window.location.href = "/dokumen/pemetaan/add";
+                                }
+                            },
+                            {
+                                text: '<i class="fa-solid fa-right-long"></i> Export Excel',
+                                className: 'btn btn-sm btn-excel',
+                                action: function (e, dt, button, config) {
+                                    var data = {};
+                                    $.extend(data, dt.ajax.params());
+                                    var params = dt.ajax.params();
+                                    var searchValue = params.search.value;
+                                    var flattened = flattenJson(data);
+                                    console.log(params);
+
+                                    const url = contextPath + "pemetaan/exportExcel";
+                                    
+                                    fetch(url, {
+                                        method : "POST",
+                                        body: params,
+                                        headers: { "Content-Type": "application/json; charset=UTF-8" }
+                                    }).then(response => response.blob())
+                                    .then(blob => {
+                                        const filename = 'export_pemetaan.xlsx'; // Replace with desired filename
+                                        const url = window.URL.createObjectURL(blob);
+                                        const link = document.createElement('a');
+                                        link.href = url;
+                                        link.download = filename;
+                                        link.click();
+                                        window.URL.revokeObjectURL(url); // Revoke temporary URL
+                                        })
+                                    .catch(error => console.error(error));
+                                }
+                            },
+                            {
+                                text: '<i class="fa-solid fa-right-long"></i> Export Excel per Perangkat',
+                                className: 'btn btn-sm',
+                                action: function (e, dt, button, config) {
+                                    var data = {};
+                                    $.extend(data, dt.ajax.params());
+                                    var params = dt.ajax.params();
+                                    var searchValue = params.search.value;
+                                    var flattened = flattenJson(data);
+                                    console.log(params);
+
+                                    const url = contextPath + "pemetaan/exportExcelPerPerangkat";
+                                    
+                                    fetch(url, {
+                                        method : "POST",
+                                        body: params,
+                                        headers: { "Content-Type": "application/json; charset=UTF-8" }
+                                    }).then(response => response.blob())
+                                    .then(blob => {
+                                        const filename = 'export_pemetaan_per_perangkat.xlsx'; // Replace with desired filename
+                                        const url = window.URL.createObjectURL(blob);
+                                        const link = document.createElement('a');
+                                        link.href = url;
+                                        link.download = filename;
+                                        link.click();
+                                        window.URL.revokeObjectURL(url); // Revoke temporary URL
+                                        })
+                                    .catch(error => console.error(error));
+                                }
+                            },
+                        ]
+                    }
+                },
+                "oLanguage": {
+                    "sInfo": "Menampilkan <strong>_START_</strong> sampai <strong>_END_</strong> , total: <strong>_TOTAL_</strong> items"
+                },
+                "language": {
+                    "lengthMenu": "_MENU_ &nbsp;records per halaman",
+                    "emptyTable": "Maaf, tidak ada data tersedia.",
+                    "info": "Menampilkan <strong>_START_</strong> sampai <strong>_END_</strong> , total: <strong>_TOTAL_</strong> items"
+                }
+            });
+
+
+            // Handle confirmation button click (optional)
+            // document.getElementById('confirmAction').addEventListener('click', function (event) {
+            //     // Perform the intended action (e.g., redirect to the link)
+            //     window.location.href = 'your-link-url';
+            // });
+
+
+            docTable.on('xhr', function () {
+                var data = docTable.ajax.params();
+                alert('Search term was: ' + data.search.value);
+            });
+
+            $('#filterTahun').datepicker({
+                format: "yyyy",
+                viewMode: "years", 
+                minViewMode: "years",
+                autoclose: true,
+                clearBtn: true
+            })
+            .on('change', function(e) {
+                docTable.api().draw();
+            });
+
+            // $('#filterTahun').on('change', function() {
+            //      //$('#KPTTable').DataTable.draw();
+            //      docTable.api().draw();
+            // });
+
+            $('#filterBtn').on('click', function() {
+                var param = JSON.parse(docTable.api().ajax.params());
+                var filterTahun = $('#filterTahun').val();
+
+                param.filterTahun = filterTahun;
+
+                console.log(JSON.stringify(param));
+                console.log(typeof(param));
+                //docTable.api().search().draw();
+            });
+        });
+
+        function showDeleteConfirmation(title) {    
+            $('#alertDokTitle').text(title);
+            $('#deleteConfirmationModal').modal('show');
+        }
+
+        function flattenJson(data, name, flattened) {
+            if (!flattened) {
+                flattened = {};
+            }
+            if (!name) {
+                name = '';
+            }
+            if ($.isPlainObject(data) || Array.isArray(data)) {
+                $.each(data, function (idx, val) {
+                    if (name === '') {
+                        flattenJson(val, idx, flattened);
+                    }
+                    else {
+                        flattenJson(val, name + '[' + idx.toString() + ']', flattened);
+                    }
+                });
+            }
+            else {
+                flattened[name] = data;
+            }
+            return flattened;
+        }
+
+        
+
+    </script>
+</body>
+
+</html>

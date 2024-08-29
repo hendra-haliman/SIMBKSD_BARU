@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragments/general.html :: header('Lihat Pemetaan')}"></head>
+
+<body class="nav-fixed">
+    <nav th:replace="~{fragments/general.html :: navigation}"></nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav" th:include="~{fragments/general.html :: layoutSidenav_nav}"></div>
+
+        <div id="layoutSidenav_content">
+            <main>
+                <header
+                    th:replace="~{fragments/content-header-compact.html :: content-header-compact('Detail Pemetaan')}">
+                </header>
+                <!-- Main page content-->
+                <div class="container-fluid px-4 mt-n10">
+                    <div class="card mb-4">
+                        <div class="card-header">Detail Pemetaan</div>
+                        <div class="card-body">
+                            <table class="table table-bordered">
+                                <thead>
+
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="width: 200px;">Tahun</td>
+                                        <td  th:text="${pemetaan.tahun}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>OPD</td>
+                                        <td th:text="${pemetaan.opd} ? ${pemetaan.opd.nama} : ''"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Urusan Pemerintahan</td>
+                                        <td th:text="${pemetaan.urusanPemerintahan}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kegiatan / Program Kerja Sama</td>
+                                        <td th:text="${pemetaan.kegiatan}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jangka Waktu</td>
+                                        <td th:text="${pemetaan.jangkaWaktu}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nama Calon Mitra</td>
+                                        <td th:text="${pemetaan.namaCalonMitra}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>No Kontrak</td>
+                                        <td th:text="${pemetaan.noKontrakCalonMitra}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Skala Prioritas</td>
+                                        <td th:text="${pemetaan.skalaPrioritas}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Waktu Pelaksanaan</td>
+                                        <td th:text="${pemetaan.waktuPelaksanaan}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>TW1</td>
+                                        <td th:text="${pemetaan.waktuPelaksanaanTW1}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>TW2</td>
+                                        <td th:text="${pemetaan.waktuPelaksanaanTW2}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>TW3</td>
+                                        <td th:text="${pemetaan.waktuPelaksanaanTW3}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>TW4</td>
+                                        <td th:text="${pemetaan.waktuPelaksanaanTW4}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>PIC</td>
+                                        <td th:text="${pemetaan.pic}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pembiayaan</td>
+                                        <td th:text="${pemetaan.sumberPembiayaan}"></td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <div th:replace="~{fragments/general.html :: script}"></div>    
+</body>
+<script>
+    $(document).ready(function() {
+        
+    });
+</script>
+</html>

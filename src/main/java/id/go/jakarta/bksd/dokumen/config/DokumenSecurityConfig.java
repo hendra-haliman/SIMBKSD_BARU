@@ -1,0 +1,151 @@
+package id.go.jakarta.bksd.dokumen.config;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.domain.AuditorAware;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import id.go.jakarta.bksd.dokumen.domain.EntityAuditorAware;
+import id.go.jakarta.bksd.dokumen.service.PemakaiService;
+
+@Configuration
+@EnableWebSecurity
+public class DokumenSecurityConfig {
+
+    @Autowired
+    @Qualifier("customAuthenticationEntryPoint")
+    AuthenticationEntryPoint authEntryPoint;
+
+    @Autowired
+    CustomSuccessHandler customSuccessHandler;
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http,
+            AuthenticationSuccessHandler customAuthenticationSuccessHandler) throws Exception {
+
+        http
+                .csrf(csrf -> csrf.disable())
+                .httpBasic(basic -> basic.authenticationEntryPoint(authEntryPoint))
+                .exceptionHandling(Customizer.withDefaults())
+
+                .authorizeHttpRequests(
+                        configurer -> configurer
+                                .requestMatchers("/register", "registerUser",
+                                        "/forgotPassword",
+                                        "/resetPassword",
+                                        "resetPassword2",
+                                        "resetPassword3",
+                                        "/processForgotPassword",
+                                        "/testSendMail",
+                                        "/error", "/css/**", "/static/css/**")
+                                .permitAll()
+
+                                .requestMatchers("/fonts/**", "/static/fonts/**")
+                                .permitAll()
+
+                                .requestMatchers("/js/**", "/static/js/**")
+                                .permitAll()
+
+                                .requestMatchers("/assets/**", "/static/assets/**",
+                                        "/static/assets/demo/**",
+                                        "/static/assets/fonts/metropolis/**",
+                                        "/static/assets/img/**",
+                                        "/static/assets/img/illustrations/**",
+                                        "/static/assets/img/illustrations/profiles/**")
+                                .permitAll()
+
+                                .requestMatchers("/admin/**")
+                                .hasRole("ADMIN")
+
+                                .anyRequest().authenticated())
+                // .rememberMe()
+                .addFilterBefore(customLoginFilter2(), UsernamePasswordAuthenticationFilter.class)
+                .formLogin(form -> form.loginPage("/showLoginPage")
+                        .loginProcessingUrl("/authenticateUser")
+                        // .successHandler(customAuthenticationSuccessHandler)
+                        .successHandler(customSuccessHandler)
+                        .usernameParameter("email")
+                        .permitAll())
+                .logout(logout -> logout.permitAll()
+                        .logoutUrl("/logout")
+                        .addLogoutHandler(new CustomLogoutHandler())
+                        .logoutSuccessUrl("/showLoginPage?logout"))
+                .requiresChannel(channel -> channel.anyRequest().requiresSecure());
+
+        SecurityFilterChain chain = http.build();
+
+        return chain;
+    }
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
+    }
+
+    @Bean
+    public DaoAuthenticationProvider authenticationProvider(PemakaiService pemakaiService) {
+        DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
+        auth.setUserDetailsService(pemakaiService);
+        auth.setPasswordEncoder(passwordEncoder());
+        return auth;
+    }
+
+    @Bean
+    public RoleHierarchy roleHierarchy() {
+        RoleHierarchyImpl roleHierarchy = new RoleHierarchyImpl();
+        String hierarchy = "ROLE_ADMIN > ROLE_STAFF \n ROLE_STAFF > ROLE_USER";
+        roleHierarchy.setHierarchy(hierarchy);
+        return roleHierarchy;
+    }
+
+    @Bean
+    public DefaultWebSecurityExpressionHandler customWebSecurityExpressionHandler() {
+        DefaultWebSecurityExpressionHandler expressionHandler = new DefaultWebSecurityExpressionHandler();
+        expressionHandler.setRoleHierarchy(roleHierarchy());
+        return expressionHandler;
+    }
+
+    /**
+     * - recaptcha:
+     * https://www.youtube.com/watch?v=xiK9H-tEiH8, menit ke 12:51 (screenshot)
+     * https://www.doanduyhai.com/blog/?p=1610
+     * https://www.youtube.com/watch?v=dyA_Pbtbn_E
+     * https://stackoverflow.com/questions/71281032/spring-security-exposing-authenticationmanager-without-websecurityconfigureradap
+     * https://infobrisk.com/tech-insights/how-to-integrate-google-recaptcha-v3-into-a-spring-boot-applications-login-page/
+     * https://stackoverflow.com/questions/55308499/i-got-timeout-or-duplicate-error-using-recaptcha-v3
+     * 
+     * @return
+     * @throws Exception
+     **/
+    @Bean
+    public CustomLoginFilter2 customLoginFilter2() throws Exception {
+        CustomLoginFilter2 filter = new CustomLoginFilter2();
+        return filter;
+
+    }
+
+    @Bean
+    public AuditorAware<String> auditorAware() {
+        return new EntityAuditorAware();
+    }
+
+}

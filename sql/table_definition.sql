@@ -1,0 +1,46 @@
+insert into table_definition(nama_table, nama_column) values ('kerjasama', 'nomor');
+insert into table_definition(nama_table, nama_column) values ('kerjasama', 'tahun');
+insert into table_definition(nama_table, nama_column) values ('kerjasama', 'bagian');
+insert into table_definition(nama_table, nama_column) values ('kerjasama', 'opd');
+insert into table_definition(nama_table, nama_column) values ('kerjasama', 'rumpun_opd');
+insert into table_definition(nama_table, nama_column) values ('kerjasama', 'jenis_mitra');
+insert into table_definition(nama_table, nama_column) values ('kerjasama', 'mitra_kerja_sama');
+insert into table_definition(nama_table, nama_column) values ('kerjasama', 'judul');
+insert into table_definition(nama_table, nama_column) values ('kerjasama', 'no_dokumen');
+insert into table_definition(nama_table, nama_column) values ('kerjasama', 'tgl_penetapan');
+insert into table_definition(nama_table, nama_column) values ('kerjasama', 'urusan');
+insert into table_definition(nama_table, nama_column) values ('kerjasama', 'jenis_dokumen');
+insert into table_definition(nama_table, nama_column) values ('kerjasama', 'jangka_waktu');
+insert into table_definition(nama_table, nama_column) values ('kerjasama', 'tgl_dimulai');
+insert into table_definition(nama_table, nama_column) values ('kerjasama', 'tgl_berakhir');
+insert into table_definition(nama_table, nama_column) values ('kerjasama', 'pembiayaan');
+insert into table_definition(nama_table, nama_column) values ('kerjasama', 'link');
+insert into table_definition(nama_table, nama_column) values ('kerjasama', 'file_terkait');
+insert into table_definition(nama_table, nama_column) values ('kerjasama', 'keterangan3');
+insert into table_definition(nama_table, nama_column) values ('kerjasama', 'keterangan4');
+insert into table_definition(nama_table, nama_column) values ('kerjasama', 'action');
+
+insert into table_definition(nama_table, nama_column) values ('kerjasamaLN', 'nomor');
+insert into table_definition(nama_table, nama_column) values ('kerjasamaLN', 'tahun');
+insert into table_definition(nama_table, nama_column) values ('kerjasamaLN', 'subjek');
+insert into table_definition(nama_table, nama_column) values ('kerjasamaLN', 'tgl');
+insert into table_definition(nama_table, nama_column) values ('kerjasamaLN', 'judul');
+insert into table_definition(nama_table, nama_column) values ('kerjasamaLN', 'tgl_dimulai');
+insert into table_definition(nama_table, nama_column) values ('kerjasamaLN', 'tgl_berakhir');
+insert into table_definition(nama_table, nama_column) values ('kerjasamaLN', 'keterangan');
+insert into table_definition(nama_table, nama_column) values ('kerjasamaLN', 'link');
+insert into table_definition(nama_table, nama_column) values ('kerjasamaLN', 'file_terkait');
+insert into table_definition(nama_table, nama_column) values ('kerjasamaLN', 'penanggung_jawab');
+insert into table_definition(nama_table, nama_column) values ('kerjasamaLN', 'jenis_dokumen');
+insert into table_definition(nama_table, nama_column) values ('kerjasamaLN', 'action');
+
+insert into table_definition(nama_table, nama_column) values ('kolaborasi', 'nomor');
+insert into table_definition(nama_table, nama_column) values ('kolaborasi', 'tahun');
+insert into table_definition(nama_table, nama_column) values ('kolaborasi', 'mitra_kerja_sama');
+insert into table_definition(nama_table, nama_column) values ('kolaborasi', 'nama_tempat_kejadian');
+insert into table_definition(nama_table, nama_column) values ('kolaborasi', 'waktu');
+insert into table_definition(nama_table, nama_column) values ('kolaborasi', 'bagian');
+insert into table_definition(nama_table, nama_column) values ('kolaborasi', 'output');
+insert into table_definition(nama_table, nama_column) values ('kolaborasi', 'keterangan');
+insert into table_definition(nama_table, nama_column) values ('kolaborasi', 'action');
+

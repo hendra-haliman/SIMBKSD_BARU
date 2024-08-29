@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragments/general.html :: header('Tambah Pemetaan')}"></head>
+
+<body class="nav-fixed">
+    <nav th:replace="~{fragments/general.html :: navigation}"></nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav" th:include="~{fragments/general.html :: layoutSidenav_nav}"></div>
+
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4 mt-auto">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-7">
+                            <div class="card shadow-lg border-0 rounded-lg mt-3">
+                                <form th:action="@{/pemetaan/saveNew}" method="post"
+                                    th:object="${pemetaan}">
+
+                                    <input th:if="${mode} != null" type="hidden" name="mode" value="group"/>
+                                    <div class="card-header justify-content-center">
+                                        <h3 class="fw-light my-2">Tambah Pemetaan</h3>
+                                    </div>
+                                    <div class="card-body">
+
+                                        <div class="row gx-3">
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="tahun">Tahun</label>
+                                                <input th:field="*{tahun}" class="form-control form-control-md"
+                                                    id="tahun" type="text" placeholder="Masukan Tahun" />
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="opd">Perangkat daerah</label>
+                                                <select class="form-select form-select-sm" th:field="*{opd}">
+                                                    <option th:each="opd: ${opdList}" th:value="${opd.id}"
+                                                        th:text="${opd.nama}"></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="urusanPemerintahan">Urusan
+                                                Pemerintahan</label>
+                                            <textarea th:field="*{urusanPemerintahan}"
+                                                class="form-control form-control-md" id="urusanPemerintahan"
+                                                placeholder="Masukkan Urusan Pemerintahan" spellcheck="false"></textarea>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="kegiatan">Kegiatan</label>
+                                            <textarea th:field="*{kegiatan}" class="form-control form-control-md"
+                                                id="kegiatan" placeholder="Masukkan Kegiatan" spellcheck="false"></textarea>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="jangkaWaktu">Jangka Waktu</label>
+                                            <textarea th:field="*{jangkaWaktu}" class="form-control form-control-md"
+                                                id="jangkaWaktu" placeholder="Masukkan Jangka Waktu" spellcheck="false"></textarea>
+                                        </div>
+
+
+                                        <div class="row gx-3">
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="namaCalonMitra">Nama Calon Mitra</label>
+                                                <textarea th:field="*{namaCalonMitra}"
+                                                    class="form-control form-control-md" id="namaCalonMitra"
+                                                    placeholder="Masukkan Nama Calon Mitra" spellcheck="false"></textarea>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="noKontrakCalonMitra">Nomor
+                                                    Kontrak</label>
+                                                <textarea th:field="*{noKontrakCalonMitra}"
+                                                    class="form-control form-control-md" id="noKontrakCalonMitra"
+                                                    placeholder="Masukkan Nomor Kontrak" spellcheck="false"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="row gx-3">
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="skalaPrioritas">Skala Prioritas</label>
+                                                <input th:field="*{skalaPrioritas}" class="form-control form-control-md"
+                                                    id="skalaPrioritas" type="text"
+                                                    placeholder="Masukan Skala Prioritas" />
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="waktuPelaksanaan">Waktu
+                                                    Pelaksanaan</label>
+                                                <input th:field="*{waktuPelaksanaan}"
+                                                    class="form-control form-control-md" id="waktuPelaksanaan"
+                                                    type="text" placeholder="Masukan Waktu Pelaksanaan" />
+                                            </div>
+                                        </div>
+
+                                        <div class="row gx-3">
+                                            <div class="col-md-3">
+                                                <label class="small mb-1" for="waktuPelaksanaanTW1">TW1</label>
+                                                <input th:field="*{waktuPelaksanaanTW1}"
+                                                    class="form-control form-control-md" id="waktuPelaksanaanTW1"
+                                                    type="text" />
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="small mb-1" for="waktuPelaksanaanTW2">TW2</label>
+                                                <input th:field="*{waktuPelaksanaanTW2}"
+                                                    class="form-control form-control-md" id="waktuPelaksanaanTW2"
+                                                    type="text" />
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="small mb-1" for="waktuPelaksanaanTW3">TW3</label>
+                                                <input th:field="*{waktuPelaksanaanTW3}"
+                                                    class="form-control form-control-md" id="waktuPelaksanaanTW3"
+                                                    type="text" />
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="small mb-1" for="waktuPelaksanaanTW4">TW4</label>
+                                                <input th:field="*{waktuPelaksanaanTW4}"
+                                                    class="form-control form-control-md" id="waktuPelaksanaanTW4"
+                                                    type="text" />
+                                            </div>
+                                        </div>
+
+                                        <div class="row gx-3">
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="pic">PIC</label>
+                                                <textarea th:field="*{pic}" class="form-control form-control-md"
+                                                    id="pic" placeholder="Masukan PIC" spellcheck="false"></textarea>
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="sumberPembiayaan">Sumber
+                                                    pembiayaan</label>
+                                                <input th:field="*{sumberPembiayaan}"
+                                                    class="form-control form-control-md" id="sumberPembiayaan"
+                                                    type="text" placeholder="Masukan Sumber Pembiayaan" />
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="card-footer text-center">
+                                        <button class="btn btn-primary btn-block" type="submit">Simpan</button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <div th:replace="~{fragments/general.html :: script}"></div>
+</body>
+<script>
+    var counter = 1;
+
+    $(document).ready(function () {
+
+    });
+</script>
+
+</html>

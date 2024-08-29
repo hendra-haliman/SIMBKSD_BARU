@@ -1,0 +1,1 @@
+set DOKUMEN_APP_ENV=devrumah

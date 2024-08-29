@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "biro-ksd-sistem-informasi",
+  "private_key_id": "22814eb161ac33d222f3a6befed887178d759b74",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC4CFEvswlzuz6K\n/5kUvKK7EWzVqkMQSft23cmNvTat/+3cXKc4tqgtaWd5+5tH3nnLQrC8ouv5xQs4\nRp/i2s2BVfQhphtVVTL/t6Xx7InV0Ty3UlKycLcVVBGyBxtsJhoC5OqSQaApwAJZ\n81fo6x/EVMRqzo/a4V24FGLhYJMTIeGNNKpYkP4A6SJ2ueMcHuC4xNOfvo8gZrbn\n3wEFWWdbPb5KhSZhPZu/SYHJIK4GrvvYU7OAyImW8+PusJmyWscuA0R4Bn3ltqR5\nF3Z4F0nWfg4dMMqQ0s0sRbfCkR2RkHnoMIbsPPBrjEpXqh1A9Jm5JUoD6JGI+baE\n7dqjwcmzAgMBAAECggEAV5DBjJg8faBRNJNE9ByDs84pQotmqKgDKn6CilpHW8ik\nlc9SVAZ5hE4cierB6pL90cz0SnWdIbXzzj2wkyE4WnubE621YMeO4iUwpSm/Ngl+\nwd2+cqB2RQRA/TwrfKyugMUKpjfqrSLrG4DRygaikWkiIo4R3fyQ+udcW0/3+0g6\n164/QdbFdDLJWXOkEKawtCtRCOPe1cST6DP4VXW+uxUWE8NYaAtQL3h3076acOel\n0AsCwJx0DRWA7g+YCrHinTgM7ItF9ysHUZ4vYesrgesVUj2NskKc3qUTLI8CQDG3\nMlHduwcZZtylrBsBXLCkeuVLP6U2WENPnzDPh8smCQKBgQDuIggIR09pvuoNDGJc\nVhpy+JU/gJRNoYc5JD8CQzt/at8c2sb5mhv6BlQ3dWysf/cfecVPkHlfptuNtQ0M\nF27NKY94I461PDuldaQ2mswtWPdApp5tE19D6StqmhE4JFoWmDJsXferIwcTuutC\n/ztbIBLiRvyDbFiIpbKvPLKZGQKBgQDF1yUBygOfvCF+ReNIyiP1V/VQdz7IIkVa\nWa292cWSD6QaGK6cyvnH9K07vsWJJ6KphLHbYq+ch4nva+nZmQz1sbpvdJgTYYls\npUiPat2C6TSQ/VO9Yd1t1yLoCoNUTl+1BFVnH0rSIR5dZEmb+mQ4xNajnDIDH6hZ\n4gkEHYR2qwKBgHbCahcW2Tf3imovfu5l0pL7/hLJYSzGHdYViYbrWMTW26ZcRVc9\n0C4E8gMmgKgWuXvtEsX3W1CkumIVpQget5eB3pcfxJAGFgkSfm7tDF6hO832SpRD\nUQNhSdHEPEovdu5FwP/ibR3gPitM0P98onFzsXc/x7cTVaPwXwid0MQhAoGABveg\nsgNvRTzW4R+M9Y9I3OcQGJlaeKncT2ZBHCKDNrWeTdz4qUTsrwIK58O8KSxgKiAm\nM1eyX4zWarweLC+bqTttGWe9w1D4Cf94IrTcwDN+SmzhehXsOmYNMKbOITXxYOqa\nJ1uOwv+vlhJmFTwoM2ebN3/Usw92WlP/hUmU1KkCgYEAi9bRWygDK5/P7xxF1i6I\n7QIq9Hz9itNuSe85+8QMcfikWNXRHp6TjaKup4PelZtOtSBZxPlu3Fa95T52iDlG\nMpodkJdaqI46SBRzaGbeP+CDvKphS8JFrb+eDsRtdgnuUtNN30/wDRVDV07tpDkM\nbVk7UBx3Ws36NrxzogmwFbc=\n-----END PRIVATE KEY-----\n",
+  "client_email": "biro-ksd-service-account@biro-ksd-sistem-informasi.iam.gserviceaccount.com",
+  "client_id": "105386564834612175521",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/biro-ksd-service-account%40biro-ksd-sistem-informasi.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

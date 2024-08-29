@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragments/general.html :: header('Dashboard')}"></head>
+
+<body class="nav-fixed"
+    th:style="'background: url(/dokumen/static/assets/img/office.jpg) no-repeat center fixed;background-blend-mode: lighten;background-color: rgba(255,255,255,0.8);'">
+    <nav th:replace="~{fragments/general.html :: navigation}"></nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav" th:include="~{fragments/general.html :: layoutSidenav_nav}"></div>
+
+        <div id="layoutSidenav_content">
+            <main>
+                <header th:replace="~{fragments/content-header.html :: content-header('Selamat datang di Sistem Informasi Biro Kerja Sama Setda DK Jakarta.','', '')}">
+                </header>
+                <!-- Main page content-->
+                <div class="container-fluid px-4 mt-n10">
+                    <!--div class="row" sec:authorize="hasRole('ROLE_ADMIN')" style="color:black;">test</div>
+                    <div class="row" sec:authorize="hasAuthority('can_edit')" style="color:black;">I can edit</div-->
+
+                    <div class="row">
+                        <div class="col-lg-12 col-xl-12 mb-4">
+                            <div class="card h-100">
+                                <div class="card-header">
+                                    <h1>Latar Belakang</h1>
+                                </div>
+                                <div class="card-body">
+                                    <p>Kota Jakarta sebagai pusat pemerintahan dan kegiatan ekonomi Negara Kesatuan Republik Indonesia merupakan kota metropolitan yang menghadapi berbagai tantangan urban seperti kemacetan lalu-lintas, banjir, kepadatan penduduk, pencemaran lingkungan dan lain sebagainya.</p>
+                                    <p>Tantangan tersebut tidak dapat diselesaikan tanpa adanya kerjasama dengan para pemangku kepentingan terkait. </p> 
+                                    <p>Untuk mengatasi tantangan tersebut, Pemprov DKI Jakarta melakukan kerjasama dalam dan luar negeri untuk dapat belajar, bertukar pikiran, dan menemukan serta mengimplementasikan solusi-solusi adaptif yang telah berhasil diterapkan, khususnya di negara-negara maju. 
+                                    Kerja sama Pemprov DKI Jakarta sebagaimana mengacu pada <a href="https://jdih.jakarta.go.id/dokumen/detail/5877/peraturan-gubernur-nomor-57-tahun-2022-tentang-organisasi-dan-tata-kerja-perangkat-daerah" target="_blank">Peraturan Gubernur Nomor 57 Tahun 2022</a> dan <a href="https://jdih.jakarta.go.id/dokumenPeraturanDirectory/0031/LampiranTambahan2022PERGUB0031057_01_Sekretariat%20Daerah.pdf" target="_blank">lampiran I</a> tentang <strong>Organisasi dan Tata Kerja Perangkat Daerah</strong>,
+                                    meliputi:
+                                        <ul>
+                                            <li>Kerja Sama Luar Negeri</li>
+                                            <li>Kerja Sama Dalam Negeri</li>
+                                            <li>Kerja Sama Pihak Ketiga</li>
+                                            <li>Bagian Perjalanan Dinas</li>
+                                        </ul>
+                                    </p>    
+                                    <p>Dalam rangka pelaksanaan pengoordinasian dan pengembangan kerja sama daerah untuk mendukung pencapaian visi dan misi Pemerintah Provinsi DKI Jakarta, maka dikembangkanlah Sistem Informasi Biro Kerja Sama Pemerintah Provinsi DK Jakarta.</p>                                    
+
+                                </div>
+                            </div>
+                        </div>        
+                    
+                    </div>    
+
+                </div>
+            </main>
+            <footer th:replace="~{fragments/general.html :: footer}"></footer>
+        </div>
+    </div>
+
+    <script th:src="@{/static/js/bootstrap.bundle.min.js}" crossorigin="anonymous"></script>
+    <script th:src="@{/static/js/scripts.js}"></script>
+
+    <script th:src="@{/static/js/litepicker.bundle.js}" crossorigin="anonymous"></script>
+    <script th:src="@{/static/js/litepicker.js}"></script>
+
+    <script th:src="@{/static/js/jquery-3.7.1.min.js}"></script>
+
+    <script th:src="@{/static/js/datatables.min.js}"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#logout").on("click", function (e) {
+                $("#logout-form").submit();
+
+            });
+
+        });
+    </script>
+</body>
+
+</html>

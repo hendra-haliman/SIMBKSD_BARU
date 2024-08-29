@@ -1,0 +1,128 @@
+
+
+table.dataTable.table-bordered th {
+    border-right-width: 0;
+    border-top-width: 1px !important; 
+    border-bottom-width: 1px !important;   
+    vertical-align: middle;
+}
+
+tr:last-child td 
+{
+    border-bottom-width: 1px !important;    
+}
+
+.red {
+    background-color: red;
+}
+
+/* .form-control-sm {
+    padding: 0.2rem 0.75rem !important;
+} */
+
+.no-wrap {
+    white-space: nowrap;
+  }
+
+.btn-tambah {
+    background-color: red;
+}
+
+.btn-excel {
+    background-color: green;
+}
+
+.btn-setup {
+    background-color: blue;
+}
+
+.btn-filter {
+    background-color: green;
+}
+
+
+table.dataTable tr.dtrg-group.dtrg-level-0 th {
+    background-color: #e3dba4 !important;
+}
+
+.datepicker {
+    padding: 20px;
+}
+
+textarea.form-control, textarea.datatable-input {
+    min-height: calc(1em + 1.75rem + 2px);
+}
+
+.topnav .navbar-brand img {
+    height: 2.3rem;
+}
+
+.custom-table {
+    font-size: 0.8rem; /* Smaller font size */
+}
+
+h {
+    vertical-align: middle;  /* Aligns text to the middle vertically */
+    
+}
+
+.datepicker {
+    border: solid 1px #ccc;
+}
+
+div.datepicker-years > table > thead {
+    border-bottom: solid 2px;
+}
+
+.tab-pane {
+    border: 1px solid #ccc; /* Sets a 1px border with a light grey color */
+    border-top: 0;     
+    padding: 15px; /* Optional: Adds some spacing inside the border */
+    
+}
+
+.tab-content, .tab-pane {
+    width: 100%; /* Ensures that the content takes full width */
+    /* background-color:#f2f6fc; */
+}
+
+thead {
+    background-color: #ddd0a6;
+}
+
+.rekap th {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.kpt {
+    /* background-color: #a3ddda !important; */
+    text-align: center;
+    vertical-align: middle;
+}
+
+.kdn {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.kln {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.rekap tfoot {
+    border-top: 2px solid;
+}
+
+.pre_content {
+    white-space: pre-wrap;
+}
+
+.myicon {
+    fill: #fff;
+    width: 12px;
+    height: 12px;
+}
+
+

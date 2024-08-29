@@ -1,0 +1,1 @@
+insert into privilege(name) values('CAN_VIEW_DOC_LINK');

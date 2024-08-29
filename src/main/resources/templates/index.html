@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragments/general.html :: header('Dashboard')}"></head>
+
+<body class="nav-fixed"
+    th:style="'background: url(/dokumen/static/assets/img/office.jpg) no-repeat center fixed;background-blend-mode: lighten;background-color: rgba(255,255,255,0.8);'">
+    <nav th:replace="~{fragments/general.html :: navigation}"></nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav" th:include="~{fragments/general.html :: layoutSidenav_nav}"></div>
+
+        <div id="layoutSidenav_content">
+            <main>
+                <header th:replace="~{fragments/content-header.html :: content-header('Dashboard','', 'activity')}">
+                </header>
+                <!-- Main page content-->
+                <div class="container-fluid px-4 mt-n10">
+                    <!--div class="row" sec:authorize="hasRole('ROLE_ADMIN')" style="color:black;">test</div>
+                    <div class="row" sec:authorize="hasAuthority('can_edit')" style="color:black;">I can edit</div-->
+
+                    <!-- Rekap Perjanjian -->
+                    <div class="row">
+                        <div class="col-lg-12 col-xl-12 mb-4">
+                            <div class="card  h-100">
+                                <div class="card-header">
+                                    <h1>Rekapitulasi Data Kerja Sama Daerah Setda Provinsi DK Jakarta Per Tahun</h1>
+                                </div>
+                                <div class="card-body">
+                                    <div class="me-3">
+                                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                            <li class="nav-item" role="presentation"
+                                                th:each="rekap,statStatus : ${rekapList}">
+                                                <button data-bs-toggle="tab" type="button" role="tab"
+                                                    th:attr="data-bs-target=${'#t' + rekap.year}, class=${statStatus.last ? 'nav-link active' : 'nav-link'} , id=${rekap.year + '-tab'}, aria-controls=${rekap.year}, aria-selected=${statStatus.first ? 'true' : 'false'}"
+                                                    th:text="${rekap.year}"></button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent">
+                                            <div class="tab-pane fade show active" role="tabpanel"
+                                                th:attr="class=${statStatus.last ? 'tab-pane fade show active' : 'tab-pane fade'}, id=${'t' + rekap.year} , aria-labelledby=${rekap.year + '-tab'}"
+                                                th:each="rekap, statStatus : ${rekapList}">
+                                                <table class="table table-sm table-bordered table-compact rekap">
+                                                    <thead>
+                                                        <th>Bagian</th>
+                                                        <th>Kelompok Kerja Sama</th>
+                                                        <th>Perjanjian Kerja Sama</th>
+                                                        <th>Kesepakatan Bersama</th>
+                                                        <th>Nota Kesepakatan</th>
+                                                        <th>Non PKS</th>
+                                                        <th>Naskah Perjanjian Bantuan Keuangan</th>
+                                                        <th>Kerja Sama Non Perikatan</th>
+                                                        <th>Sub Total</th>
+                                                        <th>Total</th>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th class="kpt" rowspan="5">KPT</th>
+                                                            <td class="kpt">Badan Usaha</td>
+                                                            <td class="kpt">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=pks, jm=bu)}" th:text="${rekap.kptBadanUsahaPKSCount}"></a>
+                                                            </td>
+                                                            <td class="kpt" >
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=kb, jm=bu)}" th:text="${rekap.kptBadanUsahaKBCount}"></a>
+                                                            </td>
+                                                            <td class="kpt" >
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=nk, jm=bu)}" th:text="${rekap.kptBadanUsahaNKCount}"></a>
+                                                            </td>
+                                                            <td class="kpt">
+
+                                                            </td>
+                                                            <td class="kpt" rowspan="6"></td>
+                                                            <td class="kpt"></td>
+                                                            <td class="kpt">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jm=bu)}"  th:text="${rekap.kptBadanUsahaCount}"></a>
+                                                            </td>
+                                                            <td class="kpt" rowspan="5" 
+                                                                style="vertical-align: middle;">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, bagian=KPT)}" th:text="${rekap.kptTotal}"></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="kpt">Perguruan Tinggi</td>
+                                                            <td class="kpt">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=pks, jm=pt)}" th:text="${rekap.kptPTPKSCount}"></a>
+                                                            </td>
+                                                            <td class="kpt" >
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=kb, jm=pt)}" th:text="${rekap.kptPTKBCount}"></a>
+                                                            </td>
+                                                            <td class="kpt">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=nk, jm=pt)}" th:text="${rekap.kptPTNKCount}"></a>
+                                                            </td>
+                                                            <td class="kpt">
+
+                                                            </td>
+                                                            <td class="kpt"></td>
+                                                            <td class="kpt" >
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jm=pt)}" th:text="${rekap.kptPTCount}"></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="kpt">Yayasan</td>
+                                                            <td class="kpt" >
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=pks, jm=yayasan)}" th:text="${rekap.kptYayasanPKSCount}"></a>
+                                                            </td>
+                                                            <td class="kpt" >
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=kb, jm=yayasan)}" th:text="${rekap.kptYayasanKBCount}"></a>
+                                                            </td>
+                                                            <td class="kpt" >
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=nk, jm=yayasan)}" th:text="${rekap.kptYayasanNKCount}"></a>
+                                                            </td>
+                                                            <td class="kpt">
+
+                                                            </td>
+                                                            <td class="kpt"></td>
+                                                            <td class="kpt">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jm=yayasan)}" th:text="${rekap.kptYayasanCount}"></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="kpt">Lembaga Lain</td>
+                                                            <td class="kpt">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=pks, jm=ll)}" th:text="${rekap.kptLembagaLainPKSCount}"></a>
+                                                            </td>
+                                                            <td class="kpt">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=kb, jm=ll)}" th:text="${rekap.kptLembagaLainKBCount}"></a>
+                                                            </td>
+                                                            <td class="kpt">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=nk, jm=ll)}" th:text="${rekap.kptLembagaLainNKCount}"></a>
+                                                            </td>
+                                                            <td class="kpt">
+
+                                                            </td>
+                                                            <td class="kpt"></td>
+                                                            <td class="kpt">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jm=ll)}" th:text="${rekap.kptLembagaLainCount}"></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="kpt">Perseorangan</td>
+                                                            <td class="kpt">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=pks, jm=perseorangan)}" th:text="${rekap.kptPerseoranganPKSCount}"></a>
+                                                            </td>
+                                                            <td class="kpt">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=kb, jm=perseorangan)}" th:text="${rekap.kptPerseoranganKBCount}"></a>
+                                                            </td>
+                                                            <td class="kpt">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=nk, jm=perseorangan)}" th:text="${rekap.kptPerseoranganNKCount}"></a>
+                                                            </td>
+                                                            <td class="kpt">
+
+                                                            </td>
+                                                            <td class="kpt"></td>
+                                                            <td class="kpt">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jm=perseorangan)}" th:text="${rekap.kptPerseoranganCount}"></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="kdn" rowspan="3">KDN</th>
+                                                            <td class="kdn">Sinergi</td>
+                                                            <td class="kdn">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=pks, jm=sinergi)}" th:text="${rekap.kdnSinergiPKSCount}"></a>
+                                                            </td>
+                                                            <td class="kdn">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=kb, jm=sinergi)}" th:text="${rekap.kdnSinergiKBCount}"></a>
+                                                            </td>
+                                                            <td class="kdn">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=nk, jm=sinergi)}" th:text="${rekap.kdnSinergiNKCount}"></a>
+                                                            </td>
+                                                            <td class="kdn">
+
+                                                            </td>
+                                                            <td class="kdn"></td>
+                                                            <td class="kdn">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jm=sinergi)}" th:text="${rekap.kdnSinergiCount}"></a>
+                                                            </td>
+                                                            <td class="kdn" rowspan="3" style="vertical-align: middle;">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, bagian=KDN)}" th:text="${rekap.kdnTotal}"></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="kdn">Kerja Sama Dengan Daerah</td>
+                                                            <td class="kdn">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=pks, jm=daerah)}" th:text="${rekap.kdnDaerahPKSCount}"></a>
+                                                            </td>
+                                                            <td class="kdn">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=kb, jm=daerah)}" th:text="${rekap.kdnDaerahKBCount}"></a>
+                                                            </td>
+                                                            <td class="kdn">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=nk, jm=daerah)}" th:text="${rekap.kdnDaerahNKCount}"></a>
+                                                            </td>
+                                                            <td class="kdn">
+
+                                                            </td>
+                                                            <td class="kdn">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=npbk)}" th:text="${rekap.kdnDaerahNPBKCount}"></a>
+                                                            </td>
+                                                            <td class="kdn"></td>
+                                                            <td class="kdn">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jm=daerah)}" th:text="${rekap.kdnDaerahCount}"></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="kdn">Kerja Sama Pinjam Pakai dan Bentuk
+                                                                Perjanjian dengan Instansi Lain</td>
+                                                            <td class="kdn">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=pks, jm=pp)}" th:text="${rekap.kdnPinjamPakaiInstansiLainPKSCount}"></a>
+                                                            </td>
+                                                            <td class="kdn">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=kb, jm=pp)}" th:text="${rekap.kdnPinjamPakaiInstansiLainKBCount}"></a>
+                                                            </td>
+                                                            <td class="kdn">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=nk, jm=pp)}" th:text="${rekap.kdnPinjamPakaiInstansiLainNKCount}"></a>
+                                                            </td>
+                                                            <td class="kdn">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=nonpks, jm=pp)}" th:text="${rekap.kdnPinjamPakaiInstansiLainNonPKSCount}"></a>
+                                                            </td>
+                                                            <td class="kdn" colspan="2"></td>
+                                                            <td class="kdn">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jm=pp)}" th:text="${rekap.kdnPinjamPakaiInstansiLainCount}"></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="kln">KLN</th>
+                                                            <td class="kln">Kerja Sama Luar Negeri</td>
+                                                            <td class="kln" colspan="5"></td>
+                                                            <td class="kln">
+                                                                <a th:href="@{/pelaksanaan_luar_negeri(year=${rekap.year})}" th:text="${rekap.klnNonPerikatanCount}"></a>
+                                                            </td>
+                                                            <td class="kln">
+                                                                <a th:href="@{/pelaksanaan_luar_negeri(year=${rekap.year})}" th:text="${rekap.klnNonPerikatanCount}"></a>
+                                                            </td>
+                                                            <td class="kln">
+                                                                <a th:href="@{/pelaksanaan_luar_negeri(year=${rekap.year})}" th:text="${rekap.klnTotal}"></a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th></th>
+                                                            <th>Total Naskah Kerja</th>
+                                                            <td style="vertical-align: middle;text-align:center;">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=pks)}" th:text="${rekap.pksTotal}"></a>
+                                                            </td>
+                                                            <td style="vertical-align: middle;text-align:center;">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=kb)}" th:text="${rekap.kbTotal}"></a>
+                                                            </td>
+                                                            <td style="vertical-align: middle;text-align:center;">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=nk)}" th:text="${rekap.nkTotal}"></a>
+                                                            </td>
+                                                            <td style="vertical-align: middle;text-align:center;">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=nonpks)}" th:text="${rekap.nonPksTotal}"></a>
+                                                            </td>
+                                                            <td style="vertical-align: middle;text-align:center;">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=npbk)}" th:text="${rekap.kdnDaerahNPBKCount}"></a>
+                                                            </td>
+                                                            <td style="vertical-align: middle;text-align:center;">
+                                                                <a th:href="@{/pelaksanaan_luar_negeri(year=${rekap.year})}" th:text="${rekap.klnNonPerikatanCount}"></a>
+                                                            </td>
+                                                            <td style="vertical-align: middle;text-align:center;"></td>
+                                                            <td style="vertical-align: middle;text-align:center;" th:text="${rekap.total}">
+                                                                
+                                                            </td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                                <p>
+                                                    KPT = Kerja Sama Pihak Ketiga<br>
+                                                    KDN = Kerja Sama Dalam Negeri<br>
+                                                    KLN = Kerja Sama Luar Negeri
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Notifikasi Perjanjian yg akan berakhir tahun ini -->
+                    <div class="row">
+                        <div class="col-lg-12 col-xl-12 mb-4">
+                            <div class="card h-100">
+                                <div class="card-header">
+                                    <h1>Perjanjian yg akan berakhir</h1>
+                                </div>
+                                <div class="card-body">
+
+                                    <h1 class="row justify-content-center fw-bolder" style="color: black;"
+                                        th:text="${#dates.year(#dates.createNow())}"></h1>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-xl-6 mb-4">
+                                            <div class="card h-100">
+                                                <div class="card-header"><h2>Perjanjian yg akan berakhir di <span
+                                                        class="badge bg-secondary">semester pertama tahun ini</span></h2>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div class="me-3">
+                                                            <div class="text-lg fw-bold ps-3">KPT: <a
+                                                                    th:href="@{/pelaksanaan?mode=firstSemesterTahunIni&bagian=KPT}"
+                                                                    th:text="${KPTExpiredinFirstSemesterCount} + ' perjanjian'"></a>
+                                                            </div>
+                                                            <div class="text-lg fw-bold ps-3">KDN: <a
+                                                                    th:href="@{/pelaksanaan?mode=firstSemesterTahunIni&bagian=KDN}"
+                                                                    th:text="${KDNExpiredinFirstSemesterCount} + ' perjanjian'"></a>
+                                                            </div>
+                                                            <div class="text-lg fw-bold ps-3">KLN: <a
+                                                                    th:href="@{/pelaksanaan_luar_negeri?mode=firstSemesterTahunIni}"
+                                                                    th:text="${KLNExpiredinFirstSemesterCount} + ' perjanjian'"></a>
+                                                            </div>
+                                                            <div class="text-lg fw-bold ps-3"
+                                                                th:text="'Total : ' + ${totalExpiredInFirstSemesterCount} + ' perjanjian'">
+                                                            </div>
+                                                        </div>
+                                                        <i class="feather-xl text-white-50" data-feather="calendar"></i>
+                                                    </div>
+                                                </div>
+                                                <!--div class="card-footer d-flex align-items-center justify-content-between small">
+                                    <a class="text-white" href="#!">Lihat Detail</a>
+                                    <div class="text-white"><i class="fas fa-angle-right"></i></div>
+                                </div-->
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-xl-6 mb-4">
+                                            <div class="card  h-100">
+                                                <div class="card-header"><h2>Perjanjian yg akan berakhir di <span
+                                                        class="text-md badge bg-secondary">tahun ini</span></h2>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div class="me-3">
+                                                            <div class="text-lg fw-bold ps-3">KPT: <a
+                                                                    th:href="@{/pelaksanaan?mode=tahunIni&bagian=KPT}"
+                                                                    th:text="${KPTExpiredThisYearCount} + ' perjanjian'"></a>
+                                                            </div>
+                                                            <div class="text-lg fw-bold ps-3">KDN: <a
+                                                                    th:href="@{/pelaksanaan?mode=tahunIni&bagian=KDN}"
+                                                                    th:text="${KDNExpiredThisYearCount} + ' perjanjian'"></a>
+                                                            </div>
+                                                            <div class="text-lg fw-bold ps-3">KLN: <a
+                                                                    th:href="@{/pelaksanaan_luar_negeri?mode=tahunIni}"
+                                                                    th:text="${KLNExpiredThisYearCount} + ' perjanjian'"></a>
+                                                            </div>
+                                                            <div class="text-lg fw-bold ps-3"
+                                                                th:text="'Total : ' + ${totalExpiredThisYearCount} + ' perjanjian'">
+                                                            </div>
+                                                        </div>
+                                                        <i class="feather-xl text-white-50" data-feather="calendar"></i>
+                                                    </div>
+                                                </div>
+                                                <!--div class="card-footer d-flex align-items-center justify-content-between small">
+                                    <a class="text-white stretched-link" href="#!">Lihat Detail</a>
+                                    <div class="text-white"><i class="fas fa-angle-right"></i></div>
+                                </div-->
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- Notifikasi Perjanjian yg akan berakhir tahun depan -->
+                                    <h1 class="row justify-content-center fw-bolder" style="color: black;"
+                                        th:text="${#dates.year(#dates.createNow())+1}"></h1>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-xl-6 mb-4">
+                                            <div class="card h-100">
+                                                <div class="card-header"><h2>Perjanjian yg akan berakhir di <span
+                                                        class="badge bg-secondary">semester
+                                                        pertama tahun depan</span></h2></div>
+                                                <div class="card-body">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div class="me-3">
+                                                            <div class="text-lg fw-bold ps-3">KPT: <a
+                                                                    th:href="@{/pelaksanaan?mode=firstSemesterTahunDepan&bagian=KPT}"
+                                                                    th:text="${KPTExpiredinFirstSemesterNextYearCount} + ' perjanjian'"></a>
+                                                            </div>
+                                                            <div class="text-lg fw-bold ps-3">KDN: <a
+                                                                    th:href="@{/pelaksanaan?mode=firstSemesterTahunDepan&bagian=KDN}"
+                                                                    th:text="${KDNExpiredinFirstSemesterNextYearCount} + ' perjanjian'"></a>
+                                                            </div>
+                                                            <div class="text-lg fw-bold ps-3">KLN: <a
+                                                                    th:href="@{/pelaksanaan_luar_negeri?mode=firstSemesterTahunDepan}"
+                                                                    th:text="${KLNExpiredinFirstSemesterNextYearCount} + ' perjanjian'"></a>
+                                                            </div>
+                                                            <div class="text-lg fw-bold ps-3"
+                                                                th:text="'Total : ' + ${totalExpiredInFirstSemesterNextYearCount} + ' perjanjian'">
+                                                            </div>
+                                                        </div>
+                                                        <i class="feather-xl text-white-50" data-feather="calendar"></i>
+                                                    </div>
+                                                </div>
+                                                <!--div class="card-footer d-flex align-items-center justify-content-between small">
+                                    <a class="text-white stretched-link" href="#!">Lihat Detail</a>
+                                    <div class="text-white"><i class="fas fa-angle-right"></i></div>
+                                </div-->
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-xl-6 mb-4">
+                                            <div class="card h-100">
+                                                <div class="card-header"><h2>Perjanjian yg akan berakhir di <span
+                                                        class="badge bg-secondary">tahun depan</span></h2>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div class="me-3">
+                                                            <div class="text-lg fw-bold ps-3">KPT: <a
+                                                                    th:href="@{/pelaksanaan?mode=tahunDepan&bagian=KPT}"
+                                                                    th:text="${KPTExpiredNextYearCount} + ' perjanjian'"></a>
+                                                            </div>
+                                                            <div class="text-lg fw-bold ps-3">KDN: <a
+                                                                    th:href="@{/pelaksanaan?mode=tahunDepan&bagian=KDN}"
+                                                                    th:text="${KDNExpiredNextYearCount} + ' perjanjian'"></a>
+                                                            </div>
+                                                            <div class="text-lg fw-bold ps-3">KLN: <a
+                                                                    th:href="@{/pelaksanaan_luar_negeri?mode=tahunDepan}"
+                                                                    th:text="${KLNExpiredNextYearCount} + ' perjanjian'"></a>
+                                                            </div>
+                                                            <div class="text-lg fw-bold ps-3"
+                                                                th:text="'Total : ' + ${totalExpiredNextYearCount} + ' perjanjian'">
+                                                            </div>
+                                                        </div>
+                                                        <i class="feather-xl text-white-50" data-feather="calendar"></i>
+                                                    </div>
+                                                </div>
+                                                <!--div class="card-footer d-flex align-items-center justify-content-between small">
+                                    <a class="text-white stretched-link" href="#!">Lihat Detail</a>
+                                    <div class="text-white"><i class="fas fa-angle-right"></i></div>
+                                </div-->
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+            </main>
+            <footer th:replace="~{fragments/general.html :: footer}"></footer>
+        </div>
+    </div>
+
+    <!--script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script-->
+    <script th:src="@{/static/js/bootstrap.bundle.min.js}" crossorigin="anonymous"></script>
+    <script th:src="@{/static/js/scripts.js}"></script>
+
+    <script th:src="@{/static/js/litepicker.bundle.js}" crossorigin="anonymous"></script>
+    <script th:src="@{/static/js/litepicker.js}"></script>
+
+    <script th:src="@{/static/js/jquery-3.7.1.min.js}"></script>
+
+    <script th:src="@{/static/js/datatables.min.js}"></script>
+    <!--script
+        src="https://cdn.datatables.net/v/bs5/dt-2.0.6/b-3.0.2/r-3.0.2/sc-2.4.2/sl-2.0.1/datatables.min.js"></script-->
+
+
+    <script>
+        $(document).ready(function () {
+
+            $("#logout").on("click", function (e) {
+                $("#logout-form").submit();
+
+            });
+
+
+
+
+
+        });
+    </script>
+</body>
+
+</html>

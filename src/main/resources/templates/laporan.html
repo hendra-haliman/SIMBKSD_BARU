@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragments/general.html :: header('Laporan')}"></head>
+
+<body class="nav-fixed"
+    th:style="'background: url(/dokumen/static/assets/img/office.jpg) no-repeat center fixed;background-blend-mode: lighten;background-color: rgba(255,255,255,0.8);'">
+    <style>
+        .card {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensure the card takes full height of its container */
+}
+
+.card-body {
+    flex: 1; /* This makes the card-body expand to fill available space */
+    display: flex; /* Optional: Makes it a flex container */
+    flex-direction: column; /* Optional: Stacks its children vertically */
+}
+    </style>
+    <nav th:replace="~{fragments/general.html :: navigation}"></nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav" th:include="~{fragments/general.html :: layoutSidenav_nav}"></div>
+
+        <div id="layoutSidenav_content">
+            <main>
+                <header th:replace="~{fragments/content-header.html :: content-header('Laporan','', 'printer')}">
+                </header>
+                <!-- Main page content-->
+                <div class="container-fluid px-4 mt-n10">
+
+                    <div class="row">
+                        <div class="col col-lg-6 col-xl-6 mb-6">
+                            <form th:action="@{/laporan/rekap-tahunan}" method="get" class="h-100">
+
+                                <div class="card h-100">
+                                        <div class="card-header">Rekapitulasi Dokumen Kerja Sama Tahunan</div>
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="me-3">
+                                                    <div class="form-control-md ps-3">Tahun: <input id="rekapYear" name="tahun" value=""></div>
+                                                </div>
+                                                <i class="feather-xl text-white-50" data-feather="calendar"></i>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer text-center">
+                                            <button class="btn btn-primary btn-block" type="submit">Buat Laporan</button>
+                                        </div>
+
+                                </div>
+                            </form>
+
+                        </div>
+
+                        <div class="col col-lg-6 col-xl-6 mb-6">
+                            <div class="card h-100">
+                                <form th:action="@{/laporan/dokumenBelumExpired}" method="get">
+                                    <div class="card-header">Laporan Dokumen yg belum expired</div>
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="me-3">
+                                                <div class="form-control-md ps-3">Asisten: 
+                                                    <select id="filterAsisten" class="js-example-basic-multiple" name="asisten[]" multiple="multiple">
+                                                        <option th:each="asisten : ${asistenList}"
+                                                                th:value="${asisten.id}"
+                                                                th:text="${asisten.nama}"></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <i class="feather-xl text-white-50" data-feather="calendar"></i>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer text-center">
+                                        <button class="btn btn-primary btn-block" type="submit">Buat Laporan</button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                        
+
+                    </div>
+
+                </div>
+            </main>
+            <footer th:replace="~{fragments/general.html :: footer}"></footer>
+        </div>
+    </div>
+
+    <div th:include="~{fragments/general.html :: script}"></div>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#logout").on("click", function (e) {
+                $("#logout-form").submit();
+
+            });
+
+            $('#rekapYear').datepicker({
+                format: "yyyy",
+                viewMode: "years", 
+                minViewMode: "years",
+                autoclose: true,
+                clearBtn: true,
+                orientation: "bottom right"
+            })
+
+            $('.js-example-basic-multiple').select2({maximumSelectionLength: 15, allowClear: true, placeholder: 'Masukkan pilihan'});
+
+            const currentYear = new Date().getFullYear();
+            $("#rekapYear").val(currentYear);
+
+        });
+    </script>
+</body>
+
+</html>
