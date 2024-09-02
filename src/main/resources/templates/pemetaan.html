@@ -100,7 +100,6 @@
     </div>
     <div th:include="~{fragments/general.html :: script}"></div>
 
-
     <script>
         $(document).ready(function () {
 
@@ -117,11 +116,11 @@
                 "searchDelay": 1000,
                 "initComplete": function () {
                     var searchInput = $('#dt-search-0');
-                    searchInput.css('width', '400px'); // Adjust the width as needed
+                    searchInput.css('width', '400px'); 
                 },                
 
                 "ajax": {
-                    "url": "/dokumen/pemetaan/list",
+                    "url": contextPath + "pemetaan/list",
                     "type": "POST",
                     "dataType": "json",
                     "cache": "no-cache",
@@ -238,13 +237,13 @@
                                         headers: { "Content-Type": "application/json; charset=UTF-8" }
                                     }).then(response => response.blob())
                                     .then(blob => {
-                                        const filename = 'export_pemetaan.xlsx'; // Replace with desired filename
+                                        const filename = 'export_pemetaan.xlsx'; 
                                         const url = window.URL.createObjectURL(blob);
                                         const link = document.createElement('a');
                                         link.href = url;
                                         link.download = filename;
                                         link.click();
-                                        window.URL.revokeObjectURL(url); // Revoke temporary URL
+                                        window.URL.revokeObjectURL(url); 
                                         })
                                     .catch(error => console.error(error));
                                 }
@@ -268,13 +267,13 @@
                                         headers: { "Content-Type": "application/json; charset=UTF-8" }
                                     }).then(response => response.blob())
                                     .then(blob => {
-                                        const filename = 'export_pemetaan_per_perangkat.xlsx'; // Replace with desired filename
+                                        const filename = 'export_pemetaan_per_perangkat.xlsx'; 
                                         const url = window.URL.createObjectURL(blob);
                                         const link = document.createElement('a');
                                         link.href = url;
                                         link.download = filename;
                                         link.click();
-                                        window.URL.revokeObjectURL(url); // Revoke temporary URL
+                                        window.URL.revokeObjectURL(url); 
                                         })
                                     .catch(error => console.error(error));
                                 }
