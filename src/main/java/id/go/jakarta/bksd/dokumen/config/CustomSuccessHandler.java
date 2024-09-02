@@ -29,7 +29,7 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
             response.sendRedirect(redirectUrl);
         } else {
             // Redirect to default success page if no saved request found
-            redirectStrategy.sendRedirect(request, response, "");
+            redirectStrategy.sendRedirect(request, response, "/dashboard");
         }
     }
 }

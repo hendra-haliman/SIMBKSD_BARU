@@ -55,8 +55,14 @@ public class MainController {
 
     @GetMapping("")
     public String home(Model model) {
-        return "index-legal";
+        return "home";
     }
+
+    @GetMapping("home")
+    public String home2(Model model) {
+        return "home";
+    }
+
 
     @GetMapping("/terminologi")
     public String terminologi(Model model) {
@@ -127,7 +133,7 @@ public class MainController {
 
         model.addAttribute("rekapList", rekapList);
 
-        return "index";
+        return "dashboard";
     }
 
     @GetMapping("/showLoginPage")

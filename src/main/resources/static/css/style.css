@@ -1,5 +1,3 @@
-
-
 table.dataTable.table-bordered th {
     border-right-width: 0;
     border-top-width: 1px !important; 
@@ -39,6 +37,18 @@ tr:last-child td
 .btn-filter {
     background-color: green;
 }
+
+.btn-login {
+    background-color: var(--bs-indigo);
+    color: var(--bs-white); 
+}
+
+.btn-login:hover {
+    background-color: var(--bs-blue);
+    color: var(--bs-white); 
+
+}
+
 
 
 table.dataTable tr.dtrg-group.dtrg-level-0 th {
@@ -125,4 +135,11 @@ thead {
     height: 12px;
 }
 
+.dropdown-user-img {
+    max-width: 100px;
+}
+
+/* .carousel-item {
+    width: 400px;
+} */
 

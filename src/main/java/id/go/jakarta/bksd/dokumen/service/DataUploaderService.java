@@ -1394,6 +1394,7 @@ public class DataUploaderService {
         String[] kpt2020Header1 = {
             "", "", "", "", "", "Bagian Kerja Sama Pihak Ketiga Tahun 2020", "", "", "", "", ""
         };
+
         String[] kpt2020Header2 = {
             "No.", "Kelompok Kerja Sama", "Instansi Terkait (Dengan Penandatangan)", "Instansi Terkait",  "Mitra Kerja Sama",
             "Jenis Naskah Kerja Sama", "Judul Naskah Kerja Sama", "Nomor Naskah Kerja Sama", "Jangka Waktu Pelaksanaan",	"Tanggal Penetapan"

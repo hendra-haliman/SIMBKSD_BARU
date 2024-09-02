@@ -44,7 +44,10 @@ public class DokumenSecurityConfig {
 
                 .authorizeHttpRequests(
                         configurer -> configurer
-                                .requestMatchers("/register", "registerUser",
+                                .requestMatchers(
+                                    "/home",
+                                    "/register", 
+                                        "registerUser",
                                         "/forgotPassword",
                                         "/resetPassword",
                                         "resetPassword2",
