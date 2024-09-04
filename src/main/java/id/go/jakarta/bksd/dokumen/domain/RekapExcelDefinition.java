@@ -174,7 +174,7 @@ public class RekapExcelDefinition {
         def.noDokumenIdx = 7;
         def.tglPenetapanIdx = 9;
         def.waktuPelaksanaanBerakhirIdx = -1;
-        def.urusanIdx = 10;
+        def.urusanIdx = 11;
         def.jenisNaskahIdx = 5;
         def.jangkaWaktuIdx = 8;
         def.pembiayaanIdx = 12;

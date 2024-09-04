@@ -41,7 +41,7 @@ public class DokumenKerjaSama extends AuditMetaData {
     @ManyToOne(targetEntity = JenisMitra.class)
     private JenisMitra jenisMitra;
 
-    @Column(columnDefinition = "varchar(512)")
+    @Column(columnDefinition = "varchar(1024)")
     private String mitraKerjaSama;
 
     @ManyToMany(targetEntity = OPD.class, fetch = FetchType.LAZY)

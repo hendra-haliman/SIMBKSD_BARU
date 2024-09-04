@@ -118,7 +118,7 @@ public class AdminController {
             ex.printStackTrace();
         }
 
-        return "finish KSD2021";
+        return "finish KSD2020";
     }
 
     @GetMapping("/uploadKPT2022")

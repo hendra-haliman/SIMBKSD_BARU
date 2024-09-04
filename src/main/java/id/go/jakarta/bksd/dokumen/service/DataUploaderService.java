@@ -99,12 +99,11 @@ public class DataUploaderService {
             XSSFRow row = sheet.getRow(rowNum);
             if (row != null) {
                 Pemakai data = new Pemakai();
-                // Read data from each cell and set it to the corresponding field in MyData
-                // object
+
                 data.setTitle(row.getCell(0).getStringCellValue());
                 data.setNamaDepan(row.getCell(1).getStringCellValue());
                 data.setNamaKeluarga(row.getCell(2).getStringCellValue());
-                // ... (Handle other columns)
+
                 pemakaiRepository.save(data); // Save the data object to the database
             }
         }
@@ -945,6 +944,7 @@ public class DataUploaderService {
     // ******************* End of 2021 **********************************
 
     // ******************* Start of 2020 ********************************
+
     public void uploadKSD2020() throws IOException, InvalidFormatException {
         String fileName = RekapExcelDefinition.REKAP_KSD_2020;
 
@@ -990,6 +990,10 @@ public class DataUploaderService {
                                                             KPTDef2020.getDocLinkIdx(),
                                                             KPTDef2020.getRumpunOpdIdx(),
                                                             KPTDef2020.getKeteranganIdx());
+
+                // if(dokumenKerjaSama.getJenisMitra()==null) {
+                //     dokumenKerjaSama.setJenisMitra("N/A");
+                // }                                                            
 
                 dokumenKerjasamaRepository.save(dokumenKerjaSama);
 
@@ -2229,14 +2233,15 @@ public class DataUploaderService {
         for (int rowNum = 0; rowNum <= sheet.getLastRowNum(); rowNum++) {
 
             XSSFRow row = sheet.getRow(rowNum);
+            
             if (!(isRowToSkip(row))) {
-
                 String nomor = row.getCell(6).getStringCellValue();
                 String trimmedSearchTerm = nomor.trim().replaceAll("\\s", "");
                 bw.write("[" + trimmedSearchTerm + "]");
                 bw.newLine();
 
-                if (trimmedSearchTerm != null && trimmedSearchTerm.length() > 0) { // skipping empty nomor dokumen
+                // skipping empty nomor dokumen
+                if (trimmedSearchTerm != null && trimmedSearchTerm.length() > 0) { 
 
                     List<DokumenKerjaSama> dokumenKerjaSamaList = dokumenKerjasamaRepository
                             .findByNomorDokumen(trimmedSearchTerm);
@@ -2249,7 +2254,7 @@ public class DataUploaderService {
 
                         DokumenKerjaSama dokumenKerjaSama = dokumenKerjaSamaList.get(0);
 
-                        // Updating dokumen
+                        // Merubah dokumen
                         dokumenKerjaSama = updateDokumenKerjaSama(tahun, bagianKDN, dokumenKerjaSama, row,
                                 KDNDef2023.getJenisMitraIdx(),
                                 KDNDef2023.getOpdIdx(),
@@ -2296,10 +2301,11 @@ public class DataUploaderService {
     }
 
     /**
-     * Tries to convert a string containing several bagian into list of bagian.
+     * 
+     * Merubah sebuah text berisi beberapa bagian, menjadi List<Bagian> object.
      * 
      * @param bagianString
-     * @return
+     * @return List<Bagian>
      */
     public List<Bagian> parseBagian(String bagianString) {
         List<Bagian> bagianList = bagianService.findAll();
