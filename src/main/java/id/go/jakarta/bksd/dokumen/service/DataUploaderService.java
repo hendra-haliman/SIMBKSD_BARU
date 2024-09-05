@@ -7,6 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.lang.reflect.Field;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.ParseException;
@@ -28,6 +29,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -946,28 +948,39 @@ public class DataUploaderService {
     // ******************* Start of 2020 ********************************
 
     public void uploadKSD2020() throws IOException, InvalidFormatException {
-        String fileName = RekapExcelDefinition.REKAP_KSD_2020;
-
-        uploadKPT2020(fileName);
-
-        // uploadKDN2020(fileName);
-
+        //uploadFromWorksheet( 2020, "KPT");
+        uploadFromWorksheet( 2020, "KDN");
     }
 
-    public void uploadKPT2020(String fileName) throws IOException, InvalidFormatException {
-        int tahun = 2020;
+
+    
+    //public void uploadKPT2020(String fileName) throws IOException, InvalidFormatException {
+    public void uploadFromWorksheet(int tahun, String namaBagian) throws IOException, InvalidFormatException {
+        
+        String fileName = "";
+        try {
+            
+            Class<?> clazz = Class.forName("id.go.jakarta.bksd.dokumen.domain.RekapExcelDefinition");
+            Field field = clazz.getField("REKAP_KSD_" + tahun);
+            fileName = (String) field.get(null);
+
+        } catch (ClassNotFoundException cnfe) {
+            cnfe.printStackTrace(); 
+        } catch (NoSuchFieldException nsfe) {
+            nsfe.printStackTrace();
+        } catch (IllegalAccessException iae) {
+            iae.printStackTrace();
+        }
+        logger.info("FileName : [{}]", fileName);
+
         File file = new File("D:/Biro KSD/" + fileName);
-        RekapExcelDefinition KPTDef2020 = RekapExcelDefinition.getRekapDef(tahun, "KPT");
+        RekapExcelDefinition KPTDef2020 = RekapExcelDefinition.getRekapDef(tahun, namaBagian);
         XSSFWorkbook workbook = new XSSFWorkbook(file);
-
-
         XSSFSheet sheet = workbook.getSheetAt(KPTDef2020.getSheetNo());
-        //XSSFSheet sheet = workbook.getSheet("KPT"); //temporary
 
         int from = 0;
         int to = sheet.getLastRowNum();
         Bagian bagian = bagianService.findBySingkatan("KPT").get();
-
 
         for (int rowNum = from; rowNum <= to; rowNum++) {
             XSSFRow row = sheet.getRow(rowNum);
@@ -1422,13 +1435,19 @@ public class DataUploaderService {
 
 
         String[] kdn2020Header1 = {
-            "", "Sinergisitas", "", "", "", "", "", "", "", ""
+            "", "", "", "", "", "Bagian Kerja Sama Dalam Negeri Tahun 2020", "", "", "", ""
         };
         String[] kdn2020Header2 = {
+            "No.", "Kelompok Kerja Sama", "Instansi Terkait", "Mitra Kerja Sama", "Jenis Dokumen Perjanjian",
+            "Judul Naskah Kerja Sama", "Nomor Naskah Kerja Sama", "Jangka Waktu Pelaksanaan", "Tanggal Penetapan", "Akhir Kerja Sama"
+
+        };
+        String[] kdn2020Header3 = {
+            "", "Sinergisitas", "", "", "", "", "", "", "", ""
+        };
+        String[] kdn2020Header4 = {
             "", "Kerja Sama Dengan Daerah Lain", "", "", "", "", "", "", "", ""
         };
-
-
 
         if (isHeaderRow(row, kpt2020Header1, limit2020) || 
             isHeaderRow(row, kpt2020Header2, limit2020) ||
@@ -1439,7 +1458,9 @@ public class DataUploaderService {
             isHeaderRow(row, kpt2020Header7, limit2020) ||
 
             isHeaderRow(row, kdn2020Header1, limit2020) ||
-            isHeaderRow(row, kdn2020Header2, limit2020)
+            isHeaderRow(row, kdn2020Header2, limit2020) ||
+            isHeaderRow(row, kdn2020Header3, limit2020) ||
+            isHeaderRow(row, kdn2020Header4, limit2020)
             ) {
             return true;
         }
