@@ -58,6 +58,9 @@
     <!--script th:src="@{/static/js/datatables.min.js}"></script-->
     <script
         src="https://cdn.datatables.net/v/bs5/dt-2.0.6/b-3.0.2/r-3.0.2/sc-2.4.2/sl-2.0.1/datatables.min.js"></script>
+    <script th:inline="javascript">
+        var contextPath = /*[[@{/}]]*/ '';            
+    </script>
 
     <script>
         $(document).ready(function () {
@@ -67,7 +70,7 @@
                 "searchDelay": 1000,
                 "ordering": false,
                 "ajax": {
-                    "url": "/dokumen/api/pemakai/list",
+                    "url": contextPath + "api/pemakai/list",
                     "type": "POST",
                     "dataType": "json",
                     "cache": "no-cache",
@@ -83,7 +86,7 @@
                     },
                     "error": function (xhr, error, thrown) {
                         if (xhr.status === 401) {
-                            window.location.href = "/dokumen/logout"; // Redirect to login page
+                            window.location.href = contextPath + "logout"; // Redirect to login page
                         }
                     }
                 },

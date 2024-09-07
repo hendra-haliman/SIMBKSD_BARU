@@ -48,10 +48,6 @@ public class Pemakai extends AuditMetaData {
     @Column(name = "reset_str")
     private String resetStr;
 
-    // @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    // // @JoinColumn(name = "alamatId", referencedColumnName = "id")
-    // private Alamat alamat;
-
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private Collection<Role> roles;

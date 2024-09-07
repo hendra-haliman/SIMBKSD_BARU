@@ -49,8 +49,6 @@ tr:last-child td
 
 }
 
-
-
 table.dataTable tr.dtrg-group.dtrg-level-0 th {
     background-color: #e3dba4 !important;
 }
@@ -68,11 +66,11 @@ textarea.form-control, textarea.datatable-input {
 }
 
 .custom-table {
-    font-size: 0.8rem; /* Smaller font size */
+    font-size: 0.8rem;
 }
 
 h {
-    vertical-align: middle;  /* Aligns text to the middle vertically */
+    vertical-align: middle; 
     
 }
 
@@ -85,9 +83,9 @@ div.datepicker-years > table > thead {
 }
 
 .tab-pane {
-    border: 1px solid #ccc; /* Sets a 1px border with a light grey color */
+    border: 1px solid #ccc; 
     border-top: 0;     
-    padding: 15px; /* Optional: Adds some spacing inside the border */
+    padding: 15px; 
     
 }
 

@@ -83,11 +83,13 @@ public class DokumenSecurityConfig {
                         .successHandler(customSuccessHandler)
                         .usernameParameter("email")
                         .permitAll())
-                .logout(logout -> logout.permitAll()
-                        .logoutUrl("/logout")
-                        .addLogoutHandler(new CustomLogoutHandler())
-                        .logoutSuccessUrl("/showLoginPage?logout"))
-                .requiresChannel(channel -> channel.anyRequest().requiresSecure());
+                .logout(logout -> 
+                        logout.permitAll()
+                              .logoutUrl("/logout")
+                              .addLogoutHandler(new CustomLogoutHandler())
+                              .invalidateHttpSession(true)
+                              .logoutSuccessUrl("/showLoginPage?logout"))
+                              .requiresChannel(channel -> channel.anyRequest().requiresSecure());
 
         SecurityFilterChain chain = http.build();
 
