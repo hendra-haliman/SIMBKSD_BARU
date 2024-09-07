@@ -50,11 +50,17 @@
 			<artifactId>thymeleaf-extras-springsecurity6</artifactId>
 		</dependency>
 
+		<!--TODO: Ganti driver dengan MariaDB -->
 		<dependency>
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		 <!--dependency>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
+			<scope>runtime</scope>
+	    </dependency-->
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -131,6 +137,7 @@
 			<version>2.4.1</version>
 		</dependency>
 
+		<!-- TODO: Check lagi, sudah tidak diperlukan sekarang (per 6 Sept 2024) -->
 		<dependency>
 			<groupId>com.google.oauth-client</groupId>
 			<artifactId>google-oauth-client-jetty</artifactId>
@@ -242,7 +249,6 @@
 				<artifactId>maven-resources-plugin</artifactId>
 				<configuration>
 					<nonFilteredFileExtensions>
-
 						<nonFilteredFileExtension>otf</nonFilteredFileExtension>
 					</nonFilteredFileExtensions>
 
