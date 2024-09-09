@@ -119,8 +119,12 @@ public class FileReadWriteService {
      * @param localFile
      * @param remoteDir
      */
-    public void scpTransferFile(String username, String password, String host, int port, String localFile,
-            String remoteDir) {
+    public void scpTransferFile(String username, 
+                                String password, 
+                                String host, 
+                                int port, 
+                                String localFile,
+                                String remoteDir) {
         Session session = null;
         Channel channel = null;
 
@@ -197,8 +201,12 @@ public class FileReadWriteService {
      * @param remoteFile
      * @param localFile
      */
-    public void sftpRemoteToLocal(String user, String password, String host, int port, String remoteFile,
-            String localFile) {
+    public void sftpRemoteToLocal(  String user, 
+                                    String password, 
+                                    String host, 
+                                    int port, 
+                                    String remoteFile,
+                                    String localFile) {
         JSch jsch = new JSch();
         try {
             Session session = jsch.getSession(user, host, port);

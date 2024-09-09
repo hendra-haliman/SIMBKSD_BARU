@@ -63,7 +63,7 @@
     </nav>     
 
     <!-- Navigasi Atas -->
-    <nav th:fragment="navigation-top" class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <nav th:fragment="navigation-top" class="sb-topnav navbar navbar-expand navbar-dark bg-dark sticky-top">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3" href="index.html_X">Sistem Informasi Biro KSD</a>
 
@@ -111,14 +111,14 @@
                     <a class="nav-link" href="javascript:void(0);"><div class="nav-link-icon"><i data-feather="tv"></i></div>Monev</a>
                     <a class="nav-link" th:href="@{/laporan}"><div class="nav-link-icon"><i data-feather="printer"></i></div>Laporan</a>
 
-                    <div class="sidenav-menu-heading">Lain-lain</div>
+                    <div class="sb-sidenav-menu-heading">Lain-lain</div>
                     <a class="nav-link" th:href="@{/terminologi}"><div class="nav-link-icon"><i data-feather="user"></i></div>Terminologi</a>
                     <a class="nav-link" th:href="@{/user}"><div class="nav-link-icon"><i data-feather="user"></i></div>User</a>
                     <a class="nav-link" th:href="@{/}"><div class="nav-link-icon"><i data-feather="users"></i></div>Jenis Mitra</a>
                     <a class="nav-link" th:href="@{/}"><div class="nav-link-icon"><i data-feather="file"></i></div>Jenis Dokumen</a>           
                     <a class="nav-link" th:href="@{/}"><div class="nav-link-icon"><i data-feather="file"></i></div>Perangkat Daerah</a>           
             </div>
-            <div class="sb-sidenav-footer">
+            <div class="sb-sidenav-footer sticky-bottom">
                 <div class="small">Logged in as:</div>
                 Start Bootstrap
             </div>
@@ -151,7 +151,8 @@
         <script th:src="@{/static/js/litepicker.js}"></script>
 
         <script th:src="@{/static/js/jquery-3.7.1.min.js}"></script>
-
+        <script th:src="@{/static/js/pdfmake.min.js}"></script>
+        <script th:src="@{/static/js/vfs_fonts.js}"></script>
         <script th:src="@{/static/js/datatables.min.js}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script> 
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>

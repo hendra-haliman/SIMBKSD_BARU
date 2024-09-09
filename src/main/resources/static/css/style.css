@@ -1,8 +1,16 @@
+tbody tr td {
+    color:#000 !important;
+    border-width: 1px;
+    border-color: #000;
+    border-right: solid;
+}
+
 table.dataTable.table-bordered th {
     border-right-width: 0;
     border-top-width: 1px !important; 
     border-bottom-width: 1px !important;   
     vertical-align: middle;
+    border-color: #000;
 }
 
 tr:last-child td 
@@ -23,19 +31,19 @@ tr:last-child td
   }
 
 .btn-tambah {
-    background-color: red;
+    background-color: rgb(193, 78, 78);
 }
 
 .btn-excel {
-    background-color: green;
+    background-color: rgb(47, 113, 47);
 }
 
 .btn-setup {
-    background-color: blue;
+    background-color: rgb(47, 47, 209);
 }
 
 .btn-filter {
-    background-color: green;
+    background-color: rgb(47, 113, 47);
 }
 
 .btn-login {
@@ -143,4 +151,39 @@ thead {
 
 div.nav-link-icon {
     margin-right: 5px;
+}
+
+svg.feather {
+    width: 1.5rem;
+    height: 1.5rem;
+    vertical-align: middle;
+}
+
+/* .sticky-bottom {
+    position: sticky;
+    bottom: 0;
+    background-color: #f8f9fa; 
+    padding: 10px;
+    border-top: 1px solid #dee2e6; 
+}
+
+.sb-sidenav-menu {
+    min-height: 100vh;
+    top: 0;
+} */
+
+/* .fixedHeader-floating {
+    z-index: 2040; 
+} */
+.fixed-col {
+    background-color: #fff !important;
+}
+
+#KPTTable td, #KPTTable th {
+    border-left: 1px solid #000;
+    border-bottom: solid 1px #000;
+}
+
+#KPTTable td:last-child, #KPTTable th:last-child {
+    border-right: 1px solid #000 !important; 
 }
