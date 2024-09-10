@@ -5,6 +5,9 @@
 <head th:replace="~{fragments/general.html :: minimal_header('Pelaksanaan')}"></head>
 
 <body class="sb-nav-fixed">
+    <!--div class="row" sec:authorize="hasRole('ROLE_ADMIN')" style="color:black;">test</div>
+    <div class="row" sec:authorize="hasAuthority('can_edit')" style="color:black;">I can edit</div-->
+
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="trash-can" viewBox="0 0 448 512">
             <path
