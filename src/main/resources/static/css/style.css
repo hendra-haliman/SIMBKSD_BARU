@@ -187,3 +187,31 @@ svg.feather {
 #KPTTable td:last-child, #KPTTable th:last-child {
     border-right: 1px solid #000 !important; 
 }
+
+.inline-link {
+    display: flex;        /* Enables flexbox */
+    align-items: center;  /* Centers items vertically */
+    white-space: nowrap;  /* Prevents wrapping of content */
+}
+
+.btn svg, .btn span {
+    display: inline;      /* Makes elements inline */
+    vertical-align: middle; /* Aligns elements vertically */
+    /* width: 90px; */
+}
+
+.navbar-nav {
+    justify-content: flex-end; /* Aligns children (nav items) to the end */
+}
+
+.nav-logo {
+    height: 2em !important;
+}
+
+.sb-sidenav .sb-sidenav-menu .nav .nav-link {
+    display: flex;
+    align-items: center;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    position: relative;
+}
