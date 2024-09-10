@@ -154,7 +154,7 @@
 
 
                             <table id="KPTTable"
-                                class="table table-bordered table-compact table-sm  custom-table"
+                                class="table table-bordered table-compact table-sm"
                                 style="width: 100%; border-bottom-width: 1px;">
                                 <thead>
                                     <tr>
@@ -324,7 +324,6 @@
         let nextStart = nextYear + "-01-01";
         let nextFirst = nextYear + "-07-01";
         let nextEnd = nextYear + "-12-31";
-
     </script>
 
     <script th:if="${bagian} == 'KPT'">
@@ -371,10 +370,8 @@
     </script>
 
     <script th:inline="javascript">
-
         var jsonDefsStr = /*[[${jsonDefs}]]*/ 'default';
         var jsonDefs = JSON.parse(jsonDefsStr);
-
     </script>
 
     <script>
