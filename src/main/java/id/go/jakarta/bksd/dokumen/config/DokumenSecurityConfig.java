@@ -58,6 +58,7 @@ public class DokumenSecurityConfig {
                 .authorizeHttpRequests(
                         configurer -> configurer
                                 .requestMatchers(
+                                        "/",
                                         "/home",
                                         "/register",
                                         "registerUser",
@@ -96,13 +97,12 @@ public class DokumenSecurityConfig {
                         .successHandler(customSuccessHandler)
                         .usernameParameter("email")
                         .permitAll())
-                .logout(logout -> 
-                        logout.permitAll()
-                              .logoutUrl("/logout")
-                              .addLogoutHandler(new CustomLogoutHandler())
-                              .invalidateHttpSession(true)
-                              .logoutSuccessUrl("/showLoginPage?logout"))
-                              .requiresChannel(channel -> channel.anyRequest().requiresSecure());
+                .logout(logout -> logout.permitAll()
+                        .logoutUrl("/logout")
+                        .addLogoutHandler(new CustomLogoutHandler())
+                        .invalidateHttpSession(true)
+                        .logoutSuccessUrl("/showLoginPage?logout"))
+                .requiresChannel(channel -> channel.anyRequest().requiresSecure());
 
         SecurityFilterChain chain = http.build();
 
@@ -142,38 +142,40 @@ public class DokumenSecurityConfig {
         return expressionHandler;
     }
 
-    @Bean
     // https://www.javainuse.com/boot3/sec/ssl/1
-    public ServletWebServerFactory servletContainer() {
-        ServletWebServerFactory factory = new TomcatServletWebServerFactory() {
+    // @Bean
+    // public ServletWebServerFactory servletContainer() {
+    // ServletWebServerFactory factory = new TomcatServletWebServerFactory() {
 
-            @Override
-            protected void postProcessContext(Context context) {
-                SecurityConstraint securityConstraint = new SecurityConstraint();
-                securityConstraint.setUserConstraint("CONFIDENTIAL");
-                SecurityCollection collection = new SecurityCollection();
-                collection.addPattern("/*");
-                securityConstraint.addCollection(collection);
-                context.addConstraint(securityConstraint);
-            }
+    // @Override
+    // protected void postProcessContext(Context context) {
+    // SecurityConstraint securityConstraint = new SecurityConstraint();
+    // securityConstraint.setUserConstraint("CONFIDENTIAL");
+    // SecurityCollection collection = new SecurityCollection();
+    // collection.addPattern("/*");
+    // securityConstraint.addCollection(collection);
+    // context.addConstraint(securityConstraint);
+    // }
 
-        };
+    // };
 
-        ((TomcatServletWebServerFactory) factory).addAdditionalTomcatConnectors(redirectConnector());
+    // ((TomcatServletWebServerFactory)
+    // factory).addAdditionalTomcatConnectors(redirectConnector());
 
-        return factory;
-    }
+    // return factory;
+    // }
 
     // https://www.javainuse.com/boot3/sec/ssl/1
-    private Connector redirectConnector() {
-        Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
-        connector.setScheme("http");
-        connector.setPort(port);
-        connector.setSecure(false);
-        connector.setRedirectPort(redirectPort);
+    // private Connector redirectConnector() {
+    // Connector connector = new
+    // Connector("org.apache.coyote.http11.Http11NioProtocol");
+    // connector.setScheme("http");
+    // connector.setPort(port);
+    // connector.setSecure(false);
+    // connector.setRedirectPort(redirectPort);
 
-        return connector;
-    }
+    // return connector;
+    // }
 
     /**
      * - recaptcha:
