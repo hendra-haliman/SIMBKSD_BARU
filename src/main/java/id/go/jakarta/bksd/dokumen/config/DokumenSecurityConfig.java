@@ -1,8 +1,15 @@
 package id.go.jakarta.bksd.dokumen.config;
 
+import org.apache.catalina.Context;
+import org.apache.catalina.connector.Connector;
+import org.apache.tomcat.util.descriptor.web.SecurityCollection;
+import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;
@@ -26,6 +33,12 @@ import id.go.jakarta.bksd.dokumen.service.PemakaiService;
 @EnableWebSecurity
 public class DokumenSecurityConfig {
 
+    @Value("${server.ssl.redirect-port}")
+    private int redirectPort;
+
+    @Value("${server.port}")
+    private int port;
+
     @Autowired
     @Qualifier("customAuthenticationEntryPoint")
     AuthenticationEntryPoint authEntryPoint;
@@ -45,8 +58,8 @@ public class DokumenSecurityConfig {
                 .authorizeHttpRequests(
                         configurer -> configurer
                                 .requestMatchers(
-                                    "/home",
-                                    "/register", 
+                                        "/home",
+                                        "/register",
                                         "registerUser",
                                         "/forgotPassword",
                                         "/resetPassword",
@@ -125,6 +138,39 @@ public class DokumenSecurityConfig {
         DefaultWebSecurityExpressionHandler expressionHandler = new DefaultWebSecurityExpressionHandler();
         expressionHandler.setRoleHierarchy(roleHierarchy());
         return expressionHandler;
+    }
+
+    @Bean
+    // https://www.javainuse.com/boot3/sec/ssl/1
+    public ServletWebServerFactory servletContainer() {
+        ServletWebServerFactory factory = new TomcatServletWebServerFactory() {
+
+            @Override
+            protected void postProcessContext(Context context) {
+                SecurityConstraint securityConstraint = new SecurityConstraint();
+                securityConstraint.setUserConstraint("CONFIDENTIAL");
+                SecurityCollection collection = new SecurityCollection();
+                collection.addPattern("/*");
+                securityConstraint.addCollection(collection);
+                context.addConstraint(securityConstraint);
+            }
+
+        };
+
+        ((TomcatServletWebServerFactory) factory).addAdditionalTomcatConnectors(redirectConnector());
+
+        return factory;
+    }
+
+    // https://www.javainuse.com/boot3/sec/ssl/1
+    private Connector redirectConnector() {
+        Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
+        connector.setScheme("http");
+        connector.setPort(port);
+        connector.setSecure(false);
+        connector.setRedirectPort(redirectPort);
+
+        return connector;
     }
 
     /**
