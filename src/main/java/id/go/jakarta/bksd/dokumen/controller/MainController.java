@@ -58,7 +58,7 @@ public class MainController {
         return "home";
     }
 
-    @GetMapping("home")
+    @GetMapping("/home")
     public String home2(Model model) {
         return "home";
     }
@@ -77,7 +77,7 @@ public class MainController {
 
         Bagian KPT = bagianService.findBySingkatan("KPT").get();
         Bagian KDN = bagianService.findBySingkatan("KDN").get();
-        Bagian KLN = bagianService.findBySingkatan("KLN").get();
+        //Bagian KLN = bagianService.findBySingkatan("KLN").get();
 
         // This year
         Long KPTExpiredinFirstSemesterCount = dokumenKerjaSamaService.getExpiredInFirstSemesterByBagianCount(KPT, year);

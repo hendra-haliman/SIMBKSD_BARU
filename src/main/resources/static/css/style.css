@@ -1,8 +1,16 @@
+tbody tr td {
+    color:#000 !important;
+    border-width: 1px;
+    border-color: #000;
+    border-right: solid;
+}
+
 table.dataTable.table-bordered th {
     border-right-width: 0;
     border-top-width: 1px !important; 
     border-bottom-width: 1px !important;   
     vertical-align: middle;
+    border-color: #000;
 }
 
 tr:last-child td 
@@ -23,19 +31,19 @@ tr:last-child td
   }
 
 .btn-tambah {
-    background-color: red;
+    background-color: rgb(193, 78, 78);
 }
 
 .btn-excel {
-    background-color: green;
+    background-color: rgb(47, 113, 47);
 }
 
 .btn-setup {
-    background-color: blue;
+    background-color: rgb(47, 47, 209);
 }
 
 .btn-filter {
-    background-color: green;
+    background-color: rgb(47, 113, 47);
 }
 
 .btn-login {
@@ -48,8 +56,6 @@ tr:last-child td
     color: var(--bs-white); 
 
 }
-
-
 
 table.dataTable tr.dtrg-group.dtrg-level-0 th {
     background-color: #e3dba4 !important;
@@ -68,11 +74,11 @@ textarea.form-control, textarea.datatable-input {
 }
 
 .custom-table {
-    font-size: 0.8rem; /* Smaller font size */
+    font-size: 0.8rem;
 }
 
 h {
-    vertical-align: middle;  /* Aligns text to the middle vertically */
+    vertical-align: middle; 
     
 }
 
@@ -85,9 +91,9 @@ div.datepicker-years > table > thead {
 }
 
 .tab-pane {
-    border: 1px solid #ccc; /* Sets a 1px border with a light grey color */
+    border: 1px solid #ccc; 
     border-top: 0;     
-    padding: 15px; /* Optional: Adds some spacing inside the border */
+    padding: 15px; 
     
 }
 
@@ -143,3 +149,103 @@ thead {
     width: 400px;
 } */
 
+div.nav-link-icon {
+    margin-right: 5px;
+}
+
+svg.feather {
+    width: 1.5rem;
+    height: 1.5rem;
+    vertical-align: middle;
+}
+
+/* .sticky-bottom {
+    position: sticky;
+    bottom: 0;
+    background-color: #f8f9fa; 
+    padding: 10px;
+    border-top: 1px solid #dee2e6; 
+}
+
+.sb-sidenav-menu {
+    min-height: 100vh;
+    top: 0;
+} */
+
+/* .fixedHeader-floating {
+    z-index: 2040; 
+} */
+.fixed-col {
+    background-color: #fff !important;
+}
+
+#KPTTable td, #KPTTable th {
+    border-left: 1px solid #000;
+    border-bottom: solid 1px #000;
+}
+
+#KPTTable td:last-child, #KPTTable th:last-child {
+    border-right: 1px solid #000 !important; 
+}
+
+.inline-link {
+    display: flex;        /* Enables flexbox */
+    align-items: center;  /* Centers items vertically */
+    white-space: nowrap;  /* Prevents wrapping of content */
+}
+
+.btn svg, .btn span {
+    display: inline;      /* Makes elements inline */
+    vertical-align: middle; /* Aligns elements vertically */
+    /* width: 90px; */
+}
+
+.navbar-nav {
+    justify-content: flex-end; /* Aligns children (nav items) to the end */
+}
+
+.nav-logo {
+    height: 2em !important;
+}
+
+.sb-sidenav .sb-sidenav-menu .nav .nav-link {
+    display: flex;
+    align-items: center;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    position: relative;
+}
+
+/* For home.html */
+
+.page-section {
+    padding: 8rem 0;
+}
+
+.btn-xl {
+    padding: 1.25rem 2.25rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 10rem;
+}
+
+header.masthead {
+    padding-top: 10rem;
+    padding-bottom: calc(10rem - 4.5rem);
+    /* background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url(../assets/img/bksd.jpg); */
+    background: url(../assets/img/bksd.jpg);     
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+}
+
+/* .fixed-top, .sb-nav-fixed #layoutSidenav #layoutSidenav_nav, .sb-nav-fixed .sb-topnav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+  } */

@@ -16,12 +16,18 @@ import com.microsoft.playwright.options.AriaRole;
 import id.go.jakarta.bksd.dokumen.domain.Dokumen;
 import id.go.jakarta.bksd.dokumen.domain.DokumenKerjaSama;
 
+import org.springframework.beans.factory.annotation.Value;
+
+
 /**
- * A service only for dev environment.
+ * Sebuah service hanya untuk dev environment.
  * 
  */
 @Service
 public class DevUtilityService {
+
+    @Value("${google.download.folder}")
+    private String destinationFolder;
 
     private DokumenKerjaSamaService dokumenKerjaSamaService;
 
@@ -30,7 +36,7 @@ public class DevUtilityService {
     }
 
     /**
-     * Expand URL into original.
+     * Expand URL menjadi URL original, contohnya tinyurl
      * Note: Limited to 100 request per day.
      * 
      * @param url
@@ -68,8 +74,7 @@ public class DevUtilityService {
     }
 
     /**
-     * Download file from Google drive, using browser automation, without the need
-     * of permission of Google Drive API
+     * Download file dari Google drive, memakai automation, tanpa memerlukan permission dari Google Drive API
      * 
      */
     public String downloadFileFromGoogleDrive(String url) {
@@ -83,7 +88,7 @@ public class DevUtilityService {
 
             page.navigate(url);
 
-            // Wait for the Google Drive file page to load
+            // Tunggu halaman Google Drive untuk memuat (loaded)
             page.waitForSelector("div[aria-label='Download']", new Page.WaitForSelectorOptions().setTimeout(180000));
 
             filename = page.title();
@@ -91,18 +96,13 @@ public class DevUtilityService {
             int endIndex = filename.indexOf(".pdf") + 4;
             filename = filename.substring(0, endIndex);
 
-            // Click the download button
-            // page.click("div[aria-label='Download']");
-
-            // Wait for the download process to complete
+            // Tunggu sampai proses download selesai
             Download download = page.waitForDownload(() -> {
                 // Trigger the download
-                // page.click("button[jsname='LgbsSe']");
                 page.click("div[aria-label='Download']");
             });
 
-            // Save the download to a specified path
-            download.saveAs(Paths.get("d:/test/" + filename));
+            download.saveAs(Paths.get(destinationFolder + filename));
 
             System.out.println("Download completed: " + download.suggestedFilename());
         } catch (Exception e) {
@@ -113,8 +113,7 @@ public class DevUtilityService {
     }
 
     /**
-     * Download missing Dokumen attachments in DokumenKerjaSama based on docLink
-     * attribute
+     * Download file naskah kerja sama yang hilang (tidak ada) dari Pusdatin Google drive (docLink attribute)
      */
     public void downloadMissingFile() {
         List<DokumenKerjaSama> docList = dokumenKerjaSamaService.findAll();

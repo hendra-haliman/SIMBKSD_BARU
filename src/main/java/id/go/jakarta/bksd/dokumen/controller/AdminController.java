@@ -118,14 +118,14 @@ public class AdminController {
             ex.printStackTrace();
         }
 
-        return "finish KSD2021";
+        return "finish KSD2020";
     }
 
     @GetMapping("/uploadKPT2022")
     @ResponseBody
     public String uploadKPT2022() {
         try {
-            dataUploaderService.uploadKPT2022();
+            dataUploaderService.uploadFromWorksheet(2022, "KPT");
         } catch (IOException | InvalidFormatException ex) {
             ex.printStackTrace();
         }
@@ -137,7 +137,7 @@ public class AdminController {
     @ResponseBody
     public String uploadKDN2022() {
         try {
-            dataUploaderService.uploadKDN2022();
+            dataUploaderService.uploadFromWorksheet(2022,"KDN");
         } catch (IOException | InvalidFormatException ex) {
             ex.printStackTrace();
         }

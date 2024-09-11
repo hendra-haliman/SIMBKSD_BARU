@@ -4,7 +4,13 @@
 
 <head th:replace="~{fragments/general.html :: header('Managemen User')}"></head>
 
-<body class="nav-fixed">
+<body class="sb-nav-fixed">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="display: none;">
+        <symbol id="check" viewBox="0 0 448 512">
+            <path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
+        </symbol>
+    </svg>
+
     <nav th:replace="~{fragments/general.html :: navigation}"></nav>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav" th:include="~{fragments/general.html :: layoutSidenav_nav}"></div>
@@ -47,17 +53,10 @@
             <footer th:replace="~{fragments/general.html :: footer}"></footer>
         </div>
     </div>
-    <script th:src="@{/static/js/bootstrap.bundle.min.js}" crossorigin="anonymous"></script>
-    <script th:src="@{/static/js/scripts.js}"></script>
-
-    <script th:src="@{/static/js/litepicker.bundle.js}" crossorigin="anonymous"></script>
-    <script th:src="@{/static/js/litepicker.js}"></script>
-
-    <script th:src="@{/static/js/jquery-3.7.1.min.js}"></script>
-
-    <!--script th:src="@{/static/js/datatables.min.js}"></script-->
-    <script
-        src="https://cdn.datatables.net/v/bs5/dt-2.0.6/b-3.0.2/r-3.0.2/sc-2.4.2/sl-2.0.1/datatables.min.js"></script>
+    <div th:include="~{fragments/general.html :: script}"></div>
+    <script th:inline="javascript">
+        var contextPath = /*[[@{/}]]*/ '';            
+    </script>
 
     <script>
         $(document).ready(function () {
@@ -67,7 +66,7 @@
                 "searchDelay": 1000,
                 "ordering": false,
                 "ajax": {
-                    "url": "/dokumen/api/pemakai/list",
+                    "url": contextPath + "api/pemakai/list",
                     "type": "POST",
                     "dataType": "json",
                     "cache": "no-cache",
@@ -83,7 +82,7 @@
                     },
                     "error": function (xhr, error, thrown) {
                         if (xhr.status === 401) {
-                            window.location.href = "/dokumen/logout"; // Redirect to login page
+                            window.location.href = contextPath + "logout"; // Redirect to login page
                         }
                     }
                 },
@@ -101,11 +100,14 @@
                     { "data": "namaKeluarga" },
                     { "data": "email" },
                     { "data": "enabled" ,
+                      "className": "",
                       "render": function (data, type, row, meta) {
                         if (data==true) {
-                            return "<i style='color: green;' class='fa-solid fa-check'></i>";
+                            // return "<svg class='myicon'><use xlink:href='#check'></use></svg>";
+                            return "v"
                         } else {
-                            return "<i style='color: red;' class='fa-solid fa-xmark'></i>";
+                            // return "<i style='color: red;' class='fa-solid fa-xmark'></i>";
+                            return "x"
                         }
                       }
                     },

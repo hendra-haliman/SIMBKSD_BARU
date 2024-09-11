@@ -2,9 +2,12 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
     xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head th:replace="~{fragments/general.html :: header('Pelaksanaan')}"></head>
+<head th:replace="~{fragments/general.html :: minimal_header('Pelaksanaan')}"></head>
 
-<body class="nav-fixed">
+<body class="sb-nav-fixed">
+    <!--div class="row" sec:authorize="hasRole('ROLE_ADMIN')" style="color:black;">test</div>
+    <div class="row" sec:authorize="hasAuthority('can_edit')" style="color:black;">I can edit</div-->
+
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="trash-can" viewBox="0 0 448 512">
             <path
@@ -20,7 +23,7 @@
         </symbol>
     </svg>
 
-    <nav th:replace="~{fragments/general.html :: navigation-top}"></nav>
+    <nav th:replace="~{fragments/general.html :: navigation}"></nav>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav" th:include="~{fragments/general.html :: layoutSidenav_nav}"></div>
 
@@ -154,7 +157,7 @@
 
 
                             <table id="KPTTable"
-                                class="table table-bordered table-striped table-responsive table-compact table-sm  custom-table"
+                                class="table table-bordered table-compact table-sm"
                                 style="width: 100%; border-bottom-width: 1px;">
                                 <thead>
                                     <tr>
@@ -324,7 +327,6 @@
         let nextStart = nextYear + "-01-01";
         let nextFirst = nextYear + "-07-01";
         let nextEnd = nextYear + "-12-31";
-
     </script>
 
     <script th:if="${bagian} == 'KPT'">
@@ -371,10 +373,8 @@
     </script>
 
     <script th:inline="javascript">
-
         var jsonDefsStr = /*[[${jsonDefs}]]*/ 'default';
         var jsonDefs = JSON.parse(jsonDefsStr);
-
     </script>
 
     <script>
@@ -446,9 +446,17 @@
             });
 
             var docTable = $("#KPTTable").dataTable({
+                "fixedColumns": {
+                    "leftColumns": 4,
+                    "rightColumns":1
+                },
+                "scrollCollapse": true,
+                "scrollX": true,
+                "scrollY": '350px',
+                "fixedHeader": false,
                 "processing": true,
                 "serverSide": true,
-                "responsive": true,
+                "responsive": false,
                 "ordering": false,
                 // "colReorder": {realtime: false},
                 "searchDelay": 1000,
@@ -553,6 +561,7 @@
                     {
                         "name": "nomor",
                         "data": null,
+                        "className": "fixed-col",
                         "targets": 1,
                         "render": function (data, type, row, meta) {
                             return meta.row + meta.settings._iDisplayStart + 1
@@ -560,10 +569,12 @@
                     },
                     {
                         "name": "tahun",
+                        "className": "fixed-col",
                         "data": "tahun"
                     },
                     {
                         "name": "bagian",
+                        "className": "fixed-col",
                         "data": "bagian",
                         "render": function (data, type, row, meta) {
                             if (data != null) {
@@ -576,6 +587,7 @@
                     {
                         "name": "opd",
                         "data": "opd",
+                        "className": "fixed-col",
                         "render": function (data, type, row, meta) {
                             if (data.length == 1) {
                                 return data[0].nama;
@@ -801,12 +813,12 @@
                         "name": "action",
                         "data": null,
                         "responsivePriority": 2,
-                        "width": "120px",
-                        "className": "text-center",
+                        "width": "130px",
+                        "className": "text-center fixed-col",
                         "render": function (data, type, row, meta) {
-                            return "<a class='btn btn-sm btn-success mb-sm-1' style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;' href='" + contextPath + "dokumen/view/" + row.id + "' data-bs-toggle='tooltip' data-bs-placement='top' title='Lihat'><svg class='myicon'><use xlink:href='#binoculars'></use></svg> <span class='ms-sm-2'>Lihat</span></a>" + "&nbsp" +
-                                "<a class='btn btn-sm btn-warning mb-sm-1' style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;'  href='" + contextPath + "dokumen/edit/" + row.id + "' data-bs-toggle='tooltip' data-bs-placement='top' title='Edit'><svg class='myicon'><use xlink:href='#pencil'></use></svg> <span class='ms-sm-2'>Rubah</span></a>" + "&nbsp" +
-                                "<a class='btn btn-sm btn-danger mb-sm-1' style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;'  id='delete'  onclick='showDeleteConfirmation(\"" + row.judulDokumenPerjanjian + "\")' href='#' data-bs-toggle='tooltip' data-bs-placement='top' title='Hapus'><svg class='myicon'><use xlink:href='#trash-can'></use></svg> <span class='ms-sm-2'>Hapus</span></a>";
+                            return "<a class='btn btn-sm btn-success mb-sm-1 inline-link ' style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;' href='" + contextPath + "dokumen/view/" + row.id + "' data-bs-toggle='tooltip' data-bs-placement='top' title='Lihat'><svg class='myicon'><use xlink:href='#binoculars'></use></svg> <span class='ms-sm-2'>Lihat</span></a>" + 
+                                "<a class='btn btn-sm btn-warning mb-sm-1 inline-link ' style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;'  href='" + contextPath + "dokumen/edit/" + row.id + "' data-bs-toggle='tooltip' data-bs-placement='top' title='Edit'><svg class='myicon'><use xlink:href='#pencil'></use></svg> <span class='ms-sm-2'>Rubah</span></a>" +
+                                "<a class='btn btn-sm btn-danger mb-sm-1 inline-link ' style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;'  id='delete'  onclick='showDeleteConfirmation(\"" + row.judulDokumenPerjanjian + "\")' href='#' data-bs-toggle='tooltip' data-bs-placement='top' title='Hapus'><svg class='myicon'><use xlink:href='#trash-can'></use></svg> <span class='ms-sm-2'>Hapus</span></a>";
 
                         }
                     }
