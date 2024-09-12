@@ -723,7 +723,18 @@ public class DokumenKerjaSamaService {
     }
 
     public Optional<DokumenKerjaSama> findById(Long id) {
-        return dokumenKerjasamaRepository.findById(id);
+        Optional<DokumenKerjaSama> dkso = dokumenKerjasamaRepository.findById(id);
+        boolean canViewDocLink = pemakaiService.hasAuthority(PemakaiService.AUTH_CAN_VIEW_DOC_LINK);
+
+        DokumenKerjaSama dks = dkso.get();
+        dks.setLinkDokumenKerjaSama("N/A");
+
+        if (canViewDocLink) {
+            return Optional.of(dks);
+        }
+
+        dks.setDokumen(new ArrayList<>());
+        return Optional.of(dks);
     }
 
     public DokumenKerjaSama save(DokumenKerjaSama dokumenKerjaSama) {

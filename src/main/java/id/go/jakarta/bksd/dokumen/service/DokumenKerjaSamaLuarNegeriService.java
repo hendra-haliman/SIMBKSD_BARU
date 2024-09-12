@@ -5,6 +5,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -50,15 +51,18 @@ public class DokumenKerjaSamaLuarNegeriService {
 
     private DokumenKerjaSamaLuarNegeriRepository dokumenKerjaSamaLuarNegeriRepository;
 
+    private PemakaiService pemakaiService;
+
     private ModelMapper modelMapper;
 
     @PersistenceContext
     private EntityManager entityManager;
 
     public DokumenKerjaSamaLuarNegeriService(DokumenKerjaSamaLuarNegeriRepository dokumenKerjaSamaLuarNegeriRepository,
-            ModelMapper modelMapper) {
+            ModelMapper modelMapper, PemakaiService pemakaiService) {
         this.dokumenKerjaSamaLuarNegeriRepository = dokumenKerjaSamaLuarNegeriRepository;
         this.modelMapper = modelMapper;
+        this.pemakaiService = pemakaiService;
     }
 
     public Page<DokumenKerjaSamaLuarNegeriDTO> getDokumen(PagingRequest pagingRequest) {
@@ -69,6 +73,8 @@ public class DokumenKerjaSamaLuarNegeriService {
     }
 
     public Page<DokumenKerjaSamaLuarNegeriDTO> getDokumen2(PagingRequest pagingRequest, int pageNo, int pageSize) {
+        boolean canViewDocLink = pemakaiService.hasAuthority(PemakaiService.AUTH_CAN_VIEW_DOC_LINK);
+
         Date filterStartDate = pagingRequest.getFilterStartDate();
         Date filterEndDate = pagingRequest.getFilterEndDate();
         Date filterTglBerakhirStartDate = pagingRequest.getFilterTglBerakhirStartDate();
@@ -152,7 +158,7 @@ public class DokumenKerjaSamaLuarNegeriService {
         Long totalElements = countQuery.getSingleResult();
 
         Page<DokumenKerjaSamaLuarNegeriDTO> page = new Page<>(
-                dokumenList.stream().map(this::convertToDto).collect(Collectors.toList()));
+                dokumenList.stream().map(dks -> convertToDto(dks, canViewDocLink)).collect(Collectors.toList()));
         page.setRecordsFiltered((int) totalElements.longValue());
         page.setRecordsTotal((int) totalElements.longValue());
         page.setDraw(pagingRequest.getDraw());
@@ -161,12 +167,51 @@ public class DokumenKerjaSamaLuarNegeriService {
 
     }
 
-    private DokumenKerjaSamaLuarNegeriDTO convertToDto(DokumenKerjaSamaLuarNegeri dokumenKerjaSama) {
-        return modelMapper.map(dokumenKerjaSama, DokumenKerjaSamaLuarNegeriDTO.class);
+    private DokumenKerjaSamaLuarNegeriDTO convertToDto(DokumenKerjaSamaLuarNegeri dokumenKerjaSama,
+            boolean canViewDocLink) {
+        // return modelMapper.map(dokumenKerjaSama,
+        // DokumenKerjaSamaLuarNegeriDTO.class);
+
+        DokumenKerjaSamaLuarNegeriDTO dto = new DokumenKerjaSamaLuarNegeriDTO();
+
+        dto.setId(dokumenKerjaSama.getId());
+        dto.setSubjek(dokumenKerjaSama.getSubjek());
+        dto.setTgl(dokumenKerjaSama.getTgl());
+        dto.setTahun(dokumenKerjaSama.getTahun());
+        dto.setTglDimulai(dokumenKerjaSama.getTglDimulai());
+        dto.setTglBerakhir(dokumenKerjaSama.getTglBerakhir());
+        dto.setJudulDokumen(dokumenKerjaSama.getJudulDokumen());
+        dto.setKeterangan(dokumenKerjaSama.getKeterangan());
+
+        if (canViewDocLink) {
+            dto.setLinkDokumen("N/A");
+            dto.setDokumen(dokumenKerjaSama.getDokumen());
+        } else {
+            dto.setLinkDokumen("N/A");
+            dto.setDokumen(new ArrayList<>());
+        }
+
+        dto.setPenanggungJawabTertandaTangan(dokumenKerjaSama.getPenanggungJawabTertandaTangan());
+        dto.setJenisDokumen(dokumenKerjaSama.getJenisDokumen());
+        dto.setDeleted(dokumenKerjaSama.isDeleted());
+
+        return dto;
     }
 
     public Optional<DokumenKerjaSamaLuarNegeri> findById(Long id) {
-        return dokumenKerjaSamaLuarNegeriRepository.findById(id);
+        Optional<DokumenKerjaSamaLuarNegeri> dklno = dokumenKerjaSamaLuarNegeriRepository.findById(id);
+        boolean canViewDocLink = pemakaiService.hasAuthority(PemakaiService.AUTH_CAN_VIEW_DOC_LINK);
+
+        DokumenKerjaSamaLuarNegeri dkln = dklno.get();
+        dkln.setLinkDokumen("N/A");
+
+        if (canViewDocLink) {
+            return Optional.of(dkln);
+        }
+
+        dkln.setDokumen(new ArrayList<>());
+
+        return Optional.of(dkln);
     }
 
     public DokumenKerjaSamaLuarNegeri save(DokumenKerjaSamaLuarNegeri dokumenKerjaSama) {
