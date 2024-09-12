@@ -76,16 +76,23 @@
         </symbol>
     </svg>
 
-    <nav th:fragment="navigation" class="sb-topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white sb-nav-fixed" id="sidenavAccordion">
+    <nav th:fragment="navigation" class="sb-topnav fixed-top navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-dark bg-black sb-nav-fixed" id="sidenavAccordion">
         <!-- Navbar Brand-->
         <a class="navbar-brand pe-3 ps-4 ps-lg-2" th:href="@{/}">
             <img th:src="@{/static/assets/img/favicon.png}" alt="Logo" class="d-inline-block align-text-top nav-logo"/>
-            Sistem Informasi Manajemen Biro KSD
+            <span>Sistem Informasi Manajemen Biro KSD</span>
         </a>
-
-        <!-- <h1 class="text-center" style="padding-top:8px;">Sistem Informasi Manajemen Biro KSD</h1> -->
-
-        <a th:href="@{/showLoginPage}" class="btn btn-outline-primary order-1" id="sidebarToggleX">Login_X</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                <li class="nav-item" sec:authorize="!isAuthenticated()" ><a class="nav-link" href="#about">Tentang Kami </a></li>
+                <li class="nav-item" sec:authorize="!isAuthenticated()" ><a class="nav-link" href="#services">Layanan</a></li>
+                <li class="nav-item" sec:authorize="!isAuthenticated()" ><a class="nav-link" href="#portfolio">Portfolio</a></li>
+                <li class="nav-item" sec:authorize="!isAuthenticated()" ><a class="nav-link" href="#contact">Kontak</a></li>
+                <li class="nav-item"><a class="nav-link" sec:authorize="!isAuthenticated()" th:href="@{/showLoginPage}">Login</a></li>
+                <li class="nav-item"><a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a></li>
+            </ul>
+        </div>
     </nav>     
 
     <!-- Navigation -> Creative -->
@@ -163,7 +170,11 @@
             </div>
             <div class="sb-sidenav-footer sticky-bottom">
                 <div class="small">Logged in as:</div>
-                Start Bootstrap
+                <th:if test="${session.pemakai}">
+                        <div class="sidenav-footer-title"
+                            th:text="${#authentication.name}">
+                        </div>
+                </th:if>
             </div>
         </nav>
     </div>
