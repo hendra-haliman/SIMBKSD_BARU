@@ -5,6 +5,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -447,6 +448,8 @@ public class DokumenKerjaSamaService {
     }
 
     public Page<DokumenKerjaSamaDTO> getDokumen2(PagingRequest pagingRequest, int pageNo, int pageSize) {
+        boolean canViewDocLink = pemakaiService.hasAuthority(PemakaiService.AUTH_CAN_VIEW_DOC_LINK);
+
         List<Long> filterBagian = pagingRequest.getFilterBagian();
         List<Long> filterOPD = pagingRequest.getFilterOPD();
         List<Long> filterJenisMitra = pagingRequest.getFilterJenisMitra();
@@ -458,7 +461,7 @@ public class DokumenKerjaSamaService {
         Date filterTglBerakhirStartDate = pagingRequest.getFilterTglBerakhirStartDate();
         Date filterTglBerakhirEndDate = pagingRequest.getFilterTglBerakhirEndDate();
         boolean includeNullTglBerakhir = pagingRequest.isIncludeNullTglBerakhir();
- 
+
         boolean filterEmptyFile = pagingRequest.isFilterEmptyFile();
 
         boolean filterEmptyRumpunOPD = pagingRequest.isFilterEmptyRumpunOPD();
@@ -568,8 +571,8 @@ public class DokumenKerjaSamaService {
         Predicate searchNomorPredicate = cb.like(dokumenKerjaSama.get("noDokumenPerjanjian"), searchTerm);
         Predicate searchMitraPredicate = cb.like(dokumenKerjaSama.get("mitraKerjaSama"), searchTerm);
         Predicate searchFileContentPredicate = cb.like(dokumenKerjaSama.get("fileContent"), searchTerm);
-        Predicate searchFileNamePredicate = cb.like(dokumenKerjaSama.get("dokumen").get("filename"), searchTerm);        
-        
+        Predicate searchFileNamePredicate = cb.like(dokumenKerjaSama.get("dokumen").get("filename"), searchTerm);
+
         Predicate searchPredicate = cb.or(searchJudulPredicate, searchNomorPredicate, searchMitraPredicate,
                 searchFileContentPredicate, searchFileNamePredicate);
 
@@ -583,7 +586,7 @@ public class DokumenKerjaSamaService {
 
         JpaPredicate jpaPredicate = cb.and(bagianPredicate, searchPredicate);
         JpaPredicate datePredicate = cb.or(filterTahunPredicate,
-                                    cb.and(filterStartDatePredicate, filterEndDatePredicate));
+                cb.and(filterStartDatePredicate, filterEndDatePredicate));
 
         jpaPredicate = cb.and(jpaPredicate, datePredicate);
 
@@ -651,7 +654,8 @@ public class DokumenKerjaSamaService {
         Long totalElements = countQuery.getSingleResult();
 
         Page<DokumenKerjaSamaDTO> page = new Page<>(
-                dokumenKerjaSamaList.stream().map(this::convertToDto).collect(Collectors.toList()));
+                dokumenKerjaSamaList.stream().map(dks -> convertToDto(dks, canViewDocLink))
+                        .collect(Collectors.toList()));
         page.setRecordsFiltered((int) totalElements.longValue());
         page.setRecordsTotal((int) totalElements.longValue());
         page.setDraw(pagingRequest.getDraw());
@@ -659,8 +663,45 @@ public class DokumenKerjaSamaService {
         return page;
     }
 
-    private DokumenKerjaSamaDTO convertToDto(DokumenKerjaSama dokumenKerjaSama) {
-        return modelMapper.map(dokumenKerjaSama, DokumenKerjaSamaDTO.class);
+    private DokumenKerjaSamaDTO convertToDto(DokumenKerjaSama dokumenKerjaSama, boolean canViewDocLink) {
+        // return modelMapper.map(dokumenKerjaSama, DokumenKerjaSamaDTO.class);
+
+        DokumenKerjaSamaDTO dto = new DokumenKerjaSamaDTO();
+        dto.setId(dokumenKerjaSama.getId());
+        dto.setBagian(dokumenKerjaSama.getBagian());
+        dto.setJenisMitra(dokumenKerjaSama.getJenisMitra());
+        dto.setMitraKerjaSama(dokumenKerjaSama.getMitraKerjaSama());
+        dto.setOpd(dokumenKerjaSama.getOpd());
+        dto.setRumpun_opd(dokumenKerjaSama.getRumpun_opd());
+        dto.setJudulDokumenPerjanjian(dokumenKerjaSama.getJudulDokumenPerjanjian());
+        dto.setNoDokumenPerjanjian(dokumenKerjaSama.getNoDokumenPerjanjian());
+        dto.setTglPenetapan(dokumenKerjaSama.getTglPenetapan());
+        dto.setTahun(dokumenKerjaSama.getTahun());
+        dto.setUrusanPemerintahanYgDikerjakan(dokumenKerjaSama.getUrusanPemerintahanYgDikerjakan());
+        dto.setJenisDokumen(dokumenKerjaSama.getJenisDokumen());
+        dto.setJangkaWaktuPelaksanaan(dokumenKerjaSama.getJangkaWaktuPelaksanaan());
+        dto.setJangkaWaktuPelaksanaan(dokumenKerjaSama.getJangkaWaktuPelaksanaan());
+        dto.setWaktuPelaksanaanDimulai(dokumenKerjaSama.getWaktuPelaksanaanDimulai());
+        dto.setWaktuPelaksanaanBerakhir(dokumenKerjaSama.getWaktuPelaksanaanBerakhir());
+        dto.setPembiayaan(dokumenKerjaSama.getPembiayaan());
+        dto.setFilesTelahDiperoleh(dokumenKerjaSama.isFilesTelahDiperoleh());
+        dto.setDeleted(dokumenKerjaSama.isDeleted());
+
+        if (canViewDocLink) {
+            dto.setDokumen(dokumenKerjaSama.getDokumen());
+            // dto.setLinkDokumenKerjaSama(dokumenKerjaSama.getLinkDokumenKerjaSama());
+            dto.setLinkDokumenKerjaSama("N/A");
+        } else {
+            dto.setDokumen(new ArrayList<>());
+            dto.setLinkDokumenKerjaSama("N/A");
+        }
+
+        dto.setKeterangan(dokumenKerjaSama.getKeterangan());
+        dto.setKeterangan2(dokumenKerjaSama.getKeterangan2());
+        dto.setKeterangan3(dokumenKerjaSama.getKeterangan3());
+        dto.setKeterangan4(dokumenKerjaSama.getKeterangan4());
+
+        return dto;
     }
 
     /**
