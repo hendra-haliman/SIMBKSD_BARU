@@ -4,26 +4,17 @@
 
 <head th:replace="~{fragments/general.html :: header('Home')}"></head>
 
-<!-- <body class="sb-nav-fixed"
-    th:style="'background: url(static/assets/img/office.jpg) no-repeat center fixed;background-color: rgba(255,255,255,0.8);'"> -->
 <body class="sb-topnav">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- SimpleLightbox plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
 
-    <!-- 
-        <body class="nav-fixed"> 
-    -->
-
-
     <nav th:replace="~{fragments/general.html :: navigation}"></nav>
 
-    <!-- <nav th:replace="~{fragments/general.html :: navigation_creative}"></nav> -->
-
     <div id="layoutSidenav">
-        <!--div id="layoutSidenav_nav" th:include="~{fragments/general.html :: layoutSidenav_nav}"></div-->
-
         <div id="layoutSidenav_content">
             <main>
                 <!-- Masthead-->
@@ -41,7 +32,7 @@
                         </div>
                     </div> -->
                 </header>
-                <!-- About-->
+                <!-- Tentang Kami -->
                 <section class="page-section bg-warning" style="background-color: #F4623A !important;" id="about">
                     <div class="container px-4 px-lg-5">
                         <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -83,7 +74,7 @@
                         </div>
                     </div>
                 </section>
-                <!-- Services-->
+                <!-- Layanan -->
                 <section class="page-section" id="services">
                     <div class="container px-4 px-lg-5">
                         <h2 class="text-center mt-0">At Your Service</h2>
@@ -182,7 +173,7 @@
                     </div>
                 </div>
 
-                <!-- Call to action-->
+                <!-- Call to action -->
                 <section class="page-section bg-dark text-white">
                     <div class="container px-4 px-lg-5 text-center">
                         <h2 class="mb-4">Silahkan mengakses Sistem Informasi Biro Kerja Sama Setda DKI Jakarta</h2>
@@ -207,6 +198,20 @@
             $("#logout").on("click", function (e) {
                 $("#logout-form").submit();
             });
+        
+            // Activate SimpleLightbox plugin for portfolio items
+            let port = new SimpleLightbox({
+                elements: '#portfolio a.portfolio-box'
+            });
+
+            port.on('show.simplelightbox', function() {
+                alert("on show");
+            });
+
+            port.on('error.simplelightbox', function(e) {
+                console.log(e);
+            });
+
         });
     </script>
 </body>
