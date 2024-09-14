@@ -112,7 +112,6 @@ public class DataUploaderService {
         workbook.close();
     }
 
-
     public void uploadNPBK2022() throws IOException, InvalidFormatException {
         File file = new File("D:/Biro KSD/ksd2022.xlsx");
         XSSFWorkbook workbook = new XSSFWorkbook(file);
@@ -706,21 +705,21 @@ public class DataUploaderService {
     // ******************* Start of 2020 ********************************
 
     public void uploadKSD2020() throws IOException, InvalidFormatException {
-        uploadFromWorksheet( 2020, "KPT");
-        uploadFromWorksheet( 2020, "KDN");
+        uploadFromWorksheet(2020, "KPT");
+        uploadFromWorksheet(2020, "KDN");
     }
 
     public void uploadFromWorksheet(int tahun, String namaBagian) throws IOException, InvalidFormatException {
-        
+
         String fileName = "";
         try {
-            
+
             Class<?> clazz = Class.forName("id.go.jakarta.bksd.dokumen.domain.RekapExcelDefinition");
             Field field = clazz.getField("REKAP_KSD_" + tahun);
             fileName = (String) field.get(null);
 
         } catch (ClassNotFoundException cnfe) {
-            cnfe.printStackTrace(); 
+            cnfe.printStackTrace();
         } catch (NoSuchFieldException nsfe) {
             nsfe.printStackTrace();
         } catch (IllegalAccessException iae) {
@@ -729,9 +728,9 @@ public class DataUploaderService {
         logger.info("FileName : [{}]", fileName);
 
         File file = new File("D:/Biro KSD/" + fileName);
-        RekapExcelDefinition KPTDef2020 = RekapExcelDefinition.getRekapDef(tahun, namaBagian);
+        RekapExcelDefinition def = RekapExcelDefinition.getRekapDef(tahun, namaBagian);
         XSSFWorkbook workbook = new XSSFWorkbook(file);
-        XSSFSheet sheet = workbook.getSheetAt(KPTDef2020.getSheetNo());
+        XSSFSheet sheet = workbook.getSheetAt(def.getSheetNo());
 
         int from = 0;
         int to = sheet.getLastRowNum();
@@ -744,24 +743,24 @@ public class DataUploaderService {
                 DokumenKerjaSama dokumenKerjaSama = new DokumenKerjaSama();
 
                 dokumenKerjaSama = updateDokumenKerjaSama(tahun, bagian, dokumenKerjaSama, row,
-                                                            KPTDef2020.getJenisMitraIdx(),
-                                                            KPTDef2020.getOpdIdx(),
-                                                            KPTDef2020.getMitraKerjaSamaIdx(),
-                                                            KPTDef2020.getJudulIdx(),
-                                                            KPTDef2020.getNoDokumenIdx(),
-                                                            KPTDef2020.getTglPenetapanIdx(),
-                                                            KPTDef2020.getWaktuPelaksanaanBerakhirIdx(),
-                                                            KPTDef2020.getUrusanIdx(),
-                                                            KPTDef2020.getJenisNaskahIdx(),
-                                                            KPTDef2020.getJangkaWaktuIdx(),
-                                                            KPTDef2020.getPembiayaanIdx(),
-                                                            KPTDef2020.getDocLinkIdx(),
-                                                            KPTDef2020.getRumpunOpdIdx(),
-                                                            KPTDef2020.getKeteranganIdx());
+                        def.getJenisMitraIdx(),
+                        def.getOpdIdx(),
+                        def.getMitraKerjaSamaIdx(),
+                        def.getJudulIdx(),
+                        def.getNoDokumenIdx(),
+                        def.getTglPenetapanIdx(),
+                        def.getWaktuPelaksanaanBerakhirIdx(),
+                        def.getUrusanIdx(),
+                        def.getJenisNaskahIdx(),
+                        def.getJangkaWaktuIdx(),
+                        def.getPembiayaanIdx(),
+                        def.getDocLinkIdx(),
+                        def.getRumpunOpdIdx(),
+                        def.getKeteranganIdx());
 
                 // if(dokumenKerjaSama.getJenisMitra()==null) {
-                //     dokumenKerjaSama.setJenisMitra("N/A");
-                // }                                                            
+                // dokumenKerjaSama.setJenisMitra("N/A");
+                // }
 
                 dokumenKerjasamaRepository.save(dokumenKerjaSama);
 
@@ -771,7 +770,6 @@ public class DataUploaderService {
         workbook.close();
 
     }
-
 
     // ******************** End of 2020 *********************************
 
@@ -1116,70 +1114,68 @@ public class DataUploaderService {
 
         // End of Header 2023
 
-
         // Start of header 2020
 
         int limit2020 = 10;
         String[] kpt2020Header1 = {
-            "", "", "", "", "", "Bagian Kerja Sama Pihak Ketiga Tahun 2020", "", "", "", "", ""
+                "", "", "", "", "", "Bagian Kerja Sama Pihak Ketiga Tahun 2020", "", "", "", "", ""
         };
 
         String[] kpt2020Header2 = {
-            "No.", "Kelompok Kerja Sama", "Instansi Terkait (Dengan Penandatangan)", "Instansi Terkait",  "Mitra Kerja Sama",
-            "Jenis Naskah Kerja Sama", "Judul Naskah Kerja Sama", "Nomor Naskah Kerja Sama", "Jangka Waktu Pelaksanaan",	"Tanggal Penetapan"
+                "No.", "Kelompok Kerja Sama", "Instansi Terkait (Dengan Penandatangan)", "Instansi Terkait",
+                "Mitra Kerja Sama",
+                "Jenis Naskah Kerja Sama", "Judul Naskah Kerja Sama", "Nomor Naskah Kerja Sama",
+                "Jangka Waktu Pelaksanaan", "Tanggal Penetapan"
         };
-        
+
         String[] kpt2020Header3 = {
-            "", "Badan Usaha", "", "", "", "", "", "", "", ""
+                "", "Badan Usaha", "", "", "", "", "", "", "", ""
         };
         String[] kpt2020Header4 = {
-            "", "Lembaga Lain", "", "", "", "", "", "", "", ""
+                "", "Lembaga Lain", "", "", "", "", "", "", "", ""
         };
         String[] kpt2020Header5 = {
-            "", "Perguruan Tinggi", "", "", "", "", "", "", "", ""
+                "", "Perguruan Tinggi", "", "", "", "", "", "", "", ""
         };
         String[] kpt2020Header6 = {
-            "", "Perseorangan", "", "", "", "", "", "", "", ""
+                "", "Perseorangan", "", "", "", "", "", "", "", ""
         };
         String[] kpt2020Header7 = {
-            "", "Yayasan", "", "", "", "", "", "", "", ""
+                "", "Yayasan", "", "", "", "", "", "", "", ""
         };
-
 
         String[] kdn2020Header1 = {
-            "", "", "", "", "", "Bagian Kerja Sama Dalam Negeri Tahun 2020", "", "", "", ""
+                "", "", "", "", "", "Bagian Kerja Sama Dalam Negeri Tahun 2020", "", "", "", ""
         };
         String[] kdn2020Header2 = {
-            "No.", "Kelompok Kerja Sama", "Instansi Terkait", "Mitra Kerja Sama", "Jenis Dokumen Perjanjian",
-            "Judul Naskah Kerja Sama", "Nomor Naskah Kerja Sama", "Jangka Waktu Pelaksanaan", "Tanggal Penetapan", "Akhir Kerja Sama"
+                "No.", "Kelompok Kerja Sama", "Instansi Terkait", "Mitra Kerja Sama", "Jenis Dokumen Perjanjian",
+                "Judul Naskah Kerja Sama", "Nomor Naskah Kerja Sama", "Jangka Waktu Pelaksanaan", "Tanggal Penetapan",
+                "Akhir Kerja Sama"
 
         };
         String[] kdn2020Header3 = {
-            "", "Sinergisitas", "", "", "", "", "", "", "", ""
+                "", "Sinergisitas", "", "", "", "", "", "", "", ""
         };
         String[] kdn2020Header4 = {
-            "", "Kerja Sama Dengan Daerah Lain", "", "", "", "", "", "", "", ""
+                "", "Kerja Sama Dengan Daerah Lain", "", "", "", "", "", "", "", ""
         };
 
-        if (isHeaderRow(row, kpt2020Header1, limit2020) || 
-            isHeaderRow(row, kpt2020Header2, limit2020) ||
-            isHeaderRow(row, kpt2020Header3, limit2020) ||
-            isHeaderRow(row, kpt2020Header4, limit2020) ||
-            isHeaderRow(row, kpt2020Header5, limit2020) ||
-            isHeaderRow(row, kpt2020Header6, limit2020) ||
-            isHeaderRow(row, kpt2020Header7, limit2020) ||
+        if (isHeaderRow(row, kpt2020Header1, limit2020) ||
+                isHeaderRow(row, kpt2020Header2, limit2020) ||
+                isHeaderRow(row, kpt2020Header3, limit2020) ||
+                isHeaderRow(row, kpt2020Header4, limit2020) ||
+                isHeaderRow(row, kpt2020Header5, limit2020) ||
+                isHeaderRow(row, kpt2020Header6, limit2020) ||
+                isHeaderRow(row, kpt2020Header7, limit2020) ||
 
-            isHeaderRow(row, kdn2020Header1, limit2020) ||
-            isHeaderRow(row, kdn2020Header2, limit2020) ||
-            isHeaderRow(row, kdn2020Header3, limit2020) ||
-            isHeaderRow(row, kdn2020Header4, limit2020)
-            ) {
+                isHeaderRow(row, kdn2020Header1, limit2020) ||
+                isHeaderRow(row, kdn2020Header2, limit2020) ||
+                isHeaderRow(row, kdn2020Header3, limit2020) ||
+                isHeaderRow(row, kdn2020Header4, limit2020)) {
             return true;
         }
 
-
         // End of header 2020
-
 
         return result;
     }
@@ -1737,16 +1733,16 @@ public class DataUploaderService {
         bw.close();
     }
 
-
     /**
-     *  Consolidate updateRekapXXXX into one 
+     * Consolidate updateRekapXXXX into one
      * 
-     *  Status : Work in progress, to be tested.
+     * Status : Work in progress, to be tested.
      * 
      * @param tahun
      * @param reportFilename
      */
-    public void updateRekap(int tahun, String folder, String reportFilename) throws IOException, InvalidFormatException {
+    public void updateRekap(int tahun, String folder, String reportFilename)
+            throws IOException, InvalidFormatException {
 
         File file = new File(folder + "/" + RekapExcelDefinition.REKAP_KSD_2020);
 
@@ -1767,12 +1763,12 @@ public class DataUploaderService {
         RekapExcelDefinition KPTDef = RekapExcelDefinition.getRekapDef(tahun, "KPT");
         RekapExcelDefinition KDNDef = RekapExcelDefinition.getRekapDef(tahun, "KDN");
 
-        XSSFWorkbook    workbook = new XSSFWorkbook(file);
-        XSSFSheet       sheetKPT = workbook.getSheetAt(KPTDef.getSheetNo());
-        XSSFSheet       sheetKDN = workbook.getSheetAt(KDNDef.getSheetNo());
+        XSSFWorkbook workbook = new XSSFWorkbook(file);
+        XSSFSheet sheetKPT = workbook.getSheetAt(KPTDef.getSheetNo());
+        XSSFSheet sheetKDN = workbook.getSheetAt(KDNDef.getSheetNo());
 
-        //updateWorkSheet(tahun, sheetKPT, bagianKPT, KPTDef, bw);
-        //updateWorkSheet(tahun, sheetKDN, bagianKDN, KDNDef, bw);
+        // updateWorkSheet(tahun, sheetKPT, bagianKPT, KPTDef, bw);
+        // updateWorkSheet(tahun, sheetKDN, bagianKDN, KDNDef, bw);
 
         workbook.close();
 
@@ -1780,7 +1776,8 @@ public class DataUploaderService {
 
     }
 
-    private void updateWorkSheet(int tahun, XSSFSheet sheet, Bagian bagian, RekapExcelDefinition rekapDef, BufferedWriter bw) throws IOException, InvalidFormatException {
+    private void updateWorkSheet(int tahun, XSSFSheet sheet, Bagian bagian, RekapExcelDefinition rekapDef,
+            BufferedWriter bw) throws IOException, InvalidFormatException {
 
         int found = 0;
         int not_found = 0;
@@ -1816,20 +1813,20 @@ public class DataUploaderService {
 
                         // Updating dokumen
                         dokumenKerjaSama = updateDokumenKerjaSama(tahun, bagian, dokumenKerjaSama, row,
-                                                rekapDef.getJenisMitraIdx(),
-                                                rekapDef.getOpdIdx(),
-                                                rekapDef.getMitraKerjaSamaIdx(),
-                                                rekapDef.getJudulIdx(),
-                                                rekapDef.getNoDokumenIdx(),
-                                                rekapDef.getTglPenetapanIdx(),
-                                                rekapDef.getWaktuPelaksanaanBerakhirIdx(),
-                                                rekapDef.getUrusanIdx(),
-                                                rekapDef.getJenisNaskahIdx(),
-                                                rekapDef.getJangkaWaktuIdx(),
-                                                rekapDef.getPembiayaanIdx(),
-                                                rekapDef.getDocLinkIdx(),
-                                                rekapDef.getRumpunOpdIdx(),
-                                                rekapDef.getKeteranganIdx());
+                                rekapDef.getJenisMitraIdx(),
+                                rekapDef.getOpdIdx(),
+                                rekapDef.getMitraKerjaSamaIdx(),
+                                rekapDef.getJudulIdx(),
+                                rekapDef.getNoDokumenIdx(),
+                                rekapDef.getTglPenetapanIdx(),
+                                rekapDef.getWaktuPelaksanaanBerakhirIdx(),
+                                rekapDef.getUrusanIdx(),
+                                rekapDef.getJenisNaskahIdx(),
+                                rekapDef.getJangkaWaktuIdx(),
+                                rekapDef.getPembiayaanIdx(),
+                                rekapDef.getDocLinkIdx(),
+                                rekapDef.getRumpunOpdIdx(),
+                                rekapDef.getKeteranganIdx());
 
                         dokumenKerjasamaRepository.save(dokumenKerjaSama);
 
@@ -1845,7 +1842,6 @@ public class DataUploaderService {
             }
         }
 
-
         msg = "Found: " + String.valueOf(found);
         System.out.println(msg);
         bw.write(msg);
@@ -1856,12 +1852,9 @@ public class DataUploaderService {
         bw.write(msg);
         bw.newLine();
 
-
-        //bw.close();
+        // bw.close();
 
     }
-
-    
 
     public void updateRekap2023(String filename, String reportFilename) throws IOException, InvalidFormatException {
 
@@ -1966,7 +1959,7 @@ public class DataUploaderService {
         for (int rowNum = 0; rowNum <= sheet.getLastRowNum(); rowNum++) {
 
             XSSFRow row = sheet.getRow(rowNum);
-            
+
             if (!(isRowToSkip(row))) {
                 String nomor = row.getCell(6).getStringCellValue();
                 String trimmedSearchTerm = nomor.trim().replaceAll("\\s", "");
@@ -1974,7 +1967,7 @@ public class DataUploaderService {
                 bw.newLine();
 
                 // skipping empty nomor dokumen
-                if (trimmedSearchTerm != null && trimmedSearchTerm.length() > 0) { 
+                if (trimmedSearchTerm != null && trimmedSearchTerm.length() > 0) {
 
                     List<DokumenKerjaSama> dokumenKerjaSamaList = dokumenKerjasamaRepository
                             .findByNomorDokumen(trimmedSearchTerm);
