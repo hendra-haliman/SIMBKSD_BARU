@@ -159,6 +159,10 @@ svg.feather {
     vertical-align: middle;
 }
 
+/* svg.feather:hover {
+    color: #fff;
+} */
+
 /* .sticky-bottom {
     position: sticky;
     bottom: 0;

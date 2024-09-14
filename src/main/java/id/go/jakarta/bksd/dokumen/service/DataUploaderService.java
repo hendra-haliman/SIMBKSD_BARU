@@ -2331,7 +2331,7 @@ public class DataUploaderService {
             e.printStackTrace();
         }
 
-        return "Unable to expand URL...";
+        return "Tidak bisa expand URL...";
     }
 
 }
