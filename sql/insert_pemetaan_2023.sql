@@ -1,45 +1,90 @@
-insert into pemetaan(tahun, bagian_id, opd_id,  urusan_pemerintahan, kegiatan, jangka_waktu, nama_calon_mitra, no_kontrak_calon_mitra, waktu_pelaksanaan, pic, sumber_pembiayaan) values (2023, 2, 25,'Kelautan dan Perikanan', '-PLNG Forum 
+use bksd_dokumen_2024_08_28;
+
+insert into pemetaan(tahun, bagian_id, opd_id,  urusan_pemerintahan, kegiatan, 
+jangka_waktu, nama_calon_mitra, no_kontrak_calon_mitra, waktu_pelaksanaan, pic, sumber_pembiayaan) values (2023, 2, 25,'Kelautan dan Perikanan', '-PLNG Forum 
 - Capacity Building/Training on Coastal Management
 - Sharing data and Informatioon on Marine and Coastal Management',  '1 tahun', 'PEMSEA', '', 'Januari sd
 Desember', 'Sub Koordinator Urusan Pendayagunaan Pesisir Laut dan Pulau Pulau Kecil', '');
 
-insert into pemetaan(tahun, bagian_id, opd_id,  urusan_pemerintahan, kegiatan, jangka_waktu, nama_calon_mitra, no_kontrak_calon_mitra, skala_prioritas, waktu_pelaksanaantw1, 
-  waktu_pelaksanaantw2, waktu_pelaksanaantw3, waktu_pelaksanaantw4, pic, sumber_pembiayaan) values (2023, 1, 25,'Pangan', 'Pengendalian Inflasi Daerah',  '1 Tahun', 'Bank Indonesia Perwakilan Jakarta', '', '', 'v', 'v', 'v', 'v', 'Sub Koordinator Urusan Distribusi Pangan', '-');
+insert into pemetaan(tahun, bagian_id, opd_id,  urusan_pemerintahan, kegiatan, 
+  jangka_waktu, nama_calon_mitra, no_kontrak_calon_mitra, skala_prioritas, waktu_pelaksanaantw1, 
+  waktu_pelaksanaantw2, waktu_pelaksanaantw3, waktu_pelaksanaantw4, pic, sumber_pembiayaan) 
+values (2023, 1, 25,'Pangan', 'Pengendalian Inflasi Daerah',  
+  '1 Tahun', 'Bank Indonesia Perwakilan Jakarta', '', '', 'v', 'v', 'v', 'v', 'Sub Koordinator Urusan Distribusi Pangan', '-');
 
-insert into pemetaan(tahun, bagian_id, opd_id,  urusan_pemerintahan, kegiatan, jangka_waktu, nama_calon_mitra, no_kontrak_calon_mitra, skala_prioritas, waktu_pelaksanaantw1, 
-  waktu_pelaksanaantw2, waktu_pelaksanaantw3, waktu_pelaksanaantw4, pic, sumber_pembiayaan) values (2023, 1, 25,'Pertanian', 'Pengadaan vaksin',  '1 Tahun', 'Pusat Veteriner Farma', '', '', 'v', 'v', 'v', 'v', 'Kepala Bidang Peternakan dan Kesehatan Hewan', 'APBD');
+insert into pemetaan(tahun, bagian_id, opd_id,  urusan_pemerintahan, kegiatan, 
+  jangka_waktu, nama_calon_mitra, no_kontrak_calon_mitra, skala_prioritas, waktu_pelaksanaantw1, 
+  waktu_pelaksanaantw2, waktu_pelaksanaantw3, waktu_pelaksanaantw4, pic, sumber_pembiayaan) 
+values (2023, 1, 25,'Pertanian', 'Pengadaan vaksin',  
+  '1 Tahun', 'Pusat Veteriner Farma', '', '', 'v', 'v', 'v', 'v', 'Kepala Bidang Peternakan dan Kesehatan Hewan', 'APBD');
 
-insert into pemetaan(tahun, bagian_id, opd_id,  urusan_pemerintahan, kegiatan, jangka_waktu, nama_calon_mitra, no_kontrak_calon_mitra, skala_prioritas, waktu_pelaksanaantw1, 
-  waktu_pelaksanaantw2, waktu_pelaksanaantw3, waktu_pelaksanaantw4, pic, sumber_pembiayaan) values (2023, 1, 25,'Pertanian', 'Monitoring dan
+insert into pemetaan(tahun, bagian_id, opd_id,  urusan_pemerintahan, kegiatan, 
+  jangka_waktu, nama_calon_mitra, no_kontrak_calon_mitra, skala_prioritas, waktu_pelaksanaantw1, 
+  waktu_pelaksanaantw2, waktu_pelaksanaantw3, waktu_pelaksanaantw4, pic, sumber_pembiayaan) 
+values (2023, 1, 25,'Pertanian', 'Monitoring dan
 surveilans
 keamanan produk
 hewan',  '1 Tahun', 'Balai Veteriner Subang (BVet Subang)', '', '', '-', 'v', '-', 'v', 'Kepala Bidang Peternakan dan Kesehatan Hewan', 'APBN');
-insert into pemetaan(tahun, bagian_id, opd_id,  urusan_pemerintahan, kegiatan, jangka_waktu, nama_calon_mitra, no_kontrak_calon_mitra, skala_prioritas, waktu_pelaksanaantw1, 
-  waktu_pelaksanaantw2, waktu_pelaksanaantw3, waktu_pelaksanaantw4, pic, sumber_pembiayaan) values (2023, 1, 25,'Pertanian', 'Monitoring dan surveilans keamanan produk hewan',  '1 Tahun', 'Badan Pengujian Mutu dan Sertifikasi Produk Hewan (BPMSPH)', '', '', '-', 'v', '-', 'v', 'Kepala Bidang Peternakan dan Kesehatan Hewan', 'APBN');
 
-insert into pemetaan(tahun, bagian_id, opd_id,  urusan_pemerintahan, kegiatan, jangka_waktu, nama_calon_mitra, no_kontrak_calon_mitra, skala_prioritas, waktu_pelaksanaantw1, 
-  waktu_pelaksanaantw2, waktu_pelaksanaantw3, waktu_pelaksanaantw4, pic, sumber_pembiayaan) values (2023, 1, 25,'Kelautan dan Perikanan', 'Pengawasan sumberdaya kelautan dan perikanan sampai dengan 12 mil',  '1 Tahun', 'Kementrian Kelautan dan Perikanan', '', 'Dukungan pendamping petugas pengawas perikanan', 'v', 'v', 'v', 'v', 'Sub Koordinator urusan Pengawasan SDKP', 'APBD');
+insert into pemetaan(tahun, bagian_id, opd_id,  urusan_pemerintahan, kegiatan, 
+  jangka_waktu, nama_calon_mitra, no_kontrak_calon_mitra, skala_prioritas, waktu_pelaksanaantw1, 
+  waktu_pelaksanaantw2, waktu_pelaksanaantw3, waktu_pelaksanaantw4, pic, sumber_pembiayaan) 
+values (2023, 1, 25,'Pertanian', 'Monitoring dan surveilans keamanan produk hewan',  
+  '1 Tahun', 'Badan Pengujian Mutu dan Sertifikasi Produk Hewan (BPMSPH)', '', '', '-', 'v', '-', 'v', 'Kepala Bidang Peternakan dan Kesehatan Hewan', 'APBN');
 
-insert into pemetaan(tahun, bagian_id, opd_id,  urusan_pemerintahan, kegiatan, jangka_waktu, nama_calon_mitra, no_kontrak_calon_mitra, skala_prioritas, waktu_pelaksanaantw1, 
-  waktu_pelaksanaantw2, waktu_pelaksanaantw3, waktu_pelaksanaantw4, pic, sumber_pembiayaan) values (2023, 1, 25,'Kelautan dan Perikanan', 'Pengawasan usaha pemasaran dan pengolahan hasil perikanan lintas daerah Kabupaten/Kota dalam 1 (satu) Daerah',  '1 Tahun', 'Kementrian Kelautan dan Perikanan serta Polda Metro Jaya', '', 'Dukungan Pendampingan petugas Pengawas Perikanan dan PPNS Polda Metro Jaya', 'v', 'v', 'v', 'v', 'Sub Koordinator urusan Pengawasan SDKP', 'APBD');
+insert into pemetaan(tahun, bagian_id, opd_id,  urusan_pemerintahan, kegiatan, 
+  jangka_waktu, nama_calon_mitra, no_kontrak_calon_mitra, skala_prioritas, waktu_pelaksanaantw1, 
+  waktu_pelaksanaantw2, waktu_pelaksanaantw3, waktu_pelaksanaantw4, pic, sumber_pembiayaan) 
+values (2023, 1, 25,'Kelautan dan Perikanan', 'Pengawasan sumberdaya kelautan dan perikanan sampai dengan 12 mil',  
+  '1 Tahun', 'Kementrian Kelautan dan Perikanan', '', 'Dukungan pendamping petugas pengawas perikanan', 'v', 'v', 'v', 'v', 'Sub Koordinator urusan Pengawasan SDKP', 'APBD');
 
-insert into pemetaan(tahun, bagian_id, opd_id,  urusan_pemerintahan, kegiatan, jangka_waktu, nama_calon_mitra, no_kontrak_calon_mitra, skala_prioritas, waktu_pelaksanaantw1, 
-  waktu_pelaksanaantw2, waktu_pelaksanaantw3, waktu_pelaksanaantw4, pic, sumber_pembiayaan) values (2023, 1, 25,'Pertanian', 'Inkubasi pelaku olahan komoditas cabai dan bawang',  '4 bulan', 'Badan Standarisasi Instrumen Pertanian', '', 'Penting', '-', '-', 'v', 'v', 'Sub Koordinator Pascapanen dan Pengolahan Hasil Pertanian', 'PAD');
+insert into pemetaan(tahun, bagian_id, opd_id,  urusan_pemerintahan, kegiatan, 
+  jangka_waktu, nama_calon_mitra, no_kontrak_calon_mitra, skala_prioritas, waktu_pelaksanaantw1, 
+  waktu_pelaksanaantw2, waktu_pelaksanaantw3, waktu_pelaksanaantw4, pic, sumber_pembiayaan) 
 
-insert into pemetaan(tahun, bagian_id, opd_id,  urusan_pemerintahan, kegiatan, jangka_waktu, nama_calon_mitra, no_kontrak_calon_mitra, skala_prioritas, waktu_pelaksanaantw1, 
-  waktu_pelaksanaantw2, waktu_pelaksanaantw3, waktu_pelaksanaantw4, pic, sumber_pembiayaan) values (2023, 1, 25,'Pertanian', 'Peningkatan Mutu',  '6 bulan', 'BPSDM, PPMKP,Balai Benih Hortikultura, Kementerian Pertanian, Diskominfotik DKI Jakarta, DPPKUKM', '', 'Penting', '-', 'v', 'v', '-', 'Sub Koordinator Pengendalian Mutu dan Agribisnis', 'PAD');
+values (2023, 1, 25,'Kelautan dan Perikanan', 'Pengawasan usaha pemasaran dan pengolahan hasil perikanan lintas daerah Kabupaten/Kota dalam 1 (satu) Daerah',  
+  '1 Tahun', 'Kementrian Kelautan dan Perikanan serta Polda Metro Jaya', '', 'Dukungan Pendampingan petugas Pengawas Perikanan dan PPNS Polda Metro Jaya', 'v', 'v', 'v', 'v', 'Sub Koordinator urusan Pengawasan SDKP', 'APBD');
 
-insert into pemetaan(tahun, bagian_id, opd_id,  urusan_pemerintahan, kegiatan, jangka_waktu, nama_calon_mitra, no_kontrak_calon_mitra, skala_prioritas, waktu_pelaksanaantw1, 
-  waktu_pelaksanaantw2, waktu_pelaksanaantw3, waktu_pelaksanaantw4, pic, sumber_pembiayaan) values (2023, 1, 25,'Pangan', 'Penelitian Kelinci Jakarta untuk Pengajuan Penetapan Galur Baru Kelinci Jakarta',  '5 tahun', 'Pusat Riset Peternakan BRIN', '', '', 'v', '-', '-', '-', 'Kasubag Tata Usaha', 'Anggaran BLUD');
+insert into pemetaan(tahun, bagian_id, opd_id,  urusan_pemerintahan, kegiatan, 
+  jangka_waktu, nama_calon_mitra, no_kontrak_calon_mitra, skala_prioritas, waktu_pelaksanaantw1, 
+  waktu_pelaksanaantw2, waktu_pelaksanaantw3, waktu_pelaksanaantw4, pic, sumber_pembiayaan) 
+values (2023, 1, 25,'Pertanian', 'Inkubasi pelaku olahan komoditas cabai dan bawang',  
+  '4 bulan', 'Badan Standarisasi Instrumen Pertanian', '', 'Penting', '-', '-', 'v', 'v', 'Sub Koordinator Pascapanen dan Pengolahan Hasil Pertanian', 'PAD');
 
-insert into pemetaan(tahun, bagian_id, opd_id,  urusan_pemerintahan, kegiatan, jangka_waktu, nama_calon_mitra, no_kontrak_calon_mitra, skala_prioritas, waktu_pelaksanaantw1, 
-  waktu_pelaksanaantw2, waktu_pelaksanaantw3, waktu_pelaksanaantw4, pic, sumber_pembiayaan) values (2023, 1, 25,'Pertanian', 'Kerja Sama Tentang Pendidikan, Pelatihan Dan Pengabdian Kepada Masyarakat',  '5 tahun', 'FKH Universitas Wijaya Kusuma Surabaya', '', '', 'v', '-', '-', '-', 'Kasubag Tata Usaha', 'Anggaran BLUD');
+insert into pemetaan(tahun, bagian_id, opd_id,  urusan_pemerintahan, kegiatan, 
+  jangka_waktu, nama_calon_mitra, no_kontrak_calon_mitra, skala_prioritas, waktu_pelaksanaantw1, 
+  waktu_pelaksanaantw2, waktu_pelaksanaantw3, waktu_pelaksanaantw4, pic, sumber_pembiayaan) 
+values (2023, 1, 25,'Pertanian', 'Peningkatan Mutu',  
+  '6 bulan', 'BPSDM, PPMKP,Balai Benih Hortikultura, Kementerian Pertanian, Diskominfotik DKI Jakarta, DPPKUKM', '', 'Penting', '-', 
+  'v', 'v', '-', 'Sub Koordinator Pengendalian Mutu dan Agribisnis', 'PAD');
 
-insert into pemetaan(tahun, bagian_id, opd_id,  urusan_pemerintahan, kegiatan, jangka_waktu, nama_calon_mitra, no_kontrak_calon_mitra, skala_prioritas, waktu_pelaksanaantw1, 
-  waktu_pelaksanaantw2, waktu_pelaksanaantw3, waktu_pelaksanaantw4, pic, sumber_pembiayaan) values (2023, 1, 25,'Pertanian', 'Pelatihan Pelayanan Keswan bagi Medik Veteriner',  '1 Tahun', 'Balai Besar Pelatihan Kesehatan Hewan Cinagara', '', '', 'v', '-', '-', '-', 'Kasubag Tata Usaha', 'Anggaran BLUD');
+insert into pemetaan(tahun, bagian_id, opd_id,  urusan_pemerintahan, kegiatan, 
+  jangka_waktu, nama_calon_mitra, no_kontrak_calon_mitra, skala_prioritas, waktu_pelaksanaantw1, 
+  waktu_pelaksanaantw2, waktu_pelaksanaantw3, waktu_pelaksanaantw4, pic, sumber_pembiayaan) 
+values (2023, 1, 25,'Pangan', 'Penelitian Kelinci Jakarta untuk Pengajuan Penetapan Galur Baru Kelinci Jakarta',  
+  '5 tahun', 'Pusat Riset Peternakan BRIN', '', '', 'v', 
+  '-', '-', '-', 'Kasubag Tata Usaha', 'Anggaran BLUD');
 
-insert into pemetaan(tahun, bagian_id, opd_id,  urusan_pemerintahan, kegiatan, jangka_waktu, nama_calon_mitra, no_kontrak_calon_mitra, skala_prioritas, waktu_pelaksanaantw1, 
-  waktu_pelaksanaantw2, waktu_pelaksanaantw3, waktu_pelaksanaantw4, pic, sumber_pembiayaan) values (2023, 1, 25,'Pertanian', 'Kerja Sama Penyediaan Reagen dan Kit Pengujian Laboratorium Diagnostik Hewan',  '1 Tahun', 'Pusat Veteriner Farma Surabaya', '', '', 'v', '-', '-', '-', 'Kasubag Tata Usaha', 'Anggaran BLUD');
+insert into pemetaan(tahun, bagian_id, opd_id,  urusan_pemerintahan, kegiatan, 
+  jangka_waktu, nama_calon_mitra, no_kontrak_calon_mitra, skala_prioritas, waktu_pelaksanaantw1, 
+  waktu_pelaksanaantw2, waktu_pelaksanaantw3, waktu_pelaksanaantw4, pic, sumber_pembiayaan) 
+values (2023, 1, 25,'Pertanian', 'Kerja Sama Tentang Pendidikan, Pelatihan Dan Pengabdian Kepada Masyarakat',  
+  '5 tahun', 'FKH Universitas Wijaya Kusuma Surabaya', '', '', 'v', 
+  '-', '-', '-', 'Kasubag Tata Usaha', 'Anggaran BLUD');
+
+insert into pemetaan(tahun, bagian_id, opd_id,  urusan_pemerintahan, kegiatan, 
+  jangka_waktu, nama_calon_mitra, no_kontrak_calon_mitra, skala_prioritas, waktu_pelaksanaantw1, 
+  waktu_pelaksanaantw2, waktu_pelaksanaantw3, waktu_pelaksanaantw4, pic, sumber_pembiayaan) 
+values (2023, 1, 25,'Pertanian', 'Pelatihan Pelayanan Keswan bagi Medik Veteriner',  
+  '1 Tahun', 'Balai Besar Pelatihan Kesehatan Hewan Cinagara', '', '', 'v', 
+  '-', '-', '-', 'Kasubag Tata Usaha', 'Anggaran BLUD');
+
+insert into pemetaan(tahun, bagian_id, opd_id,  urusan_pemerintahan, kegiatan, 
+  jangka_waktu, nama_calon_mitra, no_kontrak_calon_mitra, skala_prioritas, waktu_pelaksanaantw1, 
+  waktu_pelaksanaantw2, waktu_pelaksanaantw3, waktu_pelaksanaantw4, pic, sumber_pembiayaan) 
+values (2023, 1, 25,'Pertanian', 'Kerja Sama Penyediaan Reagen dan Kit Pengujian Laboratorium Diagnostik Hewan',  
+  '1 Tahun', 'Pusat Veteriner Farma Surabaya', '', '', 'v', 
+  '-', '-', '-', 'Kasubag Tata Usaha', 'Anggaran BLUD');
 
 insert into pemetaan(tahun, bagian_id, opd_id,  urusan_pemerintahan, kegiatan, jangka_waktu, nama_calon_mitra, no_kontrak_calon_mitra, skala_prioritas, waktu_pelaksanaantw1, 
   waktu_pelaksanaantw2, waktu_pelaksanaantw3, waktu_pelaksanaantw4, pic, sumber_pembiayaan) values (2023, 1, 25,'Pertanian', 'Kolaborasi Identifikasi Penyakit Hewan dan Pengawasan Pangan Asal Hewan',  '1 Tahun', 'Balai Veteriner Subang ', '', '', 'v', '-', '-', '-', 'Kasubag Tata Usaha', 'Anggaran BLUD');
