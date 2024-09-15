@@ -55,11 +55,13 @@ public class MainController {
 
     @GetMapping("")
     public String home(Model model) {
+        model.addAttribute("currentPage", "home");
         return "home";
     }
 
     @GetMapping("/home")
     public String home2(Model model) {
+        model.addAttribute("currentPage", "home");
         return "home";
     }
 
