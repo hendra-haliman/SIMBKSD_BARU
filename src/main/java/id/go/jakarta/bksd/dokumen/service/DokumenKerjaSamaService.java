@@ -170,10 +170,6 @@ public class DokumenKerjaSamaService {
 
     public int writeDokumenKerjasamaToExcel(Workbook workbook, Sheet sheet,
             List<DokumenKerjaSamaDTO> dokumenKerjaSamaList, String url, int rowIdx, String title) {
-        // String currentUsername = pemakaiService.getCurrentUsername();
-        // UserDetails userDetails = pemakaiService.loadUserByUsername(currentUsername);
-
-        // userDetails.getAuthorities().contains(dokumenKerjaSamaList)
 
         boolean canViewDocLink = pemakaiService.hasAuthority(PemakaiService.AUTH_CAN_VIEW_DOC_LINK);
 
@@ -450,25 +446,25 @@ public class DokumenKerjaSamaService {
     public Page<DokumenKerjaSamaDTO> getDokumen2(PagingRequest pagingRequest, int pageNo, int pageSize) {
         boolean canViewDocLink = pemakaiService.hasAuthority(PemakaiService.AUTH_CAN_VIEW_DOC_LINK);
 
-        List<Long>  filterBagian        = pagingRequest.getFilterBagian();
-        List<Long>  filterOPD           = pagingRequest.getFilterOPD();
-        List<Long>  filterJenisMitra    = pagingRequest.getFilterJenisMitra();
-        Date        filterStartDate     = pagingRequest.getFilterStartDate();
-        Date        filterEndDate       = pagingRequest.getFilterEndDate();
-        int         filterTahun         = pagingRequest.getFilterTahun();
-        String      searchTerm          = "%" + pagingRequest.getSearch().getValue() + "%";
+        List<Long> filterBagian = pagingRequest.getFilterBagian();
+        List<Long> filterOPD = pagingRequest.getFilterOPD();
+        List<Long> filterJenisMitra = pagingRequest.getFilterJenisMitra();
+        Date filterStartDate = pagingRequest.getFilterStartDate();
+        Date filterEndDate = pagingRequest.getFilterEndDate();
+        int filterTahun = pagingRequest.getFilterTahun();
+        String searchTerm = "%" + pagingRequest.getSearch().getValue() + "%";
 
         Date filterTglBerakhirStartDate = pagingRequest.getFilterTglBerakhirStartDate();
-        Date filterTglBerakhirEndDate   = pagingRequest.getFilterTglBerakhirEndDate();
-        boolean includeNullTglBerakhir  = pagingRequest.isIncludeNullTglBerakhir();
+        Date filterTglBerakhirEndDate = pagingRequest.getFilterTglBerakhirEndDate();
+        boolean includeNullTglBerakhir = pagingRequest.isIncludeNullTglBerakhir();
 
-        boolean     filterEmptyFile     = pagingRequest.isFilterEmptyFile();
+        boolean filterEmptyFile = pagingRequest.isFilterEmptyFile();
 
-        boolean     filterEmptyRumpunOPD = pagingRequest.isFilterEmptyRumpunOPD();
+        boolean filterEmptyRumpunOPD = pagingRequest.isFilterEmptyRumpunOPD();
 
-        List<Long>  filterAsisten       = pagingRequest.getFilterAsisten();
+        List<Long> filterAsisten = pagingRequest.getFilterAsisten();
 
-        List<Long>  filterJenisNaskah   = pagingRequest.getFilterJenisNaskah();
+        List<Long> filterJenisNaskah = pagingRequest.getFilterJenisNaskah();
 
         // logger.info("SIZE [{}]", filterOPD.size());
 
@@ -525,7 +521,8 @@ public class DokumenKerjaSamaService {
 
         JpaCriteriaQuery<DokumenKerjaSama> cq = cb.createQuery(DokumenKerjaSama.class);
         Root<DokumenKerjaSama> dokumenKerjaSama = cq.from(DokumenKerjaSama.class);
-        //Join<DokumenKerjaSama, Dokumen> childrenJoin = dokumenKerjaSama.join("dokumen", JoinType.LEFT);
+        // Join<DokumenKerjaSama, Dokumen> childrenJoin =
+        // dokumenKerjaSama.join("dokumen", JoinType.LEFT);
         // Join<DokumenKerjaSama, OPD> dokumenOPD = dokumenKerjaSama.join("opd",
         // JoinType.LEFT);
 
