@@ -212,9 +212,9 @@
                         "width": "125px",
                         "responsivePriority": 2,
                         "render": function (data, type, row, meta) {
-                            return "<a  class='btn btn-sm btn-success mb-sm-1' href='" + contextPath + "pemetaan/view/" + row.id + "'><svg class='myicon'><use xlink:href='#binoculars'></use></svg> <span class='ms-sm-2'>Lihat</span></a>" + "&nbsp" +
-                                "<a class='btn btn-sm btn-warning mb-sm-1' href='" + contextPath + "pemetaan/edit/" + row.id + "?mode=group'><svg class='myicon'><use xlink:href='#pencil'></use></svg> <span class='ms-sm-2'>Rubah</span></a>" + "&nbsp" +
-                                "<a class='btn btn-sm btn-danger mb-sm-1' id='delete'  onclick='showDeleteConfirmation(\"" + row.kegiatan + "\")' href='#'><svg class='myicon'><use xlink:href='#trash-can'></use></svg> <span class='ms-sm-2'>Hapus</span></a>";
+                            return "<a  class='btn btn-sm btn-success mb-sm-1 inline-link ' href='" + contextPath + "pemetaan/view/" + row.id + "'><svg class='myicon'><use xlink:href='#binoculars'></use></svg> <span class='ms-sm-2'>Lihat</span></a>" + 
+                                "<a class='btn btn-sm btn-warning mb-sm-1 inline-link ' href='" + contextPath + "pemetaan/edit/" + row.id + "?mode=group'><svg class='myicon'><use xlink:href='#pencil'></use></svg> <span class='ms-sm-2'>Rubah</span></a>" + 
+                                "<a class='btn btn-sm btn-danger mb-sm-1 inline-link ' id='delete'  onclick='showDeleteConfirmation(\"" + row.kegiatan + "\")' href='#'><svg class='myicon'><use xlink:href='#trash-can'></use></svg> <span class='ms-sm-2'>Hapus</span></a>";
 
                         }
                     }

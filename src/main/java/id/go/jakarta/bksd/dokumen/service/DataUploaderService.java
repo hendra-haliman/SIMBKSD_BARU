@@ -725,7 +725,6 @@ public class DataUploaderService {
         } catch (IllegalAccessException iae) {
             iae.printStackTrace();
         }
-        logger.info("FileName : [{}]", fileName);
 
         File file = new File("D:/Biro KSD/" + fileName);
         RekapExcelDefinition def = RekapExcelDefinition.getRekapDef(tahun, namaBagian);
@@ -1767,8 +1766,8 @@ public class DataUploaderService {
         XSSFSheet sheetKPT = workbook.getSheetAt(KPTDef.getSheetNo());
         XSSFSheet sheetKDN = workbook.getSheetAt(KDNDef.getSheetNo());
 
-        // updateWorkSheet(tahun, sheetKPT, bagianKPT, KPTDef, bw);
-        // updateWorkSheet(tahun, sheetKDN, bagianKDN, KDNDef, bw);
+        updateWorkSheet(tahun, sheetKPT, bagianKPT, KPTDef, bw);
+        updateWorkSheet(tahun, sheetKDN, bagianKDN, KDNDef, bw);
 
         workbook.close();
 

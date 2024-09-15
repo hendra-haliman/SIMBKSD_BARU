@@ -2,10 +2,9 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
     xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head th:replace="~{fragments/general.html :: minimal_header('Dashboard')}"></head>
+<head th:replace="~{fragments/general.html :: header('Dashboard')}"></head>
 
-<body class="sb-nav-fixed"
-    th:style="'background: url(/dokumen/static/assets/img/office.jpg) no-repeat center fixed;background-blend-mode: lighten;background-color: rgba(255,255,255,0.8);'">
+<body class="sb-nav-fixed">
     
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="trash-can" viewBox="0 0 448 512">

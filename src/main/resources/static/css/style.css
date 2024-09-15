@@ -18,6 +18,20 @@ tr:last-child td
     border-bottom-width: 1px !important;    
 }
 
+.table-bordered > :not(caption) > * > *, .datatable-table > :not(caption) > * > * {
+    border-width: 1px 1px;
+}
+
+table.dataTable.table-bordered th:last-child, table.dataTable.table-bordered td:last-child {
+    border-right: 1px solid #000;
+}
+
+table.dataTable.table-bordered th:first-child, table.dataTable.table-bordered td:first-child {
+    border-left: 1px solid #000;
+}
+
+  
+
 .red {
     background-color: red;
 }
@@ -112,7 +126,7 @@ thead {
 }
 
 .kpt {
-    /* background-color: #a3ddda !important; */
+    /* background-color: aliceblue !important; */
     text-align: center;
     vertical-align: middle;
 }
@@ -331,4 +345,8 @@ a.nav-link:hover {
 
 .sb-sidenav-footer {
     position: fixed;  
+}
+
+.table-bordered {
+    border: solid 1px #000;
 }

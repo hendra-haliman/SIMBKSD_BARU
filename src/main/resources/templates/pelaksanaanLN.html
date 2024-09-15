@@ -30,7 +30,6 @@
                 <!-- Main page content-->
                 <div class="container-fluid px-4 mt-n10">
 
-
                     <div th:if="${success_msg} != null" th:text="${success_msg}" class="alert alert-success" role="alert">
 
                     </div>
@@ -437,9 +436,9 @@
                         "className": "text-center",
                         "width": "130",
                         "render": function (data, type, row, meta) {
-                            return "<a class='btn btn-sm btn-success mb-sm-1' href='" + contextPath + "dokumen_luar_negeri/view/" + row.id + "' data-bs-toggle='tooltip' data-bs-placement='top' title='Lihat'><svg class='myicon'><use xlink:href='#binoculars'></use></svg><span class='ms-sm-2'>Lihat</span></a>" + "&nbsp" +
-                                "<a class='btn btn-sm btn-warning mb-sm-1' href='" + contextPath + "dokumen_luar_negeri/edit/" + row.id + "' data-bs-toggle='tooltip' data-bs-placement='top' title='Edit'><svg class='myicon'><use xlink:href='#pencil'></use></svg> <span class='ms-sm-2'>Rubah</span></a>" + "&nbsp" +
-                                "<a class='btn btn-sm btn-danger mb-sm-1' id='delete'  onclick='showDeleteConfirmation(\"" + row.judulDokumen + "\"," + row.id + ")' href='#' data-bs-toggle='tooltip' data-bs-placement='top' title='Hapus'><svg class='myicon'><use xlink:href='#trash-can'></use></svg> <span class='ms-sm-2'>Hapus</span></a>";
+                            return "<a class='btn btn-sm btn-success mb-sm-1 inline-link ' href='" + contextPath + "dokumen_luar_negeri/view/" + row.id + "' data-bs-toggle='tooltip' data-bs-placement='top' title='Lihat'><svg class='myicon'><use xlink:href='#binoculars'></use></svg><span class='ms-sm-2'>Lihat</span></a>" + 
+                                "<a class='btn btn-sm btn-warning mb-sm-1 inline-link ' href='" + contextPath + "dokumen_luar_negeri/edit/" + row.id + "' data-bs-toggle='tooltip' data-bs-placement='top' title='Edit'><svg class='myicon'><use xlink:href='#pencil'></use></svg> <span class='ms-sm-2'>Rubah</span></a>" + 
+                                "<a class='btn btn-sm btn-danger mb-sm-1 inline-link ' id='delete'  onclick='showDeleteConfirmation(\"" + row.judulDokumen + "\"," + row.id + ")' href='#' data-bs-toggle='tooltip' data-bs-placement='top' title='Hapus'><svg class='myicon'><use xlink:href='#trash-can'></use></svg> <span class='ms-sm-2'>Hapus</span></a>";
 
                         }
                     }
