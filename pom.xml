@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>id.go.jakarta.bksd</groupId>
-	<artifactId>dokumen</artifactId>
+	<artifactId>SIMBKSD</artifactId>
 	<version>1.0.0</version>
 	<packaging>war</packaging>
 	<name>SIMBKSD</name>

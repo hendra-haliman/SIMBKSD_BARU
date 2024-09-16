@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import id.go.jakarta.bksd.dokumen.domain.Pemakai;
 import id.go.jakarta.bksd.dokumen.service.DataUploaderService;
+//import id.go.jakarta.bksd.dokumen.service.DevUtilityService;
 import id.go.jakarta.bksd.dokumen.service.FileManager;
 import id.go.jakarta.bksd.dokumen.service.PemakaiService;
 import id.go.jakarta.bksd.dokumen.service.RoleService;
@@ -33,6 +34,7 @@ public class AdminController {
 
     private PemakaiService pemakaiService;
     private DataUploaderService dataUploaderService;
+    //private DevUtilityService devUtilityService;
     private FileManager fileManager;
 
     private RoleService roleService;
@@ -40,10 +42,12 @@ public class AdminController {
     public AdminController(PemakaiService pemakaiService,
             RoleService roleService,
             DataUploaderService dataUploaderService,
+    //        DevUtilityService devUtilityService,
             FileManager fileManager) {
         this.pemakaiService = pemakaiService;
         this.roleService = roleService;
         this.dataUploaderService = dataUploaderService;
+    //    this.devUtilityService = devUtilityService;
         this.fileManager = fileManager;
     }
 
@@ -314,7 +318,7 @@ public class AdminController {
     @ResponseBody
     public String downloadMissingFile() throws IOException, InvalidFormatException {
 
-        // dataUploaderService.downloadMissingFile();
+        //devUtilityService.downloadMissingFile();
 
         return "Finish download missing files";
     }

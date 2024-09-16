@@ -15,6 +15,8 @@ import com.microsoft.playwright.options.AriaRole;
 
 import id.go.jakarta.bksd.dokumen.domain.Dokumen;
 import id.go.jakarta.bksd.dokumen.domain.DokumenKerjaSama;
+import id.go.jakarta.bksd.dokumen.domain.DokumenKerjaSamaLuarNegeri;
+import id.go.jakarta.bksd.dokumen.domain.DokumenLuarNegeri;
 
 import org.springframework.beans.factory.annotation.Value;
 
@@ -31,8 +33,11 @@ public class DevUtilityService {
 
     private DokumenKerjaSamaService dokumenKerjaSamaService;
 
-    public DevUtilityService(DokumenKerjaSamaService dokumenKerjaSamaService) {
+    private DokumenKerjaSamaLuarNegeriService dokumenKerjaSamaLuarNegeriService;
+
+    public DevUtilityService(DokumenKerjaSamaService dokumenKerjaSamaService, DokumenKerjaSamaLuarNegeriService dokumenKerjaSamaLuarNegeriService) {
         this.dokumenKerjaSamaService = dokumenKerjaSamaService;
+        this.dokumenKerjaSamaLuarNegeriService = dokumenKerjaSamaLuarNegeriService;
     }
 
     /**
@@ -74,7 +79,9 @@ public class DevUtilityService {
     }
 
     /**
-     * Download file dari Google drive, memakai automation, tanpa memerlukan permission dari Google Drive API
+     * Download file dari Google drive, memakai automation, 
+     * tanpa memerlukan permission dari Google Drive API,
+     * tetapi mensimulasikan user berinteraksi dengan browser (automation)
      * 
      */
     public String downloadFileFromGoogleDrive(String url) {
@@ -116,6 +123,11 @@ public class DevUtilityService {
      * Download file naskah kerja sama yang hilang (tidak ada) dari Pusdatin Google drive (docLink attribute)
      */
     public void downloadMissingFile() {
+        //downloadMissingFileKPTdanKDN();
+        downloadMissingFileKLN();
+    }
+
+    private void downloadMissingFileKPTdanKDN() {
         List<DokumenKerjaSama> docList = dokumenKerjaSamaService.findAll();
 
         for (DokumenKerjaSama doc : docList) {
@@ -131,6 +143,27 @@ public class DevUtilityService {
                     dokumen.setFilename(filename);
                     doc.getDokumen().add(dokumen);
                     dokumenKerjaSamaService.save(doc);
+                }
+            }
+        }
+    }
+
+    private void downloadMissingFileKLN() {
+        List<DokumenKerjaSamaLuarNegeri> docLNList = dokumenKerjaSamaLuarNegeriService.findAll();
+
+        for (DokumenKerjaSamaLuarNegeri doc : docLNList) {
+            List<DokumenLuarNegeri> files = doc.getDokumen();
+            String url = doc.getLinkDokumen();
+
+            if ((files != null) && (files.isEmpty()) && (url != null) && (url.length() > 0)
+                    && (url.contains("google"))) {
+                String filename = downloadFileFromGoogleDrive(url);
+
+                if ((filename != null) && (filename.length() > 0)) {
+                    DokumenLuarNegeri dokumen = new DokumenLuarNegeri();
+                    dokumen.setFilename(filename);
+                    doc.getDokumen().add(dokumen);
+                    dokumenKerjaSamaLuarNegeriService.save(doc);
                 }
             }
         }
