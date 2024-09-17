@@ -167,7 +167,7 @@
 
                     <div class="sb-sidenav-menu-heading text-white">Lain-lain</div>
                     <a class="nav-link" th:href="@{/terminologi}"><div class="sb-nav-link-icon"><i data-feather="user"></i></div>Terminologi</a>
-                    <a class="nav-link" th:href="@{/user}"><div class="sb-nav-link-icon"><i data-feather="user"></i></div>User</a>
+                    <a sec:authorize="hasRole('ADMIN')" class="nav-link" th:href="@{/user}"><div class="sb-nav-link-icon"><i data-feather="user"></i></div>User</a>
                     <a class="nav-link" th:href="@{/}"><div class="sb-nav-link-icon"><i data-feather="users"></i></div>Jenis Mitra</a>
                     <a class="nav-link" th:href="@{/}"><div class="sb-nav-link-icon"><i data-feather="file"></i></div>Jenis Dokumen</a>           
                     <a class="nav-link" th:href="@{/}"><div class="sb-nav-link-icon"><i data-feather="file"></i></div>Perangkat Daerah</a>           

@@ -373,6 +373,11 @@
         var jsonDefs = JSON.parse(jsonDefsStr);
     </script>
 
+    <script th:inline="javascript">
+        var isAdmin = /*[[${#authorization.expression('hasRole(''ADMIN'')')}]]*/ '';
+        var isSTAFF_CONTRIBUTOR = /*[[${#authorization.expression('hasRole(''STAFF_CONTRIBUTOR'')')}]]*/ '';
+    </script>
+
     <script>
         $(document).ready(function () {
 
@@ -812,10 +817,19 @@
                         "width": "130px",
                         "className": "text-center fixed-col",
                         "render": function (data, type, row, meta) {
-                            return "<a class='btn btn-sm btn-success mb-sm-1 inline-link ' style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;' href='" + contextPath + "dokumen/view/" + row.id + "' data-bs-toggle='tooltip' data-bs-placement='top' title='Lihat'><svg class='myicon'><use xlink:href='#binoculars'></use></svg> <span class='ms-sm-2'>Lihat</span></a>" + 
-                                "<a class='btn btn-sm btn-warning mb-sm-1 inline-link ' style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;'  href='" + contextPath + "dokumen/edit/" + row.id + "' data-bs-toggle='tooltip' data-bs-placement='top' title='Edit'><svg class='myicon'><use xlink:href='#pencil'></use></svg> <span class='ms-sm-2'>Rubah</span></a>" +
-                                "<a class='btn btn-sm btn-danger mb-sm-1 inline-link ' style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;'  id='delete'  onclick='showDeleteConfirmation(\"" + row.judulDokumenPerjanjian + "\")' href='#' data-bs-toggle='tooltip' data-bs-placement='top' title='Hapus'><svg class='myicon'><use xlink:href='#trash-can'></use></svg> <span class='ms-sm-2'>Hapus</span></a>";
+                            var actions = 
+                                "<a class='btn btn-sm btn-success mb-sm-1 inline-link ' style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;' href='" + contextPath + "dokumen/view/" + row.id + "' data-bs-toggle='tooltip' data-bs-placement='top' title='Lihat'><svg class='myicon'><use xlink:href='#binoculars'></use></svg> <span class='ms-sm-2'>Lihat</span></a>";
 
+                            if (isSTAFF_CONTRIBUTOR || isAdmin) {
+                                actions += "<a class='btn btn-sm btn-warning mb-sm-1 inline-link ' style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;'  href='" + contextPath + "dokumen/edit/" + row.id + "' data-bs-toggle='tooltip' data-bs-placement='top' title='Edit'><svg class='myicon'><use xlink:href='#pencil'></use></svg> <span class='ms-sm-2'>Rubah</span></a>";
+                            }    
+                                
+
+                            if (isAdmin) {
+                                actions += "<a class='btn btn-sm btn-danger mb-sm-1 inline-link ' style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;'  id='delete'  onclick='showDeleteConfirmation(\"" + row.judulDokumenPerjanjian + "\")' href='#' data-bs-toggle='tooltip' data-bs-placement='top' title='Hapus'><svg class='myicon'><use xlink:href='#trash-can'></use></svg> <span class='ms-sm-2'>Hapus</span></a>";
+                            }    
+                                
+                            return actions;
                         }
                     }
                 ],
