@@ -521,21 +521,7 @@ public class DokumenKerjaSamaService {
 
         JpaCriteriaQuery<DokumenKerjaSama> cq = cb.createQuery(DokumenKerjaSama.class);
         Root<DokumenKerjaSama> dokumenKerjaSama = cq.from(DokumenKerjaSama.class);
-        // Join<DokumenKerjaSama, Dokumen> childrenJoin =
-        // dokumenKerjaSama.join("dokumen", JoinType.LEFT);
-        // Join<DokumenKerjaSama, OPD> dokumenOPD = dokumenKerjaSama.join("opd",
-        // JoinType.LEFT);
-
-        // Join<DokumenKerjaSama, OPD> dokumenOPD = dokumenKerjaSama.join("opd");
-
-        // CriteriaQuery<Long> opdSubquery =
-        // entityManager.unwrap(Session.class).getCriteriaBuilder()
-        // .createQuery(Long.class);
-        // Root<OPD> opdSubRoot = opdSubquery.from(OPD.class);
-        // opdSubquery.select(opdSubRoot.get("id")).where(opdSubRoot.get("id").in(filterOPD));
-        // List<Long> matchingOPDIds =
-        // entityManager.createQuery(opdSubquery).getResultList();
-        // Predicate opdPredicate = cb.in(dokumenOPD.get("id")).value(matchingOPDIds);
+        Join<DokumenKerjaSama, Dokumen> childrenJoin = dokumenKerjaSama.join("dokumen", JoinType.LEFT);
 
         // Filter bagian, opd, jenis mitra, tgl penetapan date range & year
         Predicate bagianPredicate = dokumenKerjaSama.get("bagian").get("id").in(filterBagian);
@@ -568,10 +554,14 @@ public class DokumenKerjaSamaService {
         Predicate searchNomorPredicate = cb.like(dokumenKerjaSama.get("noDokumenPerjanjian"), searchTerm);
         Predicate searchMitraPredicate = cb.like(dokumenKerjaSama.get("mitraKerjaSama"), searchTerm);
         Predicate searchFileContentPredicate = cb.like(dokumenKerjaSama.get("fileContent"), searchTerm);
-        Predicate searchFileNamePredicate = cb.like(dokumenKerjaSama.get("dokumen").get("filename"), searchTerm);
+        
+        //Predicate searchFileNamePredicate = cb.like(dokumenKerjaSama.get("dokumen").get("filename"), searchTerm);
+
+        // Predicate searchPredicate = cb.or(searchJudulPredicate, searchNomorPredicate, searchMitraPredicate,
+        //         searchFileContentPredicate, searchFileNamePredicate);
 
         Predicate searchPredicate = cb.or(searchJudulPredicate, searchNomorPredicate, searchMitraPredicate,
-                searchFileContentPredicate, searchFileNamePredicate);
+        searchFileContentPredicate);
 
         Predicate deletedPredicate = cb.equal(dokumenKerjaSama.get("deleted"), false);
 
@@ -637,7 +627,7 @@ public class DokumenKerjaSamaService {
                 // cb.asc(dokumenKerjaSama.get("opd")),
                 cb.asc(dokumenKerjaSama.get("jenisMitra")));
 
-        cq.select(dokumenKerjaSama);
+        cq.select(dokumenKerjaSama);    
 
         List<DokumenKerjaSama> dokumenKerjaSamaList = entityManager.createQuery(cq)
                 .setFirstResult(pageNo * pageSize)

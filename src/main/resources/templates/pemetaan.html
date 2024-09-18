@@ -99,6 +99,11 @@
         </div>
     </div>
     <div th:include="~{fragments/general.html :: script}"></div>
+    
+    <script th:inline="javascript">
+        var isAdmin = /*[[${#authorization.expression('hasRole(''ADMIN'')')}]]*/ '';
+        var isSTAFF_CONTRIBUTOR = /*[[${#authorization.expression('hasRole(''STAFF_CONTRIBUTOR'')')}]]*/ '';
+    </script>
 
     <script>
         $(document).ready(function () {
@@ -200,11 +205,17 @@
                         "data": null,
                         "responsivePriority": 2,
                         "render": function (data, type, row, meta) {
-                            //console.log(row);
-                            return "<a class='btn btn-sm btn-success mb-sm-1 inline-link ' href='" + contextPath + "pemetaan/view/" + row.id + "' data-bs-toggle='tooltip' data-bs-placement='top' title='Lihat'><svg class='myicon'><use xlink:href='#binoculars'></use></svg> <span class='ms-sm-2'>Lihat</span></a>" +
-                                "<a class='btn btn-sm btn-warning mb-sm-1 inline-link ' href='" + contextPath + "pemetaan/edit/" + row.id + "' data-bs-toggle='tooltip' data-bs-placement='top' title='Edit'><svg class='myicon'><use xlink:href='#pencil'></use></svg> <span class='ms-sm-2'>Rubah</span></a>" +
-                                "<a class='btn btn-sm btn-danger mb-sm-1 inline-link ' id='delete'  onclick='showDeleteConfirmation(\"" + row.kegiatan + "\")' href='#' data-bs-toggle='tooltip' data-bs-placement='top' title='Hapus'><svg class='myicon'><use xlink:href='#trash-can'></use></svg> <span class='ms-sm-2'>Hapus</span></a>";
+                            var actions = "<a class='btn btn-sm btn-success mb-sm-1 inline-link ' href='" + contextPath + "pemetaan/view/" + row.id + "' data-bs-toggle='tooltip' data-bs-placement='top' title='Lihat'><svg class='myicon'><use xlink:href='#binoculars'></use></svg> <span class='ms-sm-2'>Lihat</span></a>";
 
+                            if (isSTAFF_CONTRIBUTOR || isAdmin) {
+                                actions += "<a class='btn btn-sm btn-warning mb-sm-1 inline-link ' href='" + contextPath + "pemetaan/edit/" + row.id + "' data-bs-toggle='tooltip' data-bs-placement='top' title='Edit'><svg class='myicon'><use xlink:href='#pencil'></use></svg> <span class='ms-sm-2'>Rubah</span></a>";
+                            }
+
+                            if (isAdmin) {
+                                actions += "<a class='btn btn-sm btn-danger mb-sm-1 inline-link ' id='delete'  onclick='showDeleteConfirmation(\"" + row.kegiatan + "\")' href='#' data-bs-toggle='tooltip' data-bs-placement='top' title='Hapus'><svg class='myicon'><use xlink:href='#trash-can'></use></svg> <span class='ms-sm-2'>Hapus</span></a>";
+                            }
+                                
+                            return actions;
                         }
                     }
                 ],
