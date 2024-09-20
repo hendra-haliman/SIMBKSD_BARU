@@ -81,12 +81,14 @@
     </svg>
 
     <nav th:fragment="navigation" class="sb-topnav fixed-top navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-dark bg-black sb-nav-fixed" id="sidenavAccordion">
+        <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 me-2 ms-lg-2 me-lg-0" id="sidebarToggle"><i data-feather="menu"></i></button>
+
         <!-- Navbar Brand-->
         <a class="navbar-brand pe-3 ps-4 ps-lg-2" th:href="@{/}">
             <img th:src="@{/static/assets/img/favicon.png}" alt="Logo" class="d-inline-block align-text-top nav-logo"/>
             <span>SIMBKSD</span>
         </a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#layoutSidenav_nav" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto my-2 my-lg-0">
                 <li class="nav-item" th:if="${currentPage=='home'}" ><a class="nav-link" href="#about">Tentang Kami </a></li>

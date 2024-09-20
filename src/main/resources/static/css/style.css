@@ -261,14 +261,6 @@ header.masthead {
     background-size: cover;
 }
 
-/* .fixed-top, .sb-nav-fixed #layoutSidenav #layoutSidenav_nav, .sb-nav-fixed .sb-topnav {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 1030;
-  } */
-
 .checkpath {
     fill: green !important;
 }
@@ -281,25 +273,12 @@ header.masthead {
     font-size: 1.5rem !important;
 }
 
-.navbar-brand span {
-    vertical-align: text-top !important;
-}
-
-/* .navbar-nav {
-    width: 100%;
-    justify-content: center !important;
-} 
-
-.navbar-nav .nav-item:last-child {
-    margin-left: auto !important;
-} */
-
 a.nav-link {
     color: #fff;
 }
 
 a.navbar-brand > span {
-    vertical-align: middle;
+    vertical-align: -webkit-baseline-middle;
 }
 
 a.nav-link:hover {
@@ -307,9 +286,9 @@ a.nav-link:hover {
 }
 
 
-.sb-topnav {
+/* .sb-topnav {
     height: 74px;
-}
+} */
 
 #portfolio .container-fluid, #portfolio .container-sm, #portfolio .container-md, #portfolio .container-lg, #portfolio .container-xl, #portfolio .container-xxl {
     max-width: 1920px;
