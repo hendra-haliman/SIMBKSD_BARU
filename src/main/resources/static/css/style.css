@@ -283,7 +283,13 @@ a.navbar-brand > span {
 
 a.nav-link:hover {
     color: #f4623a;
+    /* border-bottom: solid 3px #f4623a; */
 }
+
+a.nav-link:active {
+    border-bottom: solid 3px #f4623a !important;
+}
+
 
 
 /* .sb-topnav {
