@@ -12,45 +12,51 @@
 
         <div id="layoutSidenav_content">
             <main>
-                <header th:replace="~{fragments/content-header.html :: content-header('Terminologi','', 'activity')}">
+                <header th:replace="~{fragments/content-header.html :: content-header('Daftar Istilah','', 'activity')}">
                 </header>
                 <!-- Main page content-->
                 <div class="container-fluid px-4 mt-n10">
-                    <!--div class="row" sec:authorize="hasRole('ROLE_ADMIN')" style="color:black;">test</div>
-                    <div class="row" sec:authorize="hasAuthority('can_edit')" style="color:black;">I can edit</div-->
-
-                    <!-- Rekap Perjanjian -->
                     <div class="row">
-                        <div class="col-lg-12 col-xl-12 mb-4">
-                            <div class="card  h-100">
-                                <div class="card-body">
-                                    <table class="table table-bordered">
-                                        <tbody>
-                                            <tr class="row">
-                                                <td class="col col-md-2">KLN</td>
-                                                <td class="col col-md-10">Kerja Sama Luar Negeri</td>
-                                            </tr>
-
-                                            <tr class="row">
-                                                <td class="col col-md-2">KDN</td>
-                                                <td class="col col-md-10">Kerja Sama Dalam Negeri</td>
-                                            </tr>
-
-                                            <tr class="row">
-                                                <td class="col col-md-2">KPT</td>
-                                                <td class="col col-md-10">Kerja Sama Pihak Ketiga</td>
-                                            </tr>
-                                            <tr class="row">
-                                                <td class="col col-md-2">NPBK</td>
-                                                <td class="col col-md-10">Naskah Perjanjian Bantuan Keuangan</td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>     
+                        <div class="col">
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                  <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                      KLN
+                                    </button>
+                                  </h2>
+                                  <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                      <strong>Kerja Sama Luar Negeri.</strong>
+                                    </div>
+                                  </div>
                                 </div>
-                            </div>
+                                <div class="accordion-item">
+                                  <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                      KDN
+                                    </button>
+                                  </h2>
+                                  <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                      <strong>Kerja Sama Dalam Negeri.</strong>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="accordion-item">
+                                  <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                      KPT
+                                    </button>
+                                  </h2>
+                                  <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                      <strong>Kerja Sama Pihak Ketiga.</strong>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                         </div>
-
                     </div>
                 </div>    
             </main>
