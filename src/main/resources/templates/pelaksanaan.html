@@ -5,9 +5,6 @@
 <head th:replace="~{fragments/general.html :: header('Pelaksanaan')}"></head>
 
 <body class="sb-nav-fixed">
-    <!--div class="row" sec:authorize="hasRole('ROLE_ADMIN')" style="color:black;">test</div>
-    <div class="row" sec:authorize="hasAuthority('can_edit')" style="color:black;">I can edit</div-->
-
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="trash-can" viewBox="0 0 448 512">
             <path
@@ -29,7 +26,7 @@
 
         <div id="layoutSidenav_content">
             <main>
-                <header th:replace="~{fragments/content-header.html :: content-header('Pelaksanaan','','box')}">
+                <header th:replace="~{fragments/content-header.html :: content-header('Pelaksanaan','','')}">
                 </header>
                 <!-- Main page content-->
                 <div class="container-fluid px-4 mt-n10">
@@ -38,30 +35,29 @@
                         role="alert">
                     </div>
 
-                    <div class="card mb-4">
+                    <div class="card my-4">
                         <div class="card-header  d-flex justify-content-between">Dokumen Kerja Sama KPT, KDN,
-                            NPBK<span>* text berwarna <span style="color: red;">merah</span> berarti tgl berakhirnya
-                                kerjasama belum diisi.</span></div>
+                            NPBK<span><small>* text berwarna <span style="color: red;">merah</span> berarti tgl berakhirnya
+                                kerjasama belum diisi.</small></span></div>
                         <div class="card-body">
 
                             <!-- FILTER -->
-                            <div style="border: solid 1px #ccc; background-color: aliceblue; padding: 5px; font-size: 0.8rem; display: none;"
-                                id="filter">
+                            <div class="filter" id="filter">
                                 <!-- Asisten-->
-                                <div class="d-flex flex-row align-items-center mb-1">
-                                    <label for="filterAsisten" class="me-2 col-form-label" style="width: 280px;">
+                                <div class="row mb-1">
+                                    <label for="filterAsisten" class="col-md-2">
                                         <span style='font-weight: bold;'>Asisten</span></label>
-                                    <select id="filterAsisten" class="js-example-basic-multiple" name="asisten[]"
+                                    <select id="filterAsisten" class="js-example-basic-multiple col-md" name="asisten[]"
                                         multiple="multiple">
                                         <option th:each="asisten : ${asistenList}" th:value="${asisten.id}"
                                             th:text="${asisten.nama}"></option>
                                     </select>
                                 </div>
                                 <!-- Bagian -->
-                                <div class="d-flex flex-row align-items-center mb-1">
-                                    <label for="filterBagian" class="me-2 col-form-label" style="width: 280px;">
+                                <div class="row mb-1">
+                                    <label for="filterBagian" class="col-md-2">
                                         <span style='font-weight: bold;'>Bagian</span></label>
-                                    <select id="filterBagian" class="js-example-basic-multiple" name="bagian[]"
+                                    <select id="filterBagian" class="js-example-basic-multiple col-md" name="bagian[]"
                                         multiple="multiple">
                                         <option th:each="bagian : ${bagianList}" th:value="${bagian.id}"
                                             th:text="${bagian.nama}"></option>
@@ -69,11 +65,10 @@
                                 </div>
 
                                 <!-- OPD / Instansi terkait -->
-                                <div class="row">
-                                    <label for="filterOPD" class="col col-sm-3 me-2 col-form-label"
-                                        style="width: 280px;"><span style='font-weight: bold;'>Instansi
+                                <div class="row mb-1">
+                                    <label for="filterOPD" class="col-md-2"><span style='font-weight: bold;'>Instansi
                                             terkait</span></label>
-                                    <select id="filterOPD" class="col col-sm-9 js-example-basic-multiple" name="opd[]"
+                                    <select id="filterOPD" class="col-md js-example-basic-multiple" name="opd[]"
                                         multiple="multiple">
                                         <option th:each="opd : ${opdList}" th:value="${opd.id}" th:text="${opd.nama}">
                                         </option>
@@ -82,11 +77,10 @@
                                 </div>
 
                                 <!-- Jenis Mitra / Kelompok -->
-                                <div class="d-flex flex-row align-items-center mb-1">
-                                    <label for="filterJenisMitra" class="me-2 col-form-label"
-                                        style="width: 280px;"><span
+                                <div class="row mb-1">
+                                    <label for="filterJenisMitra" class="col-md-2"><span
                                             style='font-weight: bold;'>Kelompok</span></label>
-                                    <select id="filterJenisMitra" class="js-example-basic-multiple" name="jenisMitra[]"
+                                    <select id="filterJenisMitra" class="col-md js-example-basic-multiple col-md" name="jenisMitra[]"
                                         multiple="multiple">
                                         <option th:each="jenisMitra : ${jenisMitraList}" th:value="${jenisMitra.id}"
                                             th:selected="${jenisMitraSelectedList.contains(jenisMitra)}"
@@ -94,64 +88,76 @@
                                     </select>
                                 </div>
 
-                                <!-- Tgl Penetapan -->
-                                <div class="d-flex flex-row align-items-center mb-1">
-                                    <label for="minDate" class="me-2 col-form-label" style="width: 280px;"><span
-                                            style='font-weight: bold;'>Tgl Penetapan</span> dari tanggal</label><input
-                                        id="minDate" class="form-control form-control-sm" style="width: 150px;"
-                                        type="date" />
-                                    <label for="maxDate" class="me-2 col-form-label" style="margin-left:10px;">s/d
-                                        tanggal</label><input class="form-control form-control-sm me-2" id="maxDate"
-                                        style="width: 150px;" type="date" />
-                                    <label for="yearpicker" class="me-2 col-form-label">Tahun</label> <input type="text"
-                                        id="yearpicker" class="form-control form-control-sm" style="width:100px;" />
-                                </div>
-
-                                <!-- Tgl Berakhir -->
-                                <div class="d-flex flex-row align-items-center mb-1">
-                                    <label for="minTglBerakhirDate" class="me-2 col-form-label"
-                                        style="width: 280px;"><span style='font-weight: bold;'>Tgl Kerjasama
-                                            Berakhir</span> dari tanggal</label><input id="minTglBerakhirDate"
-                                        class="form-control form-control-sm" style="width: 150px;" type="date" />
-                                    <label for="maxTglBerakhirDate" class="me-2 col-form-label"
-                                        style="margin-left:10px;">s/d tanggal</label><input
-                                        class="form-control form-control-sm me-2" id="maxTglBerakhirDate"
-                                        style="width: 150px;" type="date" />
-                                    <label for="yearTglBerakhirpicker" class="me-2 col-form-label">Tahun</label> <input
-                                        type="text" id="yearTglBerakhirpicker" class="form-control form-control-sm"
-                                        style="width:100px;" />
-                                    <label for="filterNullTglBerakhir" class="me-2 col-form-label"
-                                        style="margin-left:10px;">Empty Tgl Berakhir</label><input type="checkbox"
-                                        name="filterNullTglBerakhir" id="filterNullTglBerakhir" checked />
-                                </div>
-
                                 <!-- Jenis Dokumen -->
-                                <div class="d-flex flex-row align-items-center mb-1">
-                                    <label for="filterJenisNaskah" class="me-2 col-form-label"
-                                        style="width: 280px;"><span style='font-weight: bold;'>Jenis
-                                            Naskah</span></label>
-                                    <select id="filterJenisNaskah" class="js-example-basic-multiple"
+                                <div class="row mb-1">
+                                    <label for="filterJenisNaskah" class="col-md-2"><span style='font-weight: bold;'>Jenis Naskah</span></label>
+
+                                    <select id="filterJenisNaskah" class="col-md js-example-basic-multiple"
                                         name="jenisNaskah[]" multiple="multiple">
                                         <option th:each="jenisNaskah : ${jenisNaskahList}" th:value="${jenisNaskah.id}"
                                             th:selected="${jenisNaskahSelectedList.contains(jenisNaskah)}"
                                             th:text="${jenisNaskah.nama}"></option>
                                     </select>
-
-                                    <!-- Filter Empty file -->
-                                    <label for="filterEmptyFile" class="me-2 col-form-label"
-                                        style="margin-left: 10px;"><span style='font-weight: bold;'>Empty
-                                            File</span></label>
-                                    <input type="checkbox" name="filterEmptyFile" id="filterEmptyFile">
-
-                                    <!-- Filter Empty Rumpun OPD -->
-                                    <label for="filterEmptyRumpunOPD" class="me-2 col-form-label"
-                                        style="margin-left: 10px;"><span style='font-weight: bold;'>Empty Rumpun
-                                            OPD</span></label>
-                                    <input type="checkbox" name="filterEmptyRumpunOPD" id="filterEmptyRumpunOPD">
-
                                 </div>
 
+                                <!-- Tgl Penetapan -->
+                                <div class="row mb-1">
+                                    <label for="minDate" class="col-md-2"><span
+                                            style='font-weight: bold;'>Tgl Penetapan</span> dari tanggal</label>
+                                    <div class="col-md-2">
+                                        <input id="minDate" class="form-control-sm" scope="col-md-2" type="date" />
+                                    </div>    
+                                    <label for="maxDate" class="col-md-1">s/d tanggal</label>
+                                    <div class="col-md-2">
+                                        <input class="form-control-sm"  id="maxDate" type="date" />
+                                    </div>
+                                    <label for="yearpicker" class="col-md-1">Tahun</label> 
+                                    <div class="col-md-1">
+                                        <input type="text" id="yearpicker" class="form-control-sm"  style="width:80px;" />
+                                    </div>    
+                                </div>
 
+                                <!-- Tgl Berakhir -->
+                                <div class="row mb-1">
+                                    <label for="minTglBerakhirDate" class="col-md-2"><span style='font-weight: bold;'>Tgl Kerjasama
+                                            Berakhir</span></label>
+                                    <div class="col-md-2">
+                                        <input id="minTglBerakhirDate" class="form-control-sm"  type="date" />
+                                    </div>
+                                    <label for="maxTglBerakhirDate" class="col-md-1">s/d tanggal</label>
+                                    <div class="col-md-2">
+                                        <input class="form-control-sm" id="maxTglBerakhirDate" type="date" />
+                                    </div>
+                                    <label for="yearTglBerakhirpicker" class="col-md-1">Tahun</label> 
+                                    <div class="col-md-1">
+                                        <input type="text" id="yearTglBerakhirpicker" class="form-control-sm" style="width:80px;"/>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <label for="filterNullTglBerakhir">Empty Tgl Berakhir</label>
+                                    </div>    
+                                    <div class="col-md-1">
+                                        <input type="checkbox"
+                                        name="filterNullTglBerakhir" id="filterNullTglBerakhir" checked class="form-control-sm"/>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-1">
+                                    <!-- Filter Empty file -->
+                                    <div class="col-md-1">
+                                        <label for="filterEmptyFile"><span style='font-weight: bold;'>Empty File</span></label>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input type="checkbox" name="filterEmptyFile" id="filterEmptyFile">
+                                    </div>
+
+                                    <!-- Filter Empty Rumpun OPD -->
+                                    <div class="col-md-2">
+                                        <label for="filterEmptyRumpunOPD"><span style='font-weight: bold;'>Empty Rumpun OPD</span></label>
+                                    </div>        
+                                    <div class="col-md-1">
+                                        <input type="checkbox" name="filterEmptyRumpunOPD" id="filterEmptyRumpunOPD">
+                                    </div>    
+                                </div>    
                             </div>
                             <!-- End of FILTER -->
 
@@ -259,15 +265,16 @@
     </div> <!-- End of layoutSidenav -->
 
     <div th:include="~{fragments/general.html :: script}"></div>
+
     <style>
         .select2-results__options {
-            -webkit-column-count: 2;
+            -webkit-column-count: 3;
             -webkit-column-gap: 4px;
             -webkit-column-fill: auto;
-            -moz-column-count: 2;
+            -moz-column-count: 3;
             -moz-column-gap: 4px;
             -moz-column-fill: auto;
-            column-count: 2;
+            column-count: 3;
             column-gap: 4px;
             column-fill: auto;
             max-height: 400px;
@@ -915,8 +922,9 @@
                             },
                             {
                                 extend: 'print',
+                                className: 'btn btn-sm btn-print',
                                 text: 'Print',
-                                autoPrint: false
+                                autoPrint: true
                             }
 
                         ]
@@ -931,7 +939,11 @@
                 }
             });
 
-            $('.js-example-basic-multiple').select2({ maximumSelectionLength: 15, allowClear: true, placeholder: 'Masukkan pilihan' });
+            $('.js-example-basic-multiple').select2({ 
+                width: 'style',
+                maximumSelectionLength: 15, 
+                allowClear: true, 
+                placeholder: 'Masukkan pilihan' });
 
 
             // Handle confirmation button click (optional)
@@ -999,20 +1011,20 @@
                 "sFilterInput": "red form-control form-control-md", // Replace with your desired class name
             });
 
-            $('.select2-results__option').hoverForMore({
-                speed: 60.0,		// Measured in pixels-per-second
-                loop: true,		// Scroll to the end and stop, or loop continuously?
-                gap: 20,		// When looping, insert this many pixels of blank space
-                target: false,		// Hover on this CSS selector instead of the text line itself
-                removeTitle: true,	// By default, remove the title attribute, as a tooltip is redundant
-                snapback: true,		// Animate when de-activating, as opposed to instantly reverting
-                addStyles: true,	// Auto-add CSS; leave this on unless you need to override default styles
-                alwaysOn: false,	// If you're insane, you can turn this into a <marquee> tag. (Please don't.)
+            // $('.select2-results__option').hoverForMore({
+            //     speed: 60.0,		// Measured in pixels-per-second
+            //     loop: true,		// Scroll to the end and stop, or loop continuously?
+            //     gap: 20,		// When looping, insert this many pixels of blank space
+            //     target: false,		// Hover on this CSS selector instead of the text line itself
+            //     removeTitle: true,	// By default, remove the title attribute, as a tooltip is redundant
+            //     snapback: true,		// Animate when de-activating, as opposed to instantly reverting
+            //     addStyles: true,	// Auto-add CSS; leave this on unless you need to override default styles
+            //     alwaysOn: false,	// If you're insane, you can turn this into a <marquee> tag. (Please don't.)
 
-                // In case you want to alter the events which activate and de-activate the effect:
-                startEvent: "mouseenter",
-                stopEvent: "mouseleave"
-            });
+            //     // In case you want to alter the events which activate and de-activate the effect:
+            //     startEvent: "mouseenter",
+            //     stopEvent: "mouseleave"
+            // });
 
             if (jsonDefs.length > 0) {
                 docTable.api().columns().visible(false);

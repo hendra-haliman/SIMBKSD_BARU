@@ -359,8 +359,8 @@ header {
 
 .filter {
     border: solid 1px #ccc; 
-    background-color: aliceblue; 
-    padding: 5px; 
+    background-color: navajowhite; 
+    padding: 10px; 
     font-size: 0.8rem; 
     display: none;
 }

@@ -25,12 +25,12 @@
 
         <div id="layoutSidenav_content">
             <main>
-                <header th:replace="~{fragments/content-header.html :: content-header('Laporan','', 'printer')}">
+                <header th:replace="~{fragments/content-header.html :: content-header('Laporan','', '')}">
                 </header>
                 <!-- Main page content-->
                 <div class="container-fluid px-4 mt-n10">
 
-                    <div class="row">
+                    <div class="row my-4">
                         <div class="col col-lg-6 col-xl-6 mb-6">
                             <form th:action="@{/laporan/rekap-tahunan}" method="get" class="h-100">
 
