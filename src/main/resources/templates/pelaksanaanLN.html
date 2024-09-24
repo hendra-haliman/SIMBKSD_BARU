@@ -26,7 +26,7 @@
             <main>
                 
                 <header
-                    th:replace="~{fragments/content-header.html :: content-header('Pelaksanaan Luar Negeri','','box')}">
+                    th:replace="~{fragments/content-header.html :: content-header('Pelaksanaan Luar Negeri','','')}">
                 </header>
 
                 <!-- Main page content-->
@@ -36,26 +36,27 @@
 
                     </div>
 
-                    <div class="card mb-4">
+                    <div class="card my-4">
                         <div class="card-header">Dokumen Kerja Sama KLN</div>
                         <div class="card-body">
 
                             <!-- FILTER -->
-                             <!-- Tgl Penetapan -->
-                            <div class="d-flex flex-row align-items-center mb-1">
-                                <label for="minDate" class="me-2 col-form-label" style="width: 280px;">Filter Tgl Penetapan dari tanggal</label><input id="minDate" class="form-control form-control-sm" style="width: 150px;" type="date"/>
-                                <label for="maxDate"  class="me-2 col-form-label" style="margin-left: 10px;">s/d tanggal</label><input class="form-control form-control-sm me-2" id="maxDate" style="width: 150px;" type="date"/>
-                                <label for="yearpicker"  class="me-2 col-form-label">Tahun</label> <input type="text" id="yearpicker" class="form-control form-control-sm" style="width:100px;"/>
-                            </div>
+                            <div class="filter" id="filter">
+                                <!-- Tgl Penetapan -->
+                                <div class="d-flex flex-row align-items-center mb-1">
+                                    <label for="minDate" class="me-2 col-form-label" style="width: 280px;">Filter Tgl Penetapan dari tanggal</label><input id="minDate" class="form-control form-control-sm" style="width: 150px;" type="date"/>
+                                    <label for="maxDate"  class="me-2 col-form-label" style="margin-left: 10px;">s/d tanggal</label><input class="form-control form-control-sm me-2" id="maxDate" style="width: 150px;" type="date"/>
+                                    <label for="yearpicker"  class="me-2 col-form-label">Tahun</label> <input type="text" id="yearpicker" class="form-control form-control-sm" style="width:100px;"/>
+                                </div>
 
-                            <!-- Tgl Berakhir -->
-                            <div class="d-flex flex-row align-items-center mb-1">
-                                <label for="minTglBerakhir" class="me-2 col-form-label" style="width: 280px;">Filter Tgl Berakhir dari tanggal</label><input id="minTglBerakhir" class="form-control form-control-sm" style="width: 150px;" type="date"/>
-                                <label for="maxTglBerakhir"  class="me-2 col-form-label" style="margin-left: 10px;">s/d tanggal</label><input class="form-control form-control-sm me-2" id="maxTglBerakhir" style="width: 150px;" type="date"/>
-                                <label for="yearTglBerakhirpicker"  class="me-2 col-form-label">Tahun</label> <input type="text" id="yearTglBerakhirpicker" class="form-control form-control-sm" style="width:100px;"/>
-                                <label for="filterNullTglBerakhir"class="me-2 col-form-label" style="margin-left: 10px;">Empty Tgl Berakhir</label><input type="checkbox" name="filterNullTglBerakhir" id="filterNullTglBerakhir" checked/>
+                                <!-- Tgl Berakhir -->
+                                <div class="d-flex flex-row align-items-center mb-1">
+                                    <label for="minTglBerakhir" class="me-2 col-form-label" style="width: 280px;">Filter Tgl Berakhir dari tanggal</label><input id="minTglBerakhir" class="form-control form-control-sm" style="width: 150px;" type="date"/>
+                                    <label for="maxTglBerakhir"  class="me-2 col-form-label" style="margin-left: 10px;">s/d tanggal</label><input class="form-control form-control-sm me-2" id="maxTglBerakhir" style="width: 150px;" type="date"/>
+                                    <label for="yearTglBerakhirpicker"  class="me-2 col-form-label">Tahun</label> <input type="text" id="yearTglBerakhirpicker" class="form-control form-control-sm" style="width:100px;"/>
+                                    <label for="filterNullTglBerakhir"class="me-2 col-form-label" style="margin-left: 10px;">Empty Tgl Berakhir</label><input type="checkbox" name="filterNullTglBerakhir" id="filterNullTglBerakhir" checked/>
+                                </div>
                             </div>
-
                             <!-- END OF FILTER -->
 
                             <table id="dokTable"
@@ -513,9 +514,31 @@
                                 }
                             },
                             {
+                                "text": "Show/Hide Filter",
+                                className: 'btn btn-sm btn-filter',
+                                "action": function (e, dt, button, config) {
+                                    $('#filter').toggle(function () {
+                                        $('#panel').animate({
+                                            height: "150",
+                                            padding: "20px 0",
+                                            backgroundColor: '#000000',
+                                            opacity: .8
+                                        }, 500);
+                                    },
+                                        function () {
+                                            $('#panel').animate({
+                                                height: "0",
+                                                padding: "0px 0",
+                                                opacity: .2
+                                            }, 500);
+                                        });
+                                }
+                            },
+                            {
                                 extend: 'print',
                                 text: 'Print',
-                                autoPrint: false,
+                                className: 'btn btn-sm btn-print',
+                                autoPrint: true,
                                 exportOptions: {
                                     modifier: {
                                         selected: true // Print only selected rows
@@ -616,7 +639,7 @@
              // Handle click on "Select all" control
              $('#select-all').on('click', function(){
                 // Get all rows with search applied
-                var rows = table.rows({ 'search': 'applied' }).nodes();
+                var rows = docTable.api().rows({ 'search': 'applied' }).nodes();
                 // Check/uncheck checkboxes for all rows in the table
                 $('input[type="checkbox"]', rows).prop('checked', this.checked);
             });
