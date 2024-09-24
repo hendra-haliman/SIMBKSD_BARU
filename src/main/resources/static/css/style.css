@@ -60,6 +60,10 @@ table.dataTable.table-bordered th:first-child, table.dataTable.table-bordered td
     background-color: rgb(47, 113, 47);
 }
 
+.btn-print {
+    background-color: rgb(47, 47, 209);
+}
+
 .btn-login {
     background-color: var(--bs-indigo);
     color: var(--bs-white); 
@@ -223,7 +227,7 @@ svg.feather {
 }
 
 .nav-logo {
-    height: 2em !important;
+    height: 1.5em !important;
 }
 
 .sb-sidenav .sb-sidenav-menu .nav .nav-link {
@@ -253,7 +257,7 @@ header.masthead {
     padding-top: 12rem;
     padding-bottom: calc(12rem - 4.5rem);
     /* background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url(../assets/img/bksd.jpg); */
-    background: url(../assets/img/bksd.jpg);   
+    background: url(../assets/img/office.jpg);   
     height: 100vh;  
     background-position: center;
     background-repeat: no-repeat;
@@ -278,7 +282,7 @@ a.nav-link {
 }
 
 a.navbar-brand > span {
-    vertical-align: -webkit-baseline-middle;
+    vertical-align: middle;
 }
 
 a.nav-link:hover {
@@ -287,6 +291,10 @@ a.nav-link:hover {
 }
 
 a.nav-link:active {
+    border-bottom: solid 3px #f4623a !important;
+}
+
+.nav-item.active {
     border-bottom: solid 3px #f4623a !important;
 }
 
@@ -345,3 +353,14 @@ a.nav-link:active {
     width: 100%;
 }
 
+header {
+    background-color: steelblue;
+}
+
+.filter {
+    border: solid 1px #ccc; 
+    background-color: aliceblue; 
+    padding: 5px; 
+    font-size: 0.8rem; 
+    display: none;
+}

@@ -23,4 +23,12 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     }
 
+    const topNavItems = document.body.querySelectorAll('.nav-item');
+    topNavItems.forEach(item => {
+        item.addEventListener('click', event => {
+            topNavItems.forEach(el => el.classList.remove('active'));
+            item.classList.add('active');
+        });
+    })
+
 });
