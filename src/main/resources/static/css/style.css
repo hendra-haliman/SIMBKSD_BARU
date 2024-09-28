@@ -364,3 +364,8 @@ header {
     font-size: 0.8rem; 
     display: none;
 }
+
+.sb-sidenav .sb-sidenav-menu .nav .sb-sidenav-menu-nested {
+    margin-left: 2rem;
+    flex-direction: column;
+}

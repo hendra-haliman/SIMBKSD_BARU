@@ -21,6 +21,10 @@ War file akan dihasilkan di folder `target`
 
 ### Test
 
+### Install Playwright
+
+`mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install --with-deps"`
+
 #### Test Generator
 
 `mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="codegen https://localhost:8443/SIMBKSD --ignore-https-errors"`

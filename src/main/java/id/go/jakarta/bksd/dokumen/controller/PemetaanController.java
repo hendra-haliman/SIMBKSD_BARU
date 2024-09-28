@@ -47,12 +47,12 @@ public class PemetaanController {
 
     @GetMapping("")
     public String pemetaan() {
-        return "pemetaan";
+        return "pemetaan/pemetaan";
     }
 
     @GetMapping("/grouping")
     public String pemetaanGrouping() {
-        return "pemetaan-group";
+        return "pemetaan/pemetaan-group";
     }
 
     @PostMapping("/list")
@@ -71,7 +71,7 @@ public class PemetaanController {
     public String lihat(@PathVariable Long id, Model model) {
         Pemetaan pemetaan = pemetaanService.findById(id).get();
         model.addAttribute("pemetaan", pemetaan);
-        return "pemetaan-lihat";
+        return "pemetaan/pemetaan-lihat";
     }
 
     @GetMapping("/add")
@@ -84,7 +84,7 @@ public class PemetaanController {
         }
         model.addAttribute("opdList", opd);
 
-        return "pemetaan-add";
+        return "pemetaan/pemetaan-add";
     }
 
     @PostMapping("saveNew")
@@ -96,13 +96,13 @@ public class PemetaanController {
         if ("group".equals(mode)) {
             return "pemetaan-group";
         }
-        return "pemetaan";
+        return "pemetaan/pemetaan";
     }
 
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable Long id, Model model, @RequestParam(required = false) String mode) {
-        Pemetaan pemetaan       = pemetaanService.findById(id).get();
-        List<OPD> opd           = opdService.findAll();
+        Pemetaan pemetaan = pemetaanService.findById(id).get();
+        List<OPD> opd = opdService.findAll();
         List<Bagian> bagianList = bagianService.findAll();
 
         model.addAttribute("opdList", opd);
@@ -112,7 +112,7 @@ public class PemetaanController {
             model.addAttribute("mode", mode);
         }
         model.addAttribute("pemetaan", pemetaan);
-        return "pemetaan-edit";
+        return "pemetaan/pemetaan-edit";
     }
 
     @PostMapping("saveEdit")
@@ -125,7 +125,7 @@ public class PemetaanController {
         if ("group".equals(mode)) {
             return "pemetaan-group";
         }
-        return "pemetaan";
+        return "pemetaan/pemetaan";
     }
 
     @GetMapping("/delete/{id}")

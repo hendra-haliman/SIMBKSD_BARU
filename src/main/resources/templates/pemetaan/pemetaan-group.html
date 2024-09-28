@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="card my-4">
-                        <div class="card-header">Data Pemetaan</div>
+                        <div class="card-header">Data Pemetaan - Grouping berdasarkan OPD dan Bagian Biro KSD</div>
                         <div class="card-body">
 
                             <!-- FILTER -->
@@ -99,7 +99,7 @@
         </div>
     </div>
     <div th:include="~{fragments/general.html :: script}"></div>
-    
+
     <script th:inline="javascript">
         var isAdmin = /*[[${#authorization.expression('hasRole(''ADMIN'')')}]]*/ '';
         var isSTAFF_CONTRIBUTOR = /*[[${#authorization.expression('hasRole(''STAFF_CONTRIBUTOR'')')}]]*/ '';
@@ -107,6 +107,7 @@
 
     <script>
         $(document).ready(function () {
+            var collapsedGroups = {}; // Object to track collapsed group states
 
             $("#logout").on("click", function (e) {
                 $("#logout-form").submit();
@@ -122,8 +123,7 @@
                 "initComplete": function () {
                     var searchInput = $('#dt-search-0');
                     searchInput.css('width', '400px'); 
-                },                
-
+                },
                 "ajax": {
                     "url": contextPath + "pemetaan/list",
                     "type": "POST",
@@ -133,7 +133,6 @@
                     "data": function(d) {
                         var filterTahun = $('#filterTahun').val();
                         d.filterTahun = filterTahun;
-
                         return JSON.stringify(d);
                     },
                     "dataSrc": function (json) {
@@ -145,7 +144,7 @@
                     },
                     "error": function (xhr, error, thrown) {
                         if (xhr.status === 401) {
-                            window.location.href = "/dokumen/logout"; // Redirect to login page
+                            window.location.href = contextPath + "logout"; // Redirect to login page
                         }
                     }
                 },
@@ -154,27 +153,38 @@
 
                     {
                         "data": null,
+                        "width": "50px",
                         "targets": 1,
                         "render": function (data, type, row, meta) {
                             return meta.row + meta.settings._iDisplayStart + 1
                         }
                     },
-                    { "data": "tahun"},
-                    { "data": "bagian",
-                    "render" : function (data, type, row, meta) {
-                            if (data!=null) {
-                                return data.nama;
-                            } else {
-                                return "";
-                            }
-                      }
+                    { 
+                        "data": "tahun",
+                        "width": "60px"
                     },
-                    { "data": "opd",
-                      "render" : function (data, type, row, meta) {
-                            return data.nama; 
-                      }
+                    { 
+                        "data": "bagian",
+                        "render" : function (data, type, row, meta) {
+                                if (data!=null) {
+                                    return data.nama;
+                                } else {
+                                    return "";
+                                }
+                        },
+                        "visible": false
+                    },
+                    { 
+                        "data": "opd",
+                        "render" : function (data, type, row, meta) {
+                                return data.nama; 
+                        },
+                        "visible": false
                      },
-                    { "data": "urusanPemerintahan" },
+                    { 
+                        "data": "urusanPemerintahan",
+                        "width": "125px"
+                     },
                     {
                         "data": "kegiatan",
                         "width": "150px",
@@ -205,20 +215,41 @@
                         "data": null,
                         "responsivePriority": 2,
                         "render": function (data, type, row, meta) {
-                            var actions = "<a class='btn btn-sm btn-success mb-sm-1 inline-link ' href='" + contextPath + "pemetaan/view/" + row.id + "' data-bs-toggle='tooltip' data-bs-placement='top' title='Lihat'><svg class='myicon'><use xlink:href='#binoculars'></use></svg> <span class='ms-sm-2'>Lihat</span></a>";
-
+                            var actions = "<a  class='btn btn-sm btn-success mb-sm-1 inline-link ' href='" + contextPath + "pemetaan/view/" + row.id + "'><svg class='myicon'><use xlink:href='#binoculars'></use></svg> <span class='ms-sm-2'>Lihat</span></a>";
+                            
                             if (isSTAFF_CONTRIBUTOR || isAdmin) {
-                                actions += "<a class='btn btn-sm btn-warning mb-sm-1 inline-link ' href='" + contextPath + "pemetaan/edit/" + row.id + "' data-bs-toggle='tooltip' data-bs-placement='top' title='Edit'><svg class='myicon'><use xlink:href='#pencil'></use></svg> <span class='ms-sm-2'>Rubah</span></a>";
+                                actions += "<a class='btn btn-sm btn-warning mb-sm-1 inline-link ' href='" + contextPath + "pemetaan/edit/" + row.id + "?mode=group'><svg class='myicon'><use xlink:href='#pencil'></use></svg> <span class='ms-sm-2'>Rubah</span></a>";
                             }
 
-                            if (isAdmin) {
-                                actions += "<a class='btn btn-sm btn-danger mb-sm-1 inline-link ' id='delete'  onclick='showDeleteConfirmation(\"" + row.kegiatan + "\")' href='#' data-bs-toggle='tooltip' data-bs-placement='top' title='Hapus'><svg class='myicon'><use xlink:href='#trash-can'></use></svg> <span class='ms-sm-2'>Hapus</span></a>";
+                            if (isAdmin) {    
+                                actions += "<a class='btn btn-sm btn-danger mb-sm-1 inline-link ' id='delete'  onclick='showDeleteConfirmation(\"" + row.kegiatan + "\")' href='#'><svg class='myicon'><use xlink:href='#trash-can'></use></svg> <span class='ms-sm-2'>Hapus</span></a>";
                             }
-                                
+
                             return actions;
                         }
                     }
                 ],
+                "rowGroup": {
+                    "dataSrc" : [
+                        function(row) {
+                            return row.opd.nama;
+                        },
+                        function(row) {
+                            return row.bagian.nama;
+                        }
+                    ],
+                    "startRender": function (rows, group, level) {
+                        if (level === 0) { 
+                        return "<i class='fa-solid fa-arrow-right'></i> " + group;
+                        } else {
+                        return group;
+                        }
+                    }
+                },
+
+                "fnCreatedRow": function( nRow, aData, iDataIndex ) {
+                    $(nRow).find('td:eq(17)').addClass('no-wrap');
+                },
                 "layout": {
                     "top2Start": {
                         "buttons": [
@@ -226,7 +257,7 @@
                                 text: '<i class="fa-solid fa-plus"></i> Tambah Dokumen',
                                 className: 'btn btn-sm btn-tambah',
                                 action: function (e, dt, node, config) {
-                                    window.location.href = "/dokumen/pemetaan/add";
+                                    window.location.href = contextPath + "pemetaan/add?mode=group";
                                 }
                             },
                             {
@@ -248,13 +279,13 @@
                                         headers: { "Content-Type": "application/json; charset=UTF-8" }
                                     }).then(response => response.blob())
                                     .then(blob => {
-                                        const filename = 'export_pemetaan.xlsx'; 
+                                        const filename = 'export_pemetaan.xlsx'; // Replace with desired filename
                                         const url = window.URL.createObjectURL(blob);
                                         const link = document.createElement('a');
                                         link.href = url;
                                         link.download = filename;
                                         link.click();
-                                        window.URL.revokeObjectURL(url); 
+                                        window.URL.revokeObjectURL(url); // Revoke temporary URL
                                         })
                                     .catch(error => console.error(error));
                                 }
@@ -278,13 +309,13 @@
                                         headers: { "Content-Type": "application/json; charset=UTF-8" }
                                     }).then(response => response.blob())
                                     .then(blob => {
-                                        const filename = 'export_pemetaan_per_perangkat.xlsx'; 
+                                        const filename = 'export_pemetaan_per_perangkat.xlsx'; // Replace with desired filename
                                         const url = window.URL.createObjectURL(blob);
                                         const link = document.createElement('a');
                                         link.href = url;
                                         link.download = filename;
                                         link.click();
-                                        window.URL.revokeObjectURL(url); 
+                                        window.URL.revokeObjectURL(url); // Revoke temporary URL
                                         })
                                     .catch(error => console.error(error));
                                 }
@@ -309,12 +340,12 @@
             //     window.location.href = 'your-link-url';
             // });
 
-
             docTable.on('xhr', function () {
                 var data = docTable.ajax.params();
                 alert('Search term was: ' + data.search.value);
             });
 
+            
             $('#filterTahun').datepicker({
                 format: "yyyy",
                 viewMode: "years", 
@@ -331,16 +362,6 @@
             //      docTable.api().draw();
             // });
 
-            $('#filterBtn').on('click', function() {
-                var param = JSON.parse(docTable.api().ajax.params());
-                var filterTahun = $('#filterTahun').val();
-
-                param.filterTahun = filterTahun;
-
-                console.log(JSON.stringify(param));
-                console.log(typeof(param));
-                //docTable.api().search().draw();
-            });
         });
 
         function showDeleteConfirmation(title) {    

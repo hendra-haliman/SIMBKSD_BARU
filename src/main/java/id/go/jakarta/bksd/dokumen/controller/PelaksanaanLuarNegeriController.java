@@ -56,6 +56,6 @@ public class PelaksanaanLuarNegeriController {
         model.addAttribute("jsonDefs", jsonDefs);
         model.addAttribute("year", year);
 
-        return "pelaksanaanLN";
+        return "pelaksanaanLN/pelaksanaanLN";
     }
 }
