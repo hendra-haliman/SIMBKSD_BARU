@@ -12,9 +12,11 @@ import org.junit.jupiter.api.Test;
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.BrowserType;
+import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 import com.microsoft.playwright.junit.UsePlaywright;
+import com.microsoft.playwright.options.AriaRole;
 
 /**
  * Simple test untuk mencheck Playwright bisa menggunakan test runner JUnit
@@ -31,6 +33,7 @@ public class TestPlaywright {
     static void launchBrowser() {
         playwright = Playwright.create();
         browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+
     }
 
     @AfterAll
@@ -40,7 +43,10 @@ public class TestPlaywright {
 
     @BeforeEach
     void createContextAndPage() {
-        context = browser.newContext();
+        // Agar bisa menjalankan browser dengan SSL certificate self-signed/localhost,
+        // kita igone https errors
+        Browser.NewContextOptions options = new Browser.NewContextOptions().setIgnoreHTTPSErrors(true);
+        context = browser.newContext(options);
         page = context.newPage();
     }
 
@@ -70,6 +76,20 @@ public class TestPlaywright {
         page.locator("input[name=\"search\"]").fill("playwright");
         page.locator("input[name=\"search\"]").press("Enter");
         assertEquals("https://en.wikipedia.org/wiki/Playwright", page.url());
+    }
+
+    @Test
+    void shouldGotoDashboardPage() {
+        page.navigate("https://localhost:8443/SIMBKSD/");
+        page.locator("#navbarResponsive").getByRole(AriaRole.LINK, new Locator.GetByRoleOptions().setName("Login"))
+                .click();
+        page.getByPlaceholder("Masukan email address").click();
+        page.getByPlaceholder("Masukan email address").fill("hendra.haliman@gmail.com");
+        page.getByPlaceholder("Masukan email address").press("Tab");
+        page.getByPlaceholder("Masukan password").fill("superman");
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Login")).click();
+
+        // TODO: Check halaman nya = dashboard
     }
 
 }
