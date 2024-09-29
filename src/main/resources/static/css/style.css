@@ -256,8 +256,8 @@ svg.feather {
 header.masthead {
     padding-top: 12rem;
     padding-bottom: calc(12rem - 4.5rem);
-    /* background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url(../assets/img/bksd.jpg); */
-    background: url(../assets/img/office.jpg);   
+    background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url(../assets/img/office.jpg);
+    /* background: url(../assets/img/office.jpg);    */
     height: 100vh;  
     background-position: center;
     background-repeat: no-repeat;
@@ -362,5 +362,32 @@ header {
     background-color: navajowhite; 
     padding: 10px; 
     font-size: 0.8rem; 
+    /* display: none; */
+}
+
+.text-white-75 {
+    color: rgba(255, 255, 255, 0.75) !important;
+}
+
+hr.divider {
+    height: 0.2rem;
+    max-width: 3.25rem;
+    margin: 1.5rem auto;
+    background-color: #f4623a;
+    opacity: 1;
+}
+
+.overlay_image {
+    position: absolute; /* Position the image absolutely inside the container */
+    top: 56px; 
+    left: 0; 
+    width: 10em;
+    /* width: 100%; Stretch the overlay image to cover the container */
+    /* height: 100%; Stretch the overlay image to cover the container */
+    opacity: 0.8; 
+}
+
+.hidden {
     display: none;
 }
+  
