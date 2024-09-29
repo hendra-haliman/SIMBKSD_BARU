@@ -839,3 +839,293 @@ Consider defining a bean named 'auditorAware' in your configuration.
 2024-09-30 03:48:11,913 INFO [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:650] Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-09-30 03:48:11,915 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:349] HikariPool-2 - Shutdown initiated...
 2024-09-30 03:48:11,925 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:351] HikariPool-2 - Shutdown completed.
+2024-09-30 04:06:58,452 INFO [File Watcher] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [LocalDevToolsAutoConfiguration.java:211] Restarting due to 248 class path changes (0 additions, 248 deletions, 0 modifications)
+2024-09-30 04:06:58,457 INFO [Thread-7] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Stopping ProtocolHandler ["https-jsse-nio-8443"]
+2024-09-30 04:06:58,490 INFO [Thread-7] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:650] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 04:06:58,492 INFO [Thread-7] c.z.h.HikariDataSource [HikariDataSource.java:349] HikariPool-3 - Shutdown initiated...
+2024-09-30 04:06:58,507 INFO [Thread-7] c.z.h.HikariDataSource [HikariDataSource.java:351] HikariPool-3 - Shutdown completed.
+2024-09-30 04:07:05,632 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:50] Starting DokumenApplication using Java 21 with PID 31804 (D:\Projects\SIMBKSD\target\classes started by Hendra in D:\Projects\SIMBKSD)
+2024-09-30 04:07:05,633 INFO [restartedMain] i.g.j.b.d.DokumenApplication [SpringApplication.java:660] The following 1 profile is active: "devrumah"
+2024-09-30 04:07:06,964 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:143] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-30 04:07:07,108 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:211] Finished Spring Data repository scanning in 143 ms. Found 18 JPA repository interfaces.
+2024-09-30 04:07:07,552 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:111] Tomcat initialized with port 8443 (https)
+2024-09-30 04:07:07,554 INFO [restartedMain] o.a.c.c.StandardService [DirectJDKLog.java:173] Starting service [Tomcat]
+2024-09-30 04:07:07,555 INFO [restartedMain] o.a.c.c.StandardEngine [DirectJDKLog.java:173] Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-09-30 04:07:07,638 INFO [restartedMain] o.a.c.c.C.[.[.[/SIMBKSD] [DirectJDKLog.java:173] Initializing Spring embedded WebApplicationContext
+2024-09-30 04:07:07,638 INFO [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext [ServletWebServerApplicationContext.java:296] Root WebApplicationContext: initialization completed in 1999 ms
+2024-09-30 04:07:07,826 DEBUG [restartedMain] i.g.j.b.d.c.CustomLoginFilter2 [GenericFilterBean.java:240] Filter 'customLoginFilter2' configured for use
+2024-09-30 04:07:07,959 INFO [restartedMain] o.h.j.i.u.LogHelper [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-30 04:07:07,965 INFO [restartedMain] o.h.c.i.RegionFactoryInitiator [RegionFactoryInitiator.java:50] HHH000026: Second-level cache disabled
+2024-09-30 04:07:08,002 INFO [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo [SpringPersistenceUnitInfo.java:87] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-30 04:07:08,006 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:109] HikariPool-4 - Starting...
+2024-09-30 04:07:08,016 INFO [restartedMain] c.z.h.p.HikariPool [HikariPool.java:554] HikariPool-4 - Added connection org.mariadb.jdbc.Connection@26c99bff
+2024-09-30 04:07:08,017 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:122] HikariPool-4 - Start completed.
+2024-09-30 04:07:08,020 WARN [restartedMain] o.h.o.deprecation [DialectFactoryImpl.java:153] HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30 04:07:08,564 INFO [restartedMain] o.h.m.i.EntityInstantiatorPojoStandard [EntityInstantiatorPojoStandard.java:53] HHH000182: No default (no-argument) constructor for class: id.go.jakarta.bksd.dokumen.domain.UserActivity (class must be instantiated by Interceptor)
+2024-09-30 04:07:08,928 INFO [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator [JtaPlatformInitiator.java:59] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-30 04:07:09,363 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:437] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 04:07:10,446 WARN [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [JpaBaseConfiguration.java:236] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-30 04:07:10,499 INFO [restartedMain] o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer [InitializeAuthenticationProviderBeanManagerConfigurer.java:83] Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-09-30 04:07:10,500 WARN [restartedMain] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [InitializeUserDetailsBeanManagerConfigurer.java:72] Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-09-30 04:07:10,969 INFO [restartedMain] o.s.b.a.e.w.EndpointLinksResolver [EndpointLinksResolver.java:60] Exposing 1 endpoint beneath base path '/actuator'
+2024-09-30 04:07:11,063 INFO [restartedMain] o.s.s.w.a.c.ChannelProcessingFilter [ChannelProcessingFilter.java:106] Validated configuration attributes
+2024-09-30 04:07:11,745 INFO [restartedMain] o.s.b.d.a.OptionalLiveReloadServer [OptionalLiveReloadServer.java:59] LiveReload server is running on port 35729
+2024-09-30 04:07:11,802 WARN [restartedMain] org.jline [Log.java:115] Unable to create a system terminal, creating a dumb terminal (enable debug logging for more information)
+2024-09-30 04:07:12,252 INFO [restartedMain] o.a.t.u.n.N.certificate [DirectJDKLog.java:173] Connector [https-jsse-nio-8443], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\Hendra\.keystore] using alias [tomcat] with trust store [null]
+2024-09-30 04:07:12,276 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:243] Tomcat started on port 8443 (https) with context path '/SIMBKSD'
+2024-09-30 04:07:12,292 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:56] Started DokumenApplication in 6.748 seconds (process running for 1245.32)
+2024-09-30 04:07:12,296 INFO [restartedMain] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [ConditionEvaluationDeltaLoggingListener.java:63] Condition evaluation unchanged
+2024-09-30 04:13:14,565 INFO [File Watcher] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [LocalDevToolsAutoConfiguration.java:211] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-09-30 04:13:14,617 INFO [Thread-14] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:650] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 04:13:14,619 INFO [Thread-14] c.z.h.HikariDataSource [HikariDataSource.java:349] HikariPool-4 - Shutdown initiated...
+2024-09-30 04:13:14,630 INFO [Thread-14] c.z.h.HikariDataSource [HikariDataSource.java:351] HikariPool-4 - Shutdown completed.
+2024-09-30 04:13:14,992 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:50] Starting DokumenApplication using Java 21 with PID 31804 (D:\Projects\SIMBKSD\target\classes started by Hendra in D:\Projects\SIMBKSD)
+2024-09-30 04:13:14,995 INFO [restartedMain] i.g.j.b.d.DokumenApplication [SpringApplication.java:660] The following 1 profile is active: "devrumah"
+2024-09-30 04:13:16,169 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:143] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-30 04:13:16,309 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:211] Finished Spring Data repository scanning in 139 ms. Found 18 JPA repository interfaces.
+2024-09-30 04:13:16,841 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:111] Tomcat initialized with port 8443 (https)
+2024-09-30 04:13:16,845 INFO [restartedMain] o.a.c.c.StandardService [DirectJDKLog.java:173] Starting service [Tomcat]
+2024-09-30 04:13:16,845 INFO [restartedMain] o.a.c.c.StandardEngine [DirectJDKLog.java:173] Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-09-30 04:13:16,928 INFO [restartedMain] o.a.c.c.C.[.[.[/SIMBKSD] [DirectJDKLog.java:173] Initializing Spring embedded WebApplicationContext
+2024-09-30 04:13:16,929 INFO [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext [ServletWebServerApplicationContext.java:296] Root WebApplicationContext: initialization completed in 1929 ms
+2024-09-30 04:13:17,146 DEBUG [restartedMain] i.g.j.b.d.c.CustomLoginFilter2 [GenericFilterBean.java:240] Filter 'customLoginFilter2' configured for use
+2024-09-30 04:13:17,324 INFO [restartedMain] o.h.j.i.u.LogHelper [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-30 04:13:17,335 INFO [restartedMain] o.h.c.i.RegionFactoryInitiator [RegionFactoryInitiator.java:50] HHH000026: Second-level cache disabled
+2024-09-30 04:13:17,361 INFO [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo [SpringPersistenceUnitInfo.java:87] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-30 04:13:17,363 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:109] HikariPool-5 - Starting...
+2024-09-30 04:13:17,374 INFO [restartedMain] c.z.h.p.HikariPool [HikariPool.java:554] HikariPool-5 - Added connection org.mariadb.jdbc.Connection@412db2fe
+2024-09-30 04:13:17,375 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:122] HikariPool-5 - Start completed.
+2024-09-30 04:13:17,377 WARN [restartedMain] o.h.o.deprecation [DialectFactoryImpl.java:153] HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30 04:13:17,719 INFO [restartedMain] o.h.m.i.EntityInstantiatorPojoStandard [EntityInstantiatorPojoStandard.java:53] HHH000182: No default (no-argument) constructor for class: id.go.jakarta.bksd.dokumen.domain.UserActivity (class must be instantiated by Interceptor)
+2024-09-30 04:13:18,052 INFO [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator [JtaPlatformInitiator.java:59] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-30 04:13:18,547 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:437] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 04:13:19,463 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [AbstractApplicationContext.java:633] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'devUtilityService' defined in file [D:\Projects\SIMBKSD\target\classes\id\go\jakarta\bksd\dokumen\service\DevUtilityService.class]: Encountered invalid @Scheduled method 'downloadMissingFile': Could not resolve placeholder 'downloadMissingFile.cron' in value "${downloadMissingFile.cron}:0 15 00 * * ?"
+2024-09-30 04:13:19,465 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:650] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 04:13:19,466 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:349] HikariPool-5 - Shutdown initiated...
+2024-09-30 04:13:19,472 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:351] HikariPool-5 - Shutdown completed.
+2024-09-30 04:13:19,474 INFO [restartedMain] o.a.c.c.StandardService [DirectJDKLog.java:173] Stopping service [Tomcat]
+2024-09-30 04:13:19,490 INFO [restartedMain] o.s.b.a.l.ConditionEvaluationReportLogger [ConditionEvaluationReportLogger.java:82] 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-09-30 04:13:19,496 ERROR [restartedMain] o.s.b.SpringApplication [SpringApplication.java:859] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'devUtilityService' defined in file [D:\Projects\SIMBKSD\target\classes\id\go\jakarta\bksd\dokumen\service\DevUtilityService.class]: Encountered invalid @Scheduled method 'downloadMissingFile': Could not resolve placeholder 'downloadMissingFile.cron' in value "${downloadMissingFile.cron}:0 15 00 * * ?"
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at id.go.jakarta.bksd.dokumen.DokumenApplication.main(DokumenApplication.java:14)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.lang.IllegalStateException: Encountered invalid @Scheduled method 'downloadMissingFile': Could not resolve placeholder 'downloadMissingFile.cron' in value "${downloadMissingFile.cron}:0 15 00 * * ?"
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.processScheduledTask(ScheduledAnnotationBeanPostProcessor.java:523)
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.processScheduledSync(ScheduledAnnotationBeanPostProcessor.java:362)
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.processScheduled(ScheduledAnnotationBeanPostProcessor.java:341)
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.lambda$postProcessAfterInitialization$1(ScheduledAnnotationBeanPostProcessor.java:306)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.lambda$postProcessAfterInitialization$2(ScheduledAnnotationBeanPostProcessor.java:306)
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:986)
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.postProcessAfterInitialization(ScheduledAnnotationBeanPostProcessor.java:305)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsAfterInitialization(AbstractAutowireCapableBeanFactory.java:438)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1809)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	... 18 common frames omitted
+2024-09-30 04:13:21,060 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:50] Starting DokumenApplication using Java 21 with PID 31804 (D:\Projects\SIMBKSD\target\classes started by Hendra in D:\Projects\SIMBKSD)
+2024-09-30 04:13:21,060 INFO [restartedMain] i.g.j.b.d.DokumenApplication [SpringApplication.java:660] The following 1 profile is active: "devrumah"
+2024-09-30 04:13:21,757 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:143] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-30 04:13:21,865 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:211] Finished Spring Data repository scanning in 108 ms. Found 18 JPA repository interfaces.
+2024-09-30 04:13:22,222 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:111] Tomcat initialized with port 8443 (https)
+2024-09-30 04:13:22,223 INFO [restartedMain] o.a.c.c.StandardService [DirectJDKLog.java:173] Starting service [Tomcat]
+2024-09-30 04:13:22,224 INFO [restartedMain] o.a.c.c.StandardEngine [DirectJDKLog.java:173] Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-09-30 04:13:22,289 INFO [restartedMain] o.a.c.c.C.[.[.[/SIMBKSD] [DirectJDKLog.java:173] Initializing Spring embedded WebApplicationContext
+2024-09-30 04:13:22,289 INFO [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext [ServletWebServerApplicationContext.java:296] Root WebApplicationContext: initialization completed in 1225 ms
+2024-09-30 04:13:22,428 DEBUG [restartedMain] i.g.j.b.d.c.CustomLoginFilter2 [GenericFilterBean.java:240] Filter 'customLoginFilter2' configured for use
+2024-09-30 04:13:22,518 INFO [restartedMain] o.h.j.i.u.LogHelper [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-30 04:13:22,522 INFO [restartedMain] o.h.c.i.RegionFactoryInitiator [RegionFactoryInitiator.java:50] HHH000026: Second-level cache disabled
+2024-09-30 04:13:22,540 INFO [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo [SpringPersistenceUnitInfo.java:87] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-30 04:13:22,542 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:109] HikariPool-6 - Starting...
+2024-09-30 04:13:22,546 INFO [restartedMain] c.z.h.p.HikariPool [HikariPool.java:554] HikariPool-6 - Added connection org.mariadb.jdbc.Connection@59de7c0c
+2024-09-30 04:13:22,547 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:122] HikariPool-6 - Start completed.
+2024-09-30 04:13:22,548 WARN [restartedMain] o.h.o.deprecation [DialectFactoryImpl.java:153] HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30 04:13:22,758 INFO [restartedMain] o.h.m.i.EntityInstantiatorPojoStandard [EntityInstantiatorPojoStandard.java:53] HHH000182: No default (no-argument) constructor for class: id.go.jakarta.bksd.dokumen.domain.UserActivity (class must be instantiated by Interceptor)
+2024-09-30 04:13:22,987 INFO [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator [JtaPlatformInitiator.java:59] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-30 04:13:23,343 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:437] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 04:13:24,145 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [AbstractApplicationContext.java:633] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'devUtilityService' defined in file [D:\Projects\SIMBKSD\target\classes\id\go\jakarta\bksd\dokumen\service\DevUtilityService.class]: Encountered invalid @Scheduled method 'downloadMissingFile': Cron expression must consist of 6 fields (found 11 in "0 15 00 * * ?:0 15 00 * * ?")
+2024-09-30 04:13:24,146 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:650] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 04:13:24,147 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:349] HikariPool-6 - Shutdown initiated...
+2024-09-30 04:13:24,153 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:351] HikariPool-6 - Shutdown completed.
+2024-09-30 04:13:24,154 INFO [restartedMain] o.a.c.c.StandardService [DirectJDKLog.java:173] Stopping service [Tomcat]
+2024-09-30 04:13:24,166 INFO [restartedMain] o.s.b.a.l.ConditionEvaluationReportLogger [ConditionEvaluationReportLogger.java:82] 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-09-30 04:13:24,170 ERROR [restartedMain] o.s.b.SpringApplication [SpringApplication.java:859] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'devUtilityService' defined in file [D:\Projects\SIMBKSD\target\classes\id\go\jakarta\bksd\dokumen\service\DevUtilityService.class]: Encountered invalid @Scheduled method 'downloadMissingFile': Cron expression must consist of 6 fields (found 11 in "0 15 00 * * ?:0 15 00 * * ?")
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at id.go.jakarta.bksd.dokumen.DokumenApplication.main(DokumenApplication.java:14)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.lang.IllegalStateException: Encountered invalid @Scheduled method 'downloadMissingFile': Cron expression must consist of 6 fields (found 11 in "0 15 00 * * ?:0 15 00 * * ?")
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.processScheduledTask(ScheduledAnnotationBeanPostProcessor.java:523)
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.processScheduledSync(ScheduledAnnotationBeanPostProcessor.java:362)
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.processScheduled(ScheduledAnnotationBeanPostProcessor.java:341)
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.lambda$postProcessAfterInitialization$1(ScheduledAnnotationBeanPostProcessor.java:306)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.lambda$postProcessAfterInitialization$2(ScheduledAnnotationBeanPostProcessor.java:306)
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:986)
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.postProcessAfterInitialization(ScheduledAnnotationBeanPostProcessor.java:305)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsAfterInitialization(AbstractAutowireCapableBeanFactory.java:438)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1809)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	... 18 common frames omitted
+2024-09-30 04:13:53,272 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:50] Starting DokumenApplication using Java 21 with PID 31804 (D:\Projects\SIMBKSD\target\classes started by Hendra in D:\Projects\SIMBKSD)
+2024-09-30 04:13:53,273 INFO [restartedMain] i.g.j.b.d.DokumenApplication [SpringApplication.java:660] The following 1 profile is active: "devrumah"
+2024-09-30 04:13:54,378 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:143] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-30 04:13:54,505 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:211] Finished Spring Data repository scanning in 125 ms. Found 18 JPA repository interfaces.
+2024-09-30 04:13:54,926 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:111] Tomcat initialized with port 8443 (https)
+2024-09-30 04:13:54,928 INFO [restartedMain] o.a.c.c.StandardService [DirectJDKLog.java:173] Starting service [Tomcat]
+2024-09-30 04:13:54,929 INFO [restartedMain] o.a.c.c.StandardEngine [DirectJDKLog.java:173] Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-09-30 04:13:55,017 INFO [restartedMain] o.a.c.c.C.[.[.[/SIMBKSD] [DirectJDKLog.java:173] Initializing Spring embedded WebApplicationContext
+2024-09-30 04:13:55,017 INFO [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext [ServletWebServerApplicationContext.java:296] Root WebApplicationContext: initialization completed in 1740 ms
+2024-09-30 04:13:55,181 DEBUG [restartedMain] i.g.j.b.d.c.CustomLoginFilter2 [GenericFilterBean.java:240] Filter 'customLoginFilter2' configured for use
+2024-09-30 04:13:55,284 INFO [restartedMain] o.h.j.i.u.LogHelper [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-30 04:13:55,290 INFO [restartedMain] o.h.c.i.RegionFactoryInitiator [RegionFactoryInitiator.java:50] HHH000026: Second-level cache disabled
+2024-09-30 04:13:55,308 INFO [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo [SpringPersistenceUnitInfo.java:87] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-30 04:13:55,310 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:109] HikariPool-7 - Starting...
+2024-09-30 04:13:55,317 INFO [restartedMain] c.z.h.p.HikariPool [HikariPool.java:554] HikariPool-7 - Added connection org.mariadb.jdbc.Connection@643ee53e
+2024-09-30 04:13:55,317 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:122] HikariPool-7 - Start completed.
+2024-09-30 04:13:55,319 WARN [restartedMain] o.h.o.deprecation [DialectFactoryImpl.java:153] HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30 04:13:55,565 INFO [restartedMain] o.h.m.i.EntityInstantiatorPojoStandard [EntityInstantiatorPojoStandard.java:53] HHH000182: No default (no-argument) constructor for class: id.go.jakarta.bksd.dokumen.domain.UserActivity (class must be instantiated by Interceptor)
+2024-09-30 04:13:55,913 INFO [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator [JtaPlatformInitiator.java:59] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-30 04:13:56,328 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:437] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 04:13:57,399 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [AbstractApplicationContext.java:633] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'devUtilityService' defined in file [D:\Projects\SIMBKSD\target\classes\id\go\jakarta\bksd\dokumen\service\DevUtilityService.class]: Encountered invalid @Scheduled method 'downloadMissingFile': Cron expression must consist of 6 fields (found 11 in "0 15 00 * * ?:0 15 00 * * ?")
+2024-09-30 04:13:57,401 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:650] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 04:13:57,402 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:349] HikariPool-7 - Shutdown initiated...
+2024-09-30 04:13:57,408 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:351] HikariPool-7 - Shutdown completed.
+2024-09-30 04:13:57,409 INFO [restartedMain] o.a.c.c.StandardService [DirectJDKLog.java:173] Stopping service [Tomcat]
+2024-09-30 04:13:57,420 INFO [restartedMain] o.s.b.a.l.ConditionEvaluationReportLogger [ConditionEvaluationReportLogger.java:82] 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-09-30 04:13:57,424 ERROR [restartedMain] o.s.b.SpringApplication [SpringApplication.java:859] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'devUtilityService' defined in file [D:\Projects\SIMBKSD\target\classes\id\go\jakarta\bksd\dokumen\service\DevUtilityService.class]: Encountered invalid @Scheduled method 'downloadMissingFile': Cron expression must consist of 6 fields (found 11 in "0 15 00 * * ?:0 15 00 * * ?")
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at id.go.jakarta.bksd.dokumen.DokumenApplication.main(DokumenApplication.java:14)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.lang.IllegalStateException: Encountered invalid @Scheduled method 'downloadMissingFile': Cron expression must consist of 6 fields (found 11 in "0 15 00 * * ?:0 15 00 * * ?")
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.processScheduledTask(ScheduledAnnotationBeanPostProcessor.java:523)
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.processScheduledSync(ScheduledAnnotationBeanPostProcessor.java:362)
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.processScheduled(ScheduledAnnotationBeanPostProcessor.java:341)
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.lambda$postProcessAfterInitialization$1(ScheduledAnnotationBeanPostProcessor.java:306)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.lambda$postProcessAfterInitialization$2(ScheduledAnnotationBeanPostProcessor.java:306)
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:986)
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.postProcessAfterInitialization(ScheduledAnnotationBeanPostProcessor.java:305)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsAfterInitialization(AbstractAutowireCapableBeanFactory.java:438)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1809)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	... 18 common frames omitted
+2024-09-30 04:14:06,410 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:50] Starting DokumenApplication using Java 21 with PID 31804 (D:\Projects\SIMBKSD\target\classes started by Hendra in D:\Projects\SIMBKSD)
+2024-09-30 04:14:06,411 INFO [restartedMain] i.g.j.b.d.DokumenApplication [SpringApplication.java:660] The following 1 profile is active: "devrumah"
+2024-09-30 04:14:07,300 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:143] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-30 04:14:07,421 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:211] Finished Spring Data repository scanning in 119 ms. Found 18 JPA repository interfaces.
+2024-09-30 04:14:07,864 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:111] Tomcat initialized with port 8443 (https)
+2024-09-30 04:14:07,866 INFO [restartedMain] o.a.c.c.StandardService [DirectJDKLog.java:173] Starting service [Tomcat]
+2024-09-30 04:14:07,867 INFO [restartedMain] o.a.c.c.StandardEngine [DirectJDKLog.java:173] Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-09-30 04:14:07,939 INFO [restartedMain] o.a.c.c.C.[.[.[/SIMBKSD] [DirectJDKLog.java:173] Initializing Spring embedded WebApplicationContext
+2024-09-30 04:14:07,940 INFO [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext [ServletWebServerApplicationContext.java:296] Root WebApplicationContext: initialization completed in 1526 ms
+2024-09-30 04:14:08,135 DEBUG [restartedMain] i.g.j.b.d.c.CustomLoginFilter2 [GenericFilterBean.java:240] Filter 'customLoginFilter2' configured for use
+2024-09-30 04:14:08,232 INFO [restartedMain] o.h.j.i.u.LogHelper [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-30 04:14:08,238 INFO [restartedMain] o.h.c.i.RegionFactoryInitiator [RegionFactoryInitiator.java:50] HHH000026: Second-level cache disabled
+2024-09-30 04:14:08,253 INFO [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo [SpringPersistenceUnitInfo.java:87] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-30 04:14:08,255 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:109] HikariPool-8 - Starting...
+2024-09-30 04:14:08,262 INFO [restartedMain] c.z.h.p.HikariPool [HikariPool.java:554] HikariPool-8 - Added connection org.mariadb.jdbc.Connection@5d6b5eaa
+2024-09-30 04:14:08,262 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:122] HikariPool-8 - Start completed.
+2024-09-30 04:14:08,264 WARN [restartedMain] o.h.o.deprecation [DialectFactoryImpl.java:153] HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30 04:14:08,546 INFO [restartedMain] o.h.m.i.EntityInstantiatorPojoStandard [EntityInstantiatorPojoStandard.java:53] HHH000182: No default (no-argument) constructor for class: id.go.jakarta.bksd.dokumen.domain.UserActivity (class must be instantiated by Interceptor)
+2024-09-30 04:14:08,883 INFO [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator [JtaPlatformInitiator.java:59] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-30 04:14:09,218 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:437] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 04:14:10,201 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [AbstractApplicationContext.java:633] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'devUtilityService' defined in file [D:\Projects\SIMBKSD\target\classes\id\go\jakarta\bksd\dokumen\service\DevUtilityService.class]: Encountered invalid @Scheduled method 'downloadMissingFile': Cron expression must consist of 6 fields (found 11 in "04 30 00 * * ?:0 15 00 * * ?")
+2024-09-30 04:14:10,204 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:650] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 04:14:10,205 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:349] HikariPool-8 - Shutdown initiated...
+2024-09-30 04:14:10,211 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:351] HikariPool-8 - Shutdown completed.
+2024-09-30 04:14:10,212 INFO [restartedMain] o.a.c.c.StandardService [DirectJDKLog.java:173] Stopping service [Tomcat]
+2024-09-30 04:14:10,229 INFO [restartedMain] o.s.b.a.l.ConditionEvaluationReportLogger [ConditionEvaluationReportLogger.java:82] 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-09-30 04:14:10,235 ERROR [restartedMain] o.s.b.SpringApplication [SpringApplication.java:859] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'devUtilityService' defined in file [D:\Projects\SIMBKSD\target\classes\id\go\jakarta\bksd\dokumen\service\DevUtilityService.class]: Encountered invalid @Scheduled method 'downloadMissingFile': Cron expression must consist of 6 fields (found 11 in "04 30 00 * * ?:0 15 00 * * ?")
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at id.go.jakarta.bksd.dokumen.DokumenApplication.main(DokumenApplication.java:14)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.lang.IllegalStateException: Encountered invalid @Scheduled method 'downloadMissingFile': Cron expression must consist of 6 fields (found 11 in "04 30 00 * * ?:0 15 00 * * ?")
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.processScheduledTask(ScheduledAnnotationBeanPostProcessor.java:523)
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.processScheduledSync(ScheduledAnnotationBeanPostProcessor.java:362)
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.processScheduled(ScheduledAnnotationBeanPostProcessor.java:341)
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.lambda$postProcessAfterInitialization$1(ScheduledAnnotationBeanPostProcessor.java:306)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.lambda$postProcessAfterInitialization$2(ScheduledAnnotationBeanPostProcessor.java:306)
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:986)
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.postProcessAfterInitialization(ScheduledAnnotationBeanPostProcessor.java:305)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsAfterInitialization(AbstractAutowireCapableBeanFactory.java:438)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1809)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	... 18 common frames omitted
+2024-09-30 04:15:12,077 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:50] Starting DokumenApplication using Java 21 with PID 31804 (D:\Projects\SIMBKSD\target\classes started by Hendra in D:\Projects\SIMBKSD)
+2024-09-30 04:15:12,079 INFO [restartedMain] i.g.j.b.d.DokumenApplication [SpringApplication.java:660] The following 1 profile is active: "devrumah"

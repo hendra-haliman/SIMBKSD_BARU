@@ -396,7 +396,7 @@
 							<source>21</source>
 							<target>21</target>
 							<excludes>
-								<exclude>**/Dev*.java</exclude>
+								<!--exclude>**/Dev*.java</exclude-->
 								<exclude>**/DokumenShellCommands.java</exclude>
 							</excludes>
 						</configuration>

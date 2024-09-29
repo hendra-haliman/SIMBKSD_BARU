@@ -123,9 +123,11 @@ public class DevUtilityService {
     /**
      * Download file naskah kerja sama yang hilang (tidak ada) dari Pusdatin Google
      * drive (docLink attribute)
-     * dischedule setiap hari jam 00:15
+     * 
+     * Dischedule dari application.properties, default setiap hari jam 00:15
+     * 
      */
-    @Scheduled(cron = "0 15 00 * * ?")
+    @Scheduled(cron = "${downloadMissingFile.cron:0 15 00 * * ?}")
     public void downloadMissingFile() {
         downloadMissingFileKPTdanKDN();
         downloadMissingFileKLN();
