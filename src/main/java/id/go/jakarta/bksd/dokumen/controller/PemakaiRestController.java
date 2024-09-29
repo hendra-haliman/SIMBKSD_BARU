@@ -43,27 +43,4 @@ public class PemakaiRestController {
         return ResponseEntity.ok("Data uploaded successfully!");
     }
 
-    // private PemakaiDTO mapPemakaiToDTO(Pemakai pemakai) {
-    // PemakaiDTO pemakaiDTO = new PemakaiDTO();
-    // pemakaiDTO.setId(pemakai.getId());
-    // pemakaiDTO.setTitle(pemakai.getTitle());
-    // pemakaiDTO.setJabatan(pemakai.getJabatan());
-    // pemakaiDTO.setNamaDepan(pemakai.getNamaDepan());
-    // pemakaiDTO.setNamaKeluarga(pemakai.getNamaKeluarga());
-    // pemakaiDTO.setEmail(pemakai.getEmail());
-    // pemakaiDTO.setPassword(pemakai.getPassword());
-    // pemakaiDTO.setEnabled(pemakai.isEnabled());
-    // pemakaiDTO.setAlamat(mapAlamatToDTO(pemakai.getAlamat()));
-
-    // Set<RoleDTO> roleDTOs = new HashSet<>();
-    // for (Role role : pemakai.getRoles()) {
-    // RoleDTO roleDTO = new RoleDTO();
-    // roleDTO.setId(role.getId());
-    // roleDTO.setName(role.getName());
-    // }
-
-    // return pemakaiDTO;
-    // }
-    // }
-
 }

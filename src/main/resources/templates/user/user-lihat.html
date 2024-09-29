@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragments/general.html :: header('Lihat Detail User')}"></head>
+
+<body class="nav-fixed">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="display: none;">
+        <symbol id="check" viewBox="0 0 448 512">
+            <style>
+                .checkpath { fill: green; }
+            </style>
+            <path class="checkpath" d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
+        </symbol>
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" style="display: none;">
+        <symbol id="xmark" viewBox="0 0 384 512">
+            <style>
+                .xmarkpath {fill: red;}
+            </style>
+            <!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path class="xmarkpath" d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>    
+        </symbol>
+    </svg>
+
+
+    <nav th:replace="~{fragments/general.html :: navigation}"></nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav" th:include="~{fragments/general.html :: layoutSidenav_nav}"></div>
+
+        <div id="layoutSidenav_content">
+            <main>
+                <!-- Main page content-->
+                <div class="container-fluid px-4 py-5 mt-n10">
+                    <div class="card my-4 col-lg-7">
+                        <div class="card-header">Detail User</div>
+                        <div class="card-body">
+                            <table class="table table-bordered table-sm table-condensed">
+                                <thead>
+
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="width:200px;">Title</td>
+                                        <td th:text="${pemakai.title}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jabatan</td>
+                                        <td th:text="${pemakai.jabatan}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nama Depan</td>
+                                        <td th:text="${pemakai.namaDepan}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nama Keluarga</td>
+                                        <td th:text="${pemakai.namaKeluarga}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td th:text="${pemakai.email}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Aktif ?</td>
+                                        <td th:if="${pemakai.enabled}"><svg class='myicon'><use xlink:href='#check'></use></svg></td>
+                                        <td th:if="${!pemakai.enabled}"><svg class='myicon'><use xlink:href='#xmark'></use></svg></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Role</td>
+                                        <td th:each="role : ${pemakai.roles}" th:text="${#strings.arrayJoin(role.name, ', ')}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Privilege</td>
+                                        <td>
+                                            <div th:each="role : ${pemakai.roles}">
+                                                <ul>
+                                                    <li th:each="priv : ${role}" th:text="${priv.name}"></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <div th:replace="~{fragments/general.html :: script}"></div>    
+</body>
+<script>
+    $(document).ready(function() {
+        
+    });
+</script>
+</html>
