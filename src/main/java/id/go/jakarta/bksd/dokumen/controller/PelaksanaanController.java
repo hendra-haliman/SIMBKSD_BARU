@@ -185,6 +185,6 @@ public class PelaksanaanController {
 
         model.addAttribute("jsonDefs", jsonDefs);
 
-        return "pelaksanaan";
+        return "pelaksanaan/pelaksanaan";
     }
 }

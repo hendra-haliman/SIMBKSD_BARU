@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
     xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head th:replace="~{fragments/general.html :: header('Rubah Dokumen Kolaborasi')}"></head>
+<head th:replace="~{fragments/general.html :: header('Tambah Dokumen Kolaborasi')}"></head>
 
 <body class="nav-fixed">
     <nav th:replace="~{fragments/general.html :: navigation}"></nav>
@@ -11,15 +11,14 @@
 
         <div id="layoutSidenav_content">
             <main>
-                <div class="container-fluid px-4 mt-auto">
+                <div class="container-fluid px-4 py-5 mt-auto">
                     <div class="row justify-content-center">
                         <div class="col-lg-7">
                             <div class="card shadow-lg border-0 rounded-lg mt-3">
-                                <form th:action="@{/kolaborasi/saveEdit}"  method="post" th:object="${kolaborasi}">
-                                    <input type="hidden" th:field="*{id}">
+                                <form th:action="@{/kolaborasi/saveNew}" method="post" th:object="${kolaborasi}">
 
                                     <div class="card-header justify-content-center">
-                                        <h3 class="fw-light my-2">Rubah Dokumen Kolaborasi</h3>
+                                        <h4 class="fw-light my-2">Tambah Dokumen Kolaborasi Baru</h4>
                                     </div>
                                     <div class="card-body">
 
@@ -45,12 +44,13 @@
                                         <div class="mb-3">
                                             <label class="small mb-1" for="judulDokumenPerjanjian">Waktu</label>
                                             <textarea th:field="*{waktu}" class="form-control form-control-sm" id="waktu"
-                                                placeholder="Masukkan Waktu"></textarea>
+                                                placeholder="Masukkan Waktu" spellcheck="false"></textarea>
                                         </div>
 
                                         <div class="mb-3">
                                             <label class="small mb-1" for="bagian">Bagian</label>
                                             <select class="form-select form-select-sm" th:field="*{bagian}" name="bagian[]" multiple="multiple">
+                                                <option value="">Masukkan pilihan</option>
                                                 <option th:each="bagian: ${bagianList}"
                                                 th:value="${bagian.id}"
                                                 th:text="${bagian.nama}"></option>
@@ -58,16 +58,9 @@
                                         </div>
 
                                         <div class="mb-3">
-                                            <label class="small mb-1" for="output">Output</label>
-                                            <textarea th:field="*{output}" class="form-control form-control-sm" id="output"
-                                                placeholder="Masukkan Output" spellcheck="false"/>
-                                        </div>
-
-
-                                        <div class="mb-3">
                                             <label class="small mb-1" for="keterangan">Keterangan</label>
                                             <textarea th:field="*{keterangan}" class="form-control form-control-sm" id="keterangan"
-                                                placeholder="Masukkan Keterangan" spellcheck="false"/>
+                                                placeholder="Masukkan Keterangan"  spellcheck="false"/>
                                         </div>
 
 

@@ -76,7 +76,7 @@ public class DokumenLuarNegeriController {
     public String lihat(@PathVariable Long id, Model model) {
         DokumenKerjaSamaLuarNegeri dok = dokumenKerjaSamaLuarNegeriService.findById(id).get();
         model.addAttribute("dokumen", dok);
-        return "dokumenLN-lihat";
+        return "pelaksanaanLN/dokumenLN-lihat";
     }
 
     @GetMapping("/edit/{id}")
@@ -87,7 +87,7 @@ public class DokumenLuarNegeriController {
         model.addAttribute("jenisNaskahList", jenisNaskahList);
         model.addAttribute("dokumenLN", dok);
 
-        return "dokumenLN-edit";
+        return "pelaksanaanLN/dokumenLN-edit";
     }
 
     @GetMapping("/delete/{id}")
@@ -108,7 +108,7 @@ public class DokumenLuarNegeriController {
         List<JenisNaskahLuarNegeri> jenisNaskah = jenisNaskahLuarNegeriService.findAll();
         model.addAttribute("jenisNaskahList", jenisNaskah);
 
-        return "dokumenLN-add";
+        return "pelaksanaanLN/dokumenLN-add";
     }
 
     @PostMapping("saveNew")

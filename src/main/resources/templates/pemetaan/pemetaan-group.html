@@ -222,7 +222,6 @@
                     {"data": "sumberPembiayaan"},
                     {
                         "data": null,
-                        "width": "125px",
                         "responsivePriority": 2,
                         "render": function (data, type, row, meta) {
                             var actions = "<a  class='btn btn-sm btn-success mb-sm-1 inline-link ' href='" + contextPath + "pemetaan/view/" + row.id + "'><svg class='myicon'><use xlink:href='#binoculars'></use></svg> <span class='ms-sm-2'>Lihat</span></a>";
@@ -267,7 +266,7 @@
                                 text: '<i class="fa-solid fa-plus"></i> Tambah Dokumen',
                                 className: 'btn btn-sm btn-tambah',
                                 action: function (e, dt, node, config) {
-                                    window.location.href = "/dokumen/pemetaan/add?mode=group";
+                                    window.location.href = contextPath + "pemetaan/add?mode=group";
                                 }
                             },
                             {

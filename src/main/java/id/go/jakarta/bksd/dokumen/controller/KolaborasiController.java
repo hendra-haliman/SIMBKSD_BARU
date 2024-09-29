@@ -84,7 +84,7 @@ public class KolaborasiController {
 
         model.addAttribute("jsonDefs", jsonDefs);
 
-        return "kolaborasi";
+        return "kolaborasi/kolaborasi";
     }
 
     @PostMapping("/list")
@@ -101,7 +101,7 @@ public class KolaborasiController {
 
         model.addAttribute("kolaborasi", kolaborasi);
 
-        return "kolaborasi-lihat";
+        return "kolaborasi/kolaborasi-lihat";
     }
 
     @GetMapping("/add")
@@ -116,7 +116,7 @@ public class KolaborasiController {
         model.addAttribute("kolaborasi", kolaborasi);
         model.addAttribute("bagianList", bagianList);
 
-        return "kolaborasi-add";
+        return "kolaborasi/kolaborasi-add";
     }
 
     @PostMapping("/saveNew")
@@ -150,7 +150,7 @@ public class KolaborasiController {
 
         model.addAttribute("kolaborasi", kolaborasi);
 
-        return "kolaborasi-edit";
+        return "kolaborasi/kolaborasi-edit";
     }
 
     @PostMapping("saveEdit")

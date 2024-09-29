@@ -115,7 +115,7 @@ public class DokumenController {
     public String lihat(@PathVariable Long id, Model model) {
         DokumenKerjaSama dok = dokumenKerjaSamaService.findById(id).get();
         model.addAttribute("dokumen", dok);
-        return "dokumen-lihat";
+        return "pelaksanaan/dokumen-lihat";
     }
 
     @GetMapping("/edit/{id}")
@@ -135,7 +135,7 @@ public class DokumenController {
 
         model.addAttribute("dokumenKerjaSama", dok);
 
-        return "dokumen-edit";
+        return "pelaksanaan/dokumen-edit";
     }
 
     @GetMapping("/delete/{id}")
@@ -165,7 +165,7 @@ public class DokumenController {
         model.addAttribute("bagianList", bagianList);
         model.addAttribute("rumpunOpdList", rumpunOpdList);
 
-        return "dokumen-add";
+        return "pelaksanaan/dokumen-add";
     }
 
     @PostMapping("saveNew")
