@@ -19,7 +19,7 @@ import id.go.jakarta.bksd.dokumen.domain.DokumenKerjaSamaLuarNegeri;
 import id.go.jakarta.bksd.dokumen.domain.DokumenLuarNegeri;
 
 import org.springframework.beans.factory.annotation.Value;
-
+import org.springframework.scheduling.annotation.Scheduled;
 
 /**
  * Sebuah service hanya untuk dev environment.
@@ -35,7 +35,8 @@ public class DevUtilityService {
 
     private DokumenKerjaSamaLuarNegeriService dokumenKerjaSamaLuarNegeriService;
 
-    public DevUtilityService(DokumenKerjaSamaService dokumenKerjaSamaService, DokumenKerjaSamaLuarNegeriService dokumenKerjaSamaLuarNegeriService) {
+    public DevUtilityService(DokumenKerjaSamaService dokumenKerjaSamaService,
+            DokumenKerjaSamaLuarNegeriService dokumenKerjaSamaLuarNegeriService) {
         this.dokumenKerjaSamaService = dokumenKerjaSamaService;
         this.dokumenKerjaSamaLuarNegeriService = dokumenKerjaSamaLuarNegeriService;
     }
@@ -79,7 +80,7 @@ public class DevUtilityService {
     }
 
     /**
-     * Download file dari Google drive, memakai automation, 
+     * Download file dari Google drive, memakai automation,
      * tanpa memerlukan permission dari Google Drive API,
      * tetapi mensimulasikan user berinteraksi dengan browser (automation)
      * 
@@ -120,10 +121,13 @@ public class DevUtilityService {
     }
 
     /**
-     * Download file naskah kerja sama yang hilang (tidak ada) dari Pusdatin Google drive (docLink attribute)
+     * Download file naskah kerja sama yang hilang (tidak ada) dari Pusdatin Google
+     * drive (docLink attribute)
+     * dischedule setiap hari jam 00:15
      */
+    @Scheduled(cron = "0 15 00 * * ?")
     public void downloadMissingFile() {
-        //downloadMissingFileKPTdanKDN();
+        downloadMissingFileKPTdanKDN();
         downloadMissingFileKLN();
     }
 

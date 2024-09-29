@@ -1,0 +1,841 @@
+2024-09-30 02:33:09,825 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:50] Starting DokumenApplication using Java 21 with PID 15400 (D:\Projects\SIMBKSD\target\classes started by Hendra in D:\Projects\SIMBKSD)
+2024-09-30 02:33:09,826 INFO [restartedMain] i.g.j.b.d.DokumenApplication [SpringApplication.java:660] The following 1 profile is active: "devrumah"
+2024-09-30 02:33:10,987 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:143] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-30 02:33:11,104 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:211] Finished Spring Data repository scanning in 116 ms. Found 18 JPA repository interfaces.
+2024-09-30 02:33:11,575 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:111] Tomcat initialized with port 8443 (https)
+2024-09-30 02:33:11,578 INFO [restartedMain] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Initializing ProtocolHandler ["https-jsse-nio-8443"]
+2024-09-30 02:33:11,579 INFO [restartedMain] o.a.c.c.StandardService [DirectJDKLog.java:173] Starting service [Tomcat]
+2024-09-30 02:33:11,579 INFO [restartedMain] o.a.c.c.StandardEngine [DirectJDKLog.java:173] Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-09-30 02:33:11,666 INFO [restartedMain] o.a.c.c.C.[.[.[/SIMBKSD] [DirectJDKLog.java:173] Initializing Spring embedded WebApplicationContext
+2024-09-30 02:33:11,667 INFO [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext [ServletWebServerApplicationContext.java:296] Root WebApplicationContext: initialization completed in 1834 ms
+2024-09-30 02:33:11,858 DEBUG [restartedMain] i.g.j.b.d.c.CustomLoginFilter2 [GenericFilterBean.java:240] Filter 'customLoginFilter2' configured for use
+2024-09-30 02:33:12,017 INFO [restartedMain] o.h.j.i.u.LogHelper [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-30 02:33:12,025 INFO [restartedMain] o.h.c.i.RegionFactoryInitiator [RegionFactoryInitiator.java:50] HHH000026: Second-level cache disabled
+2024-09-30 02:33:12,053 INFO [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo [SpringPersistenceUnitInfo.java:87] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-30 02:33:12,056 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:109] HikariPool-2 - Starting...
+2024-09-30 02:33:12,066 INFO [restartedMain] c.z.h.p.HikariPool [HikariPool.java:554] HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@24ab99b3
+2024-09-30 02:33:12,067 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:122] HikariPool-2 - Start completed.
+2024-09-30 02:33:12,069 WARN [restartedMain] o.h.e.j.e.i.JdbcEnvironmentInitiator [JdbcEnvironmentInitiator.java:331] HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'where clause'
+2024-09-30 02:33:12,070 WARN [restartedMain] o.h.o.deprecation [DialectFactoryImpl.java:153] HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30 02:33:12,536 INFO [restartedMain] o.h.m.i.EntityInstantiatorPojoStandard [EntityInstantiatorPojoStandard.java:53] HHH000182: No default (no-argument) constructor for class: id.go.jakarta.bksd.dokumen.domain.UserActivity (class must be instantiated by Interceptor)
+2024-09-30 02:33:12,886 INFO [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator [JtaPlatformInitiator.java:59] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-30 02:33:22,946 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:437] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 02:33:24,064 WARN [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [JpaBaseConfiguration.java:236] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-30 02:33:24,118 INFO [restartedMain] o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer [InitializeAuthenticationProviderBeanManagerConfigurer.java:83] Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-09-30 02:33:24,120 WARN [restartedMain] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [InitializeUserDetailsBeanManagerConfigurer.java:72] Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-09-30 02:33:24,530 INFO [restartedMain] o.s.b.a.e.w.EndpointLinksResolver [EndpointLinksResolver.java:60] Exposing 1 endpoint beneath base path '/actuator'
+2024-09-30 02:33:24,616 INFO [restartedMain] o.s.s.w.a.c.ChannelProcessingFilter [ChannelProcessingFilter.java:106] Validated configuration attributes
+2024-09-30 02:33:25,308 INFO [restartedMain] o.s.b.d.a.OptionalLiveReloadServer [OptionalLiveReloadServer.java:59] LiveReload server is running on port 35729
+2024-09-30 02:33:25,364 WARN [restartedMain] org.jline [Log.java:115] Unable to create a system terminal, creating a dumb terminal (enable debug logging for more information)
+2024-09-30 02:33:25,670 INFO [restartedMain] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Starting ProtocolHandler ["https-jsse-nio-8443"]
+2024-09-30 02:33:25,782 INFO [restartedMain] o.a.t.u.n.N.certificate [DirectJDKLog.java:173] Connector [https-jsse-nio-8443], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\Hendra\.keystore] using alias [tomcat] with trust store [null]
+2024-09-30 02:33:25,789 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:243] Tomcat started on port 8443 (https) with context path '/SIMBKSD'
+2024-09-30 02:33:25,807 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:56] Started DokumenApplication in 16.075 seconds (process running for 1391.663)
+2024-09-30 02:33:25,815 INFO [restartedMain] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [ConditionEvaluationDeltaLoggingListener.java:63] Condition evaluation unchanged
+2024-09-30 02:33:49,506 INFO [background-preinit] o.h.v.i.u.Version [Version.java:21] HV000001: Hibernate Validator 8.0.1.Final
+2024-09-30 02:33:49,550 INFO [main] i.g.j.b.d.DokumenApplicationTests [StartupInfoLogger.java:50] Starting DokumenApplicationTests using Java 21 with PID 16180 (started by Hendra in D:\Projects\SIMBKSD)
+2024-09-30 02:33:49,552 INFO [main] i.g.j.b.d.DokumenApplicationTests [SpringApplication.java:660] The following 1 profile is active: "devrumah"
+2024-09-30 02:33:52,914 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:143] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-30 02:33:53,529 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:211] Finished Spring Data repository scanning in 590 ms. Found 18 JPA repository interfaces.
+2024-09-30 02:33:56,030 INFO [main] o.h.j.i.u.LogHelper [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-30 02:33:56,306 INFO [main] o.h.Version [Version.java:44] HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-09-30 02:33:56,430 INFO [main] o.h.c.i.RegionFactoryInitiator [RegionFactoryInitiator.java:50] HHH000026: Second-level cache disabled
+2024-09-30 02:33:57,156 INFO [main] o.s.o.j.p.SpringPersistenceUnitInfo [SpringPersistenceUnitInfo.java:87] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-30 02:33:57,240 INFO [main] c.z.h.HikariDataSource [HikariDataSource.java:109] HikariPool-1 - Starting...
+2024-09-30 02:33:57,589 INFO [main] c.z.h.p.HikariPool [HikariPool.java:554] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@66779435
+2024-09-30 02:33:57,594 INFO [main] c.z.h.HikariDataSource [HikariDataSource.java:122] HikariPool-1 - Start completed.
+2024-09-30 02:33:57,669 WARN [main] o.h.e.j.e.i.JdbcEnvironmentInitiator [JdbcEnvironmentInitiator.java:331] HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'where clause'
+2024-09-30 02:33:57,717 WARN [main] o.h.o.deprecation [DialectFactoryImpl.java:153] HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30 02:34:00,028 INFO [main] o.h.m.i.EntityInstantiatorPojoStandard [EntityInstantiatorPojoStandard.java:53] HHH000182: No default (no-argument) constructor for class: id.go.jakarta.bksd.dokumen.domain.UserActivity (class must be instantiated by Interceptor)
+2024-09-30 02:34:00,970 INFO [main] o.h.e.t.j.p.i.JtaPlatformInitiator [JtaPlatformInitiator.java:59] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-30 02:34:09,654 INFO [main] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:437] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 02:34:10,616 INFO [main] o.s.d.j.r.q.QueryEnhancerFactory [QueryEnhancerFactory.java:49] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-09-30 02:34:15,296 WARN [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [JpaBaseConfiguration.java:236] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-30 02:34:15,423 INFO [main] o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer [InitializeAuthenticationProviderBeanManagerConfigurer.java:83] Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-09-30 02:34:15,427 WARN [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [InitializeUserDetailsBeanManagerConfigurer.java:72] Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-09-30 02:34:16,856 INFO [main] o.s.b.a.e.w.EndpointLinksResolver [EndpointLinksResolver.java:60] Exposing 1 endpoint beneath base path '/actuator'
+2024-09-30 02:34:17,129 INFO [main] o.s.s.w.a.c.ChannelProcessingFilter [ChannelProcessingFilter.java:106] Validated configuration attributes
+2024-09-30 02:34:18,896 WARN [main] org.jline [Log.java:115] Unable to create a system terminal, creating a dumb terminal (enable debug logging for more information)
+2024-09-30 02:34:19,718 INFO [main] i.g.j.b.d.DokumenApplicationTests [StartupInfoLogger.java:56] Started DokumenApplicationTests in 31.266 seconds (process running for 34.022)
+2024-09-30 02:34:33,539 INFO [https-jsse-nio-8443-exec-9] o.a.c.c.C.[.[.[/SIMBKSD] [DirectJDKLog.java:173] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-30 02:34:33,541 INFO [https-jsse-nio-8443-exec-9] o.s.w.s.DispatcherServlet [FrameworkServlet.java:532] Initializing Servlet 'dispatcherServlet'
+2024-09-30 02:34:33,546 INFO [https-jsse-nio-8443-exec-9] o.s.w.s.DispatcherServlet [FrameworkServlet.java:554] Completed initialization in 4 ms
+2024-09-30 02:34:39,802 INFO [main] o.s.t.c.s.AnnotationConfigContextLoaderUtils [AnnotationConfigContextLoaderUtils.java:83] Could not detect default configuration classes for test class [id.go.jakarta.bksd.dokumen.mvc.TestContextConfiguration]: TestContextConfiguration does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-09-30 02:34:39,840 INFO [main] o.s.b.t.c.SpringBootTestContextBootstrapper [SpringBootTestContextBootstrapper.java:234] Found @SpringBootConfiguration id.go.jakarta.bksd.dokumen.DokumenApplication for test class id.go.jakarta.bksd.dokumen.mvc.TestContextConfiguration
+2024-09-30 02:34:39,852 INFO [main] o.s.b.d.r.RestartApplicationListener [RestartApplicationListener.java:74] Restart disabled due to context in which it is running
+2024-09-30 02:34:39,929 INFO [main] i.g.j.b.d.m.TestContextConfiguration [StartupInfoLogger.java:50] Starting TestContextConfiguration using Java 21 with PID 16180 (started by Hendra in D:\Projects\SIMBKSD)
+2024-09-30 02:34:39,930 INFO [main] i.g.j.b.d.m.TestContextConfiguration [SpringApplication.java:660] The following 1 profile is active: "devrumah"
+2024-09-30 02:34:40,926 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:143] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-30 02:34:41,036 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:211] Finished Spring Data repository scanning in 108 ms. Found 18 JPA repository interfaces.
+2024-09-30 02:34:41,370 INFO [main] o.h.j.i.u.LogHelper [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-30 02:34:41,378 INFO [main] o.h.c.i.RegionFactoryInitiator [RegionFactoryInitiator.java:50] HHH000026: Second-level cache disabled
+2024-09-30 02:34:41,404 INFO [main] o.s.o.j.p.SpringPersistenceUnitInfo [SpringPersistenceUnitInfo.java:87] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-30 02:34:41,407 INFO [main] c.z.h.HikariDataSource [HikariDataSource.java:109] HikariPool-2 - Starting...
+2024-09-30 02:34:41,416 INFO [main] c.z.h.p.HikariPool [HikariPool.java:554] HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3d711dfe
+2024-09-30 02:34:41,417 INFO [main] c.z.h.HikariDataSource [HikariDataSource.java:122] HikariPool-2 - Start completed.
+2024-09-30 02:34:41,419 WARN [main] o.h.e.j.e.i.JdbcEnvironmentInitiator [JdbcEnvironmentInitiator.java:331] HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'where clause'
+2024-09-30 02:34:41,422 WARN [main] o.h.o.deprecation [DialectFactoryImpl.java:153] HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30 02:34:41,823 INFO [main] o.h.m.i.EntityInstantiatorPojoStandard [EntityInstantiatorPojoStandard.java:53] HHH000182: No default (no-argument) constructor for class: id.go.jakarta.bksd.dokumen.domain.UserActivity (class must be instantiated by Interceptor)
+2024-09-30 02:34:42,174 INFO [main] o.h.e.t.j.p.i.JtaPlatformInitiator [JtaPlatformInitiator.java:59] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-30 02:34:50,665 INFO [main] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:437] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 02:34:51,638 WARN [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [JpaBaseConfiguration.java:236] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-30 02:34:51,668 INFO [main] o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer [InitializeAuthenticationProviderBeanManagerConfigurer.java:83] Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-09-30 02:34:51,669 WARN [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [InitializeUserDetailsBeanManagerConfigurer.java:72] Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-09-30 02:34:52,010 INFO [main] o.s.b.a.e.w.EndpointLinksResolver [EndpointLinksResolver.java:60] Exposing 1 endpoint beneath base path '/actuator'
+2024-09-30 02:34:52,080 INFO [main] o.s.s.w.a.c.ChannelProcessingFilter [ChannelProcessingFilter.java:106] Validated configuration attributes
+2024-09-30 02:34:52,634 WARN [main] org.jline [Log.java:115] Unable to create a system terminal, creating a dumb terminal (enable debug logging for more information)
+2024-09-30 02:34:52,818 INFO [main] i.g.j.b.d.m.TestContextConfiguration [StartupInfoLogger.java:56] Started TestContextConfiguration in 12.967 seconds (process running for 67.122)
+2024-09-30 02:34:52,855 INFO [main] o.s.b.t.m.w.SpringBootMockServletContext [MockServletContext.java:437] Initializing Spring TestDispatcherServlet ''
+2024-09-30 02:34:52,856 INFO [main] o.s.t.w.s.TestDispatcherServlet [FrameworkServlet.java:532] Initializing Servlet ''
+2024-09-30 02:34:52,859 INFO [main] o.s.t.w.s.TestDispatcherServlet [FrameworkServlet.java:554] Completed initialization in 2 ms
+2024-09-30 02:34:52,873 INFO [main] o.s.b.t.m.w.SpringBootMockServletContext [MockServletContext.java:437] Initializing Spring TestDispatcherServlet ''
+2024-09-30 02:34:52,874 INFO [main] o.s.t.w.s.TestDispatcherServlet [FrameworkServlet.java:532] Initializing Servlet ''
+2024-09-30 02:34:52,877 INFO [main] o.s.t.w.s.TestDispatcherServlet [FrameworkServlet.java:554] Completed initialization in 2 ms
+2024-09-30 02:34:53,781 INFO [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:650] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 02:34:53,785 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:349] HikariPool-1 - Shutdown initiated...
+2024-09-30 02:34:53,807 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:351] HikariPool-1 - Shutdown completed.
+2024-09-30 02:34:53,813 INFO [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:650] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 02:34:53,829 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:349] HikariPool-2 - Shutdown initiated...
+2024-09-30 02:34:53,837 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:351] HikariPool-2 - Shutdown completed.
+2024-09-30 03:31:16,482 INFO [File Watcher] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [LocalDevToolsAutoConfiguration.java:211] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-09-30 03:31:16,494 INFO [Thread-7] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Stopping ProtocolHandler ["https-jsse-nio-8443"]
+2024-09-30 03:31:16,535 INFO [Thread-7] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:650] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 03:31:16,540 INFO [Thread-7] c.z.h.HikariDataSource [HikariDataSource.java:349] HikariPool-2 - Shutdown initiated...
+2024-09-30 03:31:16,553 INFO [Thread-7] c.z.h.HikariDataSource [HikariDataSource.java:351] HikariPool-2 - Shutdown completed.
+2024-09-30 03:31:16,870 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:50] Starting DokumenApplication using Java 21 with PID 15400 (D:\Projects\SIMBKSD\target\classes started by Hendra in D:\Projects\SIMBKSD)
+2024-09-30 03:31:16,871 INFO [restartedMain] i.g.j.b.d.DokumenApplication [SpringApplication.java:660] The following 1 profile is active: "devrumah"
+2024-09-30 03:31:18,155 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:143] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-30 03:31:18,289 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:211] Finished Spring Data repository scanning in 132 ms. Found 18 JPA repository interfaces.
+2024-09-30 03:31:18,733 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:111] Tomcat initialized with port 8443 (https)
+2024-09-30 03:31:18,737 INFO [restartedMain] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Initializing ProtocolHandler ["https-jsse-nio-8443"]
+2024-09-30 03:31:18,738 INFO [restartedMain] o.a.c.c.StandardService [DirectJDKLog.java:173] Starting service [Tomcat]
+2024-09-30 03:31:18,739 INFO [restartedMain] o.a.c.c.StandardEngine [DirectJDKLog.java:173] Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-09-30 03:31:18,815 INFO [restartedMain] o.a.c.c.C.[.[.[/SIMBKSD] [DirectJDKLog.java:173] Initializing Spring embedded WebApplicationContext
+2024-09-30 03:31:18,815 INFO [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext [ServletWebServerApplicationContext.java:296] Root WebApplicationContext: initialization completed in 1931 ms
+2024-09-30 03:31:18,979 DEBUG [restartedMain] i.g.j.b.d.c.CustomLoginFilter2 [GenericFilterBean.java:240] Filter 'customLoginFilter2' configured for use
+2024-09-30 03:31:19,099 INFO [restartedMain] o.h.j.i.u.LogHelper [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-30 03:31:19,107 INFO [restartedMain] o.h.c.i.RegionFactoryInitiator [RegionFactoryInitiator.java:50] HHH000026: Second-level cache disabled
+2024-09-30 03:31:19,132 INFO [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo [SpringPersistenceUnitInfo.java:87] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-30 03:31:19,135 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:109] HikariPool-3 - Starting...
+2024-09-30 03:31:19,141 INFO [restartedMain] c.z.h.p.HikariPool [HikariPool.java:554] HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@27bc9dbd
+2024-09-30 03:31:19,142 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:122] HikariPool-3 - Start completed.
+2024-09-30 03:31:19,145 WARN [restartedMain] o.h.e.j.e.i.JdbcEnvironmentInitiator [JdbcEnvironmentInitiator.java:331] HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'where clause'
+2024-09-30 03:31:19,146 WARN [restartedMain] o.h.o.deprecation [DialectFactoryImpl.java:153] HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30 03:31:19,640 INFO [restartedMain] o.h.m.i.EntityInstantiatorPojoStandard [EntityInstantiatorPojoStandard.java:53] HHH000182: No default (no-argument) constructor for class: id.go.jakarta.bksd.dokumen.domain.UserActivity (class must be instantiated by Interceptor)
+2024-09-30 03:31:19,951 INFO [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator [JtaPlatformInitiator.java:59] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-30 03:31:28,524 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:437] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 03:31:29,577 WARN [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [JpaBaseConfiguration.java:236] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-30 03:31:29,627 INFO [restartedMain] o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer [InitializeAuthenticationProviderBeanManagerConfigurer.java:83] Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-09-30 03:31:29,629 WARN [restartedMain] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [InitializeUserDetailsBeanManagerConfigurer.java:72] Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-09-30 03:31:30,072 INFO [restartedMain] o.s.b.a.e.w.EndpointLinksResolver [EndpointLinksResolver.java:60] Exposing 1 endpoint beneath base path '/actuator'
+2024-09-30 03:31:30,173 INFO [restartedMain] o.s.s.w.a.c.ChannelProcessingFilter [ChannelProcessingFilter.java:106] Validated configuration attributes
+2024-09-30 03:31:31,006 INFO [restartedMain] o.s.b.d.a.OptionalLiveReloadServer [OptionalLiveReloadServer.java:59] LiveReload server is running on port 35729
+2024-09-30 03:31:31,063 WARN [restartedMain] org.jline [Log.java:115] Unable to create a system terminal, creating a dumb terminal (enable debug logging for more information)
+2024-09-30 03:31:31,349 INFO [restartedMain] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Starting ProtocolHandler ["https-jsse-nio-8443"]
+2024-09-30 03:31:31,454 INFO [restartedMain] o.a.t.u.n.N.certificate [DirectJDKLog.java:173] Connector [https-jsse-nio-8443], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\Hendra\.keystore] using alias [tomcat] with trust store [null]
+2024-09-30 03:31:31,461 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:243] Tomcat started on port 8443 (https) with context path '/SIMBKSD'
+2024-09-30 03:31:31,476 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:56] Started DokumenApplication in 14.758 seconds (process running for 4877.331)
+2024-09-30 03:31:31,481 INFO [restartedMain] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [ConditionEvaluationDeltaLoggingListener.java:63] Condition evaluation unchanged
+2024-09-30 03:35:51,193 INFO [File Watcher] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [LocalDevToolsAutoConfiguration.java:211] Restarting due to 3 class path changes (0 additions, 0 deletions, 3 modifications)
+2024-09-30 03:35:51,212 INFO [Thread-11] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Stopping ProtocolHandler ["https-jsse-nio-8443"]
+2024-09-30 03:35:51,256 INFO [Thread-11] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:650] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 03:35:51,261 INFO [Thread-11] c.z.h.HikariDataSource [HikariDataSource.java:349] HikariPool-3 - Shutdown initiated...
+2024-09-30 03:35:51,270 INFO [Thread-11] c.z.h.HikariDataSource [HikariDataSource.java:351] HikariPool-3 - Shutdown completed.
+2024-09-30 03:35:51,527 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:50] Starting DokumenApplication using Java 21 with PID 15400 (D:\Projects\SIMBKSD\target\classes started by Hendra in D:\Projects\SIMBKSD)
+2024-09-30 03:35:51,529 INFO [restartedMain] i.g.j.b.d.DokumenApplication [SpringApplication.java:660] The following 1 profile is active: "devrumah"
+2024-09-30 03:35:52,605 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:143] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-30 03:35:52,735 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:211] Finished Spring Data repository scanning in 129 ms. Found 18 JPA repository interfaces.
+2024-09-30 03:35:53,210 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:111] Tomcat initialized with port 8443 (https)
+2024-09-30 03:35:53,211 INFO [restartedMain] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Initializing ProtocolHandler ["https-jsse-nio-8443"]
+2024-09-30 03:35:53,212 INFO [restartedMain] o.a.c.c.StandardService [DirectJDKLog.java:173] Starting service [Tomcat]
+2024-09-30 03:35:53,213 INFO [restartedMain] o.a.c.c.StandardEngine [DirectJDKLog.java:173] Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-09-30 03:35:53,289 INFO [restartedMain] o.a.c.c.C.[.[.[/SIMBKSD] [DirectJDKLog.java:173] Initializing Spring embedded WebApplicationContext
+2024-09-30 03:35:53,290 INFO [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext [ServletWebServerApplicationContext.java:296] Root WebApplicationContext: initialization completed in 1756 ms
+2024-09-30 03:35:53,464 DEBUG [restartedMain] i.g.j.b.d.c.CustomLoginFilter2 [GenericFilterBean.java:240] Filter 'customLoginFilter2' configured for use
+2024-09-30 03:35:53,485 ERROR [restartedMain] c.z.h.HikariConfig [HikariConfig.java:490] Failed to load driver class org.mariadb.jdbc.Driver from HikariConfig class classloader jdk.internal.loader.ClassLoaders$AppClassLoader@33909752
+2024-09-30 03:35:53,492 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [AbstractApplicationContext.java:633] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'dataSourceScriptDatabaseInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Unsatisfied dependency expressed through method 'dataSourceScriptDatabaseInitializer' parameter 0: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception with message: Failed to load driver class org.mariadb.jdbc.Driver in either of HikariConfig class loader or Thread context classloader
+2024-09-30 03:35:53,494 INFO [restartedMain] o.a.c.c.StandardService [DirectJDKLog.java:173] Stopping service [Tomcat]
+2024-09-30 03:35:53,510 INFO [restartedMain] o.s.b.a.l.ConditionEvaluationReportLogger [ConditionEvaluationReportLogger.java:82] 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-09-30 03:35:53,563 ERROR [restartedMain] o.s.b.SpringApplication [SpringApplication.java:859] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'dataSourceScriptDatabaseInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Unsatisfied dependency expressed through method 'dataSourceScriptDatabaseInitializer' parameter 0: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception with message: Failed to load driver class org.mariadb.jdbc.Driver in either of HikariConfig class loader or Thread context classloader
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at id.go.jakarta.bksd.dokumen.DokumenApplication.main(DokumenApplication.java:14)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Unsatisfied dependency expressed through method 'dataSourceScriptDatabaseInitializer' parameter 0: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception with message: Failed to load driver class org.mariadb.jdbc.Driver in either of HikariConfig class loader or Thread context classloader
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:795)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:542)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1355)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313)
+	... 13 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception with message: Failed to load driver class org.mariadb.jdbc.Driver in either of HikariConfig class loader or Thread context classloader
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:648)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:636)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1355)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782)
+	... 23 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception with message: Failed to load driver class org.mariadb.jdbc.Driver in either of HikariConfig class loader or Thread context classloader
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:178)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:644)
+	... 37 common frames omitted
+Caused by: java.lang.RuntimeException: Failed to load driver class org.mariadb.jdbc.Driver in either of HikariConfig class loader or Thread context classloader
+	at com.zaxxer.hikari.HikariConfig.setDriverClassName(HikariConfig.java:494)
+	at org.springframework.boot.jdbc.DataSourceBuilder$MappedDataSourceProperty.set(DataSourceBuilder.java:479)
+	at org.springframework.boot.jdbc.DataSourceBuilder$MappedDataSourceProperties.set(DataSourceBuilder.java:373)
+	at org.springframework.boot.jdbc.DataSourceBuilder.build(DataSourceBuilder.java:183)
+	at org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration.createDataSource(DataSourceConfiguration.java:59)
+	at org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari.dataSource(DataSourceConfiguration.java:117)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:146)
+	... 38 common frames omitted
+2024-09-30 03:36:09,601 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:50] Starting DokumenApplication using Java 21 with PID 15400 (D:\Projects\SIMBKSD\target\classes started by Hendra in D:\Projects\SIMBKSD)
+2024-09-30 03:36:09,601 INFO [restartedMain] i.g.j.b.d.DokumenApplication [SpringApplication.java:660] The following 1 profile is active: "devrumah"
+2024-09-30 03:36:10,386 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:143] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-30 03:36:10,493 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:211] Finished Spring Data repository scanning in 106 ms. Found 18 JPA repository interfaces.
+2024-09-30 03:36:10,848 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:111] Tomcat initialized with port 8443 (https)
+2024-09-30 03:36:10,850 INFO [restartedMain] o.a.c.c.StandardService [DirectJDKLog.java:173] Starting service [Tomcat]
+2024-09-30 03:36:10,850 INFO [restartedMain] o.a.c.c.StandardEngine [DirectJDKLog.java:173] Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-09-30 03:36:10,917 INFO [restartedMain] o.a.c.c.C.[.[.[/SIMBKSD] [DirectJDKLog.java:173] Initializing Spring embedded WebApplicationContext
+2024-09-30 03:36:10,918 INFO [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext [ServletWebServerApplicationContext.java:296] Root WebApplicationContext: initialization completed in 1313 ms
+2024-09-30 03:36:11,102 DEBUG [restartedMain] i.g.j.b.d.c.CustomLoginFilter2 [GenericFilterBean.java:240] Filter 'customLoginFilter2' configured for use
+2024-09-30 03:36:11,137 ERROR [restartedMain] c.z.h.HikariConfig [HikariConfig.java:490] Failed to load driver class org.mariadb.jdbc.Driver from HikariConfig class classloader jdk.internal.loader.ClassLoaders$AppClassLoader@33909752
+2024-09-30 03:36:11,138 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [AbstractApplicationContext.java:633] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'dataSourceScriptDatabaseInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Unsatisfied dependency expressed through method 'dataSourceScriptDatabaseInitializer' parameter 0: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception with message: Failed to load driver class org.mariadb.jdbc.Driver in either of HikariConfig class loader or Thread context classloader
+2024-09-30 03:36:11,140 INFO [restartedMain] o.a.c.c.StandardService [DirectJDKLog.java:173] Stopping service [Tomcat]
+2024-09-30 03:36:11,152 INFO [restartedMain] o.s.b.a.l.ConditionEvaluationReportLogger [ConditionEvaluationReportLogger.java:82] 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-09-30 03:36:11,157 ERROR [restartedMain] o.s.b.SpringApplication [SpringApplication.java:859] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'dataSourceScriptDatabaseInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Unsatisfied dependency expressed through method 'dataSourceScriptDatabaseInitializer' parameter 0: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception with message: Failed to load driver class org.mariadb.jdbc.Driver in either of HikariConfig class loader or Thread context classloader
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at id.go.jakarta.bksd.dokumen.DokumenApplication.main(DokumenApplication.java:14)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Unsatisfied dependency expressed through method 'dataSourceScriptDatabaseInitializer' parameter 0: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception with message: Failed to load driver class org.mariadb.jdbc.Driver in either of HikariConfig class loader or Thread context classloader
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:795)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:542)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1355)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313)
+	... 13 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception with message: Failed to load driver class org.mariadb.jdbc.Driver in either of HikariConfig class loader or Thread context classloader
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:648)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:636)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1355)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782)
+	... 23 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception with message: Failed to load driver class org.mariadb.jdbc.Driver in either of HikariConfig class loader or Thread context classloader
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:178)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:644)
+	... 37 common frames omitted
+Caused by: java.lang.RuntimeException: Failed to load driver class org.mariadb.jdbc.Driver in either of HikariConfig class loader or Thread context classloader
+	at com.zaxxer.hikari.HikariConfig.setDriverClassName(HikariConfig.java:494)
+	at org.springframework.boot.jdbc.DataSourceBuilder$MappedDataSourceProperty.set(DataSourceBuilder.java:479)
+	at org.springframework.boot.jdbc.DataSourceBuilder$MappedDataSourceProperties.set(DataSourceBuilder.java:373)
+	at org.springframework.boot.jdbc.DataSourceBuilder.build(DataSourceBuilder.java:183)
+	at org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration.createDataSource(DataSourceConfiguration.java:59)
+	at org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari.dataSource(DataSourceConfiguration.java:117)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:146)
+	... 38 common frames omitted
+2024-09-30 03:36:39,314 INFO [background-preinit] o.h.v.i.u.Version [Version.java:21] HV000001: Hibernate Validator 8.0.1.Final
+2024-09-30 03:36:39,355 INFO [main] i.g.j.b.d.DokumenApplicationTests [StartupInfoLogger.java:50] Starting DokumenApplicationTests using Java 21 with PID 29256 (started by Hendra in D:\Projects\SIMBKSD)
+2024-09-30 03:36:39,357 INFO [main] i.g.j.b.d.DokumenApplicationTests [SpringApplication.java:660] The following 1 profile is active: "devrumah"
+2024-09-30 03:36:42,593 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:143] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-30 03:36:43,296 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:211] Finished Spring Data repository scanning in 683 ms. Found 18 JPA repository interfaces.
+2024-09-30 03:36:45,636 INFO [main] o.h.j.i.u.LogHelper [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-30 03:36:45,913 INFO [main] o.h.Version [Version.java:44] HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-09-30 03:36:46,016 INFO [main] o.h.c.i.RegionFactoryInitiator [RegionFactoryInitiator.java:50] HHH000026: Second-level cache disabled
+2024-09-30 03:36:46,938 INFO [main] o.s.o.j.p.SpringPersistenceUnitInfo [SpringPersistenceUnitInfo.java:87] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-30 03:36:47,003 INFO [main] c.z.h.HikariDataSource [HikariDataSource.java:109] HikariPool-1 - Starting...
+2024-09-30 03:36:47,282 INFO [main] c.z.h.p.HikariPool [HikariPool.java:554] HikariPool-1 - Added connection org.mariadb.jdbc.Connection@53d15034
+2024-09-30 03:36:47,288 INFO [main] c.z.h.HikariDataSource [HikariDataSource.java:122] HikariPool-1 - Start completed.
+2024-09-30 03:36:47,356 WARN [main] o.h.o.deprecation [DialectFactoryImpl.java:153] HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30 03:36:49,713 INFO [main] o.h.m.i.EntityInstantiatorPojoStandard [EntityInstantiatorPojoStandard.java:53] HHH000182: No default (no-argument) constructor for class: id.go.jakarta.bksd.dokumen.domain.UserActivity (class must be instantiated by Interceptor)
+2024-09-30 03:36:50,579 INFO [main] o.h.e.t.j.p.i.JtaPlatformInitiator [JtaPlatformInitiator.java:59] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-30 03:36:51,032 INFO [main] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:437] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 03:36:51,974 INFO [main] o.s.d.j.r.q.QueryEnhancerFactory [QueryEnhancerFactory.java:49] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-09-30 03:36:56,272 WARN [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [JpaBaseConfiguration.java:236] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-30 03:36:56,434 INFO [main] o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer [InitializeAuthenticationProviderBeanManagerConfigurer.java:83] Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-09-30 03:36:56,438 WARN [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [InitializeUserDetailsBeanManagerConfigurer.java:72] Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-09-30 03:36:58,135 INFO [main] o.s.b.a.e.w.EndpointLinksResolver [EndpointLinksResolver.java:60] Exposing 1 endpoint beneath base path '/actuator'
+2024-09-30 03:36:58,380 INFO [main] o.s.s.w.a.c.ChannelProcessingFilter [ChannelProcessingFilter.java:106] Validated configuration attributes
+2024-09-30 03:37:00,359 WARN [main] org.jline [Log.java:115] Unable to create a system terminal, creating a dumb terminal (enable debug logging for more information)
+2024-09-30 03:37:01,098 INFO [main] i.g.j.b.d.DokumenApplicationTests [StartupInfoLogger.java:56] Started DokumenApplicationTests in 22.764 seconds (process running for 25.409)
+2024-09-30 03:37:22,372 INFO [main] o.s.t.c.s.AnnotationConfigContextLoaderUtils [AnnotationConfigContextLoaderUtils.java:83] Could not detect default configuration classes for test class [id.go.jakarta.bksd.dokumen.mvc.TestContextConfiguration]: TestContextConfiguration does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-09-30 03:37:22,402 INFO [main] o.s.b.t.c.SpringBootTestContextBootstrapper [SpringBootTestContextBootstrapper.java:234] Found @SpringBootConfiguration id.go.jakarta.bksd.dokumen.DokumenApplication for test class id.go.jakarta.bksd.dokumen.mvc.TestContextConfiguration
+2024-09-30 03:37:22,414 INFO [main] o.s.b.d.r.RestartApplicationListener [RestartApplicationListener.java:74] Restart disabled due to context in which it is running
+2024-09-30 03:37:22,463 INFO [main] i.g.j.b.d.m.TestContextConfiguration [StartupInfoLogger.java:50] Starting TestContextConfiguration using Java 21 with PID 29256 (started by Hendra in D:\Projects\SIMBKSD)
+2024-09-30 03:37:22,464 INFO [main] i.g.j.b.d.m.TestContextConfiguration [SpringApplication.java:660] The following 1 profile is active: "devrumah"
+2024-09-30 03:37:23,382 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:143] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-30 03:37:23,484 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:211] Finished Spring Data repository scanning in 100 ms. Found 18 JPA repository interfaces.
+2024-09-30 03:37:23,793 INFO [main] o.h.j.i.u.LogHelper [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-30 03:37:23,801 INFO [main] o.h.c.i.RegionFactoryInitiator [RegionFactoryInitiator.java:50] HHH000026: Second-level cache disabled
+2024-09-30 03:37:23,820 INFO [main] o.s.o.j.p.SpringPersistenceUnitInfo [SpringPersistenceUnitInfo.java:87] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-30 03:37:23,823 INFO [main] c.z.h.HikariDataSource [HikariDataSource.java:109] HikariPool-2 - Starting...
+2024-09-30 03:37:23,832 INFO [main] c.z.h.p.HikariPool [HikariPool.java:554] HikariPool-2 - Added connection org.mariadb.jdbc.Connection@5b9d3ef
+2024-09-30 03:37:23,834 INFO [main] c.z.h.HikariDataSource [HikariDataSource.java:122] HikariPool-2 - Start completed.
+2024-09-30 03:37:23,837 WARN [main] o.h.o.deprecation [DialectFactoryImpl.java:153] HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30 03:37:24,240 INFO [main] o.h.m.i.EntityInstantiatorPojoStandard [EntityInstantiatorPojoStandard.java:53] HHH000182: No default (no-argument) constructor for class: id.go.jakarta.bksd.dokumen.domain.UserActivity (class must be instantiated by Interceptor)
+2024-09-30 03:37:24,658 INFO [main] o.h.e.t.j.p.i.JtaPlatformInitiator [JtaPlatformInitiator.java:59] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-30 03:37:25,025 INFO [main] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:437] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 03:37:25,825 WARN [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [JpaBaseConfiguration.java:236] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-30 03:37:25,854 INFO [main] o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer [InitializeAuthenticationProviderBeanManagerConfigurer.java:83] Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-09-30 03:37:25,856 WARN [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [InitializeUserDetailsBeanManagerConfigurer.java:72] Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-09-30 03:37:26,242 INFO [main] o.s.b.a.e.w.EndpointLinksResolver [EndpointLinksResolver.java:60] Exposing 1 endpoint beneath base path '/actuator'
+2024-09-30 03:37:26,303 INFO [main] o.s.s.w.a.c.ChannelProcessingFilter [ChannelProcessingFilter.java:106] Validated configuration attributes
+2024-09-30 03:37:27,047 WARN [main] org.jline [Log.java:115] Unable to create a system terminal, creating a dumb terminal (enable debug logging for more information)
+2024-09-30 03:37:27,258 INFO [main] i.g.j.b.d.m.TestContextConfiguration [StartupInfoLogger.java:56] Started TestContextConfiguration in 4.845 seconds (process running for 51.57)
+2024-09-30 03:37:27,294 INFO [main] o.s.b.t.m.w.SpringBootMockServletContext [MockServletContext.java:437] Initializing Spring TestDispatcherServlet ''
+2024-09-30 03:37:27,295 INFO [main] o.s.t.w.s.TestDispatcherServlet [FrameworkServlet.java:532] Initializing Servlet ''
+2024-09-30 03:37:27,297 INFO [main] o.s.t.w.s.TestDispatcherServlet [FrameworkServlet.java:554] Completed initialization in 2 ms
+2024-09-30 03:37:27,312 INFO [main] o.s.b.t.m.w.SpringBootMockServletContext [MockServletContext.java:437] Initializing Spring TestDispatcherServlet ''
+2024-09-30 03:37:27,313 INFO [main] o.s.t.w.s.TestDispatcherServlet [FrameworkServlet.java:532] Initializing Servlet ''
+2024-09-30 03:37:27,315 INFO [main] o.s.t.w.s.TestDispatcherServlet [FrameworkServlet.java:554] Completed initialization in 2 ms
+2024-09-30 03:37:28,199 INFO [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:650] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 03:37:28,204 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:349] HikariPool-1 - Shutdown initiated...
+2024-09-30 03:37:28,217 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:351] HikariPool-1 - Shutdown completed.
+2024-09-30 03:37:28,227 INFO [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:650] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 03:37:28,229 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:349] HikariPool-2 - Shutdown initiated...
+2024-09-30 03:37:28,238 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:351] HikariPool-2 - Shutdown completed.
+2024-09-30 03:37:59,198 INFO [background-preinit] o.h.v.i.u.Version [Version.java:21] HV000001: Hibernate Validator 8.0.1.Final
+2024-09-30 03:37:59,281 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:50] Starting DokumenApplication using Java 21 with PID 28292 (D:\Projects\SIMBKSD\target\classes started by Hendra in D:\Projects\SIMBKSD)
+2024-09-30 03:37:59,283 INFO [restartedMain] i.g.j.b.d.DokumenApplication [SpringApplication.java:660] The following 1 profile is active: "devrumah"
+2024-09-30 03:37:59,387 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java:252] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-09-30 03:37:59,388 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java:252] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-09-30 03:38:02,096 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:143] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-30 03:38:02,519 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:211] Finished Spring Data repository scanning in 403 ms. Found 18 JPA repository interfaces.
+2024-09-30 03:38:04,873 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:111] Tomcat initialized with port 8443 (https)
+2024-09-30 03:38:04,896 INFO [restartedMain] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Initializing ProtocolHandler ["https-jsse-nio-8443"]
+2024-09-30 03:38:04,907 INFO [restartedMain] o.a.c.c.StandardService [DirectJDKLog.java:173] Starting service [Tomcat]
+2024-09-30 03:38:04,908 INFO [restartedMain] o.a.c.c.StandardEngine [DirectJDKLog.java:173] Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-09-30 03:38:05,065 INFO [restartedMain] o.a.c.c.C.[.[.[/SIMBKSD] [DirectJDKLog.java:173] Initializing Spring embedded WebApplicationContext
+2024-09-30 03:38:05,066 INFO [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext [ServletWebServerApplicationContext.java:296] Root WebApplicationContext: initialization completed in 5677 ms
+2024-09-30 03:38:05,424 DEBUG [restartedMain] i.g.j.b.d.c.CustomLoginFilter2 [GenericFilterBean.java:240] Filter 'customLoginFilter2' configured for use
+2024-09-30 03:38:05,674 INFO [restartedMain] o.h.j.i.u.LogHelper [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-30 03:38:05,797 INFO [restartedMain] o.h.Version [Version.java:44] HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-09-30 03:38:05,884 INFO [restartedMain] o.h.c.i.RegionFactoryInitiator [RegionFactoryInitiator.java:50] HHH000026: Second-level cache disabled
+2024-09-30 03:38:06,534 INFO [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo [SpringPersistenceUnitInfo.java:87] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-30 03:38:06,622 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:109] HikariPool-1 - Starting...
+2024-09-30 03:38:06,850 INFO [restartedMain] c.z.h.p.HikariPool [HikariPool.java:554] HikariPool-1 - Added connection org.mariadb.jdbc.Connection@5d258d78
+2024-09-30 03:38:06,856 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:122] HikariPool-1 - Start completed.
+2024-09-30 03:38:06,910 WARN [restartedMain] o.h.o.deprecation [DialectFactoryImpl.java:153] HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30 03:38:08,766 INFO [restartedMain] o.h.m.i.EntityInstantiatorPojoStandard [EntityInstantiatorPojoStandard.java:53] HHH000182: No default (no-argument) constructor for class: id.go.jakarta.bksd.dokumen.domain.UserActivity (class must be instantiated by Interceptor)
+2024-09-30 03:38:09,519 INFO [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator [JtaPlatformInitiator.java:59] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-30 03:38:09,961 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:437] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 03:38:10,459 INFO [restartedMain] o.s.d.j.r.q.QueryEnhancerFactory [QueryEnhancerFactory.java:49] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-09-30 03:38:14,412 WARN [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [JpaBaseConfiguration.java:236] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-30 03:38:14,514 INFO [restartedMain] o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer [InitializeAuthenticationProviderBeanManagerConfigurer.java:83] Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-09-30 03:38:14,517 WARN [restartedMain] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [InitializeUserDetailsBeanManagerConfigurer.java:72] Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-09-30 03:38:15,325 INFO [restartedMain] o.s.b.a.e.w.EndpointLinksResolver [EndpointLinksResolver.java:60] Exposing 1 endpoint beneath base path '/actuator'
+2024-09-30 03:38:15,480 INFO [restartedMain] o.s.s.w.a.c.ChannelProcessingFilter [ChannelProcessingFilter.java:106] Validated configuration attributes
+2024-09-30 03:38:16,687 INFO [restartedMain] o.s.b.d.a.OptionalLiveReloadServer [OptionalLiveReloadServer.java:59] LiveReload server is running on port 35729
+2024-09-30 03:38:16,774 WARN [restartedMain] org.jline [Log.java:115] Unable to create a system terminal, creating a dumb terminal (enable debug logging for more information)
+2024-09-30 03:38:17,299 INFO [restartedMain] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Starting ProtocolHandler ["https-jsse-nio-8443"]
+2024-09-30 03:38:17,550 INFO [restartedMain] o.a.t.u.n.N.certificate [DirectJDKLog.java:173] Connector [https-jsse-nio-8443], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\Hendra\.keystore] using alias [tomcat] with trust store [null]
+2024-09-30 03:38:17,584 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:243] Tomcat started on port 8443 (https) with context path '/SIMBKSD'
+2024-09-30 03:38:17,617 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:56] Started DokumenApplication in 19.457 seconds (process running for 20.67)
+2024-09-30 03:39:00,695 INFO [File Watcher] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [LocalDevToolsAutoConfiguration.java:211] Restarting due to 128 class path changes (1 addition, 127 deletions, 0 modifications)
+2024-09-30 03:39:00,711 INFO [Thread-5] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Stopping ProtocolHandler ["https-jsse-nio-8443"]
+2024-09-30 03:39:00,779 INFO [Thread-5] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:650] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 03:39:00,791 INFO [Thread-5] c.z.h.HikariDataSource [HikariDataSource.java:349] HikariPool-1 - Shutdown initiated...
+2024-09-30 03:39:00,803 INFO [Thread-5] c.z.h.HikariDataSource [HikariDataSource.java:351] HikariPool-1 - Shutdown completed.
+2024-09-30 03:39:01,012 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:50] Starting DokumenApplication using Java 21 with PID 28292 (D:\Projects\SIMBKSD\target\classes started by Hendra in D:\Projects\SIMBKSD)
+2024-09-30 03:39:01,013 INFO [restartedMain] i.g.j.b.d.DokumenApplication [SpringApplication.java:660] The following 1 profile is active: "devrumah"
+2024-09-30 03:39:02,438 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:143] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-30 03:39:02,458 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [AbstractApplicationContext.java:633] Exception encountered during context initialization - cancelling refresh attempt: java.lang.TypeNotPresentException: Type id.go.jakarta.bksd.dokumen.domain.Privilege not present
+2024-09-30 03:39:02,486 INFO [restartedMain] o.s.b.a.l.ConditionEvaluationReportLogger [ConditionEvaluationReportLogger.java:82] 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-09-30 03:39:02,583 ERROR [restartedMain] o.s.b.SpringApplication [SpringApplication.java:859] Application run failed
+java.lang.TypeNotPresentException: Type id.go.jakarta.bksd.dokumen.domain.Privilege not present
+	at java.base/sun.reflect.generics.factory.CoreReflectionFactory.makeNamedType(CoreReflectionFactory.java:117)
+	at java.base/sun.reflect.generics.visitor.Reifier.visitClassTypeSignature(Reifier.java:125)
+	at java.base/sun.reflect.generics.tree.ClassTypeSignature.accept(ClassTypeSignature.java:49)
+	at java.base/sun.reflect.generics.visitor.Reifier.reifyTypeArguments(Reifier.java:68)
+	at java.base/sun.reflect.generics.visitor.Reifier.visitClassTypeSignature(Reifier.java:138)
+	at java.base/sun.reflect.generics.tree.ClassTypeSignature.accept(ClassTypeSignature.java:49)
+	at java.base/sun.reflect.generics.repository.ClassRepository.computeSuperInterfaces(ClassRepository.java:117)
+	at java.base/sun.reflect.generics.repository.ClassRepository.getSuperInterfaces(ClassRepository.java:95)
+	at java.base/java.lang.Class.getGenericInterfaces(Class.java:1296)
+	at org.springframework.core.ResolvableType.getInterfaces(ResolvableType.java:517)
+	at org.springframework.core.ResolvableType.as(ResolvableType.java:465)
+	at org.springframework.data.util.TypeDiscoverer.getSuperTypeInformation(TypeDiscoverer.java:256)
+	at org.springframework.data.util.ClassTypeInformation.getSuperTypeInformation(ClassTypeInformation.java:36)
+	at org.springframework.data.util.TypeInformation.getRequiredSuperTypeInformation(TypeInformation.java:327)
+	at org.springframework.data.repository.core.support.DefaultRepositoryMetadata.<init>(DefaultRepositoryMetadata.java:55)
+	at org.springframework.data.repository.core.support.AbstractRepositoryMetadata.getMetadata(AbstractRepositoryMetadata.java:77)
+	at org.springframework.data.repository.config.RepositoryConfigurationExtensionSupport.getRepositoryConfigurations(RepositoryConfigurationExtensionSupport.java:91)
+	at org.springframework.data.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn(RepositoryConfigurationDelegate.java:168)
+	at org.springframework.boot.autoconfigure.data.AbstractRepositoryConfigurationSourceSupport.registerBeanDefinitions(AbstractRepositoryConfigurationSourceSupport.java:62)
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.lambda$loadBeanDefinitionsFromRegistrars$1(ConfigurationClassBeanDefinitionReader.java:376)
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:986)
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitionsFromRegistrars(ConfigurationClassBeanDefinitionReader.java:375)
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitionsForConfigurationClass(ConfigurationClassBeanDefinitionReader.java:148)
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitions(ConfigurationClassBeanDefinitionReader.java:120)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:429)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:290)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:349)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:118)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:789)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:607)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at id.go.jakarta.bksd.dokumen.DokumenApplication.main(DokumenApplication.java:14)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.lang.ClassNotFoundException: id.go.jakarta.bksd.dokumen.domain.Privilege
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:534)
+	at java.base/java.lang.Class.forName(Class.java:513)
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:534)
+	at java.base/java.lang.Class.forName(Class.java:513)
+	at java.base/sun.reflect.generics.factory.CoreReflectionFactory.makeNamedType(CoreReflectionFactory.java:114)
+	... 39 common frames omitted
+2024-09-30 03:42:30,424 INFO [background-preinit] o.h.v.i.u.Version [Version.java:21] HV000001: Hibernate Validator 8.0.1.Final
+2024-09-30 03:42:30,506 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:50] Starting DokumenApplication using Java 21 with PID 29436 (D:\Projects\SIMBKSD\target\classes started by Hendra in D:\Projects\SIMBKSD)
+2024-09-30 03:42:30,508 INFO [restartedMain] i.g.j.b.d.DokumenApplication [SpringApplication.java:660] The following 1 profile is active: "devrumah"
+2024-09-30 03:42:30,608 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java:252] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-09-30 03:42:30,608 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java:252] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-09-30 03:42:33,274 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:143] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-30 03:42:33,711 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:211] Finished Spring Data repository scanning in 421 ms. Found 18 JPA repository interfaces.
+2024-09-30 03:42:35,840 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:111] Tomcat initialized with port 8443 (https)
+2024-09-30 03:42:35,863 INFO [restartedMain] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Initializing ProtocolHandler ["https-jsse-nio-8443"]
+2024-09-30 03:42:35,876 INFO [restartedMain] o.a.c.c.StandardService [DirectJDKLog.java:173] Starting service [Tomcat]
+2024-09-30 03:42:35,877 INFO [restartedMain] o.a.c.c.StandardEngine [DirectJDKLog.java:173] Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-09-30 03:42:36,007 INFO [restartedMain] o.a.c.c.C.[.[.[/SIMBKSD] [DirectJDKLog.java:173] Initializing Spring embedded WebApplicationContext
+2024-09-30 03:42:36,008 INFO [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext [ServletWebServerApplicationContext.java:296] Root WebApplicationContext: initialization completed in 5398 ms
+2024-09-30 03:42:36,394 DEBUG [restartedMain] i.g.j.b.d.c.CustomLoginFilter2 [GenericFilterBean.java:240] Filter 'customLoginFilter2' configured for use
+2024-09-30 03:42:36,660 INFO [restartedMain] o.h.j.i.u.LogHelper [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-30 03:42:36,797 INFO [restartedMain] o.h.Version [Version.java:44] HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-09-30 03:42:36,881 INFO [restartedMain] o.h.c.i.RegionFactoryInitiator [RegionFactoryInitiator.java:50] HHH000026: Second-level cache disabled
+2024-09-30 03:42:37,504 INFO [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo [SpringPersistenceUnitInfo.java:87] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-30 03:42:37,565 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:109] HikariPool-1 - Starting...
+2024-09-30 03:42:37,777 INFO [restartedMain] c.z.h.p.HikariPool [HikariPool.java:554] HikariPool-1 - Added connection org.mariadb.jdbc.Connection@2b1e9ca8
+2024-09-30 03:42:37,782 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:122] HikariPool-1 - Start completed.
+2024-09-30 03:42:37,840 WARN [restartedMain] o.h.o.deprecation [DialectFactoryImpl.java:153] HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30 03:42:39,650 INFO [restartedMain] o.h.m.i.EntityInstantiatorPojoStandard [EntityInstantiatorPojoStandard.java:53] HHH000182: No default (no-argument) constructor for class: id.go.jakarta.bksd.dokumen.domain.UserActivity (class must be instantiated by Interceptor)
+2024-09-30 03:42:40,394 INFO [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator [JtaPlatformInitiator.java:59] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-30 03:42:40,891 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:437] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 03:42:41,472 INFO [restartedMain] o.s.d.j.r.q.QueryEnhancerFactory [QueryEnhancerFactory.java:49] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-09-30 03:42:45,097 WARN [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [JpaBaseConfiguration.java:236] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-30 03:42:45,171 INFO [restartedMain] o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer [InitializeAuthenticationProviderBeanManagerConfigurer.java:83] Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-09-30 03:42:45,173 WARN [restartedMain] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [InitializeUserDetailsBeanManagerConfigurer.java:72] Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-09-30 03:42:45,903 INFO [restartedMain] o.s.b.a.e.w.EndpointLinksResolver [EndpointLinksResolver.java:60] Exposing 1 endpoint beneath base path '/actuator'
+2024-09-30 03:42:46,064 INFO [restartedMain] o.s.s.w.a.c.ChannelProcessingFilter [ChannelProcessingFilter.java:106] Validated configuration attributes
+2024-09-30 03:42:47,283 INFO [restartedMain] o.s.b.d.a.OptionalLiveReloadServer [OptionalLiveReloadServer.java:59] LiveReload server is running on port 35729
+2024-09-30 03:42:47,365 WARN [restartedMain] org.jline [Log.java:115] Unable to create a system terminal, creating a dumb terminal (enable debug logging for more information)
+2024-09-30 03:42:47,973 INFO [restartedMain] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Starting ProtocolHandler ["https-jsse-nio-8443"]
+2024-09-30 03:42:48,252 INFO [restartedMain] o.a.t.u.n.N.certificate [DirectJDKLog.java:173] Connector [https-jsse-nio-8443], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\Hendra\.keystore] using alias [tomcat] with trust store [null]
+2024-09-30 03:42:48,291 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:243] Tomcat started on port 8443 (https) with context path '/SIMBKSD'
+2024-09-30 03:42:48,325 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:56] Started DokumenApplication in 18.929 seconds (process running for 20.12)
+2024-09-30 03:43:05,695 INFO [File Watcher] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [LocalDevToolsAutoConfiguration.java:211] Restarting due to 127 class path changes (0 additions, 127 deletions, 0 modifications)
+2024-09-30 03:43:05,708 INFO [Thread-5] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Stopping ProtocolHandler ["https-jsse-nio-8443"]
+2024-09-30 03:43:05,765 INFO [Thread-5] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:650] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 03:43:05,774 INFO [Thread-5] c.z.h.HikariDataSource [HikariDataSource.java:349] HikariPool-1 - Shutdown initiated...
+2024-09-30 03:43:05,787 INFO [Thread-5] c.z.h.HikariDataSource [HikariDataSource.java:351] HikariPool-1 - Shutdown completed.
+2024-09-30 03:43:06,014 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:50] Starting DokumenApplication using Java 21 with PID 29436 (D:\Projects\SIMBKSD\target\classes started by Hendra in D:\Projects\SIMBKSD)
+2024-09-30 03:43:06,014 INFO [restartedMain] i.g.j.b.d.DokumenApplication [SpringApplication.java:660] The following 1 profile is active: "devrumah"
+2024-09-30 03:43:07,212 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:143] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-30 03:43:07,241 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [AbstractApplicationContext.java:633] Exception encountered during context initialization - cancelling refresh attempt: java.lang.TypeNotPresentException: Type id.go.jakarta.bksd.dokumen.domain.Privilege not present
+2024-09-30 03:43:07,268 INFO [restartedMain] o.s.b.a.l.ConditionEvaluationReportLogger [ConditionEvaluationReportLogger.java:82] 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-09-30 03:43:07,346 ERROR [restartedMain] o.s.b.SpringApplication [SpringApplication.java:859] Application run failed
+java.lang.TypeNotPresentException: Type id.go.jakarta.bksd.dokumen.domain.Privilege not present
+	at java.base/sun.reflect.generics.factory.CoreReflectionFactory.makeNamedType(CoreReflectionFactory.java:117)
+	at java.base/sun.reflect.generics.visitor.Reifier.visitClassTypeSignature(Reifier.java:125)
+	at java.base/sun.reflect.generics.tree.ClassTypeSignature.accept(ClassTypeSignature.java:49)
+	at java.base/sun.reflect.generics.visitor.Reifier.reifyTypeArguments(Reifier.java:68)
+	at java.base/sun.reflect.generics.visitor.Reifier.visitClassTypeSignature(Reifier.java:138)
+	at java.base/sun.reflect.generics.tree.ClassTypeSignature.accept(ClassTypeSignature.java:49)
+	at java.base/sun.reflect.generics.repository.ClassRepository.computeSuperInterfaces(ClassRepository.java:117)
+	at java.base/sun.reflect.generics.repository.ClassRepository.getSuperInterfaces(ClassRepository.java:95)
+	at java.base/java.lang.Class.getGenericInterfaces(Class.java:1296)
+	at org.springframework.core.ResolvableType.getInterfaces(ResolvableType.java:517)
+	at org.springframework.core.ResolvableType.as(ResolvableType.java:465)
+	at org.springframework.data.util.TypeDiscoverer.getSuperTypeInformation(TypeDiscoverer.java:256)
+	at org.springframework.data.util.ClassTypeInformation.getSuperTypeInformation(ClassTypeInformation.java:36)
+	at org.springframework.data.util.TypeInformation.getRequiredSuperTypeInformation(TypeInformation.java:327)
+	at org.springframework.data.repository.core.support.DefaultRepositoryMetadata.<init>(DefaultRepositoryMetadata.java:55)
+	at org.springframework.data.repository.core.support.AbstractRepositoryMetadata.getMetadata(AbstractRepositoryMetadata.java:77)
+	at org.springframework.data.repository.config.RepositoryConfigurationExtensionSupport.getRepositoryConfigurations(RepositoryConfigurationExtensionSupport.java:91)
+	at org.springframework.data.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn(RepositoryConfigurationDelegate.java:168)
+	at org.springframework.boot.autoconfigure.data.AbstractRepositoryConfigurationSourceSupport.registerBeanDefinitions(AbstractRepositoryConfigurationSourceSupport.java:62)
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.lambda$loadBeanDefinitionsFromRegistrars$1(ConfigurationClassBeanDefinitionReader.java:376)
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:986)
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitionsFromRegistrars(ConfigurationClassBeanDefinitionReader.java:375)
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitionsForConfigurationClass(ConfigurationClassBeanDefinitionReader.java:148)
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitions(ConfigurationClassBeanDefinitionReader.java:120)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:429)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:290)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:349)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:118)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:789)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:607)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at id.go.jakarta.bksd.dokumen.DokumenApplication.main(DokumenApplication.java:14)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.lang.ClassNotFoundException: id.go.jakarta.bksd.dokumen.domain.Privilege
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:534)
+	at java.base/java.lang.Class.forName(Class.java:513)
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:534)
+	at java.base/java.lang.Class.forName(Class.java:513)
+	at java.base/sun.reflect.generics.factory.CoreReflectionFactory.makeNamedType(CoreReflectionFactory.java:114)
+	... 39 common frames omitted
+2024-09-30 03:43:16,964 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:50] Starting DokumenApplication using Java 21 with PID 29436 (D:\Projects\SIMBKSD\target\classes started by Hendra in D:\Projects\SIMBKSD)
+2024-09-30 03:43:16,965 INFO [restartedMain] i.g.j.b.d.DokumenApplication [SpringApplication.java:660] The following 1 profile is active: "devrumah"
+2024-09-30 03:43:18,535 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:143] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-30 03:43:18,685 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:211] Finished Spring Data repository scanning in 148 ms. Found 18 JPA repository interfaces.
+2024-09-30 03:43:19,307 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:111] Tomcat initialized with port 8443 (https)
+2024-09-30 03:43:19,309 INFO [restartedMain] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Initializing ProtocolHandler ["https-jsse-nio-8443"]
+2024-09-30 03:43:19,310 INFO [restartedMain] o.a.c.c.StandardService [DirectJDKLog.java:173] Starting service [Tomcat]
+2024-09-30 03:43:19,311 INFO [restartedMain] o.a.c.c.StandardEngine [DirectJDKLog.java:173] Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-09-30 03:43:19,414 INFO [restartedMain] o.a.c.c.C.[.[.[/SIMBKSD] [DirectJDKLog.java:173] Initializing Spring embedded WebApplicationContext
+2024-09-30 03:43:19,414 INFO [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext [ServletWebServerApplicationContext.java:296] Root WebApplicationContext: initialization completed in 2443 ms
+2024-09-30 03:43:19,667 DEBUG [restartedMain] i.g.j.b.d.c.CustomLoginFilter2 [GenericFilterBean.java:240] Filter 'customLoginFilter2' configured for use
+2024-09-30 03:43:19,826 INFO [restartedMain] o.h.j.i.u.LogHelper [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-30 03:43:19,838 INFO [restartedMain] o.h.c.i.RegionFactoryInitiator [RegionFactoryInitiator.java:50] HHH000026: Second-level cache disabled
+2024-09-30 03:43:19,869 INFO [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo [SpringPersistenceUnitInfo.java:87] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-30 03:43:19,873 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:109] HikariPool-2 - Starting...
+2024-09-30 03:43:19,881 INFO [restartedMain] c.z.h.p.HikariPool [HikariPool.java:554] HikariPool-2 - Added connection org.mariadb.jdbc.Connection@6b3c8e5b
+2024-09-30 03:43:19,883 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:122] HikariPool-2 - Start completed.
+2024-09-30 03:43:19,886 WARN [restartedMain] o.h.o.deprecation [DialectFactoryImpl.java:153] HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30 03:43:20,461 INFO [restartedMain] o.h.m.i.EntityInstantiatorPojoStandard [EntityInstantiatorPojoStandard.java:53] HHH000182: No default (no-argument) constructor for class: id.go.jakarta.bksd.dokumen.domain.UserActivity (class must be instantiated by Interceptor)
+2024-09-30 03:43:20,883 INFO [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator [JtaPlatformInitiator.java:59] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-30 03:43:21,313 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:437] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 03:43:23,033 WARN [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [JpaBaseConfiguration.java:236] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-30 03:43:23,096 INFO [restartedMain] o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer [InitializeAuthenticationProviderBeanManagerConfigurer.java:83] Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-09-30 03:43:23,099 WARN [restartedMain] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [InitializeUserDetailsBeanManagerConfigurer.java:72] Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-09-30 03:43:23,656 INFO [restartedMain] o.s.b.a.e.w.EndpointLinksResolver [EndpointLinksResolver.java:60] Exposing 1 endpoint beneath base path '/actuator'
+2024-09-30 03:43:23,756 INFO [restartedMain] o.s.s.w.a.c.ChannelProcessingFilter [ChannelProcessingFilter.java:106] Validated configuration attributes
+2024-09-30 03:43:24,452 INFO [restartedMain] o.s.b.d.a.OptionalLiveReloadServer [OptionalLiveReloadServer.java:59] LiveReload server is running on port 35729
+2024-09-30 03:43:24,507 WARN [restartedMain] org.jline [Log.java:115] Unable to create a system terminal, creating a dumb terminal (enable debug logging for more information)
+2024-09-30 03:43:24,818 INFO [restartedMain] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Starting ProtocolHandler ["https-jsse-nio-8443"]
+2024-09-30 03:43:24,928 INFO [restartedMain] o.a.t.u.n.N.certificate [DirectJDKLog.java:173] Connector [https-jsse-nio-8443], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\Hendra\.keystore] using alias [tomcat] with trust store [null]
+2024-09-30 03:43:24,934 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:243] Tomcat started on port 8443 (https) with context path '/SIMBKSD'
+2024-09-30 03:43:24,952 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:56] Started DokumenApplication in 8.094 seconds (process running for 56.746)
+2024-09-30 03:43:24,958 INFO [restartedMain] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [ConditionEvaluationDeltaLoggingListener.java:63] Condition evaluation unchanged
+2024-09-30 03:43:25,192 INFO [background-preinit] o.h.v.i.u.Version [Version.java:21] HV000001: Hibernate Validator 8.0.1.Final
+2024-09-30 03:43:25,247 INFO [main] i.g.j.b.d.DokumenApplicationTests [StartupInfoLogger.java:50] Starting DokumenApplicationTests using Java 21 with PID 31556 (started by Hendra in D:\Projects\SIMBKSD)
+2024-09-30 03:43:25,250 INFO [main] i.g.j.b.d.DokumenApplicationTests [SpringApplication.java:660] The following 1 profile is active: "devrumah"
+2024-09-30 03:43:28,472 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:143] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-30 03:43:28,798 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:211] Finished Spring Data repository scanning in 303 ms. Found 18 JPA repository interfaces.
+2024-09-30 03:43:30,855 INFO [main] o.h.j.i.u.LogHelper [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-30 03:43:31,121 INFO [main] o.h.Version [Version.java:44] HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-09-30 03:43:31,221 INFO [main] o.h.c.i.RegionFactoryInitiator [RegionFactoryInitiator.java:50] HHH000026: Second-level cache disabled
+2024-09-30 03:43:32,216 INFO [main] o.s.o.j.p.SpringPersistenceUnitInfo [SpringPersistenceUnitInfo.java:87] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-30 03:43:32,292 INFO [main] c.z.h.HikariDataSource [HikariDataSource.java:109] HikariPool-1 - Starting...
+2024-09-30 03:43:32,497 INFO [main] c.z.h.p.HikariPool [HikariPool.java:554] HikariPool-1 - Added connection org.mariadb.jdbc.Connection@62e99458
+2024-09-30 03:43:32,501 INFO [main] c.z.h.HikariDataSource [HikariDataSource.java:122] HikariPool-1 - Start completed.
+2024-09-30 03:43:32,566 WARN [main] o.h.o.deprecation [DialectFactoryImpl.java:153] HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30 03:43:34,877 INFO [main] o.h.m.i.EntityInstantiatorPojoStandard [EntityInstantiatorPojoStandard.java:53] HHH000182: No default (no-argument) constructor for class: id.go.jakarta.bksd.dokumen.domain.UserActivity (class must be instantiated by Interceptor)
+2024-09-30 03:43:35,697 INFO [main] o.h.e.t.j.p.i.JtaPlatformInitiator [JtaPlatformInitiator.java:59] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-30 03:43:36,223 INFO [main] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:437] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 03:43:37,242 INFO [main] o.s.d.j.r.q.QueryEnhancerFactory [QueryEnhancerFactory.java:49] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-09-30 03:43:41,702 WARN [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [JpaBaseConfiguration.java:236] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-30 03:43:41,871 INFO [main] o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer [InitializeAuthenticationProviderBeanManagerConfigurer.java:83] Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-09-30 03:43:41,874 WARN [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [InitializeUserDetailsBeanManagerConfigurer.java:72] Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-09-30 03:43:43,333 INFO [main] o.s.b.a.e.w.EndpointLinksResolver [EndpointLinksResolver.java:60] Exposing 1 endpoint beneath base path '/actuator'
+2024-09-30 03:43:43,559 INFO [main] o.s.s.w.a.c.ChannelProcessingFilter [ChannelProcessingFilter.java:106] Validated configuration attributes
+2024-09-30 03:43:45,480 INFO [main] i.g.j.b.d.DokumenApplicationTests [StartupInfoLogger.java:56] Started DokumenApplicationTests in 21.296 seconds (process running for 24.598)
+2024-09-30 03:43:57,682 INFO [https-jsse-nio-8443-exec-9] o.a.c.c.C.[.[.[/SIMBKSD] [DirectJDKLog.java:173] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-30 03:43:57,683 INFO [https-jsse-nio-8443-exec-9] o.s.w.s.DispatcherServlet [FrameworkServlet.java:532] Initializing Servlet 'dispatcherServlet'
+2024-09-30 03:43:57,687 INFO [https-jsse-nio-8443-exec-9] o.s.w.s.DispatcherServlet [FrameworkServlet.java:554] Completed initialization in 3 ms
+2024-09-30 03:44:04,592 INFO [main] o.s.t.c.s.AnnotationConfigContextLoaderUtils [AnnotationConfigContextLoaderUtils.java:83] Could not detect default configuration classes for test class [id.go.jakarta.bksd.dokumen.mvc.TestContextConfiguration]: TestContextConfiguration does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-09-30 03:44:04,625 INFO [main] o.s.b.t.c.SpringBootTestContextBootstrapper [SpringBootTestContextBootstrapper.java:234] Found @SpringBootConfiguration id.go.jakarta.bksd.dokumen.DokumenApplication for test class id.go.jakarta.bksd.dokumen.mvc.TestContextConfiguration
+2024-09-30 03:44:04,685 INFO [main] i.g.j.b.d.m.TestContextConfiguration [StartupInfoLogger.java:50] Starting TestContextConfiguration using Java 21 with PID 31556 (started by Hendra in D:\Projects\SIMBKSD)
+2024-09-30 03:44:04,686 INFO [main] i.g.j.b.d.m.TestContextConfiguration [SpringApplication.java:660] The following 1 profile is active: "devrumah"
+2024-09-30 03:44:05,555 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:143] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-30 03:44:05,651 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:211] Finished Spring Data repository scanning in 94 ms. Found 18 JPA repository interfaces.
+2024-09-30 03:44:05,873 INFO [main] o.h.j.i.u.LogHelper [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-30 03:44:05,880 INFO [main] o.h.c.i.RegionFactoryInitiator [RegionFactoryInitiator.java:50] HHH000026: Second-level cache disabled
+2024-09-30 03:44:05,898 INFO [main] o.s.o.j.p.SpringPersistenceUnitInfo [SpringPersistenceUnitInfo.java:87] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-30 03:44:05,901 INFO [main] c.z.h.HikariDataSource [HikariDataSource.java:109] HikariPool-2 - Starting...
+2024-09-30 03:44:05,908 INFO [main] c.z.h.p.HikariPool [HikariPool.java:554] HikariPool-2 - Added connection org.mariadb.jdbc.Connection@6948f680
+2024-09-30 03:44:05,909 INFO [main] c.z.h.HikariDataSource [HikariDataSource.java:122] HikariPool-2 - Start completed.
+2024-09-30 03:44:05,912 WARN [main] o.h.o.deprecation [DialectFactoryImpl.java:153] HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30 03:44:06,313 INFO [main] o.h.m.i.EntityInstantiatorPojoStandard [EntityInstantiatorPojoStandard.java:53] HHH000182: No default (no-argument) constructor for class: id.go.jakarta.bksd.dokumen.domain.UserActivity (class must be instantiated by Interceptor)
+2024-09-30 03:44:06,699 INFO [main] o.h.e.t.j.p.i.JtaPlatformInitiator [JtaPlatformInitiator.java:59] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-30 03:44:07,079 INFO [main] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:437] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 03:44:07,917 WARN [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [JpaBaseConfiguration.java:236] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-30 03:44:07,962 INFO [main] o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer [InitializeAuthenticationProviderBeanManagerConfigurer.java:83] Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-09-30 03:44:07,964 WARN [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [InitializeUserDetailsBeanManagerConfigurer.java:72] Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-09-30 03:44:08,370 INFO [main] o.s.b.a.e.w.EndpointLinksResolver [EndpointLinksResolver.java:60] Exposing 1 endpoint beneath base path '/actuator'
+2024-09-30 03:44:08,423 INFO [main] o.s.s.w.a.c.ChannelProcessingFilter [ChannelProcessingFilter.java:106] Validated configuration attributes
+2024-09-30 03:44:09,001 INFO [main] i.g.j.b.d.m.TestContextConfiguration [StartupInfoLogger.java:56] Started TestContextConfiguration in 4.367 seconds (process running for 48.12)
+2024-09-30 03:44:09,041 INFO [main] o.s.b.t.m.w.SpringBootMockServletContext [MockServletContext.java:437] Initializing Spring TestDispatcherServlet ''
+2024-09-30 03:44:09,043 INFO [main] o.s.t.w.s.TestDispatcherServlet [FrameworkServlet.java:532] Initializing Servlet ''
+2024-09-30 03:44:09,047 INFO [main] o.s.t.w.s.TestDispatcherServlet [FrameworkServlet.java:554] Completed initialization in 4 ms
+2024-09-30 03:44:09,062 INFO [main] o.s.b.t.m.w.SpringBootMockServletContext [MockServletContext.java:437] Initializing Spring TestDispatcherServlet ''
+2024-09-30 03:44:09,063 INFO [main] o.s.t.w.s.TestDispatcherServlet [FrameworkServlet.java:532] Initializing Servlet ''
+2024-09-30 03:44:09,067 INFO [main] o.s.t.w.s.TestDispatcherServlet [FrameworkServlet.java:554] Completed initialization in 4 ms
+2024-09-30 03:44:09,999 INFO [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:650] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 03:44:10,003 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:349] HikariPool-1 - Shutdown initiated...
+2024-09-30 03:44:10,015 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:351] HikariPool-1 - Shutdown completed.
+2024-09-30 03:44:10,022 INFO [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:650] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 03:44:10,024 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:349] HikariPool-2 - Shutdown initiated...
+2024-09-30 03:44:10,031 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:351] HikariPool-2 - Shutdown completed.
+2024-09-30 03:45:46,507 INFO [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:650] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 03:45:46,509 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:349] HikariPool-2 - Shutdown initiated...
+2024-09-30 03:45:46,517 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:351] HikariPool-2 - Shutdown completed.
+2024-09-30 03:46:29,257 INFO [background-preinit] o.h.v.i.u.Version [Version.java:21] HV000001: Hibernate Validator 8.0.1.Final
+2024-09-30 03:46:29,348 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:50] Starting DokumenApplication using Java 21 with PID 31804 (D:\Projects\SIMBKSD\target\classes started by Hendra in D:\Projects\SIMBKSD)
+2024-09-30 03:46:29,350 INFO [restartedMain] i.g.j.b.d.DokumenApplication [SpringApplication.java:660] The following 1 profile is active: "devrumah"
+2024-09-30 03:46:29,472 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java:252] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-09-30 03:46:29,473 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java:252] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-09-30 03:46:32,246 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:143] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-30 03:46:32,647 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:211] Finished Spring Data repository scanning in 383 ms. Found 18 JPA repository interfaces.
+2024-09-30 03:46:34,841 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:111] Tomcat initialized with port 8443 (https)
+2024-09-30 03:46:34,863 INFO [restartedMain] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Initializing ProtocolHandler ["https-jsse-nio-8443"]
+2024-09-30 03:46:34,875 INFO [restartedMain] o.a.c.c.StandardService [DirectJDKLog.java:173] Starting service [Tomcat]
+2024-09-30 03:46:34,876 INFO [restartedMain] o.a.c.c.StandardEngine [DirectJDKLog.java:173] Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-09-30 03:46:35,010 INFO [restartedMain] o.a.c.c.C.[.[.[/SIMBKSD] [DirectJDKLog.java:173] Initializing Spring embedded WebApplicationContext
+2024-09-30 03:46:35,011 INFO [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext [ServletWebServerApplicationContext.java:296] Root WebApplicationContext: initialization completed in 5537 ms
+2024-09-30 03:46:35,342 DEBUG [restartedMain] i.g.j.b.d.c.CustomLoginFilter2 [GenericFilterBean.java:240] Filter 'customLoginFilter2' configured for use
+2024-09-30 03:46:35,569 INFO [restartedMain] o.h.j.i.u.LogHelper [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-30 03:46:35,674 INFO [restartedMain] o.h.Version [Version.java:44] HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-09-30 03:46:35,736 INFO [restartedMain] o.h.c.i.RegionFactoryInitiator [RegionFactoryInitiator.java:50] HHH000026: Second-level cache disabled
+2024-09-30 03:46:36,279 INFO [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo [SpringPersistenceUnitInfo.java:87] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-30 03:46:36,357 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:109] HikariPool-1 - Starting...
+2024-09-30 03:46:36,562 INFO [restartedMain] c.z.h.p.HikariPool [HikariPool.java:554] HikariPool-1 - Added connection org.mariadb.jdbc.Connection@40d68cb0
+2024-09-30 03:46:36,567 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:122] HikariPool-1 - Start completed.
+2024-09-30 03:46:36,629 WARN [restartedMain] o.h.o.deprecation [DialectFactoryImpl.java:153] HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30 03:46:38,595 INFO [restartedMain] o.h.m.i.EntityInstantiatorPojoStandard [EntityInstantiatorPojoStandard.java:53] HHH000182: No default (no-argument) constructor for class: id.go.jakarta.bksd.dokumen.domain.UserActivity (class must be instantiated by Interceptor)
+2024-09-30 03:46:39,375 INFO [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator [JtaPlatformInitiator.java:59] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-30 03:46:39,821 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:437] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 03:46:40,364 INFO [restartedMain] o.s.d.j.r.q.QueryEnhancerFactory [QueryEnhancerFactory.java:49] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-09-30 03:46:43,774 WARN [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [JpaBaseConfiguration.java:236] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-30 03:46:43,856 INFO [restartedMain] o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer [InitializeAuthenticationProviderBeanManagerConfigurer.java:83] Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-09-30 03:46:43,859 WARN [restartedMain] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [InitializeUserDetailsBeanManagerConfigurer.java:72] Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-09-30 03:46:44,632 INFO [restartedMain] o.s.b.a.e.w.EndpointLinksResolver [EndpointLinksResolver.java:60] Exposing 1 endpoint beneath base path '/actuator'
+2024-09-30 03:46:44,823 INFO [restartedMain] o.s.s.w.a.c.ChannelProcessingFilter [ChannelProcessingFilter.java:106] Validated configuration attributes
+2024-09-30 03:46:45,918 INFO [restartedMain] o.s.b.d.a.OptionalLiveReloadServer [OptionalLiveReloadServer.java:59] LiveReload server is running on port 35729
+2024-09-30 03:46:46,001 WARN [restartedMain] org.jline [Log.java:115] Unable to create a system terminal, creating a dumb terminal (enable debug logging for more information)
+2024-09-30 03:46:46,558 INFO [restartedMain] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Starting ProtocolHandler ["https-jsse-nio-8443"]
+2024-09-30 03:46:46,801 INFO [restartedMain] o.a.t.u.n.N.certificate [DirectJDKLog.java:173] Connector [https-jsse-nio-8443], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\Hendra\.keystore] using alias [tomcat] with trust store [null]
+2024-09-30 03:46:46,831 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:243] Tomcat started on port 8443 (https) with context path '/SIMBKSD'
+2024-09-30 03:46:46,864 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:56] Started DokumenApplication in 18.679 seconds (process running for 19.891)
+2024-09-30 03:47:07,449 INFO [File Watcher] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [LocalDevToolsAutoConfiguration.java:211] Restarting due to 131 class path changes (1 addition, 130 deletions, 0 modifications)
+2024-09-30 03:47:07,468 INFO [Thread-5] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Stopping ProtocolHandler ["https-jsse-nio-8443"]
+2024-09-30 03:47:07,534 INFO [Thread-5] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:650] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 03:47:07,547 INFO [Thread-5] c.z.h.HikariDataSource [HikariDataSource.java:349] HikariPool-1 - Shutdown initiated...
+2024-09-30 03:47:07,565 INFO [Thread-5] c.z.h.HikariDataSource [HikariDataSource.java:351] HikariPool-1 - Shutdown completed.
+2024-09-30 03:47:07,800 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:50] Starting DokumenApplication using Java 21 with PID 31804 (D:\Projects\SIMBKSD\target\classes started by Hendra in D:\Projects\SIMBKSD)
+2024-09-30 03:47:07,801 INFO [restartedMain] i.g.j.b.d.DokumenApplication [SpringApplication.java:660] The following 1 profile is active: "devrumah"
+2024-09-30 03:47:08,863 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:143] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-30 03:47:08,873 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:211] Finished Spring Data repository scanning in 8 ms. Found 0 JPA repository interfaces.
+2024-09-30 03:47:09,488 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:111] Tomcat initialized with port 8443 (https)
+2024-09-30 03:47:09,490 INFO [restartedMain] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Initializing ProtocolHandler ["https-jsse-nio-8443"]
+2024-09-30 03:47:09,491 INFO [restartedMain] o.a.c.c.StandardService [DirectJDKLog.java:173] Starting service [Tomcat]
+2024-09-30 03:47:09,492 INFO [restartedMain] o.a.c.c.StandardEngine [DirectJDKLog.java:173] Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-09-30 03:47:09,590 INFO [restartedMain] o.a.c.c.C.[.[.[/SIMBKSD] [DirectJDKLog.java:173] Initializing Spring embedded WebApplicationContext
+2024-09-30 03:47:09,591 INFO [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext [ServletWebServerApplicationContext.java:296] Root WebApplicationContext: initialization completed in 1785 ms
+2024-09-30 03:47:09,884 INFO [restartedMain] o.h.j.i.u.LogHelper [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-30 03:47:09,892 INFO [restartedMain] o.h.c.i.RegionFactoryInitiator [RegionFactoryInitiator.java:50] HHH000026: Second-level cache disabled
+2024-09-30 03:47:09,905 INFO [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo [SpringPersistenceUnitInfo.java:87] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-30 03:47:09,908 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:109] HikariPool-2 - Starting...
+2024-09-30 03:47:09,915 INFO [restartedMain] c.z.h.p.HikariPool [HikariPool.java:554] HikariPool-2 - Added connection org.mariadb.jdbc.Connection@26d92f82
+2024-09-30 03:47:09,916 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:122] HikariPool-2 - Start completed.
+2024-09-30 03:47:09,918 WARN [restartedMain] o.h.o.deprecation [DialectFactoryImpl.java:153] HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30 03:47:09,953 INFO [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator [JtaPlatformInitiator.java:59] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-30 03:47:09,954 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:437] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 03:47:10,004 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [AbstractApplicationContext.java:633] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jpaAuditingHandler': Cannot create inner bean '(inner bean)#78e69ece' of type [org.springframework.aop.framework.ProxyFactoryBean] while setting bean property 'auditorAware'
+2024-09-30 03:47:10,005 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:650] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 03:47:10,006 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:349] HikariPool-2 - Shutdown initiated...
+2024-09-30 03:47:10,008 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:351] HikariPool-2 - Shutdown completed.
+2024-09-30 03:47:10,010 INFO [restartedMain] o.a.c.c.StandardService [DirectJDKLog.java:173] Stopping service [Tomcat]
+2024-09-30 03:47:10,037 INFO [restartedMain] o.s.b.a.l.ConditionEvaluationReportLogger [ConditionEvaluationReportLogger.java:82] 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-09-30 03:47:10,106 ERROR [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter [LoggingFailureAnalysisReporter.java:40] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+A component required a bean named 'auditorAware' that could not be found.
+
+
+Action:
+
+Consider defining a bean named 'auditorAware' in your configuration.
+
+2024-09-30 03:47:19,650 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:50] Starting DokumenApplication using Java 21 with PID 31804 (D:\Projects\SIMBKSD\target\classes started by Hendra in D:\Projects\SIMBKSD)
+2024-09-30 03:47:19,652 INFO [restartedMain] i.g.j.b.d.DokumenApplication [SpringApplication.java:660] The following 1 profile is active: "devrumah"
+2024-09-30 03:47:21,042 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:143] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-30 03:47:21,219 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:211] Finished Spring Data repository scanning in 175 ms. Found 18 JPA repository interfaces.
+2024-09-30 03:47:21,791 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:111] Tomcat initialized with port 8443 (https)
+2024-09-30 03:47:21,793 INFO [restartedMain] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Initializing ProtocolHandler ["https-jsse-nio-8443"]
+2024-09-30 03:47:21,794 INFO [restartedMain] o.a.c.c.StandardService [DirectJDKLog.java:173] Starting service [Tomcat]
+2024-09-30 03:47:21,796 INFO [restartedMain] o.a.c.c.StandardEngine [DirectJDKLog.java:173] Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-09-30 03:47:21,883 INFO [restartedMain] o.a.c.c.C.[.[.[/SIMBKSD] [DirectJDKLog.java:173] Initializing Spring embedded WebApplicationContext
+2024-09-30 03:47:21,885 INFO [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext [ServletWebServerApplicationContext.java:296] Root WebApplicationContext: initialization completed in 2225 ms
+2024-09-30 03:47:22,183 DEBUG [restartedMain] i.g.j.b.d.c.CustomLoginFilter2 [GenericFilterBean.java:240] Filter 'customLoginFilter2' configured for use
+2024-09-30 03:47:22,362 INFO [restartedMain] o.h.j.i.u.LogHelper [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-30 03:47:22,387 INFO [restartedMain] o.h.c.i.RegionFactoryInitiator [RegionFactoryInitiator.java:50] HHH000026: Second-level cache disabled
+2024-09-30 03:47:22,420 INFO [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo [SpringPersistenceUnitInfo.java:87] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-30 03:47:22,425 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:109] HikariPool-3 - Starting...
+2024-09-30 03:47:22,432 INFO [restartedMain] c.z.h.p.HikariPool [HikariPool.java:554] HikariPool-3 - Added connection org.mariadb.jdbc.Connection@70526809
+2024-09-30 03:47:22,433 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:122] HikariPool-3 - Start completed.
+2024-09-30 03:47:22,436 WARN [restartedMain] o.h.o.deprecation [DialectFactoryImpl.java:153] HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30 03:47:23,004 INFO [restartedMain] o.h.m.i.EntityInstantiatorPojoStandard [EntityInstantiatorPojoStandard.java:53] HHH000182: No default (no-argument) constructor for class: id.go.jakarta.bksd.dokumen.domain.UserActivity (class must be instantiated by Interceptor)
+2024-09-30 03:47:23,514 INFO [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator [JtaPlatformInitiator.java:59] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-30 03:47:24,028 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:437] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 03:47:25,241 WARN [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [JpaBaseConfiguration.java:236] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-30 03:47:25,297 INFO [restartedMain] o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer [InitializeAuthenticationProviderBeanManagerConfigurer.java:83] Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-09-30 03:47:25,298 WARN [restartedMain] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [InitializeUserDetailsBeanManagerConfigurer.java:72] Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-09-30 03:47:25,754 INFO [restartedMain] o.s.b.a.e.w.EndpointLinksResolver [EndpointLinksResolver.java:60] Exposing 1 endpoint beneath base path '/actuator'
+2024-09-30 03:47:25,860 INFO [restartedMain] o.s.s.w.a.c.ChannelProcessingFilter [ChannelProcessingFilter.java:106] Validated configuration attributes
+2024-09-30 03:47:26,651 INFO [restartedMain] o.s.b.d.a.OptionalLiveReloadServer [OptionalLiveReloadServer.java:59] LiveReload server is running on port 35729
+2024-09-30 03:47:26,702 WARN [restartedMain] org.jline [Log.java:115] Unable to create a system terminal, creating a dumb terminal (enable debug logging for more information)
+2024-09-30 03:47:27,031 INFO [restartedMain] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Starting ProtocolHandler ["https-jsse-nio-8443"]
+2024-09-30 03:47:27,173 INFO [restartedMain] o.a.t.u.n.N.certificate [DirectJDKLog.java:173] Connector [https-jsse-nio-8443], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\Hendra\.keystore] using alias [tomcat] with trust store [null]
+2024-09-30 03:47:27,182 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:243] Tomcat started on port 8443 (https) with context path '/SIMBKSD'
+2024-09-30 03:47:27,202 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:56] Started DokumenApplication in 7.628 seconds (process running for 60.23)
+2024-09-30 03:47:27,209 INFO [restartedMain] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [ConditionEvaluationDeltaLoggingListener.java:63] Condition evaluation unchanged
+2024-09-30 03:47:28,071 INFO [background-preinit] o.h.v.i.u.Version [Version.java:21] HV000001: Hibernate Validator 8.0.1.Final
+2024-09-30 03:47:28,127 INFO [main] i.g.j.b.d.DokumenApplicationTests [StartupInfoLogger.java:50] Starting DokumenApplicationTests using Java 21 with PID 31036 (started by Hendra in D:\Projects\SIMBKSD)
+2024-09-30 03:47:28,130 INFO [main] i.g.j.b.d.DokumenApplicationTests [SpringApplication.java:660] The following 1 profile is active: "devrumah"
+2024-09-30 03:47:31,321 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:143] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-30 03:47:31,654 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:211] Finished Spring Data repository scanning in 309 ms. Found 18 JPA repository interfaces.
+2024-09-30 03:47:34,002 INFO [main] o.h.j.i.u.LogHelper [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-30 03:47:34,221 INFO [main] o.h.Version [Version.java:44] HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-09-30 03:47:34,369 INFO [main] o.h.c.i.RegionFactoryInitiator [RegionFactoryInitiator.java:50] HHH000026: Second-level cache disabled
+2024-09-30 03:47:35,274 INFO [main] o.s.o.j.p.SpringPersistenceUnitInfo [SpringPersistenceUnitInfo.java:87] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-30 03:47:35,348 INFO [main] c.z.h.HikariDataSource [HikariDataSource.java:109] HikariPool-1 - Starting...
+2024-09-30 03:47:35,564 INFO [main] c.z.h.p.HikariPool [HikariPool.java:554] HikariPool-1 - Added connection org.mariadb.jdbc.Connection@62e99458
+2024-09-30 03:47:35,569 INFO [main] c.z.h.HikariDataSource [HikariDataSource.java:122] HikariPool-1 - Start completed.
+2024-09-30 03:47:35,623 WARN [main] o.h.o.deprecation [DialectFactoryImpl.java:153] HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30 03:47:37,916 INFO [main] o.h.m.i.EntityInstantiatorPojoStandard [EntityInstantiatorPojoStandard.java:53] HHH000182: No default (no-argument) constructor for class: id.go.jakarta.bksd.dokumen.domain.UserActivity (class must be instantiated by Interceptor)
+2024-09-30 03:47:38,849 INFO [main] o.h.e.t.j.p.i.JtaPlatformInitiator [JtaPlatformInitiator.java:59] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-30 03:47:39,370 INFO [main] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:437] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 03:47:40,243 INFO [main] o.s.d.j.r.q.QueryEnhancerFactory [QueryEnhancerFactory.java:49] Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-09-30 03:47:44,930 WARN [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [JpaBaseConfiguration.java:236] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-30 03:47:45,051 INFO [main] o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer [InitializeAuthenticationProviderBeanManagerConfigurer.java:83] Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-09-30 03:47:45,053 WARN [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [InitializeUserDetailsBeanManagerConfigurer.java:72] Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-09-30 03:47:46,337 INFO [main] o.s.b.a.e.w.EndpointLinksResolver [EndpointLinksResolver.java:60] Exposing 1 endpoint beneath base path '/actuator'
+2024-09-30 03:47:46,579 INFO [main] o.s.s.w.a.c.ChannelProcessingFilter [ChannelProcessingFilter.java:106] Validated configuration attributes
+2024-09-30 03:47:48,515 INFO [main] i.g.j.b.d.DokumenApplicationTests [StartupInfoLogger.java:56] Started DokumenApplicationTests in 21.522 seconds (process running for 24.415)
+2024-09-30 03:47:59,851 INFO [https-jsse-nio-8443-exec-9] o.a.c.c.C.[.[.[/SIMBKSD] [DirectJDKLog.java:173] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-30 03:47:59,852 INFO [https-jsse-nio-8443-exec-9] o.s.w.s.DispatcherServlet [FrameworkServlet.java:532] Initializing Servlet 'dispatcherServlet'
+2024-09-30 03:47:59,855 INFO [https-jsse-nio-8443-exec-9] o.s.w.s.DispatcherServlet [FrameworkServlet.java:554] Completed initialization in 3 ms
+2024-09-30 03:48:06,505 INFO [main] o.s.t.c.s.AnnotationConfigContextLoaderUtils [AnnotationConfigContextLoaderUtils.java:83] Could not detect default configuration classes for test class [id.go.jakarta.bksd.dokumen.mvc.TestContextConfiguration]: TestContextConfiguration does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-09-30 03:48:06,533 INFO [main] o.s.b.t.c.SpringBootTestContextBootstrapper [SpringBootTestContextBootstrapper.java:234] Found @SpringBootConfiguration id.go.jakarta.bksd.dokumen.DokumenApplication for test class id.go.jakarta.bksd.dokumen.mvc.TestContextConfiguration
+2024-09-30 03:48:06,591 INFO [main] i.g.j.b.d.m.TestContextConfiguration [StartupInfoLogger.java:50] Starting TestContextConfiguration using Java 21 with PID 31036 (started by Hendra in D:\Projects\SIMBKSD)
+2024-09-30 03:48:06,592 INFO [main] i.g.j.b.d.m.TestContextConfiguration [SpringApplication.java:660] The following 1 profile is active: "devrumah"
+2024-09-30 03:48:07,597 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:143] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-30 03:48:07,713 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:211] Finished Spring Data repository scanning in 114 ms. Found 18 JPA repository interfaces.
+2024-09-30 03:48:07,986 INFO [main] o.h.j.i.u.LogHelper [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-30 03:48:07,992 INFO [main] o.h.c.i.RegionFactoryInitiator [RegionFactoryInitiator.java:50] HHH000026: Second-level cache disabled
+2024-09-30 03:48:08,013 INFO [main] o.s.o.j.p.SpringPersistenceUnitInfo [SpringPersistenceUnitInfo.java:87] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-30 03:48:08,016 INFO [main] c.z.h.HikariDataSource [HikariDataSource.java:109] HikariPool-2 - Starting...
+2024-09-30 03:48:08,025 INFO [main] c.z.h.p.HikariPool [HikariPool.java:554] HikariPool-2 - Added connection org.mariadb.jdbc.Connection@69b1e76b
+2024-09-30 03:48:08,027 INFO [main] c.z.h.HikariDataSource [HikariDataSource.java:122] HikariPool-2 - Start completed.
+2024-09-30 03:48:08,030 WARN [main] o.h.o.deprecation [DialectFactoryImpl.java:153] HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30 03:48:08,395 INFO [main] o.h.m.i.EntityInstantiatorPojoStandard [EntityInstantiatorPojoStandard.java:53] HHH000182: No default (no-argument) constructor for class: id.go.jakarta.bksd.dokumen.domain.UserActivity (class must be instantiated by Interceptor)
+2024-09-30 03:48:08,713 INFO [main] o.h.e.t.j.p.i.JtaPlatformInitiator [JtaPlatformInitiator.java:59] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-30 03:48:09,099 INFO [main] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:437] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 03:48:09,977 WARN [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [JpaBaseConfiguration.java:236] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-30 03:48:10,004 INFO [main] o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer [InitializeAuthenticationProviderBeanManagerConfigurer.java:83] Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-09-30 03:48:10,005 WARN [main] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [InitializeUserDetailsBeanManagerConfigurer.java:72] Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-09-30 03:48:10,335 INFO [main] o.s.b.a.e.w.EndpointLinksResolver [EndpointLinksResolver.java:60] Exposing 1 endpoint beneath base path '/actuator'
+2024-09-30 03:48:10,384 INFO [main] o.s.s.w.a.c.ChannelProcessingFilter [ChannelProcessingFilter.java:106] Validated configuration attributes
+2024-09-30 03:48:10,857 INFO [main] i.g.j.b.d.m.TestContextConfiguration [StartupInfoLogger.java:56] Started TestContextConfiguration in 4.316 seconds (process running for 46.757)
+2024-09-30 03:48:10,893 INFO [main] o.s.b.t.m.w.SpringBootMockServletContext [MockServletContext.java:437] Initializing Spring TestDispatcherServlet ''
+2024-09-30 03:48:10,894 INFO [main] o.s.t.w.s.TestDispatcherServlet [FrameworkServlet.java:532] Initializing Servlet ''
+2024-09-30 03:48:10,897 INFO [main] o.s.t.w.s.TestDispatcherServlet [FrameworkServlet.java:554] Completed initialization in 2 ms
+2024-09-30 03:48:10,910 INFO [main] o.s.b.t.m.w.SpringBootMockServletContext [MockServletContext.java:437] Initializing Spring TestDispatcherServlet ''
+2024-09-30 03:48:10,912 INFO [main] o.s.t.w.s.TestDispatcherServlet [FrameworkServlet.java:532] Initializing Servlet ''
+2024-09-30 03:48:10,914 INFO [main] o.s.t.w.s.TestDispatcherServlet [FrameworkServlet.java:554] Completed initialization in 2 ms
+2024-09-30 03:48:11,887 INFO [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:650] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 03:48:11,891 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:349] HikariPool-1 - Shutdown initiated...
+2024-09-30 03:48:11,902 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:351] HikariPool-1 - Shutdown completed.
+2024-09-30 03:48:11,913 INFO [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:650] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 03:48:11,915 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:349] HikariPool-2 - Shutdown initiated...
+2024-09-30 03:48:11,925 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:351] HikariPool-2 - Shutdown completed.

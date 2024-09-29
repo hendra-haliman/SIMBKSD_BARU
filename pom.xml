@@ -53,16 +53,21 @@
 		</dependency>
 
 		<!--TODO: Ganti driver dengan MariaDB -->
-		<dependency>
+		<!--dependency>
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
-		</dependency>
+		</dependency-->
 		<!--dependency>
 			<groupId>org.mariadb.jdbc</groupId>
 			<artifactId>mariadb-java-client</artifactId>
 			<scope>runtime</scope>
 	    </dependency-->
+		<dependency>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
+			<version>3.4.1</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -265,7 +270,6 @@
 					<nonFilteredFileExtensions>
 						<nonFilteredFileExtension>otf</nonFilteredFileExtension>
 					</nonFilteredFileExtensions>
-
 				</configuration>
 			</plugin>
 		</plugins>
@@ -331,6 +335,13 @@
 			<properties>
 				<build.profile.id>UAT Profile</build.profile.id>
 			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>com.microsoft.playwright</groupId>
+					<artifactId>playwright</artifactId>
+					<version>1.44.0</version>
+				</dependency>
+			</dependencies>
 			<build>
 				<plugins>
 					<plugin>
@@ -340,7 +351,7 @@
 							<source>21</source>
 							<target>21</target>
 							<excludes>
-								<exclude>**/Dev*.java</exclude>
+								<!--exclude>**/Dev*.java</exclude-->
 								<exclude>**/DokumenShellCommands.java</exclude>
 							</excludes>
 						</configuration>
@@ -369,6 +380,13 @@
 			<properties>
 				<build.profile.id>Production Profile</build.profile.id>
 			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>com.microsoft.playwright</groupId>
+					<artifactId>playwright</artifactId>
+					<version>1.44.0</version>
+				</dependency>
+			</dependencies>
 			<build>
 				<plugins>
 					<plugin>

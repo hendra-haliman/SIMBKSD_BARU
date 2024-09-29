@@ -2,6 +2,7 @@
 <configuration>
 
     <springProperty scope="context" name="LOGS" source="logging.folder"/>
+    <property name="LOGS" value="${logging.folder:-logs}"/>
 
     <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
