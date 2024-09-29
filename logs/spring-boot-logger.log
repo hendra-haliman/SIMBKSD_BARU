@@ -1158,3 +1158,7 @@ Caused by: java.lang.IllegalStateException: Encountered invalid @Scheduled metho
 2024-09-30 04:15:17,763 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:243] Tomcat started on port 8443 (https) with context path '/SIMBKSD'
 2024-09-30 04:15:17,784 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:56] Started DokumenApplication in 5.79 seconds (process running for 1730.811)
 2024-09-30 04:15:17,788 INFO [restartedMain] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [ConditionEvaluationDeltaLoggingListener.java:63] Condition evaluation unchanged
+2024-09-30 05:04:32,921 INFO [File Watcher] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [LocalDevToolsAutoConfiguration.java:211] Restarting due to 248 class path changes (0 additions, 248 deletions, 0 modifications)
+2024-09-30 05:04:33,039 INFO [Thread-21] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:650] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-30 05:04:33,046 INFO [Thread-21] c.z.h.HikariDataSource [HikariDataSource.java:349] HikariPool-9 - Shutdown initiated...
+2024-09-30 05:04:33,069 INFO [Thread-21] c.z.h.HikariDataSource [HikariDataSource.java:351] HikariPool-9 - Shutdown completed.
