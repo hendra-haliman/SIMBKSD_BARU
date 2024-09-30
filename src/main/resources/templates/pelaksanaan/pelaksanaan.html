@@ -677,16 +677,15 @@
                                 return "";
                             }
 
-                            // Flag to check if the first occurrence has been found
                             let isFirst = true;
 
                             // Replace occurrences of "Nomor" with "<br>Nomor", except the first one
                             let modifiedText = data.replace(/(Nomor|No)/g, function (match) {
                                 if (isFirst) {
-                                    isFirst = false; // Set the flag to false after the first match
-                                    return match; // Return the match as is for the first occurrence
+                                    isFirst = false; 
+                                    return match; 
                                 } else {
-                                    return "<br>" + match; // Prepend <br> for subsequent matches
+                                    return "<br>" + match; 
                                 }
                             });
 
@@ -808,7 +807,6 @@
                             }
                         }
                     },
-
                     {
                         "name": "keterangan3",
                         "data": "keterangan3"

@@ -23,7 +23,7 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     }
 
-    const topNavItems = document.body.querySelectorAll('.nav-item');
+    const topNavItems = document.body.querySelectorAll('.nav-item.topnav');
     topNavItems.forEach(item => {
         item.addEventListener('click', event => {
             topNavItems.forEach(el => el.classList.remove('active'));

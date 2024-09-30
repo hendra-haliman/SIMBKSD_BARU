@@ -55,13 +55,6 @@
                                                     id="email" type="text" placeholder="Masukan Email" />
                                             </div>
                                             <div class="col-md-6">
-                                                <label class="small mb-1" for="enabled">Aktif ?</label>
-                                                <input th:field="*{enabled}" class="form-control form-control-md"
-                                                    id="enabled" type="checkbox"/>
-                                            </div>
-                                        </div>
-                                        <div class="row gx-3 mb-3">
-                                            <div class="col-md-6">
                                                 <label class="small mb-1" for="roles">Role</label>
                                                 <select class="form-select form-select-sm" th:field="*{roles}">
                                                     <option value="">Pilih Role</option>
@@ -70,10 +63,14 @@
                                                             th:text="${role.name}"></option>
                                                 </select>    
                                             </div>
-
                                         </div>
-
-
+                                        <div class="row gx-3 mb-3">
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="enabled">Aktif ?</label>
+                                                <input th:field="*{enabled}" 
+                                                    id="enabled" type="checkbox"/>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="card-footer text-center">
                                         <button class="btn btn-primary btn-block" type="submit">Simpan</button>
@@ -87,6 +84,7 @@
                 </div>
 
             </main>
+            <footer th:replace="~{fragments/general.html :: footer}"></footer>
         </div>
     </div>
 

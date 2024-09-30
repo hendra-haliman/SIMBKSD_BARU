@@ -2,25 +2,21 @@ package id.go.jakarta.bksd.dokumen.controller;
 
 import java.util.List;
 
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import id.go.jakarta.bksd.dokumen.domain.Bagian;
-import id.go.jakarta.bksd.dokumen.domain.OPD;
 import id.go.jakarta.bksd.dokumen.domain.Pemakai;
-import id.go.jakarta.bksd.dokumen.domain.Pemetaan;
 import id.go.jakarta.bksd.dokumen.domain.Privilege;
 import id.go.jakarta.bksd.dokumen.domain.Role;
 import id.go.jakarta.bksd.dokumen.service.PemakaiService;
 import id.go.jakarta.bksd.dokumen.service.PrivilegeService;
 import id.go.jakarta.bksd.dokumen.service.RoleService;
-
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/user")
@@ -61,6 +57,34 @@ public class UserController {
         model.addAttribute("roles", roles);
         model.addAttribute("privs", privs);
         return "user/user-edit";
+    }
+
+    @GetMapping("/add")
+    public String showAddUser(Model model) {
+        model.addAttribute("pemakai", new Pemakai());
+        List<Role> roles = roleService.getAllRoles();
+
+        model.addAttribute("roles", roles);
+
+        return "user/user-add";
+    }
+
+    @PostMapping("saveNew")
+    public String saveNewUser(Model model, @ModelAttribute("pemakai") Pemakai pemakai) {
+
+        pemakaiService.save(pemakai);
+        model.addAttribute("success_msg", "User berhasil disimpan.");
+        return "user/user";
+    }
+
+    @PostMapping("saveEdit")
+    public String saveEditUser(Model model,
+            @ModelAttribute("pemakai") Pemakai pemakai) {
+
+        pemakaiService.save(pemakai);
+        model.addAttribute("success_msg", "User berhasil disimpan.");
+
+        return "user/user";
     }
 
 }

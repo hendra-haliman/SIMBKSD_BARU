@@ -33,6 +33,10 @@
                 </header>
                 <!-- Main page content-->
                 <div class="container-fluid px-4 mt-n10">
+                    <div th:if="${success_msg} != null" th:text="${success_msg}" class="alert alert-success"
+                        role="alert">
+                    </div>
+
                     <div class="card my-4">
                         <div class="card-header">Data User</div>
                         <div class="card-body">
@@ -149,6 +153,19 @@
                 "language": {
                     "lengthMenu": "_MENU_ &nbsp;records per halaman",
                     "emptyTable": "Maaf, tidak ada data tersedia."
+                },
+                "layout": {
+                    "top2Start": {
+                        "buttons": [
+                            {
+                                text: '<i class="fa-solid fa-plus"></i> Tambah User',
+                                className: 'btn btn-sm btn-tambah',
+                                action: function (e, dt, node, config) {
+                                    window.location.href = contextPath + "user/add";
+                                }
+                            }
+                        ]
+                    }
                 }
             });
 
