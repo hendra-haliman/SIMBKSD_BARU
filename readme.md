@@ -14,6 +14,8 @@ Atau mengemas aplikasi dalam sebuah War file, lalu dideploy di local standalone 
 #### UAT
 `mvn package -Puat`
 
+`mvn package -Puat -DskipTests` untuk mengemas aplikasi tanpa melakukan test terlebih dahulu.
+
 #### Prod
 `mvn package -Pprod`
 

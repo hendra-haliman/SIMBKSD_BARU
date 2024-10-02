@@ -14,17 +14,20 @@
 
     <link th:href="@{/static/css/datatables.min.css}" rel="stylesheet">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"/>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"/> -->
+    <link th:href="@{/static/css/bootstrap-datepicker.min.css}" rel="stylesheet" /> 
     <link th:href="@{/static/css/litepicker.css}" rel="stylesheet" />
     <link th:href="@{/static/css/styles.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{/static/css/style.css}" rel="stylesheet" type="text/css"/>
     <link rel="icon" type="image/x-icon" th:href="@{/static/assets/img/favicon.png}" />
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> -->
+    <link th:href="@{/static/css/select2.min.css}" rel="stylesheet" />
     <script th:src="@{/static/js/feather.min.js}" crossorigin="anonymous"></script>
     <!-- Google fonts-->
+<!--todo
     <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
-
+-->
 </head>
 
 <head th:fragment="minimal_header(title)">
@@ -190,9 +193,9 @@
         <script th:src="@{/static/js/pdfmake.min.js}"></script>
         <script th:src="@{/static/js/vfs_fonts.js}"></script>
         <script th:src="@{/static/js/datatables.min.js}"></script>
-        <script src="https://cdn.datatables.net/buttons/3.1.2/js/buttons.print.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script> 
-        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <script th:src="@{/static/js/buttons.print.min.js}"></script>
+        <script th:src="@{/static/js/bootstrap-datepicker.min.js}"></script> 
+        <script th:src="@{/static/js/select2.min.js}"></script>
         <script th:src="@{/static/js/jQuery.hoverForMore.js}"></script>
         <script th:src="@{/static/js/autosize.min.js}"></script>
         <script th:inline="javascript">
