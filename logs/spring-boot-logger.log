@@ -129,3 +129,41 @@
 2024-10-02 18:18:57,232 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:243] Tomcat started on port 8443 (https) with context path '/SIMBKSD'
 2024-10-02 18:18:57,247 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:56] Started DokumenApplication in 9.74 seconds (process running for 708.771)
 2024-10-02 18:18:57,252 INFO [restartedMain] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [ConditionEvaluationDeltaLoggingListener.java:63] Condition evaluation unchanged
+2024-10-02 18:20:40,962 INFO [File Watcher] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [LocalDevToolsAutoConfiguration.java:211] Restarting due to 4 class path changes (0 additions, 0 deletions, 4 modifications)
+2024-10-02 18:20:41,254 INFO [Thread-11] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Stopping ProtocolHandler ["https-jsse-nio-8443"]
+2024-10-02 18:20:41,276 INFO [Thread-11] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:650] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-02 18:20:41,281 INFO [Thread-11] c.z.h.HikariDataSource [HikariDataSource.java:349] HikariPool-3 - Shutdown initiated...
+2024-10-02 18:20:41,293 INFO [Thread-11] c.z.h.HikariDataSource [HikariDataSource.java:351] HikariPool-3 - Shutdown completed.
+2024-10-02 18:20:41,829 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:50] Starting DokumenApplication using Java 21.0.3 with PID 8396 (D:\Projects\SIMBKSD\target\classes started by hendr in D:\Projects\SIMBKSD)
+2024-10-02 18:20:41,830 INFO [restartedMain] i.g.j.b.d.DokumenApplication [SpringApplication.java:660] The following 1 profile is active: "devkantor"
+2024-10-02 18:20:43,304 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:143] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-02 18:20:43,427 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:211] Finished Spring Data repository scanning in 118 ms. Found 18 JPA repository interfaces.
+2024-10-02 18:20:43,874 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:111] Tomcat initialized with port 8443 (https)
+2024-10-02 18:20:43,875 INFO [restartedMain] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Initializing ProtocolHandler ["https-jsse-nio-8443"]
+2024-10-02 18:20:43,876 INFO [restartedMain] o.a.c.c.StandardService [DirectJDKLog.java:173] Starting service [Tomcat]
+2024-10-02 18:20:43,876 INFO [restartedMain] o.a.c.c.StandardEngine [DirectJDKLog.java:173] Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-02 18:20:43,926 INFO [restartedMain] o.a.c.c.C.[.[.[/SIMBKSD] [DirectJDKLog.java:173] Initializing Spring embedded WebApplicationContext
+2024-10-02 18:20:43,927 INFO [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext [ServletWebServerApplicationContext.java:296] Root WebApplicationContext: initialization completed in 2090 ms
+2024-10-02 18:20:44,047 DEBUG [restartedMain] i.g.j.b.d.c.CustomLoginFilter2 [GenericFilterBean.java:240] Filter 'customLoginFilter2' configured for use
+2024-10-02 18:20:44,134 INFO [restartedMain] o.h.j.i.u.LogHelper [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-02 18:20:44,141 INFO [restartedMain] o.h.c.i.RegionFactoryInitiator [RegionFactoryInitiator.java:50] HHH000026: Second-level cache disabled
+2024-10-02 18:20:44,160 INFO [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo [SpringPersistenceUnitInfo.java:87] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-02 18:20:44,170 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:109] HikariPool-4 - Starting...
+2024-10-02 18:20:44,193 INFO [restartedMain] c.z.h.p.HikariPool [HikariPool.java:554] HikariPool-4 - Added connection org.mariadb.jdbc.Connection@503293a8
+2024-10-02 18:20:44,193 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:122] HikariPool-4 - Start completed.
+2024-10-02 18:20:44,195 WARN [restartedMain] o.h.o.deprecation [DialectFactoryImpl.java:153] HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-10-02 18:20:44,594 INFO [restartedMain] o.h.m.i.EntityInstantiatorPojoStandard [EntityInstantiatorPojoStandard.java:53] HHH000182: No default (no-argument) constructor for class: id.go.jakarta.bksd.dokumen.domain.UserActivity (class must be instantiated by Interceptor)
+2024-10-02 18:20:44,919 INFO [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator [JtaPlatformInitiator.java:59] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-02 18:20:45,250 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:437] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-02 18:20:46,005 WARN [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [JpaBaseConfiguration.java:236] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-02 18:20:46,041 INFO [restartedMain] o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer [InitializeAuthenticationProviderBeanManagerConfigurer.java:83] Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-10-02 18:20:46,044 WARN [restartedMain] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [InitializeUserDetailsBeanManagerConfigurer.java:72] Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-10-02 18:20:46,375 INFO [restartedMain] o.s.b.a.e.w.EndpointLinksResolver [EndpointLinksResolver.java:60] Exposing 1 endpoint beneath base path '/actuator'
+2024-10-02 18:20:46,443 INFO [restartedMain] o.s.s.w.a.c.ChannelProcessingFilter [ChannelProcessingFilter.java:106] Validated configuration attributes
+2024-10-02 18:20:46,838 INFO [restartedMain] o.s.b.d.a.OptionalLiveReloadServer [OptionalLiveReloadServer.java:59] LiveReload server is running on port 35729
+2024-10-02 18:20:46,891 WARN [restartedMain] org.jline [Log.java:115] Unable to create a system terminal, creating a dumb terminal (enable debug logging for more information)
+2024-10-02 18:20:47,098 INFO [restartedMain] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] Starting ProtocolHandler ["https-jsse-nio-8443"]
+2024-10-02 18:20:47,207 INFO [restartedMain] o.a.t.u.n.N.certificate [DirectJDKLog.java:173] Connector [https-jsse-nio-8443], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\hendr\.keystore] using alias [tomcat] with trust store [null]
+2024-10-02 18:20:47,210 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:243] Tomcat started on port 8443 (https) with context path '/SIMBKSD'
+2024-10-02 18:20:47,221 INFO [restartedMain] i.g.j.b.d.DokumenApplication [StartupInfoLogger.java:56] Started DokumenApplication in 5.523 seconds (process running for 818.744)
+2024-10-02 18:20:47,225 INFO [restartedMain] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [ConditionEvaluationDeltaLoggingListener.java:63] Condition evaluation unchanged
