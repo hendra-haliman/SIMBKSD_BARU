@@ -18,6 +18,8 @@ import com.microsoft.playwright.Playwright;
 import com.microsoft.playwright.junit.UsePlaywright;
 import com.microsoft.playwright.options.AriaRole;
 
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+
 /**
  * Simple test untuk mencheck Playwright bisa menggunakan test runner JUnit
  */
@@ -89,7 +91,7 @@ public class TestPlaywright {
         page.getByPlaceholder("Masukan password").fill("superman");
         page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Login")).click();
 
-        // TODO: Check halaman nya = dashboard
+        assertThat(page.locator("h3")).containsText("Dashboard");
     }
 
 }
