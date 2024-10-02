@@ -1,8 +1,5 @@
 package id.go.jakarta.bksd.dokumen.config;
 
-import java.io.IOError;
-import java.io.IOException;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
@@ -24,9 +21,8 @@ public class CustomLogoutHandler extends SecurityContextLogoutHandler {
             logger.info("***************** Logging out user " + authentication.getPrincipal() + " *****************");
         }
 
-        
         try {
-            response.sendRedirect("home");    
+            response.sendRedirect("home");
         } catch (Exception e) {
             e.printStackTrace();
         }

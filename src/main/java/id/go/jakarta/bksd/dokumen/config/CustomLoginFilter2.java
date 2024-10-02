@@ -25,8 +25,8 @@ public class CustomLoginFilter2 extends OncePerRequestFilter {
 
     protected static final String RECAPTCHA_URL_TEMPLATE = "https://www.google.com/recaptcha/api/siteverify?secret=%s&response=%s&remoteip=%s";
 
-    // @Value("${google.recaptcha.key.secret}")
-    private String secret = "6LdUOu4pAAAAAIJOBjTfmiboQO-0tx6tzEeQ-qWP";
+    @Value("${google.recaptcha.key.secret}")
+    private String secret;
 
     private String action = "register";
 
