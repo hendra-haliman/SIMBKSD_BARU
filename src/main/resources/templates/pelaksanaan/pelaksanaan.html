@@ -869,7 +869,7 @@
                                     fetch(url, {
                                         method: "POST",
                                         body: params,
-                                        headers: { "Content-Type": "application/json; charset=UTF-8" }
+                                        headers: { "Content-Type": "application/json; charset=UTF-8", [header]: token }
                                     }).then(response => response.blob())
                                         .then(blob => {
                                             const filename = 'export.xlsx'; 
