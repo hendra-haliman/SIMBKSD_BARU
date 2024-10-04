@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,6 +39,9 @@ public class MainController {
     private BagianService bagianService;
     private DokumenKerjaSamaLuarNegeriService dokumenKerjaSamaLuarNegeriService;
     private LaporanService laporanService;
+
+    @Value("${useRecaptcha}")
+    private boolean useRecaptcha;
 
     public MainController(PemakaiService pemakaiService, EmailService emailService, PasswordEncoder passwordEncoder,
             DataUploaderService dataUploaderService, FileManager fileManager,
@@ -140,7 +144,11 @@ public class MainController {
 
     @GetMapping("/showLoginPage")
     public String showLogin() {
-        return "login";
+        if (useRecaptcha) {
+            return "login";
+        } else {
+            return "login_nocaptcha";
+        }
     }
 
     @GetMapping("/forgotPassword")

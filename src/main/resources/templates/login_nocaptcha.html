@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/general.html :: minimal_header('Login')}"></head>
+
+<body class="nav-fixed bg-primary" th:style="'background: url(/SIMBKSD/static/assets/img/office.jpg) no-repeat center fixed;'">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container-xl px-4">
+
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                            <!-- Basic login form-->
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header justify-content-center">
+                                    <h3 class="fw-light my-4">Login</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div th:if="${param.error}" class="text-end">
+                                        <i class="alert alert-danger">Error! Invalid email / password !</i>
+                                    </div>
+                                    <div th:if="${param.logout}" class="text-end">
+                                        <i class="alert alert-info">Anda telah logout ! Harap login kembali.</i>
+                                    </div>
+                                    <br>
+                                    <!-- Login form-->
+                                    <form th:action="@{/authenticateUser}" method="post" id="loginForm">
+                                        <input type="hidden" id="response" name="response" value="" />
+                                        <!-- Form Group (email address)-->
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="email">Email</label>
+                                            <input class="form-control" id="email" name="email" type="email"
+                                                placeholder="Masukan email address" autocomplete="on" />
+                                        </div>
+                                        <!-- Form Group (password)-->
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="password">Password</label>
+                                            <input class="form-control" id="password" name="password" type="password"
+                                                placeholder="Masukan password" autocomplete="off" />
+                                        </div>
+                                        <!-- Form Group (remember password checkbox)-->
+                                        <div class="mb-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" id="rememberPasswordCheck"
+                                                    type="checkbox" value="" />
+                                                <label class="form-check-label" for="rememberPasswordCheck">Ingat
+                                                    password</label>
+                                            </div>
+                                        </div>
+
+                                        <!-- Form Group (login box)-->
+                                        <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                                            <a class="small" th:href="@{/forgotPassword}">Lupa Password?</a>
+                                            <!--a class="btn btn-primary" href="dashboard-1.html">Login</a-->
+                                            <button class="g-recaptcha btn btn-primary"
+                                                th:data-site-key="${@captchaServiceV3.getReCaptchaSite()}"
+                                                data-callback="onSubmit" data-action="submit">Login</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <div class="small"><a href="auth-register-basic.html">Butuh akun? Silahkan
+                                            daftar</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <div id="layoutAuthentication_footer">
+            <footer th:replace="~{fragments/general.html :: footer}"></footer>
+        </div>
+    </div>
+    <script th:src="@{/static/js/bootstrap.min.js}" crossorigin="anonymous"></script>
+</body>
+
+</html>
