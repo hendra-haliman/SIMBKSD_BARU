@@ -212,6 +212,9 @@
 
             });
 
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+
             var docTable = $("#dokTable").dataTable({
                 "processing": true,
                 "serverSide": true,
@@ -224,6 +227,9 @@
                     "type": "POST",
                     "dataType": "json",
                     "cache": "no-cache",
+                    "headers": {
+                        [header]: token  // Include the CSRF token in the request header
+                    },                    
                     "contentType": "application/json",
                     "data": function(d) {
                         var filterTahun = $('#yearpicker').val();

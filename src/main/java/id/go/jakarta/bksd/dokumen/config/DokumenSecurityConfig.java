@@ -19,6 +19,8 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.security.web.csrf.CsrfTokenRepository;
 
 import id.go.jakarta.bksd.dokumen.domain.EntityAuditorAware;
 import id.go.jakarta.bksd.dokumen.service.PemakaiService;
@@ -45,7 +47,8 @@ public class DokumenSecurityConfig {
             AuthenticationSuccessHandler customAuthenticationSuccessHandler) throws Exception {
 
         http
-                .csrf(csrf -> csrf.disable())
+                // .csrf(csrf -> csrf.disable())
+                .csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
                 .httpBasic(basic -> basic.authenticationEntryPoint(authEntryPoint))
                 .exceptionHandling(Customizer.withDefaults())
 

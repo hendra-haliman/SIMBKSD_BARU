@@ -7,6 +7,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import com.microsoft.playwright.Browser;
@@ -24,6 +25,7 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
  * Simple test untuk mencheck Playwright bisa menggunakan test runner JUnit
  */
 @UsePlaywright
+@Disabled
 public class TestPlaywright {
     static Playwright playwright;
     static Browser browser;

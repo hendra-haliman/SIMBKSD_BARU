@@ -8,6 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
+    <meta th:name="_csrf" th:content="${_csrf.token}"/>
+    <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
+
     <title th:text="${title}"></title>
 
     <link th:href="@{/static/css/bootstrap.min.css}" rel="stylesheet"/>
@@ -206,6 +209,16 @@
                 feather.replace();
 
                 autosize(document.querySelectorAll('textarea'));
+                
+                $(function () {
+                    //debugger;
+                    var token = $("meta[name='_csrf']").attr("content");
+                    var header = $("meta[name='_csrf_header']").attr("content");
+
+                    $(document).ajaxSend(function(e, xhr, options) {
+                        xhr.setRequestHeader(header, token);
+                    });
+                });
 
             });
         </script>
