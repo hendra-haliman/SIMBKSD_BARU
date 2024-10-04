@@ -1,6 +1,7 @@
 package id.go.jakarta.bksd.dokumen.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.nio.file.Paths;
 import java.util.List;
@@ -18,6 +19,8 @@ import id.go.jakarta.bksd.dokumen.domain.DokumenKerjaSama;
 import id.go.jakarta.bksd.dokumen.domain.DokumenKerjaSamaLuarNegeri;
 import id.go.jakarta.bksd.dokumen.domain.DokumenLuarNegeri;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 
@@ -28,8 +31,13 @@ import org.springframework.scheduling.annotation.Scheduled;
 @Service
 public class DevUtilityService {
 
+    private final Logger logger = LoggerFactory.getLogger(getClass());
+
     @Value("${google.download.folder}")
     private String destinationFolder;
+
+    @Value("${downloadMissingFile.headless}")
+    private boolean headless;
 
     private DokumenKerjaSamaService dokumenKerjaSamaService;
 
@@ -86,10 +94,11 @@ public class DevUtilityService {
      * 
      */
     public String downloadFileFromGoogleDrive(String url) {
+        logger.info("Trying to download from [{}] ", url);
         String filename = "";
 
         try (Playwright playwright = Playwright.create()) {
-            Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+            Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(headless));
             BrowserContext context = browser.newContext(new Browser.NewContextOptions().setAcceptDownloads(true));
             Page page = context.newPage();
             page.setDefaultTimeout(180000);
@@ -128,13 +137,17 @@ public class DevUtilityService {
      * 
      */
     @Scheduled(cron = "${downloadMissingFile.cron:0 15 00 * * ?}")
+    @Transactional
     public void downloadMissingFile() {
+        logger.info("Download Missing File...");
         downloadMissingFileKPTdanKDN();
         downloadMissingFileKLN();
     }
 
     private void downloadMissingFileKPTdanKDN() {
+        logger.info("Start downloadMissingFileKPTdanKDN ...");
         List<DokumenKerjaSama> docList = dokumenKerjaSamaService.findAll();
+        logger.info("Ada [{}] DokumenKerjaSama ...", docList.size());
 
         for (DokumenKerjaSama doc : docList) {
             List<Dokumen> files = doc.getDokumen();
@@ -152,10 +165,13 @@ public class DevUtilityService {
                 }
             }
         }
+        logger.info("Finish task downloadMissingFileKPTdanKDN...");
     }
 
     private void downloadMissingFileKLN() {
+        logger.info("Start downloadMissingFileKLN ...");
         List<DokumenKerjaSamaLuarNegeri> docLNList = dokumenKerjaSamaLuarNegeriService.findAll();
+        logger.info("Ada [{}] DokumenKerjaSamaLuarNegeri ...", docLNList.size());
 
         for (DokumenKerjaSamaLuarNegeri doc : docLNList) {
             List<DokumenLuarNegeri> files = doc.getDokumen();
@@ -173,6 +189,7 @@ public class DevUtilityService {
                 }
             }
         }
+        logger.info("Finish task downloadMissingFileKLN...");
     }
 
 }
