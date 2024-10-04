@@ -27,7 +27,7 @@ War file akan dihasilkan di folder `target`
 
 `mvn verify` atau `mvn failsafe:integration-test` untuk menjalankan e2e test.
 
-### Install Playwright
+#### Install Playwright
 
 `mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install --with-deps"`
 
@@ -35,6 +35,14 @@ War file akan dihasilkan di folder `target`
 
 `mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="codegen https://localhost:8443/SIMBKSD --ignore-https-errors"`
 
+#### Code Coverage
+
+Untuk mengetahui seberapa banyak kode sumber (source code) teruji lewat test, maka digunakan tools Jacoco (Java Code Coverage).
+Dalam pemakaian :
+`mvn test`, maka setelah semua test dijalankan, terbentuklah report dalam folder `target\site\jacoco`. Untuk melihatnya, tinggal membuka `target\site\jacoco\index.html`
+
 ### Scheduled Jobs
 
 `DevUtilityService->downloadMissingFile()` mendownload file naskah kerja sama yang missing. 
+
+
