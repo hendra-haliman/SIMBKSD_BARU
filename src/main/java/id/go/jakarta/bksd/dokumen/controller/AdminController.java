@@ -173,6 +173,19 @@ public class AdminController {
         return "finish KLN2022";
     }
 
+    @GetMapping("/uploadPemetaan2023")
+    @ResponseBody
+    public String uploadPemetaan2023() {
+        try {
+            dataUploaderService.uploadPemetaan2023();
+        } catch (IOException | InvalidFormatException ex) {
+            ex.printStackTrace();
+        }
+
+        return "finish Pemetaan2023";
+    }
+
+
     @GetMapping("/uploadPemetaan2024")
     @ResponseBody
     public String uploadPemetaan2024() {

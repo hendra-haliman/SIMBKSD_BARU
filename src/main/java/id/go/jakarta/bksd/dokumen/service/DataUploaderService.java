@@ -209,7 +209,104 @@ public class DataUploaderService {
         workbook.close();
     }
 
+    public void uploadPemetaan2023() throws IOException, InvalidFormatException {
+        int tahun = 2023;
+        File file = new File("D:/Biro KSD/Rekap Data Pemetaan Rencana Kerjasama 2023.xlsx");
+        XSSFWorkbook workbook = new XSSFWorkbook(file);
+        XSSFSheet sheet = workbook.getSheetAt(1);
+
+        Bagian KDNBagian = bagianService.findBySingkatan("KDN").get();
+        Bagian KPTBagian = bagianService.findBySingkatan("KPT").get();
+
+        // 1. DINAS KETAHANAN PANGAN, KELAUTAN DAN PERTANIAN
+        uploadPemetaanLuarNegri(tahun, sheet, "Dinas Ketahanan Pangan, Kelautan dan Pertanian", 6, 6);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, "Dinas Ketahanan Pangan, Kelautan dan Pertanian", 11, 22);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, "Dinas Ketahanan Pangan, Kelautan dan Pertanian", 27, 41);
+
+        // 2. DINAS BINA MARGA
+        uploadPemetaanLuarNegri(tahun, sheet, "Dinas Bina Marga", 48, 48);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, "Dinas Bina Marga", 53, 53);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, "Dinas Bina Marga", 58, 58);
+        
+        // 3. Dinas Perindustrian, Perdagangan, Koperasi, Usaha Kecil dan Menengah
+        String opd = "Dinas Perindustrian, Perdagangan Koperasi, Usaha Kecil dan Menengah";
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 66, 66);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 71, 73);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 78, 82);
+
+        // /4. Biro Kesejahteraan Sosial Setda Provinsi DKI Jakarta
+        opd = "Dinas Kesejahteraan Sosial";
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 90, 90);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 95, 95);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 100, 100);
+        
+        // 5. Badan Penanggulangan Bencana Daerah
+        opd = "Badan Penanggulangan Bencana Daerah";
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 108 , 108);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 113, 113);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 118, 122);
+
+         // 6. Dinas Kesehatan
+         opd = "Dinas Kesehatan";
+         uploadPemetaanLuarNegri(tahun, sheet, opd, 130, 130);
+         uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 135, 135);
+         uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 140, 162);
+        
+         // 7. Dinas Sumber Daya Air
+         opd = "Dinas Sumber Daya Air";
+         uploadPemetaanLuarNegri(tahun, sheet, opd, 170, 170);
+         uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 175, 176);
+         uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 185, 186);
+  
+        // 8. Dinas Sosial
+        opd = "Dinas Sosial";
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 193, 193);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 198, 199);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 204, 214);
+ 
+         // 9. Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu
+         opd = "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu";
+         uploadPemetaanLuarNegri(tahun, sheet, opd, 222, 222);
+         uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 227, 227);
+         uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 232, 232);
+
+        // 10 Sekretariat DPRD
+        opd = "Sekretariat DPRD";
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 240, 240);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 245, 245);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 250, 250);
+
+
+         // 11. Badan Pembinaan Badan Usaha Milik Daerah
+         opd = "Badan Pembinaan Badan Usaha Milik Daerah";
+         uploadPemetaanLuarNegri(tahun, sheet, opd, 258, 258);
+         uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 263, 263);
+         uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 268, 268);
+         
+        // 12. DINAS PERHUBUNGAN
+        opd = "Dinas Perhubungan";
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 276, 276);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 281, 281);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 286, 290);
+
+        // 13. DINAS KEBUDAYAAN
+        opd = "Dinas Kebudayaan";
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 297, 301);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 306, 316);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 321, 351);
+
+        // 14. Biro Umum dan Administrasi Sekretariat Daerah Setda Provinsi DKI Jakarta
+        opd = "Biro Umum dan Administrasi Sekretariat Daerah";
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 359, 359);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 364, 364);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 369, 369);
+        
+
+
+    }
+
     public void uploadPemetaan2024() throws IOException, InvalidFormatException {
+        int tahun = 2024;
         File file = new File("D:/Biro KSD/Rekap Data Pemetaan Rencana Kerjasama 2024.xlsx");
         XSSFWorkbook workbook = new XSSFWorkbook(file);
         XSSFSheet sheet = workbook.getSheetAt(0);
@@ -218,200 +315,200 @@ public class DataUploaderService {
         Bagian KPTBagian = bagianService.findBySingkatan("KPT").get();
 
         // 1. DINAS KETAHANAN PANGAN, KELAUTAN DAN PERTANIAN
-        uploadPemetaanLuarNegri(sheet, "Dinas Ketahanan Pangan, Kelautan dan Pertanian", 6, 6);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, "Dinas Ketahanan Pangan, Kelautan dan Pertanian", 11, 18);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, "Dinas Ketahanan Pangan, Kelautan dan Pertanian", 25, 28);
+        uploadPemetaanLuarNegri(tahun, sheet, "Dinas Ketahanan Pangan, Kelautan dan Pertanian", 6, 6);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, "Dinas Ketahanan Pangan, Kelautan dan Pertanian", 11, 18);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, "Dinas Ketahanan Pangan, Kelautan dan Pertanian", 25, 28);
 
         // 2. DINAS BINA MARGA
-        uploadPemetaanLuarNegri(sheet, "Dinas Bina Marga", 34, 34);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, "Dinas Bina Marga", 39, 39);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, "Dinas Bina Marga", 44, 44);
+        uploadPemetaanLuarNegri(tahun, sheet, "Dinas Bina Marga", 34, 34);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, "Dinas Bina Marga", 39, 39);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, "Dinas Bina Marga", 44, 44);
 
         // 3. Dinas Perindustrian, Perdagangan, Koperasi, Usaha Kecil dan Menengah
         String opd = "Dinas Perindustrian, Perdagangan Koperasi, Usaha Kecl dan Menengah";
-        uploadPemetaanLuarNegri(sheet, opd, 51, 51);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 56, 57);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, opd, 63, 66);
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 51, 51);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 56, 57);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 63, 66);
 
         // /4. Biro Kesejahteraan Sosial Setda Provinsi DKI Jakarta
         opd = "Dinas Kesejahteraan Sosial";
-        uploadPemetaanLuarNegri(sheet, opd, 74, 74);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 79, 79);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, opd, 84, 84);
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 74, 74);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 79, 79);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 84, 84);
 
         // 5. Badan Penanggulangan Bencana Daerah
-        opd = "Pelaksana Penanggulangan Bencana Daerah";
-        uploadPemetaanLuarNegri(sheet, opd, 91, 91);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 96, 96);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, opd, 101, 102);
+        opd = "Badan Penanggulangan Bencana Daerah";
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 91, 91);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 96, 96);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 101, 102);
 
         // 6. Dinas Kesehatan
         opd = "Dinas Kesehatan";
-        uploadPemetaanLuarNegri(sheet, opd, 112, 112);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 117, 117);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, opd, 122, 124);
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 112, 112);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 117, 117);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 122, 124);
 
         // 7. Dinas Sumber Daya Air
         opd = "Dinas Sumber Daya Air";
-        uploadPemetaanLuarNegri(sheet, opd, 132, 132);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 137, 138);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, opd, 146, 147);
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 132, 132);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 137, 138);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 146, 147);
 
         // 8. Dinas Sosial
         opd = "Dinas Sosial";
-        uploadPemetaanLuarNegri(sheet, opd, 154, 154);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 159, 160);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, opd, 165, 166);
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 154, 154);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 159, 160);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 165, 166);
 
         // 9. Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu
         opd = "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu";
-        uploadPemetaanLuarNegri(sheet, opd, 174, 174);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 179, 179);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, opd, 184, 184);
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 174, 174);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 179, 179);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 184, 184);
 
         // 10. Badan Pembinaan Badan Usaha Milik Daerah
         opd = "Badan Pembinaan Badan Usaha Milik Daerah";
-        uploadPemetaanLuarNegri(sheet, opd, 191, 191);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 196, 196);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, opd, 201, 201);
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 191, 191);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 196, 196);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 201, 201);
 
         // 11. DINAS PERHUBUNGAN
         opd = "Dinas Perhubungan";
-        uploadPemetaanLuarNegri(sheet, opd, 208, 208);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 213, 213);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, opd, 218, 219);
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 208, 208);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 213, 213);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 218, 219);
 
         // 12. DINAS KEBUDAYAAN
         opd = "Dinas Kebudayaan";
-        uploadPemetaanLuarNegri(sheet, opd, 226, 227);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 235, 236);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, opd, 243, 244);
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 226, 227);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 235, 236);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 243, 244);
 
         // 13. Biro Umum dan Administrasi Sekretariat Daerah Setda Provinsi DKI Jakarta
         opd = "Biro Umum dan Administrasi Sekretariat Daerah";
-        uploadPemetaanLuarNegri(sheet, opd, 252, 252);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 257, 257);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, opd, 262, 262);
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 252, 252);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 257, 257);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 262, 262);
 
         // 14. Dinas Tenaga Kerja, Transmigrasi dan Energi
         opd = "Dinas Tenaga Kerja, Transmigrasi dan Energi";
-        uploadPemetaanLuarNegri(sheet, opd, 269, 269);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 274, 275);
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 269, 269);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 274, 275);
         // uploadPemetaanDaerahLain(sheet, opd, , 262);
 
         // 15. Sekretariat DPRD
         opd = "Sekretariat DPRD";
-        uploadPemetaanLuarNegri(sheet, opd, 291, 291);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 296, 296);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, opd, 301, 301);
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 291, 291);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 296, 296);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 301, 301);
 
         // 16. Sekretariat Kota Administrasi Jakarta Utara
         opd = "Sekretariat Kota Administrasi Jakarta Utara";
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 308, 308);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 308, 308);
         // uploadPemetaanDaerahLain(sheet, opd, , 296);
         // uploadPemetaanDaerahLain(sheet, opd, 301, 301);
 
         // 17. Dinas Pemberdayaan, Perlindungan Anak dan Pengendalian Penduduk
         opd = "Dinas Pemberdayaan, Perlindungan Anak, dan Pengendalian Penduduk";
-        uploadPemetaanLuarNegri(sheet, opd, 315, 315);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 320, 320);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, opd, 325, 327);
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 315, 315);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 320, 320);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 325, 327);
 
         // 18. Badan Pelayanan Pengadaan Barang/Jasa
         opd = "Badan Pelayanan Pengadaan Barang/Jasa Daerah";
-        uploadPemetaanLuarNegri(sheet, opd, 334, 334);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 339, 339);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, opd, 344, 344);
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 334, 334);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 339, 339);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 344, 344);
 
         // 19. Biro Pendidikan dan Mental Spiritual Setda Provinsi DKI Jakarta
         opd = "Biro Pendidikan dan Mental Spiritual";
-        uploadPemetaanLuarNegri(sheet, opd, 352, 352);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 357, 357);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, opd, 362, 362);
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 352, 352);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 357, 357);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 362, 362);
 
         // 20. DINAS LINGKUNGAN HIDUP
         opd = "Dinas Lingkungan Hidup";
-        uploadPemetaanLuarNegri(sheet, opd, 369, 369);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 374, 375);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, opd, 381, 389);
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 369, 369);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 374, 375);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 381, 389);
 
         // 21. Dinas Penanggulangan Kebakaran dan Penyelamatan
         opd = "Dinas Penanggulangan Kebakaran & Penyelamatan";
-        uploadPemetaanLuarNegri(sheet, opd, 396, 396);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 401, 401);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, opd, 406, 407);
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 396, 396);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 401, 401);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 406, 407);
 
         // 22. Biro Organisasi dan Reformasi Birokrasi Setda Provinsi DKI Jakarta
         opd = "Biro Organisasi dan reformasi Birokrasi";
-        uploadPemetaanLuarNegri(sheet, opd, 416, 416);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 421, 421);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, opd, 426, 426);
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 416, 416);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 421, 421);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 426, 426);
 
         // 23. Badan Kesatuan Bangsa dan Politik Provinsi DKI Jakarta
         opd = "Badan Kesatuan Bangsa dan politik";
-        uploadPemetaanLuarNegri(sheet, opd, 434, 434);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 439, 439);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, opd, 444, 444);
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 434, 434);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 439, 439);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 444, 444);
 
         // 24. Badan Pengelolaan Keuangan Daerah Provinsi DKI Jakarta
         opd = "Badan Pengelolaan Keuangan Daerah";
-        uploadPemetaanLuarNegri(sheet, opd, 452, 452);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 457, 457);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, opd, 462, 462);
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 452, 452);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 457, 457);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 462, 462);
 
         // 25. Inspektorat
         opd = "Inspektorat";
-        uploadPemetaanLuarNegri(sheet, opd, 470, 470);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 475, 477);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, opd, 482, 484);
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 470, 470);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 475, 477);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 482, 484);
 
         // 26. Walikota Jakarta Selatan
         opd = "Walikota Jakarta Selatan";
-        uploadPemetaanLuarNegri(sheet, opd, 492, 492);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 497, 497);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, opd, 502, 502);
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 492, 492);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 497, 497);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 502, 502);
 
         // 27. Biro Kepala Daerah Sekretariat Daerah Setda Provinsi DKI Jakarta
         opd = "Biro Kepala Daerah";
-        uploadPemetaanLuarNegri(sheet, opd, 508, 508);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 513, 513);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, opd, 518, 518);
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 508, 508);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 513, 513);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 518, 518);
 
         // 28. Dinas Pemuda dan Olahraga
         opd = "Dinas Pemuda dan Olahraga";
-        uploadPemetaanLuarNegri(sheet, opd, 524, 524);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 529, 538);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, opd, 543, 548);
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 524, 524);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 529, 538);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 543, 548);
 
         // 29. Dinas Perumahan Rakyat Dan Kawasan Permukiman
         opd = "Dinas Perumahan Rakyat dan Kawasan Permukiman";
-        uploadPemetaanLuarNegri(sheet, opd, 555, 555);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 560, 560);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, opd, 565, 565);
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 555, 555);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 560, 560);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 565, 565);
 
         // 30. Dinas Cipta Karya, Tata Ruang dan Pertanahan
         opd = "Dinas Cipta Karya, Tata Ruang dan Pertanahan";
-        uploadPemetaanLuarNegri(sheet, opd, 572, 572);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 577, 577);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, opd, 582, 582);
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 572, 572);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 577, 577);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 582, 582);
 
         // 31. Biro Pembangunan dan Lingkungan Hidup
         opd = "Biro Pembangunan dan Lingkungan Hidup";
-        uploadPemetaanLuarNegri(sheet, opd, 588, 588);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 593, 593);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, opd, 598, 598);
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 588, 588);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 593, 593);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 598, 598);
 
         // 32. Biro Pemerintahan
         opd = "Biro Pemerintahan";
-        uploadPemetaanLuarNegri(sheet, opd, 604, 604);
-        uploadPemetaanDaerahLain(sheet, KDNBagian, opd, 609, 609);
-        uploadPemetaanDaerahLain(sheet, KPTBagian, opd, 614, 614);
+        uploadPemetaanLuarNegri(tahun, sheet, opd, 604, 604);
+        uploadPemetaanDaerahLain(tahun, sheet, KDNBagian, opd, 609, 609);
+        uploadPemetaanDaerahLain(tahun, sheet, KPTBagian, opd, 614, 614);
 
         workbook.close();
 
     }
 
-    private void uploadPemetaanLuarNegri(XSSFSheet sheet, String opd, int startRow, int endRow)
+    private void uploadPemetaanLuarNegri(int tahun,XSSFSheet sheet, String opd, int startRow, int endRow)
             throws IOException, InvalidFormatException {
         logger.info("OPD : [{}], [LN], startRow [{}], endRow [{}]", opd, startRow, endRow);
         for (int rowNum = startRow; rowNum <= endRow; rowNum++) {
@@ -421,6 +518,7 @@ public class DataUploaderService {
 
                 // String opd = row.getCell(2).getStringCellValue();
                 // String opd = "Dinas Ketahanan Pangan, Kelautan dan Pertanian";
+                pemetaan.setTahun(tahun);
                 Bagian bagian = bagianService.findBySingkatan("KLN").get();
                 pemetaan.setBagian(bagian);
                 pemetaan.setOpd(opdService.findByNama(opd).get());
@@ -440,14 +538,14 @@ public class DataUploaderService {
 
     }
 
-    private void uploadPemetaanDaerahLain(XSSFSheet sheet, Bagian bagian, String opd, int startRow, int endRow)
+    private void uploadPemetaanDaerahLain(int tahun, XSSFSheet sheet, Bagian bagian, String opd, int startRow, int endRow)
             throws IOException, InvalidFormatException {
         logger.info("OPD : [{}], [daerah], startRow [{}], endRow [{}]", opd, startRow, endRow);
         for (int rowNum = startRow; rowNum <= endRow; rowNum++) {
             XSSFRow row = sheet.getRow(rowNum);
             if (row != null) {
                 Pemetaan pemetaan = new Pemetaan();
-
+                pemetaan.setTahun(tahun);
                 // String opd = row.getCell(2).getStringCellValue();
                 pemetaan.setBagian(bagian);
                 pemetaan.setOpd(opdService.findByNama(opd).get());
@@ -795,7 +893,7 @@ public class DataUploaderService {
         return isEmpty;
     }
 
-    public boolean isHeaderRow(Row row, String[] expectedHeaders) {
+    private boolean isHeaderRow(Row row, String[] expectedHeaders) {
         int cellIndex = 0;
         for (Cell cell : row) {
             if (cell.getCellType() == CellType.STRING) {
@@ -810,7 +908,7 @@ public class DataUploaderService {
         return true;
     }
 
-    public boolean isHeaderRow(Row row, String[] expectedHeaders, int limit) {
+    private boolean isHeaderRow(Row row, String[] expectedHeaders, int limit) {
         int cellIndex = 0;
         for (Cell cell : row) {
             if (cellIndex == limit) {
@@ -829,7 +927,7 @@ public class DataUploaderService {
         return true;
     }
 
-    public int findHeaderRowIndex(Sheet sheet) {
+    private int findHeaderRowIndex(Sheet sheet) {
         int rowIndex = 0;
         for (Row row : sheet) {
             if (isHeaderRow(row, new String[] { "Expected", "Header", "Names" })) {
@@ -840,7 +938,7 @@ public class DataUploaderService {
         return -1; // Header not found
     }
 
-    public int findHeaderRowIndex(Sheet sheet, String[] headerNames, int limit) {
+    private int findHeaderRowIndex(Sheet sheet, String[] headerNames, int limit) {
         int rowIndex = 0;
         for (Row row : sheet) {
             if (isHeaderRow(row, headerNames, limit)) {
@@ -851,7 +949,7 @@ public class DataUploaderService {
         return -1; // Header not found
     }
 
-    public boolean isRowToSkip(Row row) {
+    private boolean isRowToSkip(Row row) {
         boolean result = false;
         if (row == null) {
             return true;

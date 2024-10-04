@@ -7,7 +7,7 @@ insert into opd(singkatan, nama, asisten_id) values('', 'Badan Kesatuan Bangsa d
 insert into opd(singkatan, nama, asisten_id) values('', 'Dinas Kependudukan dan Pencatatan Sipil',1);
 insert into opd(singkatan, nama, asisten_id) values('', 'Dinas Penanggulangan Kebakaran & Penyelamatan',1);
 insert into opd(singkatan, nama, asisten_id) values('', 'Dinas Komunikasi, Informatika & Statistik',1);
-insert into opd(singkatan, nama, asisten_id) values('', 'Pelaksana Penanggulangan Bencana Daerah',1);
+insert into opd(singkatan, nama, asisten_id) values('', 'Badan Penanggulangan Bencana Daerah',1);
 insert into opd(singkatan, nama, asisten_id) values('', 'Sekretariat DPRD',1);
 insert into opd(singkatan, nama, asisten_id) values('', 'Satpol PP',1);
 insert into opd(singkatan, nama, asisten_id) values('', 'Kota Administrasi',1);
