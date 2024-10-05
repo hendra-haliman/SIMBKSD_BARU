@@ -25,6 +25,9 @@ public class KerjaSamaPenyediaanPangan {
     private List<Pemda> pemda;
 
     @ManyToOne
+    private BUMD bumd;
+
+    @ManyToOne
     private MitraBusiness mitraBusiness;
 
     @ManyToMany
