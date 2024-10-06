@@ -13,12 +13,14 @@ import org.springframework.stereotype.Service;
 
 import id.go.jakarta.bksd.dokumen.domain.pangan.BUMD;
 import id.go.jakarta.bksd.dokumen.domain.pangan.Jenis;
+import id.go.jakarta.bksd.dokumen.domain.pangan.Kelompok;
 import id.go.jakarta.bksd.dokumen.domain.pangan.KerjaSamaPenyediaanPangan;
 import id.go.jakarta.bksd.dokumen.domain.pangan.KotaKabupaten;
 import id.go.jakarta.bksd.dokumen.domain.pangan.MitraBusiness;
 import id.go.jakarta.bksd.dokumen.domain.pangan.Pemda;
 import id.go.jakarta.bksd.dokumen.service.pangan.BUMDService;
 import id.go.jakarta.bksd.dokumen.service.pangan.JenisService;
+import id.go.jakarta.bksd.dokumen.service.pangan.KelompokService;
 import id.go.jakarta.bksd.dokumen.service.pangan.KerjaSamaPenyediaanPanganService;
 import id.go.jakarta.bksd.dokumen.service.pangan.KotaKabupatenService;
 import id.go.jakarta.bksd.dokumen.service.pangan.MitraBusinessService;
@@ -32,6 +34,8 @@ public class BUMDPanganDataUploaderService {
     private final String BUMD_FOOD_STATION = "Food Station";
     private final String BUMD_DHARMA_JAYA ="Dharma Jaya";
 
+    private final String KELOMPOK_KERJASAMA_DGN_DAERAH = "Kerja Sama dengan Pemerintah Daerah";
+
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     private PemdaService pemdaService;
@@ -40,18 +44,21 @@ public class BUMDPanganDataUploaderService {
     private KotaKabupatenService kabupatenService;
     private JenisService jenisService;
     private KerjaSamaPenyediaanPanganService kerjaSamaPenyediaanPanganService;
+    private KelompokService kelompokService;
 
 
     public BUMDPanganDataUploaderService(PemdaService pemdaService,
                                         BUMDService bumdService,
                                         MitraBusinessService mitraBusinessService,
                                         KotaKabupatenService kabupatenService,
-                                        JenisService jenisService) {
+                                        JenisService jenisService,
+                                        KelompokService kelompokService) {
         this.pemdaService = pemdaService;
         this.bumdService = bumdService;
         this.mitraBusinessService = mitraBusinessService;
         this.kabupatenService = kabupatenService;
         this.jenisService = jenisService;
+        this.kelompokService = kelompokService;
     }
 
     public void uploadDataPangan()  throws IOException, InvalidFormatException{
@@ -59,6 +66,7 @@ public class BUMDPanganDataUploaderService {
         XSSFWorkbook workbook = new XSSFWorkbook(file);
 
         uploadDataPasarJaya(workbook);
+        uploadDataFoodStation(workbook);
 
         workbook.close();
     }
@@ -66,27 +74,32 @@ public class BUMDPanganDataUploaderService {
     private void uploadDataPasarJaya(XSSFWorkbook workbook) {
         XSSFSheet sheet = workbook.getSheetAt(1);
 
+        Kelompok kelompok = kelompokService.findByNama(KELOMPOK_KERJASAMA_DGN_DAERAH);
         BUMD pasarJaya = bumdService.findByNama(BUMD_PASAR_JAYA);
-        uploadWorksheetData(2023, pasarJaya, sheet, 5, 5, true);
-        uploadWorksheetData(2024, pasarJaya, sheet, 11, 15, true);
+        uploadWorksheetData(2023, pasarJaya, kelompok, sheet, 5, 5, true);
+        uploadWorksheetData(2024, pasarJaya, kelompok, sheet, 11, 15, true);
     }
 
     private void uploadDataFoodStation(XSSFWorkbook workbook) {
         XSSFSheet sheet = workbook.getSheetAt(2);
 
+        Kelompok kelompok = kelompokService.findByNama(KELOMPOK_KERJASAMA_DGN_DAERAH);
         BUMD foodStation = bumdService.findByNama(BUMD_FOOD_STATION);
-        uploadWorksheetData(2023, foodStation, sheet, 5, 33, true);
-        uploadWorksheetData(2024, foodStation, sheet, 41, 66, true);
+        uploadWorksheetData(2023, foodStation, kelompok, sheet, 5, 33, true);
+        uploadWorksheetData(2024, foodStation, kelompok, sheet, 41, 66, true);
     }
 
 
-    private void uploadWorksheetData(int year, BUMD bumd, XSSFSheet sheet, int from, int to, boolean includeKeterangan) {
+    
+
+    private void uploadWorksheetData(int year, BUMD bumd, Kelompok kelompok, XSSFSheet sheet, int from, int to, boolean includeKeterangan) {
         for (int rowNum = from; rowNum <= to; rowNum++) {
             XSSFRow row = sheet.getRow(rowNum);
             KerjaSamaPenyediaanPangan kerjasama = new KerjaSamaPenyediaanPangan();
 
             kerjasama.setTahun(year);
             kerjasama.setBumd(bumd);
+            kerjasama.setKelompok(kelompok);
 
             Pemda pemda = pemdaService.findByNama(row.getCell(1).getStringCellValue());
             kerjasama.getPemda().add(pemda);
