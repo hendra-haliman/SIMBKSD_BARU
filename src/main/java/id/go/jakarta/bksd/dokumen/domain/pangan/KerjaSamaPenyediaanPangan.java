@@ -38,9 +38,9 @@ public class KerjaSamaPenyediaanPangan {
 
     private int tahun;
 
-    private int kuantitas;
+    private double kuantitas;
 
-    private float nilaiTransaksi;
+    private double nilaiTransaksi;
 
     private String keterangan;
 }

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragments/general.html :: header('Kerja Sama BUMD Pangan Master Data')}"></head>
+
+<body class="sb-nav-fixed">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="display: none;">
+        <symbol id="check" viewBox="0 0 448 512">
+            <style>
+                .checkpath { fill: green; }
+            </style>
+            <path class="checkpath" d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
+        </symbol>
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" style="display: none;">
+        <symbol id="xmark" viewBox="0 0 384 512">
+            <style>
+                .xmarkpath {fill: red;}
+            </style>
+            <!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path class="xmarkpath" d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>    
+        </symbol>
+    </svg>
+
+    <nav th:replace="~{fragments/general.html :: navigation}"></nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav" th:include="~{fragments/general.html :: layoutSidenav_nav}"></div>
+
+        <div id="layoutSidenav_content">
+            <main>
+                <header
+                    th:replace="~{fragments/content-header.html :: content-header('Managemen User','','')}">
+                </header>
+                <!-- Main page content-->
+                <div class="container-fluid px-4 mt-n10">
+                    <div th:if="${success_msg} != null" th:text="${success_msg}" class="alert alert-success"
+                        role="alert">
+                    </div>
+
+                    <div class="card my-4">
+                        <div class="card-header">Data User</div>
+                        <div class="card-body">
+                            <table id="userTable"
+                                class="table table-bordered table-striped table-responsive table-compact table-sm"
+                                style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">No</th>
+                                        <th class="text-center">Title</th>
+                                        <th class="text-center">Nama Depan</th>
+                                        <th class="text-center">Nama Keluarga</th>
+                                        <th class="text-center">Email</th>
+                                        <th class="text-center">Aktif ?</th>
+                                        <th class="text-center">Roles</th>
+                                        <th class="text-center">Privilege</th>
+                                        <th class="text-center">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+
+                            </table>
+                        </div>
+                    </div>
+
+
+                </div>
+            </main>
+            <footer th:replace="~{fragments/general.html :: footer}"></footer>
+        </div>
+    </div>
+    <div th:include="~{fragments/general.html :: script}"></div>
+    <script th:inline="javascript">
+        var contextPath = /*[[@{/}]]*/ '';            
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+
+            $("#userTable").dataTable({
+                "processing": true,
+                "serverSide": true,
+                "searchDelay": 1000,
+                "ordering": false,
+                "ajax": {
+                    "url": contextPath + "api/pemakai/list",
+                    "type": "POST",
+                    "dataType": "json",
+                    "cache": "no-cache",
+                    "headers": {
+                        [header]: token  // Include the CSRF token in the request header
+                    },
+                    "contentType": "application/json",
+                    "data": function (d) {
+                        return JSON.stringify(d);
+                    },
+                    "dataSrc": function (json) {
+                        if (json.redirect) {
+                            window.location.href = json.location;
+                        }
+                        return json.data;
+                    },
+                    "error": function (xhr, error, thrown) {
+                        if (xhr.status === 401) {
+                            window.location.href = contextPath + "logout"; // Redirect to login page
+                        }
+                    }
+                },
+
+                "columns": [
+                    {
+                        "data": null,
+                        "targets": 0,
+                        "render": function (data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1
+                        }
+                    },
+                    { "data": "title" },
+                    { "data": "namaDepan" },
+                    { "data": "namaKeluarga" },
+                    { "data": "email" },
+                    { "data": "enabled" ,
+                      "className": "text-center",
+                      "render": function (data, type, row, meta) {
+                        if (data==true) {
+                            return "<svg class='myicon'><use xlink:href='#check'></use></svg>";
+                        } else {
+                            return "<svg class='myicon'><use xlink:href='#xmark'></use></svg>";
+                        }
+                      }
+                    },
+                    {
+                        "data": "roles",
+                        "render": function (data, type, row, meta) {
+                            if (data && data.length > 0) {
+                                return data[0].name;
+                            } else {
+                                return "No Role Assigned"; 
+                            }
+                        }
+                    },
+                    {   "data": null,
+                        "render": function (data, type, row, meta) {
+                            return "N/A";
+                        }
+                    },
+                    {
+                        "data": null,
+                        "render": function (data, type, row, meta) {
+                            return "<a class='btn btn-success btn-sm' href='" + contextPath + "user/view/" + row.id + "' data-bs-toggle='tooltip' data-bs-placement='top' title='Lihat User Profile'><i class='fa-solid fa-pencil'></i>Lihat</a>" +
+                            "<a class='btn btn-warning btn-sm' href='" + contextPath + "user/edit/" + row.id + "' data-bs-toggle='tooltip' data-bs-placement='top' title='Rubah User Profile'><i class='fa-solid fa-pencil'></i>Rubah</a>" ;
+                        }
+                    }
+                ],
+                "oLanguage": {
+                    "sInfo": "Menampilkan <strong>_START_</strong> sampai <strong>_END_</strong> , total: <strong>_TOTAL_</strong> items"
+                },
+                "language": {
+                    "lengthMenu": "_MENU_ &nbsp;records per halaman",
+                    "emptyTable": "Maaf, tidak ada data tersedia."
+                },
+                "layout": {
+                    "top2Start": {
+                        "buttons": [
+                            {
+                                text: '<i class="fa-solid fa-plus"></i> Tambah User',
+                                className: 'btn btn-sm btn-tambah',
+                                action: function (e, dt, node, config) {
+                                    window.location.href = contextPath + "user/add";
+                                }
+                            }
+                        ]
+                    }
+                }
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

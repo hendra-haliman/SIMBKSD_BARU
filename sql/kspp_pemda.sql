@@ -1,0 +1,15 @@
+insert ignore into kspp_pemda(nama) values('Bali (BUMD)');
+insert ignore into kspp_pemda(nama) values('Bali');
+insert ignore into kspp_pemda(nama) values('Banten');
+insert ignore into kspp_pemda(nama) values('Blitar');
+insert ignore into kspp_pemda(nama) values('Cilacap');
+insert ignore into kspp_pemda(nama) values('DKI Jakarta');
+insert ignore into kspp_pemda(nama) values('Jatim');
+insert ignore into kspp_pemda(nama) values('Jawa Barat');
+insert ignore into kspp_pemda(nama) values('Jawa Tengah');
+insert ignore into kspp_pemda(nama) values('Jawa Timur');
+insert ignore into kspp_pemda(nama) values('Kebumen');
+insert ignore into kspp_pemda(nama) values('Lampung');
+insert ignore into kspp_pemda(nama) values('Ngawi');
+insert ignore into kspp_pemda(nama) values('Perumda Pasar Jaya');
+insert ignore into kspp_pemda(nama) values('Sumedang');

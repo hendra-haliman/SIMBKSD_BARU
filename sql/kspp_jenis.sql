@@ -1,0 +1,11 @@
+insert ignore into kspp_jenis(nama) values ('Ayam');
+insert ignore into kspp_jenis(nama) values ('Babi Hidup');
+insert ignore into kspp_jenis(nama) values ('Daging Sapi');
+insert ignore into kspp_jenis(nama) values ('Ikan');
+insert ignore into kspp_jenis(nama) values('Beras');
+insert ignore into kspp_jenis(nama) values('Mitra Produksi');
+insert ignore into kspp_jenis(nama) values('On Farm');
+insert ignore into kspp_jenis(nama) values('Pembeli Siaga');
+insert ignore into kspp_jenis(nama) values('Penyedia Bawang Merah dan Bahan Olahan dari Bawang Merah');
+insert ignore into kspp_jenis(nama) values('Penyedia Telur');
+insert ignore into kspp_jenis(nama) values('Penyediaan Ayam Frozen dan Komuditas lainnya');
