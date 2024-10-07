@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import id.go.jakarta.bksd.dokumen.domain.pangan.KotaKabupaten;
 
 @Repository
-public interface KotaKabupatenRepository extends JpaRepository<KotaKabupatenRepository, Long> {
+public interface KotaKabupatenRepository extends JpaRepository<KotaKabupaten, Long> {
     @Query("from KotaKabupaten where nama = :nama")
     public KotaKabupaten findByNama(String nama);
 }

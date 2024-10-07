@@ -52,12 +52,14 @@ public class BUMDPanganDataUploaderService {
                                         MitraBusinessService mitraBusinessService,
                                         KotaKabupatenService kabupatenService,
                                         JenisService jenisService,
+                                        KerjaSamaPenyediaanPanganService kerjaSamaPenyediaanPanganService,
                                         KelompokService kelompokService) {
         this.pemdaService = pemdaService;
         this.bumdService = bumdService;
         this.mitraBusinessService = mitraBusinessService;
         this.kabupatenService = kabupatenService;
         this.jenisService = jenisService;
+        this.kerjaSamaPenyediaanPanganService = kerjaSamaPenyediaanPanganService;
         this.kelompokService = kelompokService;
     }
 
