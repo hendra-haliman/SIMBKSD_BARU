@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -21,6 +22,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.csrf.CsrfTokenRepository;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import id.go.jakarta.bksd.dokumen.domain.EntityAuditorAware;
 import id.go.jakarta.bksd.dokumen.service.PemakaiService;
@@ -47,7 +49,6 @@ public class DokumenSecurityConfig {
             AuthenticationSuccessHandler customAuthenticationSuccessHandler) throws Exception {
 
         http
-                // .csrf(csrf -> csrf.disable())
                 .csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
                 .httpBasic(basic -> basic.authenticationEntryPoint(authEntryPoint))
                 .exceptionHandling(Customizer.withDefaults())
@@ -90,12 +91,12 @@ public class DokumenSecurityConfig {
                 .addFilterBefore(customLoginFilter2(), UsernamePasswordAuthenticationFilter.class)
                 .formLogin(form -> form.loginPage("/showLoginPage")
                         .loginProcessingUrl("/authenticateUser")
-                        // .successHandler(customAuthenticationSuccessHandler)
                         .successHandler(customSuccessHandler)
                         .usernameParameter("email")
                         .permitAll())
-                .logout(logout -> logout.permitAll()
-                        .logoutUrl("/logout")
+                .logout(logout -> logout
+                        .permitAll()
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"))
                         .addLogoutHandler(new CustomLogoutHandler())
                         .invalidateHttpSession(true)
                         .logoutSuccessUrl("/showLoginPage?logout"))
