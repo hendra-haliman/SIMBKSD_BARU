@@ -1,5 +1,6 @@
 package id.go.jakarta.bksd.dokumen.domain.pangan;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -18,11 +19,11 @@ public class KerjaSamaPenyediaanPangan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
+    @ManyToOne
     private Kelompok kelompok;
 
     @ManyToMany
-    private List<Pemda> pemda;
+    private List<Pemda> pemda = new ArrayList<>();
 
     @ManyToOne
     private BUMD bumd;
@@ -31,7 +32,7 @@ public class KerjaSamaPenyediaanPangan {
     private MitraBusiness mitraBusiness;
 
     @ManyToMany
-    private List<KotaKabupaten> kotaKabupaten;
+    private List<KotaKabupaten> kotaKabupaten = new ArrayList<>();
 
     @ManyToOne
     private Jenis jenis;

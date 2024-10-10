@@ -1,0 +1,7 @@
+insert into kspp_kelompok(nama) values('Pasar Jaya');
+insert into kspp_kelompok(nama) values('Food Station');
+insert into kspp_kelompok(nama) values('Dharma Jaya');
+insert into kspp_kelompok(nama) values('Pemprov Jawa Timur, Lampung dan Bali');
+insert into kspp_kelompok(nama) values('Pemprov Jawa Tengah');
+insert into kspp_kelompok(nama) values('Pemprov Jawa Barat');
+insert into kspp_kelompok(nama) values('Pemprov Banten dan Dharma Jaya');

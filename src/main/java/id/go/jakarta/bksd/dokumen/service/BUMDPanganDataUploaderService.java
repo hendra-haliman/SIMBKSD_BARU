@@ -34,7 +34,6 @@ public class BUMDPanganDataUploaderService {
     private final String BUMD_FOOD_STATION = "Food Station";
     private final String BUMD_DHARMA_JAYA ="Dharma Jaya";
 
-    private final String KELOMPOK_KERJASAMA_DGN_DAERAH = "Kerja Sama dengan Pemerintah Daerah";
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -76,7 +75,7 @@ public class BUMDPanganDataUploaderService {
     private void uploadDataPasarJaya(XSSFWorkbook workbook) {
         XSSFSheet sheet = workbook.getSheetAt(1);
 
-        Kelompok kelompok = kelompokService.findByNama(KELOMPOK_KERJASAMA_DGN_DAERAH);
+        Kelompok kelompok = kelompokService.findByNama("Pasar Jaya");
         BUMD pasarJaya = bumdService.findByNama(BUMD_PASAR_JAYA);
         uploadWorksheetData(2023, pasarJaya, kelompok, sheet, 5, 5, true);
         uploadWorksheetData(2024, pasarJaya, kelompok, sheet, 11, 15, true);
@@ -85,7 +84,7 @@ public class BUMDPanganDataUploaderService {
     private void uploadDataFoodStation(XSSFWorkbook workbook) {
         XSSFSheet sheet = workbook.getSheetAt(2);
 
-        Kelompok kelompok = kelompokService.findByNama(KELOMPOK_KERJASAMA_DGN_DAERAH);
+        Kelompok kelompok = kelompokService.findByNama("Food Station");
         BUMD foodStation = bumdService.findByNama(BUMD_FOOD_STATION);
         uploadWorksheetData(2023, foodStation, kelompok, sheet, 5, 33, true);
         uploadWorksheetData(2024, foodStation, kelompok, sheet, 41, 66, true);
@@ -117,8 +116,11 @@ public class BUMDPanganDataUploaderService {
 
             kerjasama.setKuantitas(row.getCell(5).getNumericCellValue());
             kerjasama.setNilaiTransaksi(row.getCell(6).getNumericCellValue());
-            kerjasama.setKeterangan(row.getCell(7).getStringCellValue());
 
+            if (includeKeterangan) {
+                kerjasama.setKeterangan(row.getCell(7).getStringCellValue());
+            }
+            
             kerjaSamaPenyediaanPanganService.save(kerjasama);
 
         }

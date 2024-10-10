@@ -44,3 +44,16 @@ insert into table_definition(nama_table, nama_column) values ('kolaborasi', 'out
 insert into table_definition(nama_table, nama_column) values ('kolaborasi', 'keterangan');
 insert into table_definition(nama_table, nama_column) values ('kolaborasi', 'action');
 
+insert into table_definition(nama_table, nama_column) values ('pangan','nomor');
+insert into table_definition(nama_table, nama_column) values ('pangan','kelompok');
+insert into table_definition(nama_table, nama_column) values ('pangan','tahun');
+insert into table_definition(nama_table, nama_column) values ('pangan','pemda');
+insert into table_definition(nama_table, nama_column) values ('pangan','bumd');
+insert into table_definition(nama_table, nama_column) values ('pangan','mitra_business');
+insert into table_definition(nama_table, nama_column) values ('pangan','kota_kabupaten');
+insert into table_definition(nama_table, nama_column) values ('pangan','jenis');
+insert into table_definition(nama_table, nama_column) values ('pangan','kuantitas');
+insert into table_definition(nama_table, nama_column) values ('pangan','nilai_transaksi');
+insert into table_definition(nama_table, nama_column) values ('pangan','keterangan');
+insert into table_definition(nama_table, nama_column) values ('pangan','action');
+

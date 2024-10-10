@@ -24,7 +24,7 @@
         <div id="layoutSidenav_content">
             <main>
                 <header
-                    th:replace="~{fragments/content-header.html :: content-header('BUMD Pangan','','')}">
+                    th:replace="~{fragments/content-header.html :: content-header('Kerja Sama Penyediaan Pangan','','')}">
                 </header>
                 <!-- Main page content-->
                 <div class="container-fluid px-4 mt-n10">
@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="card my-4">
-                        <div class="card-header">Dokumen Kerja Sama BUMD di Bidang Pangan</div>
+                        <div class="card-header">Dokumen Kerja Sama Penyediaan Pangan</div>
                         <div class="card-body">
 
                             <!-- FILTER -->
@@ -50,11 +50,13 @@
                                     <tr>
                                         <th class="text-center">No</th>
                                         <th class="text-center">Tahun</th>
-                                        <th class="text-center"></th>
-                                        <th class="text-center">Nama dan Tempat Kejadian</th>
-                                        <th class="text-center">Waktu</th>
-                                        <th class="text-center">Bagian</th>
-                                        <th class="text-center">Output</th>
+                                        <th class="text-center">Pemda</th>
+                                        <th class="text-center">BUMD</th>
+                                        <th class="text-center">Mitra Business</th>
+                                        <th class="text-center">Kota/Kabupaten</th>
+                                        <th class="text-center">Jenis</th>
+                                        <th class="text-center">Kuantitas (Kg)</th>
+                                        <th class="text-center">Nilai Transaksi (Rp)</th>
                                         <th class="text-center">Keterangan</th>
                                         <th class="text-center">Action</th>
                                     </tr>
@@ -76,7 +78,7 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    Anda yakin untuk menghapus dokumen perjanjian <span id="alertDokTitle" style="color:red;"></span> ?
+                                    Anda yakin untuk menghapus kerja sama <span id="alertDokTitle" style="color:red;"></span> ?
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
@@ -165,10 +167,9 @@
                 console.log(selection);
 
                 $.ajax({
-                    url: contextPath + 'kolaborasi/saveTableOption', 
+                    url: contextPath + 'pangan/saveTableOption', 
                     type: 'POST', 
                     contentType: 'application/json', 
-                    //dataType: 'json',
                     data: dataToSend    
                     ,
                     success: function(response) {
@@ -223,7 +224,7 @@
                 "searchDelay": 1000,
 
                 "ajax": {
-                    "url": contextPath + "kolaborasi/list",
+                    "url": contextPath + "pangan/list",
                     "type": "POST",
                     "dataType": "json",
                     "cache": "no-cache",
@@ -267,43 +268,83 @@
                         "data": "tahun"
                     },
                     {
-                        "name": "mitra_kerja_sama",
-                        "data": "mitraKerjaSama"
-                    },
-                    {
-                        "name": "nama_tempat_kejadian",
-                        "data": "namaDanTempatKejadian"
-                    },
-                    { 
-                        "name": "waktu",
-                        "data": "waktu"
-
-                    },
-                    { 
-                        "name": "bagian",
-                        "data": "bagian",
+                        "name": "pemda",
+                        "data": "pemda",
                         "render": function(data, type, row, meta) {
-                            if (data.length==1) {
-                                return data[0].singkatan;
+                            if (data!=null) {
+                                return data[0].nama;
                             }
-
-                            var value = '';
-                                var y;
-                                for (let i = 0; i < data.length; i++) {
-                                    if (i > 0) {
-                                        value = value + "<br>";
-                                    }
-
-                                    y = + (i + 1);
-                                    value = value +  y + ". " + data[i].singkatan;
-                                }
-
-                                return value;
+                            return data;
                         }
                     },
                     {
-                        "name": "output_",
-                        "data": "output"
+                        "name": "bumd",
+                        "data": "bumd",
+                        "render": function(data, type, row, meta) {
+                            if (data!=null) {
+                                return data.nama;
+                            }
+                            return data;
+                        }
+                    },
+                    {
+                        "name": "mitra_business",
+                        "data": "mitraBusiness",
+                        "render": function(data, type, row, meta) {
+                            if (data!=null) {
+                                return data.nama;
+                            }
+                            return data;
+                        }
+                    },
+                    { 
+                        "name": "kota_kabupaten",
+                        "data": "kotaKabupaten",
+                        "render": function(data, type, row, meta) {
+                            if (data.length>0) {
+                                return data[0].nama;
+                            }
+                            return data;
+                        }
+                    },
+                    { 
+                        "name": "jenis",
+                        "data": "jenis",
+                        "render": function(data, type, row, meta) {
+                            if (data!=null) {
+                                return data.nama;
+                            }
+                                return data;
+                        }
+                    },
+                    {
+                        "name": "kuantitas",
+                        "data": "kuantitas",
+                        render: function (data, type, row) {
+                            if (type === 'display') {
+                                return new Intl.NumberFormat('id-ID', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2,
+                                    useGrouping: true
+                                }).format(data);
+                            }
+                            return data;
+                        }
+                    },
+                    {
+                        "name": "nilai_transaksi",
+                        "cssClass": "text-end",
+                        "data": "nilaiTransaksi",
+                        render: function (data, type, row) {
+                            if (type === 'display') {
+                                return new Intl.NumberFormat('id-ID', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2,
+                                    useGrouping: true
+                                }).format(data);
+                            }
+                            return data;
+                        }
                     },
                     {
                         "name": "keterangan",
@@ -330,6 +371,22 @@
                         }
                     }
                 ],
+                "columnDefs": [
+                    { 
+                        "className": "text-end",
+                        "targets": [7, 8]
+                    }
+                ],
+                "rowGroup": {
+                    "dataSrc" : [
+                        function(row) {
+                            return row.kelompok.nama;
+                        },
+                        function(row) {
+                            return row.tahun;
+                        },
+                    ]
+                },
                 "layout": {
                     "top2Start": {
                         "buttons": [

@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import id.go.jakarta.bksd.dokumen.domain.Pemakai;
+import id.go.jakarta.bksd.dokumen.service.BUMDPanganDataUploaderService;
 import id.go.jakarta.bksd.dokumen.service.DataUploaderService;
-//import id.go.jakarta.bksd.dokumen.service.DevUtilityService;
 import id.go.jakarta.bksd.dokumen.service.FileManager;
 import id.go.jakarta.bksd.dokumen.service.PemakaiService;
 import id.go.jakarta.bksd.dokumen.service.RoleService;
@@ -36,6 +36,7 @@ public class AdminController {
     private DataUploaderService dataUploaderService;
     //private DevUtilityService devUtilityService;
     private FileManager fileManager;
+    private  BUMDPanganDataUploaderService bumdPanganDataUploaderService;
 
     private RoleService roleService;
 
@@ -43,12 +44,14 @@ public class AdminController {
             RoleService roleService,
             DataUploaderService dataUploaderService,
     //        DevUtilityService devUtilityService,
-            FileManager fileManager) {
+            FileManager fileManager,
+            BUMDPanganDataUploaderService bumdPanganDataUploaderService) {
         this.pemakaiService = pemakaiService;
         this.roleService = roleService;
         this.dataUploaderService = dataUploaderService;
     //    this.devUtilityService = devUtilityService;
         this.fileManager = fileManager;
+        this.bumdPanganDataUploaderService = bumdPanganDataUploaderService;
     }
 
     @GetMapping("/viewUserProfile/{id}")
@@ -351,6 +354,18 @@ public class AdminController {
         response.getWriter().println("Hello World!");
         response.getWriter().println("Hello World!");
 
+    }
+
+    @GetMapping("/uploadPangan")
+    @ResponseBody
+    public String uploadPangan() {
+        try {
+            bumdPanganDataUploaderService.uploadDataPangan();
+        } catch (IOException | InvalidFormatException ex) {
+            ex.printStackTrace();
+        }
+
+        return "finish uploadPangan";
     }
 
 }
