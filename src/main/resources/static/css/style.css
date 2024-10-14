@@ -238,6 +238,11 @@ svg.feather {
     position: relative;
 }
 
+.layoutSidenav_nav {
+    height: 100%;
+    overflow-y: auto;
+}
+
 /* For home.html */
 
 .page-section {
@@ -359,9 +364,9 @@ header {
 
 .filter {
     border: solid 1px #ccc; 
-    background-color: navajowhite; 
+    background-color: khaki; 
     padding: 10px; 
-    font-size: 0.8rem; 
+    font-size: 1rem; 
     /* display: none; */
 }
 

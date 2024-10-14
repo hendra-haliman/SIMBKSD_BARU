@@ -32,9 +32,9 @@ window.addEventListener('DOMContentLoaded', event => {
     })
 
     document.getElementById('layoutSidenav_nav').addEventListener('wheel', function(event) {
-        event.preventDefault();  // Prevents scrolling the page
-        this.scrollTop += event.deltaY;  // Manually adjust the scrollTop based on the user's scroll
-    }, {passive: false});  // Disabling passive mode to allow preventDefault to work
+        event.preventDefault();
+        this.scrollTop += event.deltaY;
+    }, {passive: false}); 
     
 
 });

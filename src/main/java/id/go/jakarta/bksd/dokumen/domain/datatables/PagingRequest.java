@@ -36,6 +36,7 @@ public class PagingRequest {
     private List<Long> filterJenisNaskah;
     private boolean filterEmptyFile;
     private boolean filterEmptyRumpunOPD;
+    private List<Long> filterKelompok;
 
     private String url;
 }

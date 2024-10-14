@@ -1,6 +1,7 @@
 package id.go.jakarta.bksd.dokumen.service.pangan;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.hibernate.Session;
 import org.hibernate.query.criteria.HibernateCriteriaBuilder;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import id.go.jakarta.bksd.dokumen.domain.Page;
 import id.go.jakarta.bksd.dokumen.domain.datatables.PagingRequest;
+import id.go.jakarta.bksd.dokumen.domain.pangan.Kelompok;
 import id.go.jakarta.bksd.dokumen.domain.pangan.KerjaSamaPenyediaanPangan;
 import id.go.jakarta.bksd.dokumen.domain.pangan.Pemda;
 import id.go.jakarta.bksd.dokumen.repository.pangan.KerjaSamaPenyediaanPanganRepository;
@@ -27,9 +29,13 @@ public class KerjaSamaPenyediaanPanganService {
     @PersistenceContext
     private EntityManager entityManager;
 
+    private KelompokService kelompokService;
 
-    public KerjaSamaPenyediaanPanganService(KerjaSamaPenyediaanPanganRepository repository) {
+
+    public KerjaSamaPenyediaanPanganService(KerjaSamaPenyediaanPanganRepository repository,
+                                            KelompokService kelompokService) {
         this.repository = repository;
+        this.kelompokService = kelompokService;
     }
 
     public KerjaSamaPenyediaanPangan save(KerjaSamaPenyediaanPangan kerjasama) {
@@ -50,6 +56,11 @@ public class KerjaSamaPenyediaanPanganService {
     public Page<KerjaSamaPenyediaanPangan> getKerjasama(PagingRequest pagingRequest, int pageNo, int pageSize) {
         int tahun = pagingRequest.getFilterTahun();
         String searchTerm =  "%" + pagingRequest.getSearch().getValue() + "%";
+        List<Long> filterKelompok = pagingRequest.getFilterKelompok();
+
+        if (filterKelompok==null || filterKelompok.isEmpty()) {
+            filterKelompok  = kelompokService.findAll().stream().map(Kelompok::getId).collect(Collectors.toList());
+        }
 
         HibernateCriteriaBuilder cb = entityManager.unwrap(Session.class).getCriteriaBuilder();
         JpaCriteriaQuery<KerjaSamaPenyediaanPangan> cq = cb.createQuery(KerjaSamaPenyediaanPangan.class);
@@ -67,6 +78,11 @@ public class KerjaSamaPenyediaanPanganService {
 
         JpaPredicate predicate = cb.and(tahunPredicate, searchPredicate);
        
+        Predicate kelompokPredicate = kerjasama.get("kelompok").get("id").in(filterKelompok);
+
+        predicate = cb.and(predicate, kelompokPredicate);
+
+
         cq.where(predicate);
 
         cq.orderBy(

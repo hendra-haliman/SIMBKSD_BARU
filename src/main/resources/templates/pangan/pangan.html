@@ -28,21 +28,35 @@
                 </header>
                 <!-- Main page content-->
                 <div class="container-fluid px-4 mt-n10">
-
-
                     <div th:if="${success_msg} != null" th:text="${success_msg}" class="alert alert-success" role="alert">
-
                     </div>
 
                     <div class="card my-4">
-                        <div class="card-header">Dokumen Kerja Sama Penyediaan Pangan</div>
+                        <!--div class="card-header">Dokumen Kerja Sama Penyediaan Pangan</div-->
                         <div class="card-body">
 
                             <!-- FILTER -->
-                            <div class="d-flex flex-row align-items-center mb-1">
-                                <label for="yearpicker"  class="me-2 col-form-label">Tahun</label> <input type="text" id="yearpicker" class="form-control form-control-sm" style="width:100px;"/>
+                            <div class="filter">
+                                <div class="row">
+                                    <div class="col col-md-1">
+                                        <label for="yearpicker" class="form-text ml-3">Tahun</label> 
+                                    </div>
+                                    <div class="col col-md-2">
+                                        <input type="text" id="yearpicker" class="form-control form-control-sm" style="width:100px;"/>                                        
+                                    </div>
+                                    <div class="col col-md-1">
+                                        <label for="filterKelompok"  class="form-text ml-3">Kelompok</label> 
+                                    </div>
+                                    <div class="col col-md-5">
+                                        <select id="filterKelompok" class="js-example-basic-multiple col-md" name="kelompok[]"
+                                        multiple="multiple">
+                                        <option th:each="kelompok : ${kelompokList}" th:value="${kelompok.id}"
+                                            th:text="${kelompok.nama}"></option>
+                                        </select>
+                                    </div>
+                                </div>    
                             </div>
-                        
+
                             <table id="dokTable"
                                 class="table table-bordered table-striped table-responsive table-compact table-sm"
                                 style="width: 100%; border-bottom-width: 1px;">
@@ -170,8 +184,7 @@
                     url: contextPath + 'pangan/saveTableOption', 
                     type: 'POST', 
                     contentType: 'application/json', 
-                    data: dataToSend    
-                    ,
+                    data: dataToSend,
                     success: function(response) {
                         console.log('Success:', response);
                     },
@@ -234,8 +247,10 @@
                     "contentType": "application/json",
                     "data": function(d) {
                         var filterTahun = $('#yearpicker').val();
+                        var filterKelompok = $('#filterKelompok').val();
                        
                         d.filterTahun = filterTahun;
+                        d.filterKelompok = filterKelompok;
 
                         return JSON.stringify(d);
                     },
@@ -446,6 +461,13 @@
                 }
             });
 
+            $('.js-example-basic-multiple').select2({ 
+                width: 'style',
+                maximumSelectionLength: 15, 
+                allowClear: true, 
+                placeholder: 'Masukkan pilihan' });
+
+
             //$('.js-example-basic-multiple').select2({maximumSelectionLength: 15, allowClear: true, placeholder: 'Masukkan pilihan'});
 
             // document.getElementById('delete').addEventListener('click', function (event) {
@@ -466,6 +488,9 @@
                 alert('Search term was: ' + data.search.value);
             });
 
+            $('#filterKelompok').on('change', function () {
+                docTable.api().draw();
+            });
 
             $("#yearpicker").datepicker({
                 format: "yyyy",
