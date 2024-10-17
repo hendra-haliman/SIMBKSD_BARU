@@ -13,3 +13,14 @@ insert ignore into kspp_pemda(nama) values('Lampung');
 insert ignore into kspp_pemda(nama) values('Ngawi');
 insert ignore into kspp_pemda(nama) values('Perumda Pasar Jaya');
 insert ignore into kspp_pemda(nama) values('Sumedang');
+
+insert ignore into kspp_pemda(nama) values('Banten');
+insert ignore into kspp_pemda(nama) values('DKI Jakarta');
+insert ignore into kspp_pemda(nama) values('Jawa Barat');
+insert ignore into kspp_pemda(nama) values('Jawa Tengah');
+insert ignore into kspp_pemda(nama) values('Jawa Timur');
+insert ignore into kspp_pemda(nama) values('Lampung');
+insert ignore into kspp_pemda(nama) values('Bali');
+
+
+

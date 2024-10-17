@@ -74,7 +74,7 @@ public class KerjaSamaPenyediaanPanganService {
             tahunPredicate = cb.equal(kerjasama.get("tahun"), tahun);
         }
 
-        Predicate searchPredicate = cb.like(kerjasama.get("mitraBusiness").get("nama"), searchTerm);
+        Predicate searchPredicate = cb.like(kerjasama.get("mitraBusiness"), searchTerm);
 
         JpaPredicate predicate = cb.and(tahunPredicate, searchPredicate);
        

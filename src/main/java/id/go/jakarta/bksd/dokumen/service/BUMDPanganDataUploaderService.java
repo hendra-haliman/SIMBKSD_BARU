@@ -16,14 +16,14 @@ import id.go.jakarta.bksd.dokumen.domain.pangan.Jenis;
 import id.go.jakarta.bksd.dokumen.domain.pangan.Kelompok;
 import id.go.jakarta.bksd.dokumen.domain.pangan.KerjaSamaPenyediaanPangan;
 import id.go.jakarta.bksd.dokumen.domain.pangan.KotaKabupaten;
-import id.go.jakarta.bksd.dokumen.domain.pangan.MitraBusiness;
+//import id.go.jakarta.bksd.dokumen.domain.pangan.MitraBusiness;
 import id.go.jakarta.bksd.dokumen.domain.pangan.Pemda;
 import id.go.jakarta.bksd.dokumen.service.pangan.BUMDService;
 import id.go.jakarta.bksd.dokumen.service.pangan.JenisService;
 import id.go.jakarta.bksd.dokumen.service.pangan.KelompokService;
 import id.go.jakarta.bksd.dokumen.service.pangan.KerjaSamaPenyediaanPanganService;
 import id.go.jakarta.bksd.dokumen.service.pangan.KotaKabupatenService;
-import id.go.jakarta.bksd.dokumen.service.pangan.MitraBusinessService;
+//import id.go.jakarta.bksd.dokumen.service.pangan.MitraBusinessService;
 import id.go.jakarta.bksd.dokumen.service.pangan.PemdaService;
 
 
@@ -39,7 +39,7 @@ public class BUMDPanganDataUploaderService {
 
     private PemdaService pemdaService;
     private BUMDService bumdService;
-    private MitraBusinessService mitraBusinessService;
+    //private MitraBusinessService mitraBusinessService;
     private KotaKabupatenService kabupatenService;
     private JenisService jenisService;
     private KerjaSamaPenyediaanPanganService kerjaSamaPenyediaanPanganService;
@@ -48,14 +48,14 @@ public class BUMDPanganDataUploaderService {
 
     public BUMDPanganDataUploaderService(PemdaService pemdaService,
                                         BUMDService bumdService,
-                                        MitraBusinessService mitraBusinessService,
+                                        //MitraBusinessService mitraBusinessService,
                                         KotaKabupatenService kabupatenService,
                                         JenisService jenisService,
                                         KerjaSamaPenyediaanPanganService kerjaSamaPenyediaanPanganService,
                                         KelompokService kelompokService) {
         this.pemdaService = pemdaService;
         this.bumdService = bumdService;
-        this.mitraBusinessService = mitraBusinessService;
+        //this.mitraBusinessService = mitraBusinessService;
         this.kabupatenService = kabupatenService;
         this.jenisService = jenisService;
         this.kerjaSamaPenyediaanPanganService = kerjaSamaPenyediaanPanganService;
@@ -66,8 +66,13 @@ public class BUMDPanganDataUploaderService {
         File file = new File("D:/Biro KSD/" + fileName);
         XSSFWorkbook workbook = new XSSFWorkbook(file);
 
-        uploadDataPasarJaya(workbook);
-        uploadDataFoodStation(workbook);
+        //uploadDataPasarJaya(workbook);
+        //uploadDataFoodStation(workbook);
+        //uploadDataDharmaJaya(workbook);
+        //uploadJatimLampungBali(workbook);
+        //uploadJawaTengah(workbook);
+        uploadJawaBarat(workbook);
+        uploadBantendanDharmaJaya(workbook);
 
         workbook.close();
     }
@@ -90,6 +95,42 @@ public class BUMDPanganDataUploaderService {
         uploadWorksheetData(2024, foodStation, kelompok, sheet, 41, 66, true);
     }
 
+    private void uploadDataDharmaJaya(XSSFWorkbook workbook) {
+        XSSFSheet sheet = workbook.getSheetAt(3);
+
+        Kelompok kelompok = kelompokService.findByNama("Dharma Jaya");
+        BUMD dharmajaya = bumdService.findByNama(BUMD_DHARMA_JAYA);
+        uploadWorksheetData(2023, dharmajaya, kelompok, sheet, 5, 125, false);
+    }
+
+    private void uploadJatimLampungBali(XSSFWorkbook workbook) {
+        XSSFSheet sheet = workbook.getSheetAt(4);
+
+        Kelompok kelompok = kelompokService.findByNama("Pemprov Jawa Timur, Lampung dan Bali");
+        uploadWorksheetData(2023, null, kelompok, sheet, 5, 9, false);
+    }
+    
+    private void uploadJawaTengah(XSSFWorkbook workbook) {
+        XSSFSheet sheet = workbook.getSheetAt(5);
+
+        Kelompok kelompok = kelompokService.findByNama("Pemprov Jawa Tengah");
+        uploadWorksheetData(2023, null, kelompok, sheet, 5, 12, false);
+    }
+
+    private void uploadJawaBarat(XSSFWorkbook workbook) {
+        XSSFSheet sheet = workbook.getSheetAt(6);
+
+        Kelompok kelompok = kelompokService.findByNama("Pemprov Jawa Barat");
+        uploadWorksheetData(2023, null, kelompok, sheet, 5, 17, false);
+        uploadWorksheetData(2024, null, kelompok, sheet, 24, 35, false);
+    }
+
+    private void uploadBantendanDharmaJaya(XSSFWorkbook workbook) {
+        XSSFSheet sheet = workbook.getSheetAt(7);
+
+        Kelompok kelompok = kelompokService.findByNama("Pemprov Banten dan Dharma Jaya");
+        uploadWorksheetData(2023, null, kelompok, sheet, 5, 14, false);
+    }
 
     
 
@@ -105,8 +146,8 @@ public class BUMDPanganDataUploaderService {
             Pemda pemda = pemdaService.findByNama(row.getCell(1).getStringCellValue());
             kerjasama.getPemda().add(pemda);
 
-            MitraBusiness mitra = mitraBusinessService.findByNama(row.getCell(2).getStringCellValue());
-            kerjasama.setMitraBusiness(mitra);
+            //MitraBusiness mitra = mitraBusinessService.findByNama(row.getCell(2).getStringCellValue());
+            kerjasama.setMitraBusiness(row.getCell(2).getStringCellValue());
 
             KotaKabupaten kota = kabupatenService.findByNama(row.getCell(3).getStringCellValue());
             kerjasama.getKotaKabupaten().add(kota);

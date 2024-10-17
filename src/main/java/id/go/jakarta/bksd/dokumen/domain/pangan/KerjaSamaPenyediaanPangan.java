@@ -28,8 +28,7 @@ public class KerjaSamaPenyediaanPangan {
     @ManyToOne
     private BUMD bumd;
 
-    @ManyToOne
-    private MitraBusiness mitraBusiness;
+    private String mitraBusiness;
 
     @ManyToMany
     private List<KotaKabupaten> kotaKabupaten = new ArrayList<>();

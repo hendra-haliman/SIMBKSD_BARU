@@ -47,7 +47,7 @@
                                     <div class="col col-md-1">
                                         <label for="filterKelompok"  class="form-text ml-3">Kelompok</label> 
                                     </div>
-                                    <div class="col col-md-5">
+                                    <div class="col col-md-8">
                                         <select id="filterKelompok" class="js-example-basic-multiple col-md" name="kelompok[]"
                                         multiple="multiple">
                                         <option th:each="kelompok : ${kelompokList}" th:value="${kelompok.id}"
@@ -306,9 +306,6 @@
                         "name": "mitra_business",
                         "data": "mitraBusiness",
                         "render": function(data, type, row, meta) {
-                            if (data!=null) {
-                                return data.nama;
-                            }
                             return data;
                         }
                     },
@@ -406,14 +403,14 @@
                     "top2Start": {
                         "buttons": [
                             {
-                                text: '<i class="fa-solid fa-plus"></i> Tambah Dokumen',
+                                text: 'Tambah Dokumen',
                                 className: 'btn btn-sm btn-tambah',
                                 action: function (e, dt, node, config) {
                                     window.location.href = contextPath + "kolaborasi/add";
                                 }
                             },
                             {
-                                text: '<i class="fa-solid fa-right-long"></i> Export Excel',
+                                text: 'Export Excel',
                                 className: 'btn btn-sm btn-excel',
                                 action: function (e, dt, button, config) {
                                     var data = {};
