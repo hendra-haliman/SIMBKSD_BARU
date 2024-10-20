@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -21,7 +20,6 @@ import org.springframework.security.web.access.expression.DefaultWebSecurityExpr
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
-import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import id.go.jakarta.bksd.dokumen.domain.EntityAuditorAware;
@@ -66,7 +64,7 @@ public class DokumenSecurityConfig {
                                         "resetPassword3",
                                         "/processForgotPassword",
                                         "/testSendMail",
-                                        "/error", "/css/**", "/static/css/**")
+                                        "/error", "/css/**", "/static/css/**", "/static/css/fonts/**")
                                 .permitAll()
 
                                 .requestMatchers("/fonts/**", "/static/fonts/**")

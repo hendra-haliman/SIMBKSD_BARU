@@ -192,6 +192,8 @@
     <script th:src="@{/static/js/litepicker.js}"></script>
     <script th:src="@{/static/js/jquery-3.7.1.min.js}"></script>
     <script th:src="@{/static/js/datatables.min.js}"></script>
+    <script th:src="@{/static/js/fontfaceobserver.standalone.js}"></script>
+
     <script>
         $(document).ready(function () {
             $("#logout").on("click", function (e) {
@@ -203,6 +205,15 @@
                 elements: '#portfolio a.portfolio-box'
             });
 
+            var font = new FontFaceObserver('Merriweather', {
+                                                    weight: 400
+                                                });
+
+            font.load().then(function () {
+                console.log('Font is available');
+            }, function () {
+                console.log('Font is not available');
+            });
 
         });
     </script>
