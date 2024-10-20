@@ -261,7 +261,7 @@ svg.feather {
 header.masthead {
     padding-top: 12rem;
     padding-bottom: calc(12rem - 4.5rem);
-    background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url(../assets/img/office.jpg);
+    background: linear-gradient(to bottom, rgba(92, 77, 66, 0.6) 0%, rgba(92, 77, 66, 0.6) 100%), url(../assets/img/office.jpg);
     /* background: url(../assets/img/office.jpg);    */
     height: 100vh;  
     background-position: center;
