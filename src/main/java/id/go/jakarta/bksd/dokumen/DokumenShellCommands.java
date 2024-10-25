@@ -8,6 +8,7 @@ import java.nio.CharBuffer;
 import java.nio.charset.Charset;
 import java.nio.charset.CharsetEncoder;
 import java.nio.charset.CodingErrorAction;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -141,7 +142,8 @@ public class DokumenShellCommands {
                     } catch (IOException i) {
                         i.printStackTrace();
                     }
-                    dokumenKerjaSama.setFileContent(handler.toString());
+                    String contentISO = new String(handler.toString().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.ISO_8859_1);
+                    dokumenKerjaSama.setFileContent(contentISO);
                     dokumenKerjaSamaService.save(dokumenKerjaSama);
 
                 }
@@ -201,8 +203,9 @@ public class DokumenShellCommands {
                     } catch (IOException i) {
                         i.printStackTrace();
                     }
+                    String contentISO = new String(handler.toString().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.ISO_8859_1);
 
-                    dokumenKerjaSama.setFileContent(handler.toString());
+                    dokumenKerjaSama.setFileContent(contentISO);
                     dokumenKerjaSamaLuarNegeriService.save(dokumenKerjaSama);
 
                 }
