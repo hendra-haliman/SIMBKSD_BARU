@@ -170,7 +170,9 @@ public class MainController {
 
             EmailDetails emailDetails = new EmailDetails(email,
                     "Hi, anda dapat mereset password " + resetLink + " disini.", "Reset Password", null);
-            emailService.sendSimpleMail(emailDetails);
+            String returnMessage = emailService.sendSimpleMail(emailDetails);
+            returnMessage += " [" + email + "]";
+            logger.info(returnMessage);
         }
 
         return "reset-password-confirmation";

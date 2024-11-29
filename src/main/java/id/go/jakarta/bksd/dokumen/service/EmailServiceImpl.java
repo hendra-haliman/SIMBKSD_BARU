@@ -8,6 +8,8 @@ import org.thymeleaf.spring6.SpringTemplateEngine;
 
 import id.go.jakarta.bksd.dokumen.domain.EmailDetails;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
@@ -22,6 +24,7 @@ import jakarta.mail.internet.MimeMessage;
 
 @Service
 public class EmailServiceImpl implements EmailService {
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private JavaMailSender javaMailSender;
@@ -44,6 +47,7 @@ public class EmailServiceImpl implements EmailService {
             javaMailSender.send(mailMessage);
             return "Mail Sent Successfully...";
         } catch (Exception e) {
+            logger.info(e.getMessage());
             return "Error while Sending Mail";
         }
     }

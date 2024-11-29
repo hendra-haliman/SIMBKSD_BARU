@@ -46,3 +46,8 @@ Dalam pemakaian :
 `DevUtilityService->downloadMissingFile()` mendownload file naskah kerja sama yang missing. 
 
 
+### Backup DB
+
+`mysqldump -u root -p nama_db > nama_db_timestamp.sql`
+
+

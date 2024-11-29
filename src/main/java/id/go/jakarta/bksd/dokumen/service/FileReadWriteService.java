@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -27,6 +28,9 @@ import java.nio.file.Paths;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Random;
+
+import javax.crypto.SecretKey;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -35,12 +39,19 @@ public class FileReadWriteService {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     private final ResourceLoader resourceLoader;
+    private FileEncryptionService encryptionService;
 
     @Value("${upload.folder}")
     private String folderName;
 
-    public FileReadWriteService(ResourceLoader resourceLoader) {
+    @Value("${upload.folder.encrypted}")
+    private String folderNameEncrypted;
+
+
+    public FileReadWriteService(ResourceLoader resourceLoader,
+                                FileEncryptionService encryptionService) {
         this.resourceLoader = resourceLoader;
+        this.encryptionService = encryptionService;
     }
 
     public String readTextFile(String filePath) throws IOException {
@@ -108,6 +119,22 @@ public class FileReadWriteService {
         }
 
     }
+
+     public String saveFileEncrypt(MultipartFile file) {
+        try {
+            File outputFile = new File(folderNameEncrypted + file.getOriginalFilename());
+            FileOutputStream outputStream = new FileOutputStream(outputFile);
+
+            SecretKey secretKey = encryptionService.generateKey();
+            encryptionService.encryptStream(file.getInputStream(), outputStream, secretKey);
+
+            return "Sukses meng-encrypt File.";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Encrypt gagal: " + e.getMessage();
+        }
+    }
+
 
     /**
      * Transfer file using SCP
