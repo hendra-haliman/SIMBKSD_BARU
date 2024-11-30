@@ -152,7 +152,7 @@ public class DokumenController {
 
     @GetMapping("/add")
     public String showAddDocument(Model model) {
-        model.addAttribute("dokumen", new DokumenKerjaSama());
+        model.addAttribute("dokumenKerjaSama", new DokumenKerjaSama());
         List<JenisMitra> jenisMitra = jenisMitraService.findAll();
         List<JenisNaskah> jenisNaskah = jenisNaskahService.findAll();
         List<OPD> opd = opdService.findAll();
@@ -170,7 +170,7 @@ public class DokumenController {
 
     @PostMapping("saveNew")
     public String saveNewDokumen(@RequestParam("files") MultipartFile[] files, Model model,
-            @ModelAttribute("dokumen") DokumenKerjaSama dokumenKerjaSama, RedirectAttributes redirectAttributes) {
+            @ModelAttribute("dokumenKerjaSama") DokumenKerjaSama dokumenKerjaSama, RedirectAttributes redirectAttributes) {
 
         for (MultipartFile file : files) {
             if (!file.getOriginalFilename().isEmpty()) {

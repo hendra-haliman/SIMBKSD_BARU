@@ -4,7 +4,7 @@
 <head th:replace="~{fragments/general.html :: minimal_header('Login')}"></head>
 
 <body class="nav-fixed bg-primary" th:style="'background: url(/SIMBKSD/static/assets/img/office.jpg) no-repeat center fixed;'">
-    <script th:src='|https://www.google.com/recaptcha/api.js?render=${@captchaServiceV3.getReCaptchaSite()}'></script>
+    <script th:src="'https://www.google.com/recaptcha/api.js?render=' + ${@captchaServiceV3.getReCaptchaSite()}"></script>
     <!--script src="https://www.google.com/recaptcha/api.js"></script-->
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">

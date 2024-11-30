@@ -107,49 +107,49 @@ public interface DokumenKerjasamaRepository extends JpaRepository<DokumenKerjaSa
 
   @Query(value = """
       Select count(1) from DokumenKerjaSama
-        where year(tglPenetapan) = :tahun and jenisDokumen = :jenisNaskah and jenisMitra in :jenisMitraList
+        where (year(tglPenetapan) = :tahun or tahun = :tahun) and jenisDokumen = :jenisNaskah and jenisMitra in :jenisMitraList
       """)
   public long getCount(int tahun, JenisNaskah jenisNaskah, List<JenisMitra> jenisMitraList);
 
   @Query(value = """
       Select count(1) from DokumenKerjaSama
-        where year(tglPenetapan) = :tahun and jenisDokumen in :jenisNaskahList and jenisMitra in :jenisMitraList
+        where (year(tglPenetapan) = :tahun or tahun = :tahun) and jenisDokumen in :jenisNaskahList and jenisMitra in :jenisMitraList
       """)
   public long getCount(int tahun, List<JenisNaskah> jenisNaskahList, List<JenisMitra> jenisMitraList);
 
   @Query(value = """
       Select count(1) from DokumenKerjaSama
-        where year(tglPenetapan) = :tahun and bagian = :bagian and jenisDokumen = :jenisNaskah and jenisMitra in :jenisMitraList
+        where (year(tglPenetapan) = :tahun or tahun = :tahun) and bagian = :bagian and jenisDokumen = :jenisNaskah and jenisMitra in :jenisMitraList
       """)
   public long getCount(int tahun, Bagian bagian, JenisNaskah jenisNaskah, List<JenisMitra> jenisMitraList);
 
   @Query(value = """
       Select count(1) from DokumenKerjaSama
-        where year(tglPenetapan) = :tahun and jenisDokumen = :jenisNaskah
+        where (year(tglPenetapan) = :tahun or tahun = :tahun) and jenisDokumen = :jenisNaskah
       """)
   public long getCount(int tahun, JenisNaskah jenisNaskah);
 
   @Query(value = """
       Select count(1) from DokumenKerjaSama
-        where year(tglPenetapan) = :tahun and jenisDokumen in :jenisNaskahList and :dummy = :dummy
+        where (year(tglPenetapan) = :tahun or tahun = :tahun) and jenisDokumen in :jenisNaskahList and :dummy = :dummy
       """)
   public long getCount(int tahun, List<JenisNaskah> jenisNaskahList, int dummy);
 
   @Query(value = """
       Select count(1) from DokumenKerjaSama
-        where year(tglPenetapan) = :tahun and bagian = :bagian and jenisDokumen = :jenisNaskah
+        where (year(tglPenetapan) = :tahun or tahun = :tahun) and bagian = :bagian and jenisDokumen = :jenisNaskah
       """)
   public long getCount(int tahun, Bagian bagian, JenisNaskah jenisNaskah);
 
   @Query(value = """
       Select count(1) from DokumenKerjaSama
-        where year(tglPenetapan) = :tahun and bagian = :bagian
+        where (year(tglPenetapan) = :tahun or tahun= :tahun) and bagian = :bagian
       """)
   public long getCount(int tahun, Bagian bagian);
 
   @Query(value = """
       select count(1) from DokumenKerjaSama
-        where year(tglPenetapan) = :tahun and jenisMitra in :jenisMitraList
+        where (year(tglPenetapan) = :tahun or tahun = :tahun) and jenisMitra in :jenisMitraList
       """)
   public long getCount(int tahun, List<JenisMitra> jenisMitraList);
 
