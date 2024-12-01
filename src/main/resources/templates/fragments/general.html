@@ -89,8 +89,10 @@
                 <li class="nav-item topnav" th:if="${currentPage=='home'}" ><a class="nav-link" href="#portfolio">Portfolio</a></li>
                 <li class="nav-item topnav" th:if="${currentPage=='home'}" ><a class="nav-link" href="#contact">Kontak</a></li>
                 <li class="nav-item topnav" sec:authorize="isAuthenticated()" th:if="${currentPage=='home'}" ><a class="nav-link" th:href="@{/dashboard}">Dashboard</a></li>
-                <li class="nav-item topnav"><a class="nav-link" sec:authorize="!isAuthenticated()" th:href="@{/showLoginPage}">Login</a></li>
-                <li class="nav-item topnav"><a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a></li>
+                <div class="auth-links">
+                    <li class="nav-item topnav"><a class="nav-link" sec:authorize="!isAuthenticated()" th:href="@{/showLoginPage}">Login</a></li>
+                    <li class="nav-item topnav"><a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a></li>
+                </div>    
             </ul>
         </div>
     </nav>     
@@ -101,7 +103,7 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading text-white">Utama</div>
-                    <a class="nav-link" th:href="@{/}"><div class="sb-nav-link-icon"><i data-feather="home"></i></div>Home</a>
+                    <a class="nav-link" th:href="@{/}"><div class="sb-nav-link-icon"><i data-feather="home"></i></div>Beranda</a>
                     <a class="nav-link" th:href="@{/dashboard}"><div class="sb-nav-link-icon"><i data-feather="activity"></i></div>Dashboard</a>
                     <a class="nav-link" th:href="@{/pemetaan}"><div class="sb-nav-link-icon"><i data-feather="map"></i></div>Pemetaan</a>
                     <a class="nav-link" th:href="@{/pemetaan/grouping}"><div class="sb-nav-link-icon"><i data-feather="map"></i></div>Pemetaan OPD Pengampu</a>

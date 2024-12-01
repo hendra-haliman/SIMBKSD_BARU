@@ -261,7 +261,7 @@ svg.feather {
 header.masthead {
     padding-top: 12rem;
     padding-bottom: calc(12rem - 4.5rem);
-    background: linear-gradient(to bottom, rgba(92, 77, 66, 0.6) 0%, rgba(92, 77, 66, 0.6) 100%), url(../assets/img/office.jpg);
+    background: url(../assets/img/office.jpg);
     /* background: url(../assets/img/office.jpg);    */
     height: 100vh;  
     background-position: center;
@@ -399,4 +399,17 @@ hr.divider {
 .sb-sidenav .sb-sidenav-menu .nav .sb-sidenav-menu-nested {
     margin-left: 2rem;
     flex-direction: column;
+}
+
+.nav-item {
+    margin-left: 15px; /* Adjust the value as needed */
+    margin-right: 15px; /* Adjust the value as needed */
+}
+.auth-links {
+    margin-left: auto; /* Push the auth links to the right */
+}
+.navbar-nav {
+    display: flex;
+    justify-content: center; /* Center the navigation items */
+    width: 100%;
 }
