@@ -70,8 +70,13 @@ public class PemakaiService<T> implements UserDetailsService {
             throw new UsernameNotFoundException("Invalid email atau password");
         }
 
-        return new User(pemakai.getEmail(), pemakai.getPassword(), pemakai.isEnabled(), true, true, true,
-                getAuthorities(pemakai.getRoles()));
+        return new User(pemakai.getEmail(), 
+                        pemakai.getPassword(), 
+                        pemakai.isEnabled(), 
+                        true, 
+                        true, 
+                        true,
+                        getAuthorities(pemakai.getRoles()));
 
     }
 

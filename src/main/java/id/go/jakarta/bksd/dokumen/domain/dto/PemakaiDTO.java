@@ -15,7 +15,7 @@ public class PemakaiDTO {
     private String email;
     //private String password;
     private Boolean enabled;
-    private AlamatDTO alamat;
+    //private AlamatDTO alamat;
     private Set<RoleDTO> roles;
 
 }
