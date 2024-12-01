@@ -82,7 +82,7 @@ public class EmailServiceImpl implements EmailService {
         Context thymeleafContext = new Context();
         thymeleafContext.setVariables(templateModel);
 
-        String htmlBody = thymeleafTemplateEngine.process("template-thymeleaf.html", thymeleafContext);
+        String htmlBody = thymeleafTemplateEngine.process("mail-templates/lupa-password.html", thymeleafContext);
 
         sendHtmlMessage(to, subject, htmlBody);
     }
@@ -90,9 +90,12 @@ public class EmailServiceImpl implements EmailService {
     private void sendHtmlMessage(String to, String subject, String htmlBody) throws MessagingException {
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+        helper.setFrom(sender);
         helper.setTo(to);
         helper.setSubject(subject);
         helper.setText(htmlBody, true);
+
+        logger.info("\n\nMencoba kirim email...[{}], [{}], [{}], [{}]\n\n", sender, to, subject, htmlBody);
         javaMailSender.send(message);
     }
 }
