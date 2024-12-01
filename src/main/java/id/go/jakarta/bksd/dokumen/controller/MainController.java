@@ -1,7 +1,10 @@
 package id.go.jakarta.bksd.dokumen.controller;
 
+import java.io.IOException;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +30,7 @@ import id.go.jakarta.bksd.dokumen.service.EmailService;
 import id.go.jakarta.bksd.dokumen.service.FileManager;
 import id.go.jakarta.bksd.dokumen.service.LaporanService;
 import id.go.jakarta.bksd.dokumen.service.PemakaiService;
+import jakarta.mail.MessagingException;
 
 @Controller
 public class MainController {
@@ -168,11 +172,27 @@ public class MainController {
             // pemakai.setResetStr(resetLink);
             // pemakaiService.save(pemakai);
 
-            EmailDetails emailDetails = new EmailDetails(email,
-                    "Hi, anda dapat mereset password " + resetLink + " disini.", "Reset Password", null);
-            String returnMessage = emailService.sendSimpleMail(emailDetails);
-            returnMessage += " [" + email + "]";
-            logger.info(returnMessage);
+            //Simple email
+            //EmailDetails emailDetails = new EmailDetails(email,
+            //        "Hi, anda dapat mereset password " + resetLink + " disini.", "Reset Password", null);
+            //String returnMessage = emailService.sendSimpleMail(emailDetails);
+            
+            Map<String, Object> templateModel = new HashMap<String, Object>();
+            templateModel.put("recipientName", pemakai.getFullName());
+            templateModel.put("resetLink", resetLink);
+
+            try {
+                emailService.sendMessageUsingThymeleafTemplate(email, "Reset Password", templateModel);
+            } catch (IOException ioe) {
+                logger.info(ioe.getMessage());
+            } catch (MessagingException me) {
+                logger.info(me.getMessage());
+            }
+
+            
+            
+            //returnMessage += " [" + email + "]";
+            //logger.info(returnMessage);
         }
 
         return "reset-password-confirmation";
