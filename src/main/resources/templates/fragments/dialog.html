@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+    <!--Confirmation Dialog sebelum delete-->
+    <div th:fragment="dialog_delete(title,body)" class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog"
+        aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmationModalLabel" th:text="${title}"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body" th:text="${body}">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                        data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-primary" id="confirmAction">Ya</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Modal Daftar Kolaborator-->
+    <div th:fragment="dialog_daftar" class="modal fade" id="daftarModal" tabindex="-1" role="dialog"
+        aria-labelledby="daftarModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="top: 100px;">
+            <div class="modal-content">
+                <!--
+                <div class="modal-header">
+                    <h5 class="modal-title" id="daftarModalLabel">Daftar Kolaborator</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                -->
+
+                <div class="modal-body">
+                    <!--TODO -->
+                            <!-- Form Daftar-->
+                                    <div class="text-center mb-3"><strong>Mari bergabung menjadi kolabolator</strong></div>
+                                    <form th:action="@{/authenticateUser}" method="post" id="loginForm">
+                                        <!-- nama -->
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="nama">Nama</label>
+                                            <input class="form-control" id="nama" name="nama" type="text"
+                                                placeholder="Masukkan nama" autocomplete="on" />
+                                        </div>
+                                        <!-- email -->
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="email">Email</label>
+                                            <input class="form-control" id="email" name="email" type="email"
+                                                placeholder="Masukkan email" autocomplete="on" />
+                                        </div>
+                                        <!-- password-->
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="password">Password</label>
+                                            <input class="form-control" id="password" name="password" type="password"
+                                                placeholder="Masukkan password" autocomplete="off" />
+                                        </div>
+
+                                        <!-- Form Group (login box)-->
+                                        <div class="mb-3">
+                                            <button class="form-control btn btn-primary"
+                                                 data-action="submit">Buat Akun</button>
+                                        </div>
+                                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

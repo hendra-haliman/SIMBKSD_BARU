@@ -47,7 +47,7 @@ public class PengajuanKolaborasi extends AuditMetaData {
     @OneToOne
     private ProfilePIC profilePIC;
 
-    private String deskripsi_ide;
+    private String deskripsi_kolaborasi;
 
     private String sasaran;
 

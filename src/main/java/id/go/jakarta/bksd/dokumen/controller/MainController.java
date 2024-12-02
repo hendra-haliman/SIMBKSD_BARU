@@ -47,6 +47,9 @@ public class MainController {
     @Value("${useRecaptcha}")
     private boolean useRecaptcha;
 
+    @Value("${enable.kolaborasi}")
+    private boolean enableKolaborasi;
+
     public MainController(PemakaiService pemakaiService, EmailService emailService, PasswordEncoder passwordEncoder,
             DataUploaderService dataUploaderService, FileManager fileManager,
             DokumenKerjaSamaService dokumenKerjaSamaService, BagianService bagianService,
@@ -64,15 +67,23 @@ public class MainController {
     @GetMapping("")
     public String home(Model model) {
         model.addAttribute("currentPage", "home");
+        model.addAttribute("enableKolaborasi", enableKolaborasi);
         return "home";
     }
 
     @GetMapping("/home")
     public String home2(Model model) {
         model.addAttribute("currentPage", "home");
+        model.addAttribute("enableKolaborasi", enableKolaborasi);
         return "home";
     }
 
+    @GetMapping("/agendaKota")
+    public String agendaKota(Model model) {
+        model.addAttribute("currentPage", "agendaKota");
+        model.addAttribute("enablekolaborasi", enableKolaborasi);
+        return "agenda-kota";
+    }
 
     @GetMapping("/terminologi")
     public String terminologi(Model model) {

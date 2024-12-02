@@ -84,11 +84,14 @@
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                <li class="nav-item topnav" th:if="${currentPage=='home'}" ><a class="nav-link" href="#about">Tentang Kami </a></li>
+                <li class="nav-item topnav" th:if="${currentPage == 'agendaKota'} or ${currentPage=='home'}" ><a class="nav-link" th:href="@{/}">Beranda</a></li>
+                <li class="nav-item topnav" th:if="${currentPage == 'agendaKota'} or ${currentPage=='home'}" ><a class="nav-link" href="#kolaborasi_tayang">Kolaborasi</a></li>
+                <li class="nav-item topnav" th:if="${currentPage=='home'} and ${enableKolaborasi}" ><a class="nav-link" th:href="@{/agendaKota}">Agenda Kota</a></li>
+                <li class="nav-item topnav" th:if="${currentPage=='home'}" ><a class="nav-link" href="#about">Tentang Kami</a></li>
                 <li class="nav-item topnav" th:if="${currentPage=='home'}" ><a class="nav-link" href="#services">Layanan</a></li>
                 <li class="nav-item topnav" th:if="${currentPage=='home'}" ><a class="nav-link" href="#portfolio">Portfolio</a></li>
                 <li class="nav-item topnav" th:if="${currentPage=='home'}" ><a class="nav-link" href="#contact">Kontak</a></li>
-                <li class="nav-item topnav" sec:authorize="isAuthenticated()" th:if="${currentPage=='home'}" ><a class="nav-link" th:href="@{/dashboard}">Dashboard</a></li>
+                <li class="nav-item topnav" sec:authorize="isAuthenticated()" th:if="${currentPage=='home'} or ${currentPage=='agendaKota'}" ><a class="nav-link" th:href="@{/dashboard}">Dashboard</a></li>
                 <div class="auth-links">
                     <li class="nav-item topnav"><a class="nav-link" sec:authorize="!isAuthenticated()" th:href="@{/showLoginPage}">Login</a></li>
                     <li class="nav-item topnav"><a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a></li>
