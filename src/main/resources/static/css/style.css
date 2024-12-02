@@ -273,13 +273,12 @@ header.masthead {
 header.masthead_colab {
     padding-top: 12rem;
     padding-bottom: calc(12rem - 4.5rem);
-    background: url(../assets/img/kolab.jpg);
+    background:  url(../assets/img/kolab.jpg);
     height: 100vh;  
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-size: cover;
-    border-radius: 30px;
 }
 
 

@@ -56,7 +56,7 @@ public class DokumenSecurityConfig {
                                 .requestMatchers(
                                         "/",
                                         "/home",
-                                        "agendaKota",
+                                        "/agendaKota",
                                         "/register",
                                         "registerUser",
                                         "/forgotPassword",
