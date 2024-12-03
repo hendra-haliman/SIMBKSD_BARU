@@ -441,3 +441,12 @@ hr.divider {
 .text-yellow {
     color:yellow;
 }
+
+.modal-dialog {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.modal-content {
+    overflow-y: auto;
+}
