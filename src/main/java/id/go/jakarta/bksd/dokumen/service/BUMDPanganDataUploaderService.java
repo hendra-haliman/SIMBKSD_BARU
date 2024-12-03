@@ -66,33 +66,29 @@ public class BUMDPanganDataUploaderService {
         File file = new File("D:/Biro KSD/" + fileName);
         XSSFWorkbook workbook = new XSSFWorkbook(file);
 
-        //uploadDataPasarJaya(workbook);
         //uploadDataFoodStation(workbook);
-        //uploadDataDharmaJaya(workbook);
-        //uploadJatimLampungBali(workbook);
-        //uploadJawaTengah(workbook);
-        uploadJawaBarat(workbook);
-        uploadBantendanDharmaJaya(workbook);
+        //uploadDataPasarJaya(workbook);
+        uploadDataDharmaJaya(workbook);
 
         workbook.close();
     }
 
-    private void uploadDataPasarJaya(XSSFWorkbook workbook) {
+    private void uploadDataFoodStation(XSSFWorkbook workbook) {
         XSSFSheet sheet = workbook.getSheetAt(1);
+
+        Kelompok kelompok = kelompokService.findByNama("Food Station");
+        BUMD foodStation = bumdService.findByNama(BUMD_FOOD_STATION);
+        uploadWorksheetData(2023, foodStation, kelompok, sheet, 5, 24, true);
+        uploadWorksheetData(2024, foodStation, kelompok, sheet, 32, 49, true);
+    }
+
+    private void uploadDataPasarJaya(XSSFWorkbook workbook) {
+        XSSFSheet sheet = workbook.getSheetAt(2);
 
         Kelompok kelompok = kelompokService.findByNama("Pasar Jaya");
         BUMD pasarJaya = bumdService.findByNama(BUMD_PASAR_JAYA);
         uploadWorksheetData(2023, pasarJaya, kelompok, sheet, 5, 5, true);
-        uploadWorksheetData(2024, pasarJaya, kelompok, sheet, 11, 15, true);
-    }
-
-    private void uploadDataFoodStation(XSSFWorkbook workbook) {
-        XSSFSheet sheet = workbook.getSheetAt(2);
-
-        Kelompok kelompok = kelompokService.findByNama("Food Station");
-        BUMD foodStation = bumdService.findByNama(BUMD_FOOD_STATION);
-        uploadWorksheetData(2023, foodStation, kelompok, sheet, 5, 33, true);
-        uploadWorksheetData(2024, foodStation, kelompok, sheet, 41, 66, true);
+        uploadWorksheetData(2024, pasarJaya, kelompok, sheet, 11, 14, true);
     }
 
     private void uploadDataDharmaJaya(XSSFWorkbook workbook) {
@@ -100,39 +96,8 @@ public class BUMDPanganDataUploaderService {
 
         Kelompok kelompok = kelompokService.findByNama("Dharma Jaya");
         BUMD dharmajaya = bumdService.findByNama(BUMD_DHARMA_JAYA);
-        uploadWorksheetData(2023, dharmajaya, kelompok, sheet, 5, 125, false);
+        uploadWorksheetData(2023, dharmajaya, kelompok, sheet, 5, 124, false);
     }
-
-    private void uploadJatimLampungBali(XSSFWorkbook workbook) {
-        XSSFSheet sheet = workbook.getSheetAt(4);
-
-        Kelompok kelompok = kelompokService.findByNama("Pemprov Jawa Timur, Lampung dan Bali");
-        uploadWorksheetData(2023, null, kelompok, sheet, 5, 9, false);
-    }
-    
-    private void uploadJawaTengah(XSSFWorkbook workbook) {
-        XSSFSheet sheet = workbook.getSheetAt(5);
-
-        Kelompok kelompok = kelompokService.findByNama("Pemprov Jawa Tengah");
-        uploadWorksheetData(2023, null, kelompok, sheet, 5, 12, false);
-    }
-
-    private void uploadJawaBarat(XSSFWorkbook workbook) {
-        XSSFSheet sheet = workbook.getSheetAt(6);
-
-        Kelompok kelompok = kelompokService.findByNama("Pemprov Jawa Barat");
-        uploadWorksheetData(2023, null, kelompok, sheet, 5, 17, false);
-        uploadWorksheetData(2024, null, kelompok, sheet, 24, 35, false);
-    }
-
-    private void uploadBantendanDharmaJaya(XSSFWorkbook workbook) {
-        XSSFSheet sheet = workbook.getSheetAt(7);
-
-        Kelompok kelompok = kelompokService.findByNama("Pemprov Banten dan Dharma Jaya");
-        uploadWorksheetData(2023, null, kelompok, sheet, 5, 14, false);
-    }
-
-    
 
     private void uploadWorksheetData(int year, BUMD bumd, Kelompok kelompok, XSSFSheet sheet, int from, int to, boolean includeKeterangan) {
         for (int rowNum = from; rowNum <= to; rowNum++) {
