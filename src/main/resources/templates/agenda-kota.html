@@ -84,10 +84,10 @@
         </div>
     </div>
 
-    <script th:src="@{/static/js/bootstrap.bundle.min.js}" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+    <script th:src="@{/static/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/static/js/simpleLightbox.min.js}"></script>
     <script th:src="@{/static/js/scripts.js}"></script>
-    <script th:src="@{/static/js/litepicker.bundle.js}" crossorigin="anonymous"></script>
+    <script th:src="@{/static/js/litepicker.bundle.js}"></script>
     <script th:src="@{/static/js/litepicker.js}"></script>
     <script th:src="@{/static/js/jquery-3.7.1.min.js}"></script>
     <script th:src="@{/static/js/datatables.min.js}"></script>
@@ -116,12 +116,12 @@
 
             // Scroll ke atas
             document.addEventListener("scroll", function() {
-            var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-            if (scrollPosition > 100) {
-                document.querySelector('.back-to-top').style.display = 'block';
-            } else {
-                document.querySelector('.back-to-top').style.display = 'none';
-            }
+                var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollPosition > 100) {
+                    document.querySelector('.back-to-top').style.display = 'block';
+                } else {
+                    document.querySelector('.back-to-top').style.display = 'none';
+                }
             });
 
             document.querySelector('.back-to-top').addEventListener('click', function(e) {

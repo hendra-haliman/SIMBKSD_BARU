@@ -396,9 +396,9 @@ hr.divider {
 
 .overlay_image {
     position: absolute; 
-    top: 56px; 
-    left: 0; 
-    width: 10em;
+    top: 80px; 
+    left: 30px; 
+    width: 8em;
     /* width: 100%; Stretch the overlay image to cover the container */
     /* height: 100%; Stretch the overlay image to cover the container */
     opacity: 0.8; 
