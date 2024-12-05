@@ -1,4 +1,4 @@
-package id.go.jakarta.bksd.dokumen.domain.pengajuan_kolaborasi;
+package id.go.jakarta.bksd.dokumen.domain.kolaborasi;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

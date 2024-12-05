@@ -1,6 +1,7 @@
 package id.go.jakarta.bksd.dokumen.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -25,5 +26,9 @@ public class RoleService {
         // .map(role -> modelMapper.map(role, RoleDTO.class))
         // .collect(Collectors.toList());
 
+    }
+
+    public Optional<Role> getByNama(String roleName) {
+        return roleRepository.getByName(roleName);
     }
 }

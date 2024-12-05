@@ -1,8 +1,10 @@
 package id.go.jakarta.bksd.dokumen.config;
 
 import java.io.IOException;
+import java.util.Collection;
 
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -22,7 +24,15 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
             Authentication authentication) throws IOException, ServletException {
         Object attribute = request.getSession().getAttribute("SPRING_SECURITY_SAVED_REQUEST");
+        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 
+        boolean isKolaborator = authorities.stream()
+            .anyMatch(grantedAuthority -> grantedAuthority.getAuthority().equals("ROLES_KOLABORATOR"));
+
+        if (isKolaborator) {
+            redirectStrategy.sendRedirect(request, response, "/kolaborator/dashboardKolab");
+            return;
+        }
         if (attribute instanceof SavedRequest) {
             SavedRequest savedRequest = (SavedRequest) attribute;
             String redirectUrl = savedRequest.getRedirectUrl();

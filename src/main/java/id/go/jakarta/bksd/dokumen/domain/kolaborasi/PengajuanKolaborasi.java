@@ -1,4 +1,4 @@
-package id.go.jakarta.bksd.dokumen.domain.pengajuan_kolaborasi;
+package id.go.jakarta.bksd.dokumen.domain.kolaborasi;
 
 import java.util.ArrayList;
 import java.util.List;

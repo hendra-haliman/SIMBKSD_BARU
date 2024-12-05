@@ -79,6 +79,7 @@
                 </a>
                   
                 <div th:replace="~{fragments/dialog.html :: dialog_daftar}"></div>
+                <div th:replace="~{fragments/dialog.html :: dialog_confirm_sukses_daftar}"></div>
             </main>
             <footer th:replace="~{fragments/general-home.html :: footer}"></footer>
         </div>
@@ -92,6 +93,9 @@
     <script th:src="@{/static/js/jquery-3.7.1.min.js}"></script>
     <script th:src="@{/static/js/datatables.min.js}"></script>
     <script th:src="@{/static/js/fontfaceobserver.standalone.js}"></script>
+    <script th:inline="javascript">
+        var contextPath = /*[[@{/}]]*/ '';            
+    </script>
 
     <script>
         $(document).ready(function () {
@@ -128,6 +132,48 @@
                 e.preventDefault();
                 window.scrollTo({top: 0, behavior: 'smooth'});
             });
+
+            //ajax daftar kolaborator
+            $('#buat-akun').click(function(event) {
+                //alert("buat akun");
+                debugger;
+                event.preventDefault();
+                var fullName = $("#nama").val();
+                var email = $("#email").val();
+                var pwd = $("#password").val();
+
+                var jsonData = {
+                    nama : fullName,
+                    email: email,
+                    password: pwd
+                };
+
+                var token = $("meta[name='_csrf']").attr("content");
+                var header = $("meta[name='_csrf_header']").attr("content");
+
+                $.ajax({
+                    //url: contextPath +'kolaborator/daftar',  
+                    url: 'https://localhost:8443/SIMBKSD/kolaborator/daftar',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    "headers": {
+                        [header]: token  // Include the CSRF token in the request header
+                    },
+                    data: JSON.stringify(jsonData),
+                    success: function(response) {
+                        console.log('Success:', response);
+                        // Handle success
+                        if (response.status=='Sukses') {
+                            $("#daftarModal").modal('hide');
+                            $("#suksesDaftarModal").modal("show");
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.log('Error:', error);
+                        // Handle error
+                    }
+                });
+            });            
         });
 
         function showDaftarModal() {

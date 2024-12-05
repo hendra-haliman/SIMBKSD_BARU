@@ -1,4 +1,4 @@
-package id.go.jakarta.bksd.dokumen.domain.pengajuan_kolaborasi;
+package id.go.jakarta.bksd.dokumen.domain.kolaborasi;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,12 +8,12 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "pk_dokumen_pendukung_kolaborasi")
+@Table(name = "pk_jenis_kolaborasi")
 @Data
-public class DokumenPendukungKolaborasi {
+public class JenisKolaborasi {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String filename;
+    private String nama;
 }

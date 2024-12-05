@@ -57,6 +57,8 @@ public class DokumenSecurityConfig {
                                         "/",
                                         "/home",
                                         "/agendaKota",
+                                        "/kolaborator",
+                                        "/kolaborator/daftar",
                                         "/register",
                                         "registerUser",
                                         "/forgotPassword",
