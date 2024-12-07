@@ -48,4 +48,9 @@
         <appender-ref ref="Console"/>
     </logger>
 
+    <!-- Setting the log level for org.thymeleaf -->
+    <logger name="org.thymeleaf" level="DEBUG">
+        <appender-ref ref="Console"/>
+    </logger>
+
 </configuration>

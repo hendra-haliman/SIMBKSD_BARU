@@ -16,6 +16,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
@@ -65,6 +66,18 @@ public class CustomLoginFilter2 extends OncePerRequestFilter {
 
             }
 
+        } 
+        
+        else if (uri.endsWith("authenticateUser")) {
+            HttpSession session = request.getSession();
+            String captchaAnswer = (String) session.getAttribute("captchaAns");
+            String capthcaSubmitted = request.getParameter("captcha");
+
+            if (!captchaAnswer.equals(capthcaSubmitted)) {
+                logger.info("CAPTCHA diff [{}] [{}]", captchaAnswer, capthcaSubmitted);
+                response.sendRedirect(request.getContextPath() + "/showLoginPage?errorCaptcha=y");
+                return ;
+            }
         }
 
         filterChain.doFilter(request, response);

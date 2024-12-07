@@ -4,12 +4,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import cn.apiclub.captcha.Captcha;
+import id.go.jakarta.bksd.dokumen.captcha.CaptchaUtils;
 import id.go.jakarta.bksd.dokumen.domain.Pemakai;
 import id.go.jakarta.bksd.dokumen.domain.Role;
 import id.go.jakarta.bksd.dokumen.domain.kolaborasi.KolaboratorRequest;
@@ -76,7 +79,11 @@ public class KolaboratorController {
     }
 
     @GetMapping("/dashboardKolab")
-    public String dashboardKolaborator() {
+    public String dashboardKolaborator(Model model) {
+        Captcha captcha = CaptchaUtils.createCaptcha(200, 50);
+        String base64Image = CaptchaUtils.encodeBase64(captcha);
+
+        model.addAttribute("base64Image", base64Image);
         return "kolaborasi/dashboard-kolab";
     }
 }

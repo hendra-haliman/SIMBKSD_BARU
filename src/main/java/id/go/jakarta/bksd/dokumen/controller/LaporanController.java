@@ -36,7 +36,7 @@ public class LaporanController {
     public String laporanHome(Model model) {
         List<AsistenSekretarisDaerah> asistenList = asistenSekretarisDaerahService.findAll();
         model.addAttribute("asistenList", asistenList);
-
+        model.addAttribute("currentPage", "laporan");
         return "laporan";
     }
 

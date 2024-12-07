@@ -18,4 +18,7 @@ public class PemakaiDTO {
     //private AlamatDTO alamat;
     private Set<RoleDTO> roles;
 
+    //private String hidden;
+    //private String captcha;
+
 }

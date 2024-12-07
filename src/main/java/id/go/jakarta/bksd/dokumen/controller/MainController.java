@@ -1,6 +1,7 @@
 package id.go.jakarta.bksd.dokumen.controller;
 
 import java.io.IOException;
+import java.net.http.HttpResponse;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
@@ -8,20 +9,34 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
+import cn.apiclub.captcha.Captcha;
+import id.go.jakarta.bksd.dokumen.captcha.CaptchaUtils;
 import id.go.jakarta.bksd.dokumen.domain.Bagian;
 import id.go.jakarta.bksd.dokumen.domain.EmailDetails;
 import id.go.jakarta.bksd.dokumen.domain.Pemakai;
+import id.go.jakarta.bksd.dokumen.domain.Person;
 import id.go.jakarta.bksd.dokumen.domain.Rekapitulasi;
 import id.go.jakarta.bksd.dokumen.domain.dto.ChangePasswordDTO;
+import id.go.jakarta.bksd.dokumen.domain.dto.PemakaiDTO;
 import id.go.jakarta.bksd.dokumen.service.BagianService;
 import id.go.jakarta.bksd.dokumen.service.DataUploaderService;
 import id.go.jakarta.bksd.dokumen.service.DokumenKerjaSamaLuarNegeriService;
@@ -31,10 +46,18 @@ import id.go.jakarta.bksd.dokumen.service.FileManager;
 import id.go.jakarta.bksd.dokumen.service.LaporanService;
 import id.go.jakarta.bksd.dokumen.service.PemakaiService;
 import jakarta.mail.MessagingException;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Controller
 public class MainController {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    @Autowired
+    private HttpSession httpSession;
 
     private PemakaiService pemakaiService;
     private EmailService emailService;
@@ -78,15 +101,16 @@ public class MainController {
         return "home";
     }
 
-    @GetMapping("/agendaKota")
+    @GetMapping("/agendaKota") 
     public String agendaKota(Model model) {
-        model.addAttribute("currentPage", "agendaKota");
-        model.addAttribute("enablekolaborasi", enableKolaborasi);
+        model.addAttribute("currentPage", "agendakota");
+        model.addAttribute("enableKolaborasi", enableKolaborasi);
         return "agenda-kota";
     }
 
     @GetMapping("/terminologi")
     public String terminologi(Model model) {
+        model.addAttribute("currentPage", "terminologi");
         return "terminologi";
     }
 
@@ -154,17 +178,25 @@ public class MainController {
 
         model.addAttribute("rekapList", rekapList);
 
+        model.addAttribute("currentPage", "dashboard");
+
         return "dashboard";
     }
 
     @GetMapping("/showLoginPage")
-    public String showLogin() {
+    public String showLogin(Model model) {
         if (useRecaptcha) {
             return "login";
         } else {
+            Captcha captcha = CaptchaUtils.createCaptcha(200, 50);
+            String base64Image = CaptchaUtils.encodeBase64(captcha);
+            httpSession.setAttribute("captchaAns", captcha.getAnswer());
+            model.addAttribute("base64Image", base64Image);
+
             return "login_nocaptcha";
         }
     }
+
 
     @GetMapping("/forgotPassword")
     public String forgotPassword() {
@@ -182,11 +214,6 @@ public class MainController {
             String resetLink = pemakaiService.generateResetPasswordLink(pemakai);
             // pemakai.setResetStr(resetLink);
             // pemakaiService.save(pemakai);
-
-            //Simple email
-            //EmailDetails emailDetails = new EmailDetails(email,
-            //        "Hi, anda dapat mereset password " + resetLink + " disini.", "Reset Password", null);
-            //String returnMessage = emailService.sendSimpleMail(emailDetails);
             
             Map<String, Object> templateModel = new HashMap<String, Object>();
             templateModel.put("recipientName", pemakai.getFullName());
@@ -200,10 +227,6 @@ public class MainController {
                 logger.info(me.getMessage());
             }
 
-            
-            
-            //returnMessage += " [" + email + "]";
-            //logger.info(returnMessage);
         }
 
         return "reset-password-confirmation";

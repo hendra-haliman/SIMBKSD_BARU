@@ -9,8 +9,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -28,6 +30,8 @@ import id.go.jakarta.bksd.dokumen.service.PemakaiService;
 @Configuration
 @EnableWebSecurity
 public class DokumenSecurityConfig {
+    // @Autowired
+    // private PemakaiService pemakaiService;
 
     @Value("${server.ssl.redirect-port}")
     private int redirectPort;
@@ -57,6 +61,9 @@ public class DokumenSecurityConfig {
                                         "/",
                                         "/home",
                                         "/agendaKota",
+                                        "/captcha",
+                                        "/captcha/getCaptcha",
+                                        "/logmein",
                                         "/kolaborator",
                                         "/kolaborator/daftar",
                                         "/register",
@@ -89,6 +96,7 @@ public class DokumenSecurityConfig {
 
                                 .anyRequest().authenticated())
                 // .rememberMe()
+                //.addFilterBefore(customAuthenticationFilter(authenticationManagerBean(http)), CustomLoginFilter2.class)
                 .addFilterBefore(customLoginFilter2(), UsernamePasswordAuthenticationFilter.class)
                 .formLogin(form -> form.loginPage("/showLoginPage")
                         .loginProcessingUrl("/authenticateUser")
@@ -195,9 +203,30 @@ public class DokumenSecurityConfig {
 
     }
 
+    // @Bean
+    // public CustomAuthenticationFilter customAuthenticationFilter(AuthenticationManager authenticationManager) throws Exception {
+    //     CustomAuthenticationFilter filter = new CustomAuthenticationFilter(authenticationManager);
+    //     return filter;
+
+    // }
+
+
     @Bean
     public AuditorAware<String> auditorAware() {
         return new EntityAuditorAware();
     }
+
+
+    // @Autowired
+    // public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+    //     // Configure global authentication manager with user details service and password encoder
+    //     //auth.userDetailsService(pemakaiService).passwordEncoder(passwordEncoder());
+    //     auth.authenticationProvider(authenticationProvider(pemakaiService));
+    // }
+
+    // @Bean
+    // public AuthenticationManager authenticationManagerBean(HttpSecurity http) throws Exception {
+    //     return http.getSharedObject(AuthenticationManagerBuilder.class).build();
+    // }
 
 }

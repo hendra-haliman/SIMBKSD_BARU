@@ -46,12 +46,14 @@ public class PemetaanController {
     }
 
     @GetMapping("")
-    public String pemetaan() {
+    public String pemetaan(Model model) {
+        model.addAttribute("currentPage", "pemetaan");
         return "pemetaan/pemetaan";
     }
 
     @GetMapping("/grouping")
-    public String pemetaanGrouping() {
+    public String pemetaanGrouping(Model model) {
+        model.addAttribute("currentPage", "pemetaanGroup");
         return "pemetaan/pemetaan-group";
     }
 

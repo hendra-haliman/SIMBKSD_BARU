@@ -81,8 +81,10 @@ public class KolaborasiController {
         model.addAttribute("kolaborasiList", kolaborasiList);
         model.addAttribute("tableDef", tableDef);
         model.addAttribute("pemakai", pemakai);
-
+        
         model.addAttribute("jsonDefs", jsonDefs);
+
+        model.addAttribute("currentPage", "kolaborasi");
 
         return "kolaborasi/kolaborasi";
     }
@@ -100,6 +102,7 @@ public class KolaborasiController {
         Kolaborasi kolaborasi = kolaborasiService.findById(id);
 
         model.addAttribute("kolaborasi", kolaborasi);
+        model.addAttribute("currentPage", "kolaborasi");
 
         return "kolaborasi/kolaborasi-lihat";
     }
@@ -115,6 +118,7 @@ public class KolaborasiController {
 
         model.addAttribute("kolaborasi", kolaborasi);
         model.addAttribute("bagianList", bagianList);
+        model.addAttribute("currentPage", "kolaborasi");
 
         return "kolaborasi/kolaborasi-add";
     }
@@ -149,6 +153,7 @@ public class KolaborasiController {
         model.addAttribute("bagianList", bagianList);
 
         model.addAttribute("kolaborasi", kolaborasi);
+        model.addAttribute("currentPage", "kolaborasi");
 
         return "kolaborasi/kolaborasi-edit";
     }

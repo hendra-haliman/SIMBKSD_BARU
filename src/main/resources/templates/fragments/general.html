@@ -73,10 +73,10 @@
     </svg>
 
 
+    <!--Navigasi atas-->
     <nav th:fragment="navigation" class="sb-topnav fixed-top navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-dark bg-black sb-nav-fixed" id="sidenavAccordion">
         <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 me-2 ms-lg-2 me-lg-0" id="sidebarToggle"><i data-feather="menu"></i></button>
 
-        <!-- Navbar Brand-->
         <a class="navbar-brand pe-3 ps-4 ps-lg-2" th:href="@{/}">
             <img th:src="@{/static/assets/img/favicon.png}" alt="Logo" class="d-inline-block align-text-top nav-logo"/>
             <span>SIMBKSD</span>
@@ -84,14 +84,15 @@
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                <li class="nav-item topnav" th:if="${currentPage == 'agendaKota'} or ${currentPage=='home'}" ><a class="nav-link" th:href="@{/}">Beranda</a></li>
-                <li class="nav-item topnav" th:if="${currentPage == 'agendaKota'} or ${currentPage=='home'}" ><a class="nav-link" href="#kolaborasi_tayang">Kolaborasi</a></li>
-                <li class="nav-item topnav" th:if="${currentPage=='home'} and ${enableKolaborasi}" ><a class="nav-link" th:href="@{/agendaKota}">Agenda Kota</a></li>
-                <li class="nav-item topnav" th:if="${currentPage=='home'}" ><a class="nav-link" href="#about">Tentang Kami</a></li>
-                <li class="nav-item topnav" th:if="${currentPage=='home'}" ><a class="nav-link" href="#services">Layanan</a></li>
-                <li class="nav-item topnav" th:if="${currentPage=='home'}" ><a class="nav-link" href="#portfolio">Portfolio</a></li>
-                <li class="nav-item topnav" th:if="${currentPage=='home'}" ><a class="nav-link" href="#contact">Kontak</a></li>
-                <li class="nav-item topnav" sec:authorize="isAuthenticated()" th:if="${currentPage=='home'} or ${currentPage=='agendaKota'}" ><a class="nav-link" th:href="@{/dashboard}">Dashboard</a></li>
+                <li class="nav-item topnav"  th:classappend="${currentPage == 'home' ? 'active' : ''}"><a class="nav-link" th:href="@{/}">Beranda</a></li>
+                <li class="nav-item topnav"  th:classappend="${currentPage == 'kolaborasi' ? 'active' : ''}"><a class="nav-link" href="#kolaborasi_tayang">Kolaborasi</a></li>
+
+                <li class="nav-item topnav"  th:classappend="${currentPage == 'agendakota' ? 'active' : ''}"><a class="nav-link" th:href="@{/agendaKota}">Agenda Kota</a></li>
+
+                <li class="nav-item topnav" th:if="${currentPage=='home'}"><a class="nav-link" href="#about">Tentang Kami</a></li>
+                <li class="nav-item topnav" th:if="${currentPage=='home'}"><a class="nav-link" href="#services">Layanan</a></li>
+                <li class="nav-item topnav" th:if="${currentPage=='home'}"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+                <li class="nav-item topnav" sec:authorize="isAuthenticated()" th:if="${currentPage=='home'} or ${currentPage=='agendakota'}"><a class="nav-link" th:href="@{/dashboard}">Dashboard</a></li>
                 <div class="auth-links">
                     <li class="nav-item topnav"><a class="nav-link" sec:authorize="!isAuthenticated()" th:href="@{/showLoginPage}">Login</a></li>
                     <li class="nav-item topnav"><a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a></li>
@@ -106,11 +107,12 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading text-white">Utama</div>
+                    <!--
                     <a class="nav-link" th:href="@{/}"><div class="sb-nav-link-icon"><i data-feather="home"></i></div>Beranda</a>
-                    <a class="nav-link" th:href="@{/dashboard}"><div class="sb-nav-link-icon"><i data-feather="activity"></i></div>Dashboard</a>
-                    <a class="nav-link" th:href="@{/pemetaan}"><div class="sb-nav-link-icon"><i data-feather="map"></i></div>Pemetaan</a>
-                    <a class="nav-link" th:href="@{/pemetaan/grouping}"><div class="sb-nav-link-icon"><i data-feather="map"></i></div>Pemetaan OPD Pengampu</a>
-
+                    -->                    
+                    <a class="nav-link" th:href="@{/dashboard}" th:classappend="${currentPage == 'dashboard' ? 'active' : ''}"><div class="sb-nav-link-icon"><i data-feather="activity"></i></div>Dashboard</a>
+                    <a class="nav-link" th:href="@{/pemetaan}" th:classappend="${currentPage == 'pemetaan' ? 'active' : ''}"><div class="sb-nav-link-icon"><i data-feather="map"></i></div>Pemetaan</a>
+                    <a class="nav-link" th:href="@{/pemetaan/grouping}" th:classappend="${currentPage == 'pemetaanGrouping' ? 'active' : ''}"><div class="sb-nav-link-icon"><i data-feather="map"></i></div>Pemetaan OPD Pengampu</a>
                     <a class="nav-link" href="javascript:void(0);" data-bs-toggle="collapse"
                         data-bs-target="#collapsePelaksanaan" aria-expanded="false" aria-controls="collapsePelaksanaan">
                         <div class="nav-link-icon"><i data-feather="list"></i></div>
@@ -119,22 +121,19 @@
                     </a>
                     <div class="show" id="collapsePelaksanaan" data-bs-parent="#accordionSidenav">
                         <nav class="sb-sidenav-menu-nested nav accordion" id="accordionSidenavPages">
-                            <a class="nav-link" th:href="@{/pelaksanaan}">KPT, KDN, NPBK</a>
-                            <a class="nav-link" th:href="@{/pelaksanaan_luar_negeri}">Luar Negeri</a>
-                            <a class="nav-link" th:href="@{/kolaborasi}">Kolaborasi</a>
-                            <a class="nav-link" th:href="@{/pangan}">Penyediaan Pangan</a>
+                            <a class="nav-link" th:href="@{/pelaksanaan}" th:classappend="${currentPage == 'pelaksanaan' ? 'active' : ''}">KPT, KDN, NPBK</a>
+                            <a class="nav-link" th:href="@{/pelaksanaan_luar_negeri}" th:classappend="${currentPage == 'pelaksanaanLN' ? 'active' : ''}">Luar Negeri</a>
+                            <a class="nav-link" th:href="@{/kolaborasi}" th:classappend="${currentPage == 'kolaborasi' ? 'active' : ''}">Kolaborasi</a>
+                            <a class="nav-link" th:href="@{/pangan}" th:classappend="${currentPage == 'pangan' ? 'active' : ''}">Penyediaan Pangan</a>
                         </nav>
                     </div>
 
                     <a class="nav-link" href="javascript:void(0);"><div class="sb-nav-link-icon"><i data-feather="tv"></i></div>Monev</a>
-                    <a class="nav-link" th:href="@{/laporan}"><div class="sb-nav-link-icon"><i data-feather="printer"></i></div>Laporan</a>
+                    <a class="nav-link" th:href="@{/laporan}" th:classappend="${currentPage == 'laporan' ? 'active' : ''}"><div class="sb-nav-link-icon"><i data-feather="printer"></i></div>Laporan</a>
 
                     <div class="sb-sidenav-menu-heading text-white">Lain-lain</div>
-                    <a class="nav-link" th:href="@{/terminologi}"><div class="sb-nav-link-icon"><i data-feather="user"></i></div>Daftar Istilah</a>
-                    <a sec:authorize="hasRole('ADMIN')" class="nav-link" th:href="@{/user}"><div class="sb-nav-link-icon"><i data-feather="user"></i></div>User</a>
-                    <a class="nav-link" th:href="@{/}"><div class="sb-nav-link-icon"><i data-feather="users"></i></div>Jenis Mitra</a>
-                    <a class="nav-link" th:href="@{/}"><div class="sb-nav-link-icon"><i data-feather="file"></i></div>Jenis Dokumen</a>           
-                    <a class="nav-link" th:href="@{/}"><div class="sb-nav-link-icon"><i data-feather="file"></i></div>Perangkat Daerah</a>           
+                    <a class="nav-link" th:href="@{/terminologi}" th:classappend="${currentPage == 'terminologi' ? 'active' : ''}"><div class="sb-nav-link-icon"><i data-feather="user"></i></div>Daftar Istilah</a>
+                    <a sec:authorize="hasRole('ADMIN')" class="nav-link" th:href="@{/user}" th:classappend="${currentPage == 'user' ? 'active' : ''}"><div class="sb-nav-link-icon"><i data-feather="user"></i></div>User</a>
             </div>
             <div class="sb-sidenav-footer sticky-bottom">
                 <div class="small">Logged in sebagai:</div>

@@ -115,6 +115,7 @@ public class DokumenController {
     public String lihat(@PathVariable Long id, Model model) {
         DokumenKerjaSama dok = dokumenKerjaSamaService.findById(id).get();
         model.addAttribute("dokumen", dok);
+        model.addAttribute("currentPage", "pelaksanaan");
         return "pelaksanaan/dokumen-lihat";
     }
 
@@ -134,6 +135,7 @@ public class DokumenController {
         model.addAttribute("rumpunOpdList", rumpunOpdList);
 
         model.addAttribute("dokumenKerjaSama", dok);
+        model.addAttribute("currentPage", "pelaksanaan");
 
         return "pelaksanaan/dokumen-edit";
     }
@@ -164,6 +166,7 @@ public class DokumenController {
         model.addAttribute("opdList", opd);
         model.addAttribute("bagianList", bagianList);
         model.addAttribute("rumpunOpdList", rumpunOpdList);
+        model.addAttribute("currentPage", "pelaksanaan");
 
         return "pelaksanaan/dokumen-add";
     }

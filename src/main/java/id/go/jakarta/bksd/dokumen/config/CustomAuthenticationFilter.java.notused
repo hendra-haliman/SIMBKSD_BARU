@@ -1,0 +1,43 @@
+package id.go.jakarta.bksd.dokumen.config;
+
+import java.io.IOException;
+
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+    private final AuthenticationManager authenticationManager;
+
+    public CustomAuthenticationFilter(AuthenticationManager authenticationManager) {
+        this.authenticationManager = authenticationManager;
+    }
+    @Override
+    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
+        String captchaResponse = request.getParameter("captcha");
+        String captchaAnswer = (String) request.getSession().getAttribute("captchaAns");
+
+        if (!captchaAnswer.equals(captchaResponse)) {
+            try {
+                // Redirect to the login page with an error message
+                response.sendRedirect("/showLoginPage?error=captcha");
+            } catch (IOException e) {
+                throw new AuthenticationException("Gagal redirect ke halaman login", e) {};
+            }
+            return null;
+        }
+
+        String username = obtainUsername(request);
+        String password = obtainPassword(request);
+        UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(username, password);
+
+        setDetails(request, authRequest);
+        return this.getAuthenticationManager().authenticate(authRequest);
+    }
+
+}

@@ -72,7 +72,8 @@ public class PanganController {
         model.addAttribute("tableDef", tableDef);
         model.addAttribute("pemakai", pemakai);
         model.addAttribute("jsonDefs", jsonDefs);
-
+        model.addAttribute("currentPage", "pangan");
+        
         return "pangan/pangan";
     }
 

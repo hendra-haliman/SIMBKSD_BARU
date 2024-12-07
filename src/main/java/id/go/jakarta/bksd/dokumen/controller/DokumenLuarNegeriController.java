@@ -76,6 +76,8 @@ public class DokumenLuarNegeriController {
     public String lihat(@PathVariable Long id, Model model) {
         DokumenKerjaSamaLuarNegeri dok = dokumenKerjaSamaLuarNegeriService.findById(id).get();
         model.addAttribute("dokumen", dok);
+        model.addAttribute("currentPage", "pelaksanaanLN");
+
         return "pelaksanaanLN/dokumenLN-lihat";
     }
 
@@ -86,6 +88,7 @@ public class DokumenLuarNegeriController {
 
         model.addAttribute("jenisNaskahList", jenisNaskahList);
         model.addAttribute("dokumenLN", dok);
+        model.addAttribute("currentPage", "pelaksanaanLN");
 
         return "pelaksanaanLN/dokumenLN-edit";
     }
@@ -107,6 +110,7 @@ public class DokumenLuarNegeriController {
         model.addAttribute("dokumen", new DokumenKerjaSamaLuarNegeri());
         List<JenisNaskahLuarNegeri> jenisNaskah = jenisNaskahLuarNegeriService.findAll();
         model.addAttribute("jenisNaskahList", jenisNaskah);
+        model.addAttribute("currentPage", "pelaksanaanLN");
 
         return "pelaksanaanLN/dokumenLN-add";
     }

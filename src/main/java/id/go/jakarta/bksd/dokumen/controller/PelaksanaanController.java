@@ -185,6 +185,8 @@ public class PelaksanaanController {
 
         model.addAttribute("jsonDefs", jsonDefs);
 
+        model.addAttribute("currentPage", "pelaksanaan");
+
         return "pelaksanaan/pelaksanaan";
     }
 }
