@@ -146,6 +146,28 @@
         </nav>
     </div>
 
+    <!-- Navigasi Samping untuk kolaborator-->
+    <div th:fragment="layoutSidenav_nav_kolab" id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <div class="sb-sidenav-menu">
+                <div class="nav">
+                    <div class="sb-sidenav-menu-heading text-white">Utama</div>
+                    <a class="nav-link" th:href="@{/dashboard}" th:classappend="${currentPage == 'dashboard' ? 'active' : ''}"><div class="sb-nav-link-icon"><i data-feather="activity"></i></div>Dashboard</a>
+                    <div class="sb-sidenav-menu-heading text-white">Lain-lain</div>
+                    <a class="nav-link" th:href="@{/terminologi}" th:classappend="${currentPage == 'terminologi' ? 'active' : ''}"><div class="sb-nav-link-icon"><i data-feather="user"></i></div>Daftar Istilah</a>
+                    <a class="nav-link" th:href="@{/terminologi}" th:classappend="${currentPage == 'terminologi' ? 'active' : ''}"><div class="sb-nav-link-icon"><i data-feather="user"></i></div>Buku Petunjuk</a>
+                </div>
+            </div>
+            <div class="sb-sidenav-footer sticky-bottom">
+                <div class="small">Logged in sebagai:</div>
+                <th:if test="${session.pemakai}">
+                        <div class="sidenav-footer-title"
+                            th:text="${#authentication.name}">
+                        </div>
+                </th:if>
+            </div>
+        </nav>
+    </div>
 
    
     <footer th:fragment="footer" class="footer-admin mt-auto footer-light">

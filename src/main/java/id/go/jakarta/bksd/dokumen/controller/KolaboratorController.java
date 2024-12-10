@@ -13,12 +13,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.apiclub.captcha.Captcha;
 import id.go.jakarta.bksd.dokumen.captcha.CaptchaUtils;
+import id.go.jakarta.bksd.dokumen.domain.Page;
 import id.go.jakarta.bksd.dokumen.domain.Pemakai;
 import id.go.jakarta.bksd.dokumen.domain.Role;
+import id.go.jakarta.bksd.dokumen.domain.datatables.PagingRequest;
+import id.go.jakarta.bksd.dokumen.domain.dto.kolaborasi.PengajuanKolaborasiDTO;
 import id.go.jakarta.bksd.dokumen.domain.kolaborasi.KolaboratorRequest;
 import id.go.jakarta.bksd.dokumen.domain.kolaborasi.StatusDaftar;
 import id.go.jakarta.bksd.dokumen.service.PemakaiService;
 import id.go.jakarta.bksd.dokumen.service.RoleService;
+import id.go.jakarta.bksd.dokumen.service.kolaborasi.PengajuanKolaborasiService;
 
 @Controller
 @RequestMapping("/kolaborator")
@@ -32,11 +36,17 @@ public class KolaboratorController {
     private PasswordEncoder passwordEncoder;
     private RoleService roleService;
 
+    private PengajuanKolaborasiService pengajuanKolaborasiService;
 
-    public KolaboratorController(PemakaiService pemakaiService, PasswordEncoder passwordEncoder, RoleService roleService) {
+
+    public KolaboratorController(PemakaiService pemakaiService, 
+                                PasswordEncoder passwordEncoder, 
+                                RoleService roleService,
+                                PengajuanKolaborasiService pengajuanKolaborasiService) {
         this.pemakaiService = pemakaiService;
         this.passwordEncoder = passwordEncoder;
         this.roleService = roleService;
+        this.pengajuanKolaborasiService = pengajuanKolaborasiService;
     }
 
     @PostMapping("/daftar")
@@ -84,6 +94,13 @@ public class KolaboratorController {
         String base64Image = CaptchaUtils.encodeBase64(captcha);
 
         model.addAttribute("base64Image", base64Image);
-        return "kolaborasi/dashboard-kolab";
+        return "kolaborator/dashboard-kolab";
+    }
+
+    @PostMapping("/list")
+    @ResponseBody
+    public Page<PengajuanKolaborasiDTO> list(@RequestBody PagingRequest pagingRequest) {
+        Page<PengajuanKolaborasiDTO> page = pengajuanKolaborasiService.getPengajuan(pagingRequest);
+        return page;
     }
 }

@@ -14,7 +14,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,6 +37,7 @@ import id.go.jakarta.bksd.dokumen.domain.EmailDetails;
 import id.go.jakarta.bksd.dokumen.domain.Pemakai;
 import id.go.jakarta.bksd.dokumen.domain.Person;
 import id.go.jakarta.bksd.dokumen.domain.Rekapitulasi;
+import id.go.jakarta.bksd.dokumen.domain.Role;
 import id.go.jakarta.bksd.dokumen.domain.dto.ChangePasswordDTO;
 import id.go.jakarta.bksd.dokumen.domain.dto.PemakaiDTO;
 import id.go.jakarta.bksd.dokumen.service.BagianService;
@@ -45,6 +48,7 @@ import id.go.jakarta.bksd.dokumen.service.EmailService;
 import id.go.jakarta.bksd.dokumen.service.FileManager;
 import id.go.jakarta.bksd.dokumen.service.LaporanService;
 import id.go.jakarta.bksd.dokumen.service.PemakaiService;
+import id.go.jakarta.bksd.dokumen.service.RoleService;
 import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -66,6 +70,7 @@ public class MainController {
     private BagianService bagianService;
     private DokumenKerjaSamaLuarNegeriService dokumenKerjaSamaLuarNegeriService;
     private LaporanService laporanService;
+    private RoleService roleService;
 
     @Value("${useRecaptcha}")
     private boolean useRecaptcha;
@@ -77,7 +82,8 @@ public class MainController {
             DataUploaderService dataUploaderService, FileManager fileManager,
             DokumenKerjaSamaService dokumenKerjaSamaService, BagianService bagianService,
             DokumenKerjaSamaLuarNegeriService dokumenKerjaSamaLuarNegeriService,
-            LaporanService laporanService) {
+            LaporanService laporanService,
+            RoleService roleService) {
         this.pemakaiService = pemakaiService;
         this.emailService = emailService;
         this.passwordEncoder = passwordEncoder;
@@ -85,6 +91,7 @@ public class MainController {
         this.bagianService = bagianService;
         this.dokumenKerjaSamaLuarNegeriService = dokumenKerjaSamaLuarNegeriService;
         this.laporanService = laporanService;
+        this.roleService = roleService;
     }
 
     @GetMapping("")
@@ -115,7 +122,15 @@ public class MainController {
     }
 
     @GetMapping("/dashboard")
-    public String dashboard(Model model) {
+    public String dashboard(Model model,  @AuthenticationPrincipal UserDetails userDetails) {
+        String userName = userDetails.getUsername();
+        logger.info("Username : [{}]", userName);
+        Pemakai pemakai = pemakaiService.findByUserName(userName);
+        Role kolabRole = roleService.getByNama("ROLES_KOLABORATOR").get();
+        if (pemakai.getRoles().contains(kolabRole)) {
+            return "redirect:/kolaborator/dashboardKolab";
+        }
+
         LocalDate today = LocalDate.now();
         int year = today.getYear();
         int nextYear = year + 1;
