@@ -479,3 +479,14 @@ hr.divider {
     background-color: rgba(0, 0, 0, 0.98);
 }
 
+.background01 {
+    background-image: url('../assets/img/background01.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-color: rgba(255, 255, 255, 0.6); 
+    background-blend-mode: lighten;
+}
+
+.card-header {
+    font-weight: bold;
+}

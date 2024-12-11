@@ -26,7 +26,8 @@
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav" th:include="~{fragments/general.html :: layoutSidenav_nav_kolab}"></div>
 
-        <div id="layoutSidenav_content">
+        <!--div id="layoutSidenav_content" th:style="'background-image: url(' + @{/static/assets/img/background01.jpg} + '); background-size: cover; background-position: center; background-color: rgba(255, 255, 255, 0.7); background-blend-mode: lighten;'"-->
+        <div id="layoutSidenav_content" class="background01">
             <main>
                 <header th:replace="~{fragments/content-header.html :: content-header('Dashboard Kolaborator','', '')}">
                 </header>
