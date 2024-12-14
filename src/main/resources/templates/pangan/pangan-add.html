@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragments/general.html :: header('Tambah Dokumen Kerja Sama Penyediaan Pangan')}"></head>
+
+<body class="sb-nav-fixed">
+    <nav th:replace="~{fragments/general.html :: navigation}"></nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav" th:include="~{fragments/general.html :: layoutSidenav_nav}"></div>
+
+        <div id="layoutSidenav_content" class="background01">
+            <main>
+                <div class="container-fluid px-4 py-5 mt-auto">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-7">
+                            <div class="card shadow-lg border-0 rounded-lg mt-3">
+                                <form th:action="@{/pangan/saveNew}" method="post" th:object="${pangan}">
+
+                                    <div class="card-header justify-content-center">
+                                        <h4 class="fw-light my-2">Tambah Dokumen Penyediaan Pangan Baru</h4>
+                                    </div>
+                                    <div class="card-body">
+
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="tahun">Tahun</label>
+                                            <input th:field="*{tahun}" class="form-control form-control-sm"
+                                            id="tahun" type="text"
+                                            placeholder="Masukan tahun" />
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="kelompok">Kelompok</label>
+                                            <select class="form-select form-select-sm" th:field="*{kelompok}" name="kelompok[]" multiple="multiple">
+                                                <option th:each="kelompok: ${kelompokList}"
+                                                th:value="${kelompok.id}"
+                                                th:text="${kelompok.nama}"></option>
+                                            </select>    
+                                        </div>
+
+
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="pemda">Pemda</label>
+                                            <select class="form-select form-select-sm" th:field="*{pemda}" name="pemda[]" multiple="multiple">
+                                                <option th:each="pemda: ${pemdaList}"
+                                                th:value="${pemda.id}"
+                                                th:text="${pemda.nama}"></option>
+                                            </select>    
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="bumd">BUMD</label>
+                                            <select class="form-select form-select-sm" th:field="*{bumd}" name="bumd[]" multiple="multiple">
+                                                <option th:each="bumd: ${bumdList}"
+                                                th:value="${bumd.id}"
+                                                th:text="${bumd.nama}"></option>
+                                            </select>    
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="mitraBusiness">Mitra Bisnis</label>
+                                            <textarea th:field="*{mitraBusiness}" class="form-control form-control-sm" id="mitraBusiness"
+                                                placeholder="Masukkan Mitra Bisnis" spellcheck="false"></textarea>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="kotaKabupaten">Kota / Kabupaten</label>
+                                            <select class="form-select form-select-sm" th:field="*{kotaKabupaten}" name="kotaKabupaten[]" multiple="multiple">
+                                                <option th:each="kotaKabupaten: ${kotaKabupatenList}"
+                                                th:value="${kotaKabupaten.id}"
+                                                th:text="${kotaKabupaten.nama}"></option>
+                                            </select>    
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="jenis">Jenis</label>
+                                            <select class="form-select form-select-sm" th:field="*{jenis}" name="jenis[]" multiple="multiple">
+                                                <option th:each="jenis: ${jenisList}"
+                                                th:value="${jenis.id}"
+                                                th:text="${jenis.nama}"></option>
+                                            </select>    
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="kuantitas">Kuantitas</label>
+                                            <input type="text" th:field="*{kuantitas}" class="form-control form-control-sm" id="kuantitas"
+                                                placeholder="Masukkan Kuantitas"  spellcheck="false"/>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="nilaiTransaksi">Nilai Transaksi</label>
+                                            <input type="text" th:field="*{nilaiTransaksi}" class="form-control form-control-sm" id="nilaiTransaksi"
+                                                placeholder="Masukkan Nilai Transaksi"  spellcheck="false"/>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="keterangan">Keterangan</label>
+                                            <textarea th:field="*{keterangan}" class="form-control form-control-sm" id="keterangan"
+                                                placeholder="Masukkan Keterangan"  spellcheck="false"/>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="card-footer text-center">
+                                        <button class="btn btn-primary btn-block" type="submit">Simpan</button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <div th:replace="~{fragments/general.html :: script}"></div>
+</body>
+<script>
+    var counter = 1;
+
+    $(document).ready(function () {
+        $('#kelompok, #pemda, #bumd, #kotaKabupaten, #jenis').select2({maximumSelectionLength: 15, allowClear: true, placeholder: 'Masukkan pilihan'});
+
+        $('#tahun').datepicker({
+                format: "yyyy",
+                viewMode: "years", 
+                minViewMode: "years",
+                autoclose: true,
+                clearBtn: true
+            })
+
+    });
+</script>
+
+</html>

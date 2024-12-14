@@ -3,6 +3,10 @@ package id.go.jakarta.bksd.dokumen.domain.pangan;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
+
+import id.go.jakarta.bksd.dokumen.domain.AuditMetaData;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,7 +18,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class KerjaSamaPenyediaanPangan {
+public class KerjaSamaPenyediaanPangan  extends AuditMetaData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -38,9 +42,13 @@ public class KerjaSamaPenyediaanPangan {
 
     private int tahun;
 
+    @NumberFormat(style = Style.NUMBER, pattern = "#,##0.00")
     private double kuantitas;
 
+    @NumberFormat(style = Style.NUMBER, pattern = "#,##0.00")
     private double nilaiTransaksi;
 
     private String keterangan;
+
+    private boolean deleted;
 }

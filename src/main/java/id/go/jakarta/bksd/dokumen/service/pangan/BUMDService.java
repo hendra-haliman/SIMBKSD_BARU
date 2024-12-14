@@ -1,5 +1,7 @@
 package id.go.jakarta.bksd.dokumen.service.pangan;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import id.go.jakarta.bksd.dokumen.domain.pangan.BUMD;
@@ -15,5 +17,9 @@ public class BUMDService {
 
     public BUMD findByNama(String nama) {
         return bumdRepository.findByNama(nama);
+    }
+
+    public List<BUMD> findAll() {
+        return bumdRepository.findAll();
     }
 }

@@ -26,7 +26,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class DokumenKerjaSamaLuarNegeri {
+public class DokumenKerjaSamaLuarNegeri  extends AuditMetaData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
