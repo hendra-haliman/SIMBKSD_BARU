@@ -141,11 +141,13 @@ public class DokumenController {
     }
 
     @GetMapping("/delete/{id}")
-    public String softDelete(@PathVariable Long id) {
+    public String softDelete(@PathVariable Long id, RedirectAttributes redirectAttributes) {
         DokumenKerjaSama dokumenKerjaSama = dokumenKerjaSamaService.findById(id).get();
 
         if (dokumenKerjaSama != null) {
             dokumenKerjaSama.setDeleted(true);
+            redirectAttributes.addFlashAttribute("success_msg", "Kerja sama berhasil dihapus.");
+
             dokumenKerjaSamaService.save(dokumenKerjaSama);
         }
 

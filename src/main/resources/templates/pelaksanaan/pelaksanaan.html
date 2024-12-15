@@ -31,7 +31,7 @@
                 <!-- Main page content-->
                 <div class="container-fluid px-4 mt-n10">
 
-                    <div th:if="${success_msg} != null" th:text="${success_msg}" class="alert alert-success"
+                    <div th:if="${success_msg} != null" th:text="${success_msg}" class="alert alert-warning mt-3"
                         role="alert">
                     </div>
 
@@ -211,7 +211,7 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
                                         data-bs-dismiss="modal">Batal</button>
-                                    <button type="button" class="btn btn-primary" id="confirmAction">Ya</button>
+                                    <button type="button" class="btn btn-primary" id="confirmAction"  onclick="confirmDelete()">Ya</button>
                                 </div>
                             </div>
                         </div>
@@ -387,6 +387,7 @@
 
     <script>
         $(document).ready(function () {
+            var id_to_delete = 0;
 
             $('#confirSetupAction').click(function () {
                 var selection = $('#filterTableDefinition').select2('data');
@@ -836,7 +837,9 @@
                             }    
                                 
                             if (isAdmin) {
-                                actions += "<a class='btn btn-sm btn-danger mb-sm-1 inline-link ' style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;'  id='delete'  onclick='showDeleteConfirmation(\"" + row.judulDokumenPerjanjian + "\")' href='#' data-bs-toggle='tooltip' data-bs-placement='top' title='Hapus'><svg class='myicon'><use xlink:href='#trash-can'></use></svg> <span class='ms-sm-2'>Hapus</span></a>";
+                                actions += "<a class='btn btn-sm btn-danger mb-sm-1 inline-link ' style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;'  id='delete'  onclick='showDeleteConfirmation(\"" + 
+                                row.judulDokumenPerjanjian + "\"," + row.id + 
+                                ")' href='#' data-bs-toggle='tooltip' data-bs-placement='top' title='Hapus'><svg class='myicon'><use xlink:href='#trash-can'></use></svg> <span class='ms-sm-2'>Hapus</span></a>";
                             }    
                                 
                             return actions;
@@ -1059,7 +1062,8 @@
 
         });
 
-        function showDeleteConfirmation(title) {
+        function showDeleteConfirmation(title, id) {
+            id_to_delete = id; 
             $('#alertDokTitle').text(title);
             $('#deleteConfirmationModal').modal('show');
         }
@@ -1085,6 +1089,10 @@
                 flattened[name] = data;
             }
             return flattened;
+        }
+
+        function confirmDelete() {
+            window.location.href = contextPath + "dokumen/delete/" + id_to_delete;
         }
 
 

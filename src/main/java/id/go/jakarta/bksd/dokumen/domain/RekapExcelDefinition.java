@@ -9,6 +9,7 @@ public class RekapExcelDefinition {
     public static final String REKAP_KSD_2020 = "[2020] Rekapitulasi Data Informasi Kerja Sama Biro KSD Tahun 2020 (Update 21 November 2023).xlsx";
     public static final String REKAP_KSD_2021 = "[2021] Rekapitulasi Data Informasi Kerja Sama Biro KSD Tahun 2021 (Update 21 November 2023).xlsx";
     public static final String REKAP_KSD_2023 = "[2023] Rekapitulasi Data Informasi Kerja Sama Biro KSD Tahun 2023 (Update 7 Mei 2024).xlsx";
+    public static final String REKAP_KSD_2024 = "[2024] Rekapitulasi Data Informasi Kerja Sama Biro KSD Tahun 2024 (Update 5 Desember 2024).xlsx";
 
     private int tahun;
     private int sheetNo;
@@ -40,6 +41,81 @@ public class RekapExcelDefinition {
         }
         return returnObj;
     }
+
+    // Start of def 2024 **************************************************************
+    public RekapExcelDefinition getKPTRekapDef2024() {
+        RekapExcelDefinition def = new RekapExcelDefinition();
+        def.tahun = 2024;
+        def.sheetNo = 1;
+
+        def.jenisMitraIdx = 1;
+        def.opdIdx = 2;
+        def.mitraKerjaSamaIdx = 3;
+        def.judulIdx = 5;
+        def.noDokumenIdx = 6;
+        def.tglPenetapanIdx = 8;
+        def.waktuPelaksanaanBerakhirIdx = 9;
+        def.urusanIdx = 10;
+        def.jenisNaskahIdx = 4;
+        def.jangkaWaktuIdx = 7;
+        def.pembiayaanIdx = 11;
+        def.docLinkIdx = 13;
+        def.rumpunOpdIdx = 12;
+        def.keteranganIdx = 15;
+
+        return def;
+
+    }
+
+    public RekapExcelDefinition getKDNRekapDef2024() {
+        RekapExcelDefinition def = new RekapExcelDefinition();
+        def.tahun = 2024;
+        def.sheetNo = 2;
+
+        def.jenisMitraIdx = 1;
+        def.opdIdx = 2;
+        def.mitraKerjaSamaIdx = 3;
+        def.judulIdx = 5;
+        def.noDokumenIdx = 6;
+        def.tglPenetapanIdx = 8;
+        def.waktuPelaksanaanBerakhirIdx = -1;
+        def.urusanIdx = 10;
+        def.jenisNaskahIdx = 4;
+        def.jangkaWaktuIdx = 7;
+        def.pembiayaanIdx = -1;
+        def.docLinkIdx = -1;
+        def.rumpunOpdIdx = -1;
+        def.keteranganIdx = -1;
+
+        return def;
+
+    }
+
+    public RekapExcelDefinition getNPBKRekapDef2024() {
+        RekapExcelDefinition def = new RekapExcelDefinition();
+        def.tahun = 2024;
+        def.sheetNo = 4;
+
+        def.jenisMitraIdx = -1;
+        def.opdIdx = -1;
+        def.mitraKerjaSamaIdx = 1;
+        def.judulIdx = 2;
+        def.noDokumenIdx = -1;
+        def.tglPenetapanIdx = 3; 
+        def.waktuPelaksanaanBerakhirIdx = -1;
+        def.urusanIdx = -1;
+        def.jenisNaskahIdx = -1;
+        def.jangkaWaktuIdx = -1;
+        def.pembiayaanIdx = -1;
+        def.docLinkIdx = 5;
+        def.rumpunOpdIdx = -1;
+        def.keteranganIdx = 6;
+
+        return def;
+
+    }
+
+    // End of def 2024 **************************************************************
 
     public RekapExcelDefinition getKPTRekapDef2022() {
         RekapExcelDefinition def = new RekapExcelDefinition();
