@@ -1,6 +1,5 @@
 package id.go.jakarta.bksd.dokumen.domain;
 
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

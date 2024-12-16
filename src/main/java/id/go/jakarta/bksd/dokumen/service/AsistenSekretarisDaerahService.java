@@ -7,7 +7,6 @@ import java.util.stream.IntStream;
 import org.springframework.stereotype.Service;
 
 import id.go.jakarta.bksd.dokumen.domain.AsistenSekretarisDaerah;
-import id.go.jakarta.bksd.dokumen.domain.OPD;
 import id.go.jakarta.bksd.dokumen.repository.AsistenSekretarisDaerahRepository;
 
 @Service

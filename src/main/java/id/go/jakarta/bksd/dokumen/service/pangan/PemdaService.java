@@ -1,7 +1,5 @@
 package id.go.jakarta.bksd.dokumen.service.pangan;
 
-import java.util.List;
-
 import org.springframework.stereotype.Service;
 
 import id.go.jakarta.bksd.dokumen.domain.pangan.Pemda;

@@ -10,13 +10,6 @@ import id.go.jakarta.bksd.dokumen.domain.kolaborasi.PhotoKolaborasi;
 import id.go.jakarta.bksd.dokumen.domain.kolaborasi.ProfilePIC;
 import id.go.jakarta.bksd.dokumen.domain.kolaborasi.StatusPengajuanKolaborasi;
 import id.go.jakarta.bksd.dokumen.domain.kolaborasi.SubjekKerjaSama;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import lombok.Data;
 
 @Data
