@@ -73,7 +73,7 @@ public class RekapExcelDefinition {
         def.sheetNo = 2;
 
         def.jenisMitraIdx = 1;
-        def.opdIdx = 2;
+        def.opdIdx = -1;
         def.mitraKerjaSamaIdx = 3;
         def.judulIdx = 5;
         def.noDokumenIdx = 6;
@@ -82,10 +82,10 @@ public class RekapExcelDefinition {
         def.urusanIdx = 10;
         def.jenisNaskahIdx = 4;
         def.jangkaWaktuIdx = 7;
-        def.pembiayaanIdx = -1;
-        def.docLinkIdx = -1;
-        def.rumpunOpdIdx = -1;
-        def.keteranganIdx = -1;
+        def.pembiayaanIdx = 11;
+        def.docLinkIdx = 13;
+        def.rumpunOpdIdx = 12;
+        def.keteranganIdx = 15;
 
         return def;
 

@@ -89,6 +89,8 @@ public class PelaksanaanController {
 
         JenisNaskah jenisNaskahNPBK = jenisNaskahService.findByNama("Naskah Perjanjian Bantuan Keuangan").get();
         JenisNaskah jenisNaskahNonPKS = jenisNaskahService.findByNama("Non-PKS").get();
+        JenisNaskah jenisNaskahNP   = jenisNaskahService.findByNama("Perjanjian Kerahasiaan").get();
+
 
         List<JenisNaskah> jenisNaskahSelectedList = new ArrayList<>();
 
@@ -115,6 +117,10 @@ public class PelaksanaanController {
 
         if ("nonpks".equals(jenisNaskah)) {
             jenisNaskahSelectedList.add(jenisNaskahNonPKS);
+        }
+
+        if ("np".equals(jenisNaskah)) {
+            jenisNaskahSelectedList.add(jenisNaskahNP);
         }
 
         JenisMitra jenisMitraBadanUsaha = jenisMitraService.findByNama("Badan Usaha").get();
