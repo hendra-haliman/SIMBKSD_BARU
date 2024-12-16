@@ -1170,6 +1170,7 @@ public class LaporanService {
                 .findByNama("Perubahan Perjanjian Pinjam Pakai").get();
 
         JenisNaskah jenisNaskahNPBK = jenisNaskahService.findByNama("Naskah Perjanjian Bantuan Keuangan").get();
+        JenisNaskah jenisNaskahNP   = jenisNaskahService.findByNama("Perjanjian Kerahasiaan").get();
 
         JenisNaskahLuarNegeri jenisNaskahLNMOU = jenisNaskahLuarNegeriService.findByNama("Memorandum of Understanding")
                 .get();
@@ -1245,6 +1246,8 @@ public class LaporanService {
                     List.of(jenisDokumenKesepakatanBersama, jenisDokumenAdendumKesepakatanBersama),
                     List.of(jenisMitraSinergisitas)));
             rekap.setKdnSinergiNKCount(dokumenKerjaSamaService.getCount(year, jenisNaskahNotaKesepakatan,
+                    List.of(jenisMitraSinergisitas)));
+            rekap.setKdnSinergiNPCount(dokumenKerjaSamaService.getCount(year, jenisNaskahNP,
                     List.of(jenisMitraSinergisitas)));
             rekap.setKdnSinergiCount(dokumenKerjaSamaService.getCount(year, List.of(jenisMitraSinergisitas)));
 

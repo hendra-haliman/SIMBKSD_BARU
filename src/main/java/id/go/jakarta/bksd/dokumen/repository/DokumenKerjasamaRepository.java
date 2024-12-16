@@ -125,7 +125,7 @@ public interface DokumenKerjasamaRepository extends JpaRepository<DokumenKerjaSa
 
   @Query(value = """
       Select count(1) from DokumenKerjaSama
-        where (year(tglPenetapan) = :tahun or tahun = :tahun) and jenisDokumen = :jenisNaskah and deleted = false
+        where (year(tglPenetapan) = :tahun or tahun = :tahun) and jenisDokumen = :jenisNaskah and deleted is false
       """)
   public long getCount(int tahun, JenisNaskah jenisNaskah);
 

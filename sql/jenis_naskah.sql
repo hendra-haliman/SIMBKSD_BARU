@@ -23,6 +23,8 @@ INSERT INTO jenis_naskah(nama) VALUES('Perubahan Perjanjian Pinjam Pakai');
 
 INSERT INTO jenis_naskah(nama) VALUES('Non-PKS');
 
+INSERT INTO jenis_naskah(nama) VALUES('Perjanjian Kerahasiaan(Non Disclosure Agreement)');
+
 
 
 

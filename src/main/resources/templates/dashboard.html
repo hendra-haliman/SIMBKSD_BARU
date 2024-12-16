@@ -186,7 +186,9 @@
                                                             <td class="kdn">
 
                                                             </td>
-                                                            <td class="kdn"></td>
+                                                            <td class="kdn">
+                                                                <a th:href="@{/pelaksanaan(year=${rekap.year}, jn=np, jm=sinergi)}" th:text="${rekap.kdnSinergiNPCount}"></a>
+                                                            </td>
                                                             <td class="kdn">
                                                                 <a th:href="@{/pelaksanaan(year=${rekap.year}, jm=sinergi)}" th:text="${rekap.kdnSinergiCount}"></a>
                                                             </td>

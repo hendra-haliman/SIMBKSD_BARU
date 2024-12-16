@@ -1,7 +1,6 @@
 package id.go.jakarta.bksd.dokumen.controller;
 
 import java.io.IOException;
-import java.net.http.HttpResponse;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
@@ -11,11 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -23,23 +18,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
 import cn.apiclub.captcha.Captcha;
 import id.go.jakarta.bksd.dokumen.captcha.CaptchaUtils;
 import id.go.jakarta.bksd.dokumen.domain.Bagian;
-import id.go.jakarta.bksd.dokumen.domain.EmailDetails;
 import id.go.jakarta.bksd.dokumen.domain.Pemakai;
-import id.go.jakarta.bksd.dokumen.domain.Person;
 import id.go.jakarta.bksd.dokumen.domain.Rekapitulasi;
 import id.go.jakarta.bksd.dokumen.domain.Role;
 import id.go.jakarta.bksd.dokumen.domain.dto.ChangePasswordDTO;
-import id.go.jakarta.bksd.dokumen.domain.dto.PemakaiDTO;
 import id.go.jakarta.bksd.dokumen.service.BagianService;
 import id.go.jakarta.bksd.dokumen.service.DataUploaderService;
 import id.go.jakarta.bksd.dokumen.service.DokumenKerjaSamaLuarNegeriService;
@@ -50,11 +37,7 @@ import id.go.jakarta.bksd.dokumen.service.LaporanService;
 import id.go.jakarta.bksd.dokumen.service.PemakaiService;
 import id.go.jakarta.bksd.dokumen.service.RoleService;
 import jakarta.mail.MessagingException;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 @Controller
 public class MainController {

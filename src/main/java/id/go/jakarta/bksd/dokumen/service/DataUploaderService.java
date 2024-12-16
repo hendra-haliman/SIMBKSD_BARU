@@ -806,8 +806,12 @@ public class DataUploaderService {
         uploadFromWorksheet(2020, "KDN");
     }
 
-    @Transactional
     public void uploadFromWorksheet(int tahun, String namaBagian) throws IOException, InvalidFormatException {
+        uploadFromWorksheet(tahun, namaBagian, 0);
+    }
+
+    @Transactional
+    public void uploadFromWorksheet(int tahun, String namaBagian, int startRow) throws IOException, InvalidFormatException {
 
         String fileName = "";
         try {
@@ -829,11 +833,10 @@ public class DataUploaderService {
         XSSFWorkbook workbook = new XSSFWorkbook(file);
         XSSFSheet sheet = workbook.getSheetAt(def.getSheetNo());
 
-        int from = 0;
         int to = sheet.getLastRowNum();
-        Bagian bagian = bagianService.findBySingkatan("KPT").get();
+        Bagian bagian = bagianService.findBySingkatan(namaBagian).get();
 
-        for (int rowNum = from; rowNum <= to; rowNum++) {
+        for (int rowNum = startRow; rowNum <= to; rowNum++) {
             XSSFRow row = sheet.getRow(rowNum);
 
             if (!isRowToSkip(row)) {
@@ -1280,7 +1283,13 @@ public class DataUploaderService {
         };
         int limit2024 = 10;
 
-        if (isHeaderRow(row, kpt2024Header1, limit2024)) {
+        String[] kdn2024Header1 = {
+            "", "", "", "", "Bagian Kerja Sama Dalam Negeri Tahun 2024", "", "", "", "", ""
+        };
+
+        if (isHeaderRow(row, kpt2024Header1, limit2024) ||
+            isHeaderRow(row, kdn2024Header1, limit2024)
+            ) {
             return true;
         }
 
@@ -2217,8 +2226,9 @@ public class DataUploaderService {
         String filename = RekapExcelDefinition.REKAP_KSD_2024;
 
         // uploadFromWorksheet(2024, "KPT");
+        uploadFromWorksheet(2024, "KDN", 7);
         // uploadKolaborasi2024(filename, 6, 114);
-        uploadNPBK(2024, filename);
+        // uploadNPBK(2024, filename);
 
     }
 

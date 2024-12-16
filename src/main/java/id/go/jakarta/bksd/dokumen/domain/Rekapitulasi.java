@@ -34,6 +34,7 @@ public class Rekapitulasi {
     private long kdnSinergiPKSCount;
     private long kdnSinergiKBCount;
     private long kdnSinergiNKCount;
+    private long kdnSinergiNPCount;
     private long kdnSinergiCount;
 
     private long kdnDaerahPKSCount;
