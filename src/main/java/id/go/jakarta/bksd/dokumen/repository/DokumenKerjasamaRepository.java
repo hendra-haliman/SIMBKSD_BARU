@@ -106,49 +106,49 @@ public interface DokumenKerjasamaRepository extends JpaRepository<DokumenKerjaSa
 
   @Query(value = """
       Select count(1) from DokumenKerjaSama
-        where (year(tglPenetapan) = :tahun or tahun = :tahun) and jenisDokumen = :jenisNaskah and jenisMitra in :jenisMitraList
+        where (year(tglPenetapan) = :tahun or tahun = :tahun) and jenisDokumen = :jenisNaskah and jenisMitra in :jenisMitraList and deleted is false
       """)
   public long getCount(int tahun, JenisNaskah jenisNaskah, List<JenisMitra> jenisMitraList);
 
   @Query(value = """
       Select count(1) from DokumenKerjaSama
-        where (year(tglPenetapan) = :tahun or tahun = :tahun) and jenisDokumen in :jenisNaskahList and jenisMitra in :jenisMitraList
+        where (year(tglPenetapan) = :tahun or tahun = :tahun) and jenisDokumen in :jenisNaskahList and jenisMitra in :jenisMitraList and deleted is false
       """)
   public long getCount(int tahun, List<JenisNaskah> jenisNaskahList, List<JenisMitra> jenisMitraList);
 
   @Query(value = """
       Select count(1) from DokumenKerjaSama
-        where (year(tglPenetapan) = :tahun or tahun = :tahun) and bagian = :bagian and jenisDokumen = :jenisNaskah and jenisMitra in :jenisMitraList
+        where (year(tglPenetapan) = :tahun or tahun = :tahun) and bagian = :bagian and jenisDokumen = :jenisNaskah and jenisMitra in :jenisMitraList and deleted is false
       """)
   public long getCount(int tahun, Bagian bagian, JenisNaskah jenisNaskah, List<JenisMitra> jenisMitraList);
 
   @Query(value = """
       Select count(1) from DokumenKerjaSama
-        where (year(tglPenetapan) = :tahun or tahun = :tahun) and jenisDokumen = :jenisNaskah
+        where (year(tglPenetapan) = :tahun or tahun = :tahun) and jenisDokumen = :jenisNaskah and deleted = false
       """)
   public long getCount(int tahun, JenisNaskah jenisNaskah);
 
   @Query(value = """
       Select count(1) from DokumenKerjaSama
-        where (year(tglPenetapan) = :tahun or tahun = :tahun) and jenisDokumen in :jenisNaskahList and :dummy = :dummy
+        where (year(tglPenetapan) = :tahun or tahun = :tahun) and jenisDokumen in :jenisNaskahList and :dummy = :dummy and deleted is false
       """)
   public long getCount(int tahun, List<JenisNaskah> jenisNaskahList, int dummy);
 
   @Query(value = """
       Select count(1) from DokumenKerjaSama
-        where (year(tglPenetapan) = :tahun or tahun = :tahun) and bagian = :bagian and jenisDokumen = :jenisNaskah
+        where (year(tglPenetapan) = :tahun or tahun = :tahun) and bagian = :bagian and jenisDokumen = :jenisNaskah and deleted is false
       """)
   public long getCount(int tahun, Bagian bagian, JenisNaskah jenisNaskah);
 
   @Query(value = """
       Select count(1) from DokumenKerjaSama
-        where (year(tglPenetapan) = :tahun or tahun= :tahun) and bagian = :bagian
+        where (year(tglPenetapan) = :tahun or tahun= :tahun) and bagian = :bagian and deleted is false
       """)
   public long getCount(int tahun, Bagian bagian);
 
   @Query(value = """
       select count(1) from DokumenKerjaSama
-        where (year(tglPenetapan) = :tahun or tahun = :tahun) and jenisMitra in :jenisMitraList
+        where (year(tglPenetapan) = :tahun or tahun = :tahun) and jenisMitra in :jenisMitraList and deleted is false
       """)
   public long getCount(int tahun, List<JenisMitra> jenisMitraList);
 
@@ -160,7 +160,7 @@ public interface DokumenKerjasamaRepository extends JpaRepository<DokumenKerjaSa
   public List<DokumenKerjaSama> findByNomorDokumen(String nomorDokumen);
 
   @Query(value = """
-        from DokumenKerjaSama d left join fetch d.dokumen
+        from DokumenKerjaSama d left join fetch d.dokumen where d.deleted is false
       """)
   public List<DokumenKerjaSama> findAllFetchDokumen();
 

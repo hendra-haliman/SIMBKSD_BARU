@@ -16,4 +16,8 @@ public class PemdaService {
     public Pemda findByNama(String nama) {
         return pemdaRepository.findByNama(nama);
     }
+
+    public List<Pemda> findAll() {
+        return pemdaRepository.findAll();
+    }
 }

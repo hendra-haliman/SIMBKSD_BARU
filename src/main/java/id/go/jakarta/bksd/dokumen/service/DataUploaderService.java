@@ -30,6 +30,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
@@ -621,55 +622,6 @@ public class DataUploaderService {
         }
     }
 
-    // public ByteArrayOutputStream downloadFile2(String fileId) throws IOException
-    // {
-    // //JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
-    // HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
-
-    // GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(
-    // GsonFactory.getDefaultInstance(), new InputStreamReader(new
-    // FileInputStream("client_secret.json")));
-
-    // // Set up the OAuth 2.0 flow
-    // GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
-    // HTTP_TRANSPORT, GsonFactory.getDefaultInstance(), clientSecrets,
-    // Collections.singleton(DriveScopes.DRIVE))
-    // .setDataStoreFactory(DATA_STORE_FACTORY)
-    // .setAccessType("offline")
-    // .build();
-
-    // // Authorize your application
-    // String authorizationUrl =
-    // flow.newAuthorizationUrl().setRedirectUri(REDIRECT_URI).build();
-    // System.out.println("Open the following URL in your browser: ");
-    // System.out.println(authorizationUrl);
-    // System.out.print("Enter the authorization code: ");
-    // String code = new BufferedReader(new
-    // InputStreamReader(System.in)).readLine();
-
-    // // Exchange the authorization code for credentials
-    // GoogleTokenResponse tokenResponse =
-    // flow.newTokenRequest(code).setRedirectUri(REDIRECT_URI).execute();
-
-    // GoogleCredential credential = new GoogleCredential.Builder()
-    // .setTransport(HTTP_TRANSPORT)
-    // .setJsonFactory(GsonFactory.getDefaultInstance())
-    // .setClientSecrets(clientSecrets)
-    // .build()
-    // .setFromTokenResponse(tokenResponse);
-
-    // // Create a Drive service using the credentials
-    // Drive driveService = new Drive.Builder(HTTP_TRANSPORT,
-    // GsonFactory.getDefaultInstance(), credential)
-    // .setApplicationName("xx")
-    // .build();
-
-    // OutputStream outputStream = new FileOutputStream("downloaded-file.txt");
-
-    // driveService.files().get(fileId).executeMediaAndDownloadTo(outputStream);
-
-    // }
-
     public void uploadKSD2023() throws IOException, InvalidFormatException {
         String fileName = RekapExcelDefinition.REKAP_KSD_2023;
 
@@ -753,6 +705,52 @@ public class DataUploaderService {
 
     }
 
+    @Transactional
+    public void uploadNPBK(int tahun, String fileName) throws IOException, InvalidFormatException {
+        RekapExcelDefinition NPBKDef = RekapExcelDefinition.getRekapDef(tahun, "NPBK");
+        //int tahun = 2021;
+        File file = new File("D:/Biro KSD/" + fileName);
+        XSSFWorkbook workbook = new XSSFWorkbook(file);
+        XSSFSheet sheet = workbook.getSheetAt(NPBKDef.getSheetNo());
+
+        int from = 0;
+        int to = sheet.getLastRowNum();
+        Bagian bagian = bagianService.findBySingkatan("KDN").get();
+        JenisNaskah jenisNaskahNPBK = jenisNaskahService.findByNama("Naskah Perjanjian Bantuan Keuangan").get();
+
+        for (int rowNum = from; rowNum <= to; rowNum++) {
+            XSSFRow row = sheet.getRow(rowNum);
+
+            if (!isRowToSkip(row)) {
+                DokumenKerjaSama dokumenKerjaSama = new DokumenKerjaSama();
+
+                dokumenKerjaSama = updateDokumenKerjaSama(tahun, bagian, dokumenKerjaSama, row,
+                        NPBKDef.getJenisMitraIdx(),
+                        NPBKDef.getOpdIdx(),
+                        NPBKDef.getMitraKerjaSamaIdx(),
+                        NPBKDef.getJudulIdx(),
+                        NPBKDef.getNoDokumenIdx(),
+                        NPBKDef.getTglPenetapanIdx(),
+                        NPBKDef.getWaktuPelaksanaanBerakhirIdx(),
+                        NPBKDef.getUrusanIdx(),
+                        NPBKDef.getJenisNaskahIdx(),
+                        NPBKDef.getJangkaWaktuIdx(),
+                        NPBKDef.getPembiayaanIdx(),
+                        NPBKDef.getDocLinkIdx(),
+                        NPBKDef.getRumpunOpdIdx(),
+                        NPBKDef.getKeteranganIdx());
+                dokumenKerjaSama.setJenisDokumen(jenisNaskahNPBK);
+
+                dokumenKerjasamaRepository.save(dokumenKerjaSama);
+
+            }
+        }
+
+        workbook.close();
+
+    }
+
+
     public void uploadNPBK2021(String fileName) throws IOException, InvalidFormatException {
         RekapExcelDefinition NPBKDef2021 = RekapExcelDefinition.getRekapDef(2021, "NPBK");
         int tahun = 2021;
@@ -806,6 +804,7 @@ public class DataUploaderService {
         uploadFromWorksheet(2020, "KDN");
     }
 
+    @Transactional
     public void uploadFromWorksheet(int tahun, String namaBagian) throws IOException, InvalidFormatException {
 
         String fileName = "";
@@ -1272,6 +1271,16 @@ public class DataUploaderService {
         }
 
         // End of header 2020
+
+        // 2024
+        String[] kpt2024Header1 = {
+            "", "", "", "", "Bagian Kerja Sama Pihak Ketiga Tahun 2024", "", "", "", "", ""
+        };
+        int limit2024 = 10;
+
+        if (isHeaderRow(row, kpt2024Header1, limit2024)) {
+            return true;
+        }
 
         return result;
     }
@@ -2196,20 +2205,22 @@ public class DataUploaderService {
 
     }
 
+    /*
+     * Upload data Kerja sama 2024.
+     * 15 Des 2024: Belum upload kdn 2024 karena:
+     *  - Tidak ada naskah pdf
+     *  - Instansi belum jelas
+     */
     public void uploadKSD2024() throws IOException, InvalidFormatException {
-        String filename = "[2024] Rekapitulasi Data Informasi Kerja Sama Biro KSD Tahun 2024 (Update 5 Juni 2024).xlsx";
+        String filename = RekapExcelDefinition.REKAP_KSD_2024;
 
-        // uploadKPT2024(filename, 3, 22);
-        // uploadKPT2024(filename, 24, 24);
-        // uploadKPT2024(filename, 26, 37);
-        // uploadKPT2024(filename, 39, 40);
+        // uploadFromWorksheet(2024, "KPT");
         // uploadKolaborasi2024(filename, 6, 114);
-        // uploadKDN2024(filename, 9, 13);
+        uploadNPBK(2024, filename);
 
-        // uploadKLN2024(filename);
-        // updateNPBK2024(filename)
     }
 
+    @Transactional
     public void uploadKolaborasi2024(String fileName, int start, int end) throws IOException, InvalidFormatException {
         int tahun = 2024;
         File file = new File("D:/Biro KSD/" + fileName);

@@ -487,6 +487,16 @@ hr.divider {
     background-blend-mode: lighten;
 }
 
+/* .card {
+    max-height: 75vh; 
+    overflow-y: auto; 
+} */
+
 .card-header {
     font-weight: bold;
+}
+
+
+.merrinumber {
+    font-family: 'Merriweather Sans' !important;
 }

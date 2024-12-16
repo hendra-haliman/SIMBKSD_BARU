@@ -28,7 +28,7 @@
                 </header>
                 <!-- Main page content-->
                 <div class="container-fluid px-4 mt-n10">
-                    <div th:if="${success_msg} != null" th:text="${success_msg}" class="alert alert-success" role="alert">
+                    <div th:if="${success_msg} != null" th:text="${success_msg}" class="alert alert-warning mt-3" role="alert">
                     </div>
 
                     <div class="card my-4">
@@ -332,6 +332,7 @@
                     {
                         "name": "kuantitas",
                         "data": "kuantitas",
+                        "cssClass": "merrinumber",
                         render: function (data, type, row) {
                             if (type === 'display') {
                                 return new Intl.NumberFormat('id-ID', {
@@ -369,14 +370,16 @@
                         "className": "text-center",
                         "width": "130",
                         "render": function (data, type, row, meta) {
-                            var actions = "<a class='btn btn-sm btn-success mb-sm-1 inline-link ' style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;' href='" + contextPath + "kolaborasi/view/" + row.id + "' data-bs-toggle='tooltip' data-bs-placement='top' title='Lihat'><svg class='myicon'><use xlink:href='#binoculars'></use></svg><span class='ms-sm-2'>Lihat</span></a>";
+                            var actions = "<a class='btn btn-sm btn-success mb-sm-1 inline-link ' style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;' href='" + contextPath + "pangan/view/" + row.id + "' data-bs-toggle='tooltip' data-bs-placement='top' title='Lihat'><svg class='myicon'><use xlink:href='#binoculars'></use></svg><span class='ms-sm-2'>Lihat</span></a>";
                             
                             if (isSTAFF_CONTRIBUTOR || isAdmin) {
-                                actions += "<a class='btn btn-sm btn-warning mb-sm-1 inline-link ' style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;' href='" + contextPath + "kolaborasi/edit/" + row.id + "' data-bs-toggle='tooltip' data-bs-placement='top' title='Edit'><svg class='myicon'><use xlink:href='#pencil'></use></svg> <span class='ms-sm-2'>Rubah</span></a>";
+                                actions += "<a class='btn btn-sm btn-warning mb-sm-1 inline-link ' style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;' href='" + contextPath + "pangan/edit/" + row.id + "' data-bs-toggle='tooltip' data-bs-placement='top' title='Edit'><svg class='myicon'><use xlink:href='#pencil'></use></svg> <span class='ms-sm-2'>Rubah</span></a>";
                             }
 
                             if (isAdmin) {
-                                actions += "<a class='btn btn-sm btn-danger mb-sm-1 inline-link ' style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;' id='delete'  onclick='showDeleteConfirmation(\"" + row.nama_dan_tempat_kejadian + "\"," + row.id + ")' href='#' data-bs-toggle='tooltip' data-bs-placement='top' title='Hapus'><svg class='myicon'><use xlink:href='#trash-can'></use></svg> <span class='ms-sm-2'>Hapus</span></a>";
+                                actions += "<a class='btn btn-sm btn-danger mb-sm-1 inline-link ' style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;' id='delete'  onclick='showDeleteConfirmation(\"" + 
+                                    getEntryDetails(row) + "\"," + row.id + 
+                                    ")' href='#' data-bs-toggle='tooltip' data-bs-placement='top' title='Hapus'><svg class='myicon'><use xlink:href='#trash-can'></use></svg> <span class='ms-sm-2'>Hapus</span></a>";
                             }
 
                             return actions;
@@ -385,7 +388,7 @@
                 ],
                 "columnDefs": [
                     { 
-                        "className": "text-end",
+                        "className": "merrinumber text-end",
                         "targets": [7, 8]
                     }
                 ],
@@ -406,7 +409,7 @@
                                 text: 'Tambah Dokumen',
                                 className: 'btn btn-sm btn-tambah',
                                 action: function (e, dt, node, config) {
-                                    window.location.href = contextPath + "kolaborasi/add";
+                                    window.location.href = contextPath + "pangan/add";
                                 }
                             },
                             {
@@ -420,7 +423,7 @@
                                     var flattened = flattenJson(data);
                                     console.log(params);
 
-                                    const url = contextPath + "kolaborasi/exportExcel";
+                                    const url = contextPath + "pangan/exportExcel";
                                     
                                     fetch(url, {
                                         method : "POST",
@@ -428,13 +431,13 @@
                                         headers: { "Content-Type": "application/json; charset=UTF-8", [header]: token }
                                     }).then(response => response.blob())
                                     .then(blob => {
-                                        const filename = 'export_kolaborasi.xlsx'; // Replace with desired filename
+                                        const filename = 'export_pangan.xlsx'; 
                                         const url = window.URL.createObjectURL(blob);
                                         const link = document.createElement('a');
                                         link.href = url;
                                         link.download = filename;
                                         link.click();
-                                        window.URL.revokeObjectURL(url); // Revoke temporary URL
+                                        window.URL.revokeObjectURL(url); 
                                         })
                                     .catch(error => console.error(error));
                                 }
@@ -503,7 +506,7 @@
             });
 
             $.extend($.fn.dataTableExt.oStdClasses, {
-                "sFilterInput": "red form-control form-control-md", // Replace with your desired class name
+                "sFilterInput": "red form-control form-control-md", 
             });
 
             console.log("JSONDEF::: ");
@@ -511,19 +514,36 @@
             if (jsonDefs.length>0) {
                 docTable.api().columns().visible(false);                
             }
-            for (let i = 0; i < jsonDefs.length; i++) {
-                
+            for (let i = 0; i < jsonDefs.length; i++) {                
                 docTable.api().column(jsonDefs[i].namaColumn + ":name").visible(true);
             }
-
-
-
         });
 
         function showDeleteConfirmation(title, id) { 
             id_to_delete = id; 
             $('#alertDokTitle').text(title);
             $('#deleteConfirmationModal').modal('show');
+        }
+
+        function getEntryDetails(row) {
+            let details = '';
+            details = row.tahun + ', ' + colDetail(row.pemda) + ', ' + colDetail(row.bumd) + ', ' + colDetail(row.mitraBusiness) + ', ' + 
+                      colDetail(row.kotaKabupaten) + ', ' + colDetail(row.jenis) + 
+                      ', '  + row.kuantitas + ', ' + row.nilaiTransaksi;
+            
+            return details;
+        }
+
+        function colDetail(col) {
+            if (col===null) return '';
+            if (Array.isArray(col)) { 
+                if (col.length===0) {
+                    return '';
+                }
+
+                return col[0].nama
+            };
+            return col.nama? col.nama : col;
         }
 
         function flattenJson(data, name, flattened) {
@@ -550,7 +570,7 @@
         }
 
         function confirmDelete() {
-            window.location.href = contextPath + "kolaborasi/delete/" + id_to_delete;
+            window.location.href = contextPath + "pangan/delete/" + id_to_delete;
         }
 
     </script>

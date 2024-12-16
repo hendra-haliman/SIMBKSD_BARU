@@ -1,5 +1,7 @@
 package id.go.jakarta.bksd.dokumen.service.pangan;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import id.go.jakarta.bksd.dokumen.domain.pangan.KotaKabupaten;
@@ -15,5 +17,9 @@ public class KotaKabupatenService {
 
     public KotaKabupaten findByNama(String nama) {
         return kotaKabupatenRepository.findByNama(nama);
+    }
+
+    public List<KotaKabupaten> findAll() {
+        return kotaKabupatenRepository.findAll();
     }
 }

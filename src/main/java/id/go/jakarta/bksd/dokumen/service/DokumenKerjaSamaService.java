@@ -571,7 +571,7 @@ public class DokumenKerjaSamaService {
 
         Predicate filterEmptyRumpunOPDPredicate = cb.isEmpty(dokumenKerjaSama.get("rumpun_opd"));
 
-        JpaPredicate jpaPredicate = cb.and(bagianPredicate, searchPredicate);
+        JpaPredicate jpaPredicate = cb.and(bagianPredicate, searchPredicate, deletedPredicate);
         JpaPredicate datePredicate = cb.or(filterTahunPredicate,
                 cb.and(filterStartDatePredicate, filterEndDatePredicate));
 
