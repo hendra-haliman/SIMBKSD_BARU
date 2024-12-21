@@ -17,7 +17,7 @@ public class CaptchaConfig {
         return factory;
     }
 
-    @Bean
+    @Bean 
     public RestOperations restTemplate() {
         RestTemplate restTemplate = new RestTemplate(this.clientHttpRequestFactory());
         return restTemplate;
