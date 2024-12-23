@@ -1,6 +1,4 @@
 
-    create sequence verification_token_seq start with 1 increment by 50 nocache;
-
     create table asisten_sekretaris_daerah (
         id bigint not null auto_increment,
         nama varchar(255),
