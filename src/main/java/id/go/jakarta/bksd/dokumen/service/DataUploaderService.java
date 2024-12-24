@@ -46,6 +46,7 @@ import id.go.jakarta.bksd.dokumen.domain.AsistenSekretarisDaerah;
 import id.go.jakarta.bksd.dokumen.domain.Bagian;
 import id.go.jakarta.bksd.dokumen.domain.DokumenKerjaSama;
 import id.go.jakarta.bksd.dokumen.domain.DokumenKerjaSamaLuarNegeri;
+import id.go.jakarta.bksd.dokumen.domain.DokumenKerjaSamaLuarNegeriOld;
 import id.go.jakarta.bksd.dokumen.domain.JenisMitra;
 import id.go.jakarta.bksd.dokumen.domain.JenisNaskah;
 import id.go.jakarta.bksd.dokumen.domain.Kolaborasi;
@@ -70,6 +71,7 @@ public class DataUploaderService {
     private DokumenKerjaSamaLuarNegeriService dokumenKerjaSamaLuarNegeriService;
     private KolaborasiService kolaborasiService;
     private AsistenSekretarisDaerahService asistenSekretarisDaerahService;
+    private DokumenKerjaSamaLuarNegeriOldService dokLNOldService;
 
     public DataUploaderService(PemakaiRepository pemakaiRepository,
             DokumenKerjasamaRepository dokumenKerjasamaRepository,
@@ -80,7 +82,8 @@ public class DataUploaderService {
             BagianService bagianService,
             DokumenKerjaSamaLuarNegeriService dokumenKerjaSamaLuarNegeriService,
             KolaborasiService kolaborasiService,
-            AsistenSekretarisDaerahService asistenSekretarisDaerahService) {
+            AsistenSekretarisDaerahService asistenSekretarisDaerahService,
+            DokumenKerjaSamaLuarNegeriOldService dokLNOldService) {
         this.pemakaiRepository = pemakaiRepository;
         this.dokumenKerjasamaRepository = dokumenKerjasamaRepository;
         this.jenisNaskahService = jenisNaskahService;
@@ -91,6 +94,7 @@ public class DataUploaderService {
         this.dokumenKerjaSamaLuarNegeriService = dokumenKerjaSamaLuarNegeriService;
         this.kolaborasiService = kolaborasiService;
         this.asistenSekretarisDaerahService = asistenSekretarisDaerahService;
+        this.dokLNOldService = dokLNOldService;
     }
 
     public void uploadData(MultipartFile file) throws IOException {
@@ -176,6 +180,77 @@ public class DataUploaderService {
 
         workbook.close();
     }
+
+    public void uploadKLN2020() throws IOException, InvalidFormatException {
+        File file = new File("d:/Biro KSD/HH2024_12_23 [2020] Rekapitulasi Data Informasi Kerja Sama Biro KSD Tahun 2020 (Update 21 November 2023).xlsx");
+        XSSFWorkbook workbook = new XSSFWorkbook(file);
+        XSSFSheet sheet = workbook.getSheetAt(5);
+
+        int cellNo;
+        
+        for (int rowNum = 3; rowNum <= 15; rowNum++) {
+            XSSFRow row = sheet.getRow(rowNum);
+            if (row != null) {
+                DokumenKerjaSamaLuarNegeriOld dok = new DokumenKerjaSamaLuarNegeriOld();
+
+                cellNo = 1;
+
+                dok.setTahun(2020);
+                dok.setObjek(row.getCell(cellNo++).getStringCellValue());
+                dok.setMitra(row.getCell(cellNo++).getStringCellValue());
+                dok.setCakupan(row.getCell(cellNo++).getStringCellValue());
+                dok.setDasar(row.getCell(cellNo++).getStringCellValue());
+                dok.setSkpdUnitTerkait(row.getCell(cellNo++).getStringCellValue());
+                dok.setWaktu(row.getCell(cellNo++).getStringCellValue());
+                dok.setPelaksanaan(row.getCell(cellNo++).getStringCellValue());
+                dok.setKendala(row.getCell(cellNo++).getStringCellValue());
+                dok.setTindakLanjut(row.getCell(cellNo).getStringCellValue());
+
+                dokLNOldService.save(dok);
+            }
+        }
+
+
+        workbook.close();
+    }
+
+    public void uploadKLN2021() throws IOException, InvalidFormatException {
+        File file = new File("d:/Biro KSD/HH2024_12_23 [2021] Rekapitulasi Data Informasi Kerja Sama Biro KSD Tahun 2021 (Update 21 November 2023).xlsx");
+        XSSFWorkbook workbook = new XSSFWorkbook(file);
+        XSSFSheet sheet = workbook.getSheetAt(6);
+
+        int cellNo;
+        
+        for (int rowNum = 3; rowNum <= 47; rowNum++) {
+            XSSFRow row = sheet.getRow(rowNum);
+            if (row != null) {
+                DokumenKerjaSamaLuarNegeriOld dok = new DokumenKerjaSamaLuarNegeriOld();
+
+                cellNo = 1;
+
+                dok.setTahun(2021);
+                dok.setObjek(row.getCell(cellNo++).getStringCellValue());
+                dok.setMitra(row.getCell(cellNo++).getStringCellValue());
+                dok.setCakupan(row.getCell(cellNo++).getStringCellValue());
+                dok.setDasar(row.getCell(cellNo++).getStringCellValue());
+                dok.setSkpdUnitTerkait(row.getCell(cellNo++).getStringCellValue());
+                
+                DataFormatter dataFormatter = new DataFormatter();
+                //dok.setWaktu(row.getCell(cellNo++).getStringCellValue());
+                dok.setWaktu(dataFormatter.formatCellValue(row.getCell(cellNo++)));
+                
+                dok.setPelaksanaan(row.getCell(cellNo++).getStringCellValue());
+                dok.setKendala(row.getCell(cellNo++).getStringCellValue());
+                dok.setTindakLanjut(row.getCell(cellNo).getStringCellValue());
+
+                dokLNOldService.save(dok);
+            }
+        }
+
+
+        workbook.close();
+    }
+
 
     public void uploadKLN2022() throws IOException, InvalidFormatException {
         File file = new File("D:/Biro KSD/ksd2022.xlsx");
@@ -698,10 +773,13 @@ public class DataUploaderService {
         // Work in progress
         // uploadKPT2021(fileName);
         // uploadKDN2021(fileName);
-        uploadNPBK2021(fileName);
+        //uploadNPBK2021(fileName);
 
         // uploadKLN2021(fileName);
         // uploadKolaborasi2021(fileName);
+
+
+        uploadKLN2021();
 
     }
 
@@ -800,8 +878,9 @@ public class DataUploaderService {
     // ******************* Start of 2020 ********************************
 
     public void uploadKSD2020() throws IOException, InvalidFormatException {
-        uploadFromWorksheet(2020, "KPT");
-        uploadFromWorksheet(2020, "KDN");
+        //uploadFromWorksheet(2020, "KPT");
+        //uploadFromWorksheet(2020, "KDN");
+        uploadKLN2020();
     }
 
     public void uploadFromWorksheet(int tahun, String namaBagian) throws IOException, InvalidFormatException {

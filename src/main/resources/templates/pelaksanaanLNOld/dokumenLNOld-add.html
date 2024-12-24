@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragments/general.html :: header('Tambah Dokumen KLN')}"></head>
+
+<body class="sb-nav-fixed">
+    <nav th:replace="~{fragments/general.html :: navigation}"></nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav" th:include="~{fragments/general.html :: layoutSidenav_nav}"></div>
+
+        <div id="layoutSidenav_content" class="background01">
+            <main>
+                <div class="container-fluid px-4 pt-5 mt-auto">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-7">
+                            <div class="card shadow-lg border-0 rounded-lg mt-3">
+                                <form th:action="@{/dokumen_luar_negeri/saveNew}" enctype="multipart/form-data" method="post" th:object="${dokumen}">
+
+                                    <div class="card-header justify-content-center">
+                                        <h4 class="fw-light my-2">Tambah Dokumen Kerja Sama Baru</h4>
+                                    </div>
+                                    <div class="card-body">
+
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="subjek">Subjek</label>
+                                            <textarea th:field="*{subjek}" class="form-control form-control-md" id="subjek"
+                                                placeholder="Masukkan Subjek" spellcheck="false"></textarea>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="tgl">Tanggal</label>
+                                            <input th:field="*{tgl}" class="form-control form-control-md" id="tgl"
+                                                type="date" />
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="judulDokumen">Judul Dokumen</label>
+                                            <textarea th:field="*{judulDokumen}" class="form-control form-control-md" id="judulDokumen"
+                                                placeholder="Masukkan Judul Dokumen" spellcheck="false"></textarea>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="keterangan">Keterangan</label>
+                                            <textarea th:field="*{keterangan}" class="form-control form-control-md" id="keterangan"
+                                                placeholder="Masukkan Keterangan" spellcheck="false"></textarea>
+                                        </div>
+
+
+                                        <div class="row gx-3">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="small mb-1" for="jenisDokumen">Jenis Dokumen</label>
+                                                    <select class="form-select form-select-sm" th:field="*{jenisDokumen}">
+                                                        <option th:each="jenisNaskah: ${jenisNaskahList}"
+                                                        th:value="${jenisNaskah.id}"
+                                                        th:text="${jenisNaskah.nama}"></option>
+                                                    </select>    
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="uploadDokumen">Upload Dokumen</label>
+                                            <input class="form-control form-control-md col col-sm-5" id="file_1"
+                                                name="files" type="file" multiple />
+                                            <a type="button" id="add-more-file" class="btn btn-sm btn-primary"
+                                                href="#">Tambah file lagi</a>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="card-footer text-center">
+                                        <button class="btn btn-primary btn-block" type="submit">Simpan</button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <div th:replace="~{fragments/general.html :: script}"></div>
+</body>
+<script>
+    var counter = 1;
+
+    $(document).ready(function () {
+        $("#add-more-file").click(function (e) {
+            var fileHtml = '<div class="mb-3" id="file_' + (counter + 1) + '">' +
+                '<label for="file" class="small mb-1">&nbsp;</label>' +
+                '<input type="file" name="files" multiple class="form-control form-control-md col col-sm-5"' +
+                '</div>';
+            $("#file_" + counter).after(fileHtml);
+            counter = counter + 1;
+        });
+    });
+</script>
+
+</html>
