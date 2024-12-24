@@ -243,13 +243,16 @@
                                                             <td class="kln">Kerja Sama Luar Negeri</td>
                                                             <td class="kln" colspan="5"></td>
                                                             <td class="kln">
-                                                                <a th:href="@{/pelaksanaan_luar_negeri(year=${rekap.year})}" th:text="${rekap.klnNonPerikatanCount}"></a>
+                                                                <a th:if="${rekap.year==2020 or rekap.year==2021}" th:href="@{/pelaksanaan_luar_negeri_old(year=${rekap.year})}" th:text="${rekap.klnNonPerikatanCount}"></a>
+                                                                <a th:unless="${rekap.year==2020 or rekap.year==2021}" th:href="@{/pelaksanaan_luar_negeri(year=${rekap.year})}" th:text="${rekap.klnNonPerikatanCount}"></a>
                                                             </td>
                                                             <td class="kln">
-                                                                <a th:href="@{/pelaksanaan_luar_negeri(year=${rekap.year})}" th:text="${rekap.klnNonPerikatanCount}"></a>
+                                                                <a th:if="${rekap.year==2020 or rekap.year==2021}" th:href="@{/pelaksanaan_luar_negeri_old(year=${rekap.year})}" th:text="${rekap.klnNonPerikatanCount}"></a>
+                                                                <a th:unless="${rekap.year==2020 or rekap.year==2021}" th:href="@{/pelaksanaan_luar_negeri(year=${rekap.year})}" th:text="${rekap.klnNonPerikatanCount}"></a>
                                                             </td>
                                                             <td class="kln">
-                                                                <a th:href="@{/pelaksanaan_luar_negeri(year=${rekap.year})}" th:text="${rekap.klnTotal}"></a>
+                                                                <a th:if="${rekap.year==2020 or rekap.year==2021}" th:href="@{/pelaksanaan_luar_negeri_old(year=${rekap.year})}" th:text="${rekap.klnTotal}"></a>
+                                                                <a th:unless="${rekap.year==2020 or rekap.year==2021}" th:href="@{/pelaksanaan_luar_negeri(year=${rekap.year})}" th:text="${rekap.klnTotal}"></a>
                                                             </td>
                                                         </tr>
                                                     </tbody>

@@ -54,6 +54,7 @@ public class LaporanService {
     private JenisNaskahLuarNegeriService jenisNaskahLuarNegeriService;
     private KolaborasiService kolaborasiService;
     private AsistenSekretarisDaerahService asistenSekretarisDaerahService;
+    private DokumenKerjaSamaLuarNegeriOldService dokumenKerjaSamaLuarNegeriOldService;
 
     public LaporanService(DokumenKerjaSamaService dokumenKerjaSamaService,
             DokumenKerjaSamaLuarNegeriService dokumenKerjaSamaLuarNegeriService,
@@ -62,7 +63,8 @@ public class LaporanService {
             JenisMitraService jenisMitraService,
             JenisNaskahLuarNegeriService jenisNaskahLuarNegeriService,
             KolaborasiService kolaborasiService,
-            AsistenSekretarisDaerahService asistenSekretarisDaerahService) {
+            AsistenSekretarisDaerahService asistenSekretarisDaerahService,
+            DokumenKerjaSamaLuarNegeriOldService dokumenKerjaSamaLuarNegeriOldService) {
         this.dokumenKerjaSamaService = dokumenKerjaSamaService;
         this.dokumenKerjaSamaLuarNegeriService = dokumenKerjaSamaLuarNegeriService;
         this.bagianService = bagianService;
@@ -71,6 +73,7 @@ public class LaporanService {
         this.jenisNaskahLuarNegeriService = jenisNaskahLuarNegeriService;
         this.kolaborasiService = kolaborasiService;
         this.asistenSekretarisDaerahService = asistenSekretarisDaerahService;
+        this.dokumenKerjaSamaLuarNegeriOldService = dokumenKerjaSamaLuarNegeriOldService;
     }
 
     public ByteArrayInputStream rekapTahunan(int tahun) throws IOException {
@@ -641,7 +644,12 @@ public class LaporanService {
         Bagian bagianKPT = bagianService.findBySingkatan("KPT").get();
         Bagian bagianKDN = bagianService.findBySingkatan("KDN").get();
 
-        long countKLN = dokumenKerjaSamaLuarNegeriService.getCount(tahun);
+        long countKLN;
+        if (tahun==2020 || tahun==2021) {
+            countKLN = dokumenKerjaSamaLuarNegeriOldService.getCount(tahun);
+        } else {
+            countKLN = dokumenKerjaSamaLuarNegeriService.getCount(tahun);
+        }
         long countKPT = dokumenKerjaSamaService.getCount(tahun, bagianKPT);
         long countKDN = dokumenKerjaSamaService.getCount(tahun, bagianKDN);
 
@@ -1276,12 +1284,22 @@ public class LaporanService {
             rekap.setKdnPinjamPakaiInstansiLainNonPKSCount(dokumenKerjaSamaService.getCount(year, jenisNaskahNonPKS, List.of(jenisMitraPinjamPakai)));        
             rekap.setKdnPinjamPakaiInstansiLainCount(dokumenKerjaSamaService.getCount(year,
                     List.of(jenisMitraPinjamPakai)));
-
-            rekap.setKlnNonPerikatanCount(dokumenKerjaSamaLuarNegeriService.getCount(year));
+      
+            if (year==2020 || year==2021) {
+                rekap.setKlnNonPerikatanCount(dokumenKerjaSamaLuarNegeriOldService      .getCount(year));
+            } else {
+                rekap.setKlnNonPerikatanCount(dokumenKerjaSamaLuarNegeriService.getCount(year));
+            }
 
             rekap.setKptTotal(dokumenKerjaSamaService.getCount(year, kptBagian));
             rekap.setKdnTotal(dokumenKerjaSamaService.getCount(year, kdnBagian));
-            rekap.setKlnTotal(dokumenKerjaSamaLuarNegeriService.getCount(year));
+            
+            if (year==2020 || year==2021) {
+                rekap.setKlnTotal(dokumenKerjaSamaLuarNegeriOldService.getCount(year));
+            } else {
+                rekap.setKlnTotal(dokumenKerjaSamaLuarNegeriService.getCount(year));
+            }
+            
             rekap.setTotal(getCount(year));
 
             rekap.setPksTotal(
@@ -1299,5 +1317,6 @@ public class LaporanService {
 
         return rekapList;
     }
+
 
 }

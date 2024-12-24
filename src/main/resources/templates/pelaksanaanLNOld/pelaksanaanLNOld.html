@@ -32,7 +32,7 @@
                 <!-- Main page content-->
                 <div class="container-fluid px-4 mt-n10">
 
-                    <div th:if="${success_msg} != null" th:text="${success_msg}" class="alert alert-success" role="alert">
+                    <div th:if="${success_msg} != null" th:text="${success_msg}" class="alert alert-success mt-3" role="alert">
                     </div>
 
                     <div class="card my-4">
@@ -133,7 +133,6 @@
      </script>
      <script th:if="${mode} == 'firstSemesterTahunDepan'">
         $(document).ready(function () {
-            // debugger;
             // $('#minTglBerakhir').val(nextStart);
             // $('#maxTglBerakhir').val(nextFirst);
             // $('#filterNullTglBerakhir').prop('checked', false);
@@ -162,13 +161,13 @@
             $('#addAll').click(function() {
                 var $select = $('#filterTableDefinition');
                 $select.find('option').prop('selected', true);
-                $select.trigger('change'); // Notify Select2 to update results
+                $select.trigger('change'); 
             });
 
             $('#removeAll').click(function() {
                 var $select = $('#filterTableDefinition');
                 $select.find('option').prop('selected', false);
-                $select.trigger('change'); // Notify Select2 to update results
+                $select.trigger('change'); 
             });
 
             $("#logout").on("click", function (e) {

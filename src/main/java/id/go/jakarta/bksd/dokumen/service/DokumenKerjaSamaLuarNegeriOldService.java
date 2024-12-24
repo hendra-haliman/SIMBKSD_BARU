@@ -346,4 +346,8 @@ public class DokumenKerjaSamaLuarNegeriOldService {
         
     }
 
+    public long getCount(int year) {
+        return repository.getCount(year);
+    }
+
 }

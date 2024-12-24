@@ -91,7 +91,7 @@ public class DokumenLuarNegeriOldController {
     }
 
     @PostMapping("saveNew")
-    public String saveNewDokumen(@RequestParam("files") MultipartFile[] files, Model model,
+    public String saveNewDokumen( Model model,
             @ModelAttribute("dokumenLNOld") DokumenKerjaSamaLuarNegeriOld dokumenKerjaSama,
             RedirectAttributes redirectAttributes) {
 
@@ -102,7 +102,7 @@ public class DokumenLuarNegeriOldController {
     }
 
     @PostMapping("saveEdit")
-    public String saveEditDokumen(@RequestParam("files") MultipartFile[] files, Model model,
+    public String saveEditDokumen( Model model,
             @ModelAttribute("dokumenLNOld") DokumenKerjaSamaLuarNegeriOld dokumenKerjaSama,
             RedirectAttributes redirectAttributes) {
 
