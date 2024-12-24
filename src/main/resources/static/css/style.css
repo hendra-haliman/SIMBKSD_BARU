@@ -487,15 +487,34 @@ hr.divider {
     background-blend-mode: lighten;
 }
 
-/* .card {
+.card {
     max-height: 75vh; 
     overflow-y: auto; 
-} */
+}
 
 .card-header {
     font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 1020; 
+    background-color: #f7f7f7;
 }
 
+.fixed-card-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%; 
+    background-color: #f7f7f7; 
+    z-index: 1020; 
+}
+
+.card-footer {
+    font-weight: bold;
+    position: sticky;
+    bottom: 0;
+    z-index: 1020; 
+    background-color: #f7f7f7;
+}
 
 .merrinumber {
     font-family: 'Merriweather Sans' !important;

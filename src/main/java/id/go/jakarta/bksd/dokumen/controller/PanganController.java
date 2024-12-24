@@ -25,8 +25,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import id.go.jakarta.bksd.dokumen.domain.Bagian;
-import id.go.jakarta.bksd.dokumen.domain.Kolaborasi;
 import id.go.jakarta.bksd.dokumen.domain.Page;
 import id.go.jakarta.bksd.dokumen.domain.Pemakai;
 import id.go.jakarta.bksd.dokumen.domain.TableDefinition;
@@ -61,15 +59,14 @@ public class PanganController {
     private KotaKabupatenService kotaKabupatenService;
     private JenisService jenisService;
 
-
     public PanganController(KerjaSamaPenyediaanPanganService kerjaSamaPenyediaanPanganService,
-                            TableDefinitionService definitionService,
-                            PemakaiService pemakaiService,
-                            KelompokService kelompokService,
-                            PemdaService pemdaService,
-                            BUMDService bumdService,
-                            KotaKabupatenService kotaKabupatenService,
-                            JenisService jenisService) {
+            TableDefinitionService definitionService,
+            PemakaiService pemakaiService,
+            KelompokService kelompokService,
+            PemdaService pemdaService,
+            BUMDService bumdService,
+            KotaKabupatenService kotaKabupatenService,
+            JenisService jenisService) {
         this.kerjaSamaPenyediaanPanganService = kerjaSamaPenyediaanPanganService;
         this.definitionService = definitionService;
         this.pemakaiService = pemakaiService;
@@ -82,7 +79,8 @@ public class PanganController {
 
     @GetMapping("")
     public String panganHome(Model model, Principal principal) throws JsonProcessingException {
-        // List<KerjaSamaPenyediaanPangan> kerjasamaList = kerjaSamaPenyediaanPanganService.findAll();
+        // List<KerjaSamaPenyediaanPangan> kerjasamaList =
+        // kerjaSamaPenyediaanPanganService.findAll();
         List<Kelompok> kelompokList = kelompokService.findAll();
         Set<TableDefinition> tableDef = definitionService.findByNamaTable("pangan");
 
@@ -103,7 +101,7 @@ public class PanganController {
         model.addAttribute("pemakai", pemakai);
         model.addAttribute("jsonDefs", jsonDefs);
         model.addAttribute("currentPage", "pangan");
-        
+
         return "pangan/pangan";
     }
 
@@ -145,7 +143,7 @@ public class PanganController {
         model.addAttribute("jenisList", jenisList);
         model.addAttribute("kelompokList", kelompokList);
 
-        model.addAttribute("currentPage", "kolaborasi");
+        model.addAttribute("currentPage", "pangan");
 
         return "pangan/pangan-add";
     }
@@ -216,6 +214,5 @@ public class PanganController {
         IOUtils.copy(isr, response.getOutputStream());
 
     }
-
 
 }
