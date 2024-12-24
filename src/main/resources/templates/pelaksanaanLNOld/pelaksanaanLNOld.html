@@ -188,7 +188,7 @@
                 "searchDelay": 1000,
                 "initComplete": function () {
                     var searchInput = $('#dt-search-0');
-                    searchInput.css('width', '400px'); // Adjust the width as needed
+                    searchInput.css('width', '400px'); 
                 },
                 "ajax": {
                     "url": contextPath + "dokumen_luar_negeri_old/list",
@@ -196,7 +196,7 @@
                     "dataType": "json",
                     "cache": "no-cache",
                     "headers": {
-                        [header]: token  // Include the CSRF token in the request header
+                        [header]: token  
                     },
                     "contentType": "application/json",
                     "data": function(d) {
@@ -214,7 +214,7 @@
                     },
                     "error": function (xhr, error, thrown) {
                         if (xhr.status === 401) {
-                            window.location.href = contextPath + "logout"; // Redirect to login page
+                            window.location.href = contextPath + "logout"; 
                         }
                     }
                 },

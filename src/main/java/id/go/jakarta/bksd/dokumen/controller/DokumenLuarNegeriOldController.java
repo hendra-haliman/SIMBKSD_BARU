@@ -55,7 +55,7 @@ public class DokumenLuarNegeriOldController {
     public String lihat(@PathVariable Long id, Model model) {
         DokumenKerjaSamaLuarNegeriOld dok = dokumenKerjaSamaLuarNegeriOldService.findById(id).get();
         model.addAttribute("dokumen", dok);
-        model.addAttribute("currentPage", "pelaksanaanLN");
+        model.addAttribute("currentPage", "pelaksanaanLNOld");
 
         return "pelaksanaanLNOld/dokumenLNOld-lihat";
     }
@@ -64,8 +64,8 @@ public class DokumenLuarNegeriOldController {
     public String edit(@PathVariable Long id, Model model) {
         DokumenKerjaSamaLuarNegeriOld dok = dokumenKerjaSamaLuarNegeriOldService.findById(id).get();
 
-        model.addAttribute("dokumenLN", dok);
-        model.addAttribute("currentPage", "pelaksanaanLN");
+        model.addAttribute("dokumenLNOld", dok);
+        model.addAttribute("currentPage", "pelaksanaanLNOld");
 
         return "pelaksanaanLNOld/dokumenLNOld-edit";
     }
@@ -79,20 +79,20 @@ public class DokumenLuarNegeriOldController {
             dokumenKerjaSamaLuarNegeriOldService.save(dokumenKerjaSama);
         }
 
-        return "redirect:/pelaksanaan_luar_negeri";
+        return "redirect:/pelaksanaan_luar_negeri_old";
     }
 
     @GetMapping("/add")
     public String showAddDocument(Model model) {
-        model.addAttribute("dokumen", new DokumenKerjaSamaLuarNegeriOld());
-        model.addAttribute("currentPage", "pelaksanaanLN");
+        model.addAttribute("dokumenLNOld", new DokumenKerjaSamaLuarNegeriOld());
+        model.addAttribute("currentPage", "pelaksanaanLNOld");
 
-        return "pelaksanaanLN/dokumenLN-add";
+        return "pelaksanaanLNOld/dokumenLNOld-add";
     }
 
     @PostMapping("saveNew")
     public String saveNewDokumen(@RequestParam("files") MultipartFile[] files, Model model,
-            @ModelAttribute("dokumen") DokumenKerjaSamaLuarNegeriOld dokumenKerjaSama,
+            @ModelAttribute("dokumenLNOld") DokumenKerjaSamaLuarNegeriOld dokumenKerjaSama,
             RedirectAttributes redirectAttributes) {
 
         dokumenKerjaSamaLuarNegeriOldService.save(dokumenKerjaSama);

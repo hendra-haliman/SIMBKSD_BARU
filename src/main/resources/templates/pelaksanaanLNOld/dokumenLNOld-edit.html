@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
     xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head th:replace="~{fragments/general.html :: header('Edit Dokumen KLN')}"></head>
+<head th:replace="~{fragments/general.html :: header('Tambah Dokumen KLN (2020 & 2021)')}"></head>
 
 <body class="sb-nav-fixed">
     <nav th:replace="~{fragments/general.html :: navigation}"></nav>
@@ -11,109 +11,82 @@
 
         <div id="layoutSidenav_content" class="background01">
             <main>
-                <div class="container-fluid px-4 py-5 mt-auto">
+                <div class="container-fluid px-4 pt-5 mt-auto">
                     <div class="row justify-content-center">
-                        <div class="col-lg-7">
+                        <div class="col-lg-12">
                             <div class="card shadow-lg border-0 rounded-lg mt-3">
-                                <form th:action="@{/dokumen_luar_negeri/saveEdit}" enctype="multipart/form-data" method="post" th:object="${dokumenLN}">
+                                <form th:action="@{/dokumen_luar_negeri_old/saveEdit}" enctype="multipart/form-data" method="post" th:object="${dokumenLNOld}">
                                     <input type="hidden" th:field="*{id}"/>
+
                                     <div class="card-header justify-content-center">
-                                        <h4 class="fw-light my-2">Edit Dokumen Kerja Sama Luar Negeri</h4>
+                                        <h4 class="fw-light my-2">Tambah Dokumen Kerja Sama Luar Negeri (2020/2021) Baru</h4>
                                     </div>
                                     <div class="card-body">
-                                        <div class="mb-3">
-                                            <label class="small mb-1" for="tahun">Tahun</label>
-                                            <input class="form-control form-control-md" th:field="*{tahun}">
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label class="small mb-1" for="subjek">Subjek</label>
-                                            <textarea th:field="*{subjek}" class="form-control form-control-md" id="subjek"
-                                                placeholder="Masukkan Subjek" spellcheck="false"></textarea>
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label class="small mb-1" for="tgl">Tanggal</label>
-                                            <input th:field="*{tgl}" class="form-control form-control-md" id="tgl"
-                                                type="date" />
-                                        </div>
-
-                                        <div class="row gx-3">
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label class="small mb-1" for="tglDimulai">Tanggal Dimulai</label>
-                                                    <input th:field="*{tglDimulai}" class="form-control form-control-md"
-                                                        id="tglDimulai" type="date" />
-                                                    <a id="copyTgl" class="btn btn-sm btn-secondary">Copy dari Tgl</a>    
-                                                </div>
+                                        <div class="mb-3 row">
+                                            <div class="col-md-1">
+                                                <label class="small mb-1" for="tahun">Tahun</label>
+                                                <input th:field="*{tahun}" class="form-control form-control-sm"
+                                                    id="tahun" type="text"
+                                                    placeholder="Masukan tahun" />    
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label class="small mb-1" for="tglBerakhir">Tanggal Berakhir</label>
-                                                    <input th:field="*{tglBerakhir}" class="form-control form-control-md"
-                                                        id="tglBerakhir" type="date" />
-                                                        <a id="1tahun" class="btn btn-sm btn-secondary">1 tahun</a>
-                                                        <a id="2tahun" class="btn btn-sm btn-secondary">2 tahun</a>
-                                                        <a id="3tahun" class="btn btn-sm btn-secondary">3 tahun</a>
-                                                        <a id="4tahun" class="btn btn-sm btn-secondary">4 tahun</a>
-                                                        <a id="5tahun" class="btn btn-sm btn-secondary">5 tahun</a>
-                                                </div>
+                                            <div class="col-md-11">
+                                                <label class="small mb-1" for="objek">Objek</label>
+                                                <textarea th:field="*{objek}" class="form-control form-control-md" id="objek"
+                                                    placeholder="Masukkan Objek" spellcheck="false"></textarea>    
                                             </div>
                                         </div>
 
-                                        <div class="mb-3">
-                                            <label class="small mb-1" for="judulDokumen">Judul Dokumen</label>
-                                            <textarea th:field="*{judulDokumen}" class="form-control form-control-md" id="judulDokumen"
-                                                placeholder="Masukkan Judul Dokumen" spellcheck="false"></textarea>
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label class="small mb-1" for="keterangan">Keterangan</label>
-                                            <textarea th:field="*{keterangan}" class="form-control form-control-md" id="keterangan"
-                                                placeholder="Masukkan Keterangan" spellcheck="false"></textarea>
-                                        </div>
-
-
-                                        <div class="row gx-3">
+                                        <div class="mb-3 row">
                                             <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label class="small mb-1" for="jenisDokumen">Jenis Dokumen</label>
-                                                    <select class="form-select form-select-md" th:field="*{jenisDokumen}">
-                                                        <option value="">Masukkan Pilihan</option>
-                                                        <option th:each="jenisNaskah: ${jenisNaskahList}"
-                                                        th:value="${jenisNaskah.id}"
-                                                        th:text="${jenisNaskah.nama}"></option>
-                                                    </select>    
-                                                </div>
+                                                <label class="small mb-1" for="mitra">Mitra</label>
+                                                <textarea th:field="*{mitra}" class="form-control form-control-md" id="mitra"
+                                                    placeholder="Masukkan Mitra" spellcheck="false"></textarea>    
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="cakupan">Cakupan</label>
+                                                <textarea th:field="*{cakupan}" class="form-control form-control-md" id="cakupan"
+                                                    placeholder="Masukkan Cakupan" spellcheck="false"></textarea>    
                                             </div>
                                         </div>
 
-                                        <div class="mb-3">
-                                            <label class="small mb-1" for="linkDokumen">Link Dokumen</label>
-                                            <textarea th:field="*{linkDokumen}" class="form-control form-control-md" id="linkDokumen"
-                                                placeholder="Masukkan Link Dokumen" spellcheck="false"></textarea>
-                                            <a id="copyLink" class="btn btn-sm btn-secondary">Copy</a>    
+                                        <div class="mb-3 row">
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="dasar">Dasar</label>
+                                                <textarea th:field="*{dasar}" class="form-control form-control-md" id="dasar"
+                                                    placeholder="Masukkan Dasar" spellcheck="false"></textarea>    
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="skpdUnitTerkait">SKPD/Unit Terkait</label>
+                                                <textarea th:field="*{skpdUnitTerkait}" class="form-control form-control-md" id="skpdUnitTerkait"
+                                                    placeholder="Masukkan SKPD/Unit Terkait" spellcheck="false"></textarea>    
+                                            </div>
                                         </div>
 
-                                        <div class="mb-3">
-                                            <label class="small mb-1" for="fileTerkait">File Terkait</label>
-                                            <ul id="fileTerkait">
-                                                <th:block th:each="child, childStatus : *{dokumen}">
-                                                    <input type="hidden" th:field="*{dokumen[__${childStatus.index}__].id}" th:id="${'childName_' + childStatus.index}">
-                                                    <input type="hidden" th:field="*{dokumen[__${childStatus.index}__].filename}" th:id="${'childName_' + childStatus.index}">
-                                                    <li><a th:href="@{'/dokumen/download/' + ${child.filename}}">[[${child.filename}]]</a></li>
-                                                </th:block>
-                                            </ul> 
+                                        <div class="mb-3 row">
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="waktu">Waktu</label>
+                                                <textarea th:field="*{waktu}" class="form-control form-control-md" id="waktu"
+                                                    placeholder="Masukkan Waktu" spellcheck="false"></textarea>    
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="pelaksanaan">Pelaksanaan</label>
+                                                <textarea th:field="*{pelaksanaan}" class="form-control form-control-md" id="pelaksanaan"
+                                                    placeholder="Masukkan Pelaksanaan" spellcheck="false"></textarea>    
+                                            </div>
                                         </div>
 
-                                        <div class="mb-3">
-                                            <label class="small mb-1" for="uploadDokumen">Upload Dokumen</label>
-                                            <input class="form-control form-control-md col col-sm-5" id="file_1"
-                                                name="files" type="file" multiple />
-                                            <a type="button" id="add-more-file" class="btn btn-sm btn-primary"
-                                                href="#">Tambah file lagi</a>
+                                        <div class="mb-3 row">
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="kendala">Kendala</label>
+                                                <textarea th:field="*{kendala}" class="form-control form-control-md" id="kendala"
+                                                    placeholder="Masukkan Kendala" spellcheck="false"></textarea>    
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="tindakLanjut">Tindak Lanjut</label>
+                                                <textarea th:field="*{tindakLanjut}" class="form-control form-control-md" id="tindakLanjut"
+                                                    placeholder="Masukkan Tindak Lanjut" spellcheck="false"></textarea>    
+                                            </div>
                                         </div>
-
 
                                     </div>
                                     <div class="card-footer text-center">
@@ -133,76 +106,5 @@
 
     <div th:replace="~{fragments/general.html :: script}"></div>
 </body>
-<script>
-    var counter = 1;
-
-    $(document).ready(function () {
-        $("#add-more-file").click(function (e) {
-            var fileHtml = '<div class="mb-3" id="file_' + (counter + 1) + '">' +
-                '<label for="file" class="small mb-1">&nbsp;</label>' +
-                '<input type="file" name="files" multiple class="form-control form-control-md col col-sm-5"' +
-                '</div>';
-            $("#file_" + counter).after(fileHtml);
-            counter = counter + 1;
-        });
-
-        $('#copyTgl').click( function() {
-            $('#tglDimulai').val($('#tgl').val());
-        })
-
-        $('#copyLink').click( function() {
-            $('#linkDokumen').select();
-            document.execCommand("copy");
-        })
-
-
-        $('#1tahun').click( function() {
-            var dimulai = new Date($('#tglDimulai').val());
-            var satuTahun = new Date(dimulai.setFullYear(dimulai.getFullYear() + 1));
-            //satuTahun.setDate(satuTahun.getDate() - 1);
-            var formattedDate = satuTahun.toISOString().split('T')[0];
-
-            $('#tglBerakhir').val(formattedDate);
-        })
-
-        $('#2tahun').click( function() {
-            var dimulai = new Date($('#tglDimulai').val());
-            var satuTahun = new Date(dimulai.setFullYear(dimulai.getFullYear() + 2));
-            //satuTahun.setDate(satuTahun.getDate() - 1);
-            var formattedDate = satuTahun.toISOString().split('T')[0];
-
-            $('#tglBerakhir').val(formattedDate);
-        })
-
-        $('#3tahun').click( function() {
-            var dimulai = new Date($('#tglDimulai').val());
-            var satuTahun = new Date(dimulai.setFullYear(dimulai.getFullYear() + 3));
-            //satuTahun.setDate(satuTahun.getDate() - 1);
-            var formattedDate = satuTahun.toISOString().split('T')[0];
-
-            $('#tglBerakhir').val(formattedDate);
-        })
-
-        $('#4tahun').click( function() {
-            var dimulai = new Date($('#tglDimulai').val());
-            var satuTahun = new Date(dimulai.setFullYear(dimulai.getFullYear() + 4));
-            //satuTahun.setDate(satuTahun.getDate() - 1);
-            var formattedDate = satuTahun.toISOString().split('T')[0];
-
-            $('#tglBerakhir').val(formattedDate);
-        })
-
-        $('#5tahun').click( function() {
-            var dimulai = new Date($('#tglDimulai').val());
-            var satuTahun = new Date(dimulai.setFullYear(dimulai.getFullYear() + 5));
-            //satuTahun.setDate(satuTahun.getDate() - 1);
-            var formattedDate = satuTahun.toISOString().split('T')[0];
-
-            $('#tglBerakhir').val(formattedDate);
-        })
-
-        
-    });
-</script>
 
 </html>
