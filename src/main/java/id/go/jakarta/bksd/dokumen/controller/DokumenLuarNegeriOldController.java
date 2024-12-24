@@ -2,15 +2,10 @@ package id.go.jakarta.bksd.dokumen.controller;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.util.List;
-import java.util.Set;
 
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,18 +16,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import id.go.jakarta.bksd.dokumen.domain.DokumenKerjaSamaLuarNegeri;
 import id.go.jakarta.bksd.dokumen.domain.DokumenKerjaSamaLuarNegeriOld;
-import id.go.jakarta.bksd.dokumen.domain.DokumenLuarNegeri;
-import id.go.jakarta.bksd.dokumen.domain.JenisNaskahLuarNegeri;
 import id.go.jakarta.bksd.dokumen.domain.Page;
-import id.go.jakarta.bksd.dokumen.domain.Pemakai;
-import id.go.jakarta.bksd.dokumen.domain.SelectedTableColumn;
-import id.go.jakarta.bksd.dokumen.domain.TableDefinition;
 import id.go.jakarta.bksd.dokumen.domain.datatables.PagingRequest;
 import id.go.jakarta.bksd.dokumen.domain.dto.DokumenKerjaSamaLuarNegeriOldDTO;
 import id.go.jakarta.bksd.dokumen.service.DokumenKerjaSamaLuarNegeriOldService;
