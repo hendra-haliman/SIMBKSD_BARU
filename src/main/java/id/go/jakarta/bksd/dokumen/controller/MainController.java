@@ -273,4 +273,9 @@ public class MainController {
         return "login";
     }
 
+    @GetMapping("/testerror")
+    public String triggerError() {
+        throw new RuntimeException("error 500 untuk keperluan testing.");
+    }
+
 }

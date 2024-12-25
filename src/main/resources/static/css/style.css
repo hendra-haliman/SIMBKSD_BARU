@@ -519,3 +519,7 @@ hr.divider {
 .merrinumber {
     font-family: 'Merriweather Sans' !important;
 }
+
+.error {
+    height: 25vh;
+}
