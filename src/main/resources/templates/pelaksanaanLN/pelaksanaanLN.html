@@ -63,7 +63,6 @@
                                 style="width: 100%; border-bottom-width: 1px;">
                                 <thead>
                                     <tr>
-                                        <th class="text-center"><input type="checkbox" id="select-all"></th>
                                         <th class="text-center">No</th>
                                         <th class="text-center">Tahun</th>
                                         <th class="text-center">Subjek</th>
@@ -112,7 +111,6 @@
                         aria-labelledby="setupConfirmationModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
-                                <!--form th:object="${pemakai}" method="post" action="@{/pemakai/save}"-->
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="confirmationModalLabel">Table Column Setup</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -140,7 +138,6 @@
                                             data-bs-dismiss="modal">Batal</button>
                                         <button type="button" class="btn btn-primary" id="confirSetupAction">Ok</button>
                                     </div>
-                                <!--/form-->
                             </div>
                         </div>
                     </div>
@@ -250,13 +247,13 @@
             $('#addAll').click(function() {
                 var $select = $('#filterTableDefinition');
                 $select.find('option').prop('selected', true);
-                $select.trigger('change'); // Notify Select2 to update results
+                $select.trigger('change'); 
             });
 
             $('#removeAll').click(function() {
                 var $select = $('#filterTableDefinition');
                 $select.find('option').prop('selected', false);
-                $select.trigger('change'); // Notify Select2 to update results
+                $select.trigger('change'); 
             });
 
             $('#setupConfirmationModal').on('shown.bs.modal', function () {
@@ -268,8 +265,8 @@
 
 
             $('#setupConfirmationModal').modal({
-                backdrop: 'static',  // Disable closing by clicking outside the modal
-                keyboard: false      // Disable closing by pressing the ESC key
+                backdrop: 'static',  
+                keyboard: false    
             });
           
 
@@ -282,7 +279,6 @@
             var header = $("meta[name='_csrf_header']").attr("content");
 
             var docTable = $("#dokTable").dataTable({
-                "select": true,
                 "processing": true,
                 "serverSide": true,
                 "responsive": true,
@@ -290,7 +286,7 @@
                 "searchDelay": 1000,
                 "initComplete": function () {
                     var searchInput = $('#dt-search-0');
-                    searchInput.css('width', '400px'); // Adjust the width as needed
+                    searchInput.css('width', '400px'); 
                 },
                 "ajax": {
                     "url": contextPath + "dokumen_luar_negeri/list",
@@ -298,7 +294,7 @@
                     "dataType": "json",
                     "cache": "no-cache",
                     "headers": {
-                        [header]: token  // Include the CSRF token in the request header
+                        [header]: token 
                     },
                     "contentType": "application/json",
                     "data": function(d) {
@@ -310,8 +306,7 @@
                         var maxTglBerakhir = $('#maxTglBerakhir').val();
 
                         var filterNullTglBerakhir = $('#filterNullTglBerakhir').is(':checked');
-
-                       
+                     
                         d.filterStartDate = minDate;
                         d.filterEndDate = maxDate;
                         d.filterTahun = filterTahun;
@@ -319,7 +314,6 @@
                         d.filterTglBerakhirStartDate = minTglBerakhir;
                         d.filterTglBerakhirEndDate = maxTglBerakhir;
                         d.includeNullTglBerakhir = filterNullTglBerakhir;
-
 
                         return JSON.stringify(d);
                     },
@@ -336,17 +330,7 @@
                         }
                     }
                 },
-
                 "columns": [
-                    {
-                        "name": "check",
-                        "targets": 0,
-                        "data": null,
-                        "className": "dt-body-center",
-                        "render": function (data, type, row, meta) {
-                            return "<input type='checkbox'>";
-                        }
-                    },
                     {
                         "name": "nomor",
                         "data": null,
@@ -538,17 +522,6 @@
                                             }, 500);
                                         });
                                 }
-                            },
-                            {
-                                extend: 'print',
-                                text: 'Print',
-                                className: 'btn btn-sm btn-print',
-                                autoPrint: true,
-                                exportOptions: {
-                                    modifier: {
-                                        selected: true // Print only selected rows
-                                    }
-                                }
                             }
 
                         ]
@@ -642,24 +615,24 @@
             }
 
              // Handle click on "Select all" control
-             $('#select-all').on('click', function(){
+             //$('#select-all').on('click', function(){
                 // Get all rows with search applied
-                var rows = docTable.api().rows({ 'search': 'applied' }).nodes();
+                //var rows = docTable.api().rows({ 'search': 'applied' }).nodes();
                 // Check/uncheck checkboxes for all rows in the table
-                $('input[type="checkbox"]', rows).prop('checked', this.checked);
-            });
+                //$('input[type="checkbox"]', rows).prop('checked', this.checked);
+            //});
 
             // Handle checkbox change event
-            $('#dokTable tbody').on('change', 'input[type="checkbox"]', function(){
+            //$('#dokTable tbody').on('change', 'input[type="checkbox"]', function(){
                 // If checkbox is not checked
-                if(!this.checked){
-                   var el = $('#select-all').get(0);
+                //if(!this.checked){
+                   //var el = $('#select-all').get(0);
                    // If "Select all" control is checked and has 'indeterminate' property
-                   if(el && el.checked && ('indeterminate' in el)){
-                      el.indeterminate = true;
-                   }
-                }
-            });
+                   //if(el && el.checked && ('indeterminate' in el)){
+                   //   el.indeterminate = true;
+                   //}
+                //}
+            //});
 
         });
 

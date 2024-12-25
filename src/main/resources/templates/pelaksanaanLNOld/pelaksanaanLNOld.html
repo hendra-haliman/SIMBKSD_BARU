@@ -52,7 +52,6 @@
                                 style="width: 100%; border-bottom-width: 1px;">
                                 <thead>
                                     <tr>
-                                        <th class="text-center"><input type="checkbox" id="select-all"></th>
                                         <th class="text-center">No</th>
                                         <th class="text-center">Tahun</th>
                                         <th class="text-center">Objek</th>
@@ -179,7 +178,6 @@
             var header = $("meta[name='_csrf_header']").attr("content");
 
             var docTable = $("#dokTable").dataTable({
-                "select": true,
                 "processing": true,
                 "serverSide": true,
                 "responsive": true,
@@ -219,15 +217,6 @@
                 },
 
                 "columns": [
-                    {
-                        "name": "check",
-                        "targets": 0,
-                        "data": null,
-                        "className": "dt-body-center",
-                        "render": function (data, type, row, meta) {
-                            return "<input type='checkbox'>";
-                        }
-                    },
                     {
                         "name": "nomor",
                         "data": null,
@@ -357,17 +346,6 @@
                                                 opacity: .2
                                             }, 500);
                                         });
-                                }
-                            },
-                            {
-                                extend: 'print',
-                                text: 'Print',
-                                className: 'btn btn-sm btn-print',
-                                autoPrint: true,
-                                exportOptions: {
-                                    modifier: {
-                                        selected: true // Print only selected rows
-                                    }
                                 }
                             }
 

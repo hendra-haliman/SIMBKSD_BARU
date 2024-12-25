@@ -411,7 +411,6 @@
                     url: contextPath + 'dokumen/saveTableOption',
                     type: 'POST',
                     contentType: 'application/json',
-                    //dataType: 'json',
                     data: dataToSend
                     ,
                     success: function (response) {
@@ -427,13 +426,13 @@
             $('#addAll').click(function () {
                 var $select = $('#filterTableDefinition');
                 $select.find('option').prop('selected', true);
-                $select.trigger('change'); // Notify Select2 to update results
+                $select.trigger('change'); 
             });
 
             $('#removeAll').click(function () {
                 var $select = $('#filterTableDefinition');
                 $select.find('option').prop('selected', false);
-                $select.trigger('change'); // Notify Select2 to update results
+                $select.trigger('change'); 
             });
 
             $('#setupConfirmationModal').on('shown.bs.modal', function () {
@@ -445,8 +444,8 @@
 
 
             $('#setupConfirmationModal').modal({
-                backdrop: 'static',  // Disable closing by clicking outside the modal
-                keyboard: false      // Disable closing by pressing the ESC key
+                backdrop: 'static',  
+                keyboard: false     
             });
 
             $("#logout").on("click", function (e) {
@@ -470,11 +469,10 @@
                 "serverSide": true,
                 "responsive": false,
                 "ordering": false,
-                // "colReorder": {realtime: false},
                 "searchDelay": 1000,
                 "initComplete": function () {
                     var searchInput = $('#dt-search-0');
-                    searchInput.css('width', '400px'); // Adjust the width as needed
+                    searchInput.css('width', '400px'); 
                 },
 
                 // To be implemented
@@ -516,7 +514,7 @@
                     "dataType": "json",
                     "cache": "no-cache",
                     "headers": {
-                        [header]: token  // Include the CSRF token in the request header
+                        [header]: token  
                     },
                     "contentType": "application/json",
                     "data": function (d) {
@@ -865,7 +863,6 @@
                                     var params = dt.ajax.params();
                                     var searchValue = params.search.value;
                                     var flattened = flattenJson(data);
-                                    //console.log(params);
 
                                     const url = contextPath + "dokumen/exportExcel2";
 
@@ -926,14 +923,7 @@
                                             }, 500);
                                         });
                                 }
-                            },
-                            {
-                                extend: 'print',
-                                className: 'btn btn-sm btn-print',
-                                text: 'Print',
-                                autoPrint: true
                             }
-
                         ]
                     }
                 },
