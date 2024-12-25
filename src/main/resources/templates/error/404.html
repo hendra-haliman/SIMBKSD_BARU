@@ -6,17 +6,16 @@
 
 <body class="sb-topnav"> 
     <nav th:replace="~{fragments/general.html :: navigation}"></nav>
-
-            <main>
-                <!-- error -->
-                <section class="page-section bg-error">
-                    <div class="container px-4 px-lg-5 text-center">
-                        <img th:src="@{/static/assets/img/illustrations/404.svg}" class="error">
-                        <h4 class="mb-1 mt-4">Maaf, halaman yang anda cari tidak ditemukan.</h4>
-                    </div>
-                </section>
-
-            </main>
+    <main>
+        <!-- error -->
+        <section class="page-section bg-error">
+            <div class="container px-4 px-lg-5 text-center">
+                <img th:src="@{/static/assets/img/illustrations/404.svg}" class="error">
+                <h4 class="mb-1 mt-4">Maaf, halaman yang anda cari tidak ditemukan.</h4>
+            </div>
+        </section>
+    </main>
+    <footer th:replace="~{fragments/general.html :: footer}"></footer>
     <script>
         $(document).ready(function () {
             $("#logout").on("click", function (e) {

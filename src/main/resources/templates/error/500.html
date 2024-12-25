@@ -6,17 +6,16 @@
 
 <body class="sb-topnav"> 
     <nav th:replace="~{fragments/general.html :: navigation}"></nav>
-
-            <main>
-                <!-- error -->
-                <section class="page-section bg-error">
-                    <div class="container px-4 px-lg-5 text-center">
-                        <img th:src="@{/static/assets/img/illustrations/500.jpg}" class="error">
-                        <h4 class="mb-1 mt-3">Maaf, terjadi error pada sistem kami.</h4>
-                    </div>
-                </section>
-
-            </main>
+    <main>
+        <!-- error -->
+        <section class="page-section bg-error">
+            <div class="container px-4 px-lg-5 text-center" style="display:grid;height: 100%;grid-template-rows: 1fr auto;">
+                <img th:src="@{/static/assets/img/illustrations/500.jpg}" class="error">
+                <h4 class="mb-1 mt-3">Maaf, terjadi error pada sistem kami.</h4>
+            </div>
+        </section>
+    </main>
+    <footer th:replace="~{fragments/general.html :: footer}"></footer>
     <script>
         $(document).ready(function () {
             $("#logout").on("click", function (e) {
@@ -24,7 +23,6 @@
             });
 
         });
-
     </script>
 </body>
 
