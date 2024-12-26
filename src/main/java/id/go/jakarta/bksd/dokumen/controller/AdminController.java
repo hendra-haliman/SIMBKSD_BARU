@@ -201,57 +201,6 @@ public class AdminController {
         return "finish Pemetaan2024";
     }
 
-    @GetMapping("/testDownload")
-    @ResponseBody
-    public ByteArrayOutputStream getFile() throws IOException {
-        // String fileId = "1HzNEcRA_7zWQm7pASIwjPRwBOUUtoRSK";
-        String fileId = "1vgnNT_1IFvBKI9_Aa0bWhQiLLDmd-Hh_";
-
-        return dataUploaderService.downloadFile(fileId);
-    }
-
-    @GetMapping("/testDownload2")
-    @ResponseBody
-    public void getFile2(HttpServletResponse response) throws IOException, GeneralSecurityException {
-        // String fileId = "1HzNEcRA_7zWQm7pASIwjPRwBOUUtoRSK";
-        String fileId = "1vgnNT_1IFvBKI9_Aa0bWhQiLLDmd-Hh_";
-
-        fileManager.downloadFile("", fileId, response.getOutputStream());
-    }
-
-    @GetMapping("/testDownload3")
-    @ResponseBody
-    public String getFile3() throws IOException, GeneralSecurityException {
-        // String fileId = "1HzNEcRA_7zWQm7pASIwjPRwBOUUtoRSK";
-        String fileId = "1vgnNT_1IFvBKI9_Aa0bWhQiLLDmd-Hh_";
-        String filename = fileManager.getFilename("", fileId);
-        logger.info("Filename is ::::::: {}", filename);
-        OutputStream os = new FileOutputStream(filename);
-
-        fileManager.downloadFile("", fileId, os);
-
-        os.flush();
-        os.close();
-
-        return "Ok";
-    }
-
-    @GetMapping("/testDownloadPusdatin")
-    @ResponseBody
-    public String getFilePusdatin() throws IOException, GeneralSecurityException {
-
-        String fileId = "1mV0gTW_oKA3Vhj9UHLPxGUzazoDYIT9Q";
-        String filename = fileManager.getFilename("pusdatin", fileId);
-        logger.info("Filename is ::::::: {}", filename);
-        OutputStream os = new FileOutputStream(filename);
-
-        fileManager.downloadFile("pusdatin", fileId, os);
-
-        os.flush();
-        os.close();
-
-        return "Ok";
-    }
 
     @GetMapping("/testCheckRekap2021")
     @ResponseBody
