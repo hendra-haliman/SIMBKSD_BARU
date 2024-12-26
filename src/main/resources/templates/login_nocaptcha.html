@@ -3,7 +3,7 @@
 
 <head th:replace="~{fragments/general.html :: header('Login')}"></head>
 
-<body class="nav-fixed bg-primary" th:style="'background: url(/SIMBKSD/static/assets/img/office.jpg) no-repeat center fixed;'">
+<body class="nav-fixed bg-primary" th:style="'background: url(' + @{/static/assets/img/office.jpg} + ') no-repeat center fixed;'">
     <nav th:replace="~{fragments/general.html :: navigation}"></nav>
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
