@@ -523,3 +523,13 @@ hr.divider {
 .error {
     height: 25vh;
 }
+
+/* CSS untuk menambahkan tanda bintang pada field yang wajib */
+label > .required {
+    color: red;
+    margin-left: 5px;
+}
+
+input[required] + label .required {
+    display: inline;
+}

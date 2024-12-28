@@ -4,8 +4,8 @@
 
 <head th:replace="~{fragments/general.html :: header('Dashboard')}"></head>
 
-<body class="sb-nav-fixed"
-    th:style="'background: url(/dokumen/static/assets/img/office.jpg) no-repeat center fixed;background-blend-mode: lighten;background-color: rgba(255,255,255,0.8);'">
+<body class="sb-nav-fixed" 
+    th:style="'background: url(' + @{/static/assets/img/office.jpg} + ') no-repeat center fixed;'">
     <nav th:replace="~{fragments/general.html :: navigation}"></nav>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav" th:include="~{fragments/general.html :: layoutSidenav_nav}"></div>

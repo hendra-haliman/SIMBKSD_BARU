@@ -467,22 +467,6 @@
                 allowClear: true, 
                 placeholder: 'Masukkan pilihan' });
 
-
-            //$('.js-example-basic-multiple').select2({maximumSelectionLength: 15, allowClear: true, placeholder: 'Masukkan pilihan'});
-
-            // document.getElementById('delete').addEventListener('click', function (event) {
-            //     event.preventDefault(); // Prevent default link behavior
-            //     $('#deleteConfirmationModal').modal('show'); // Show the confirmation modal
-            // });
-
-
-            // Handle confirmation button click (optional)
-            // document.getElementById('confirmAction').addEventListener('click', function (event) {
-            //     // Perform the intended action (e.g., redirect to the link)
-            //     window.location.href = 'your-link-url';
-            // });
-
-
             docTable.on('xhr', function () {
                 var data = docTable.ajax.params();
                 alert('Search term was: ' + data.search.value);

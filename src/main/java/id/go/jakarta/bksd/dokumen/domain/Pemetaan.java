@@ -6,6 +6,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -17,17 +22,26 @@ public class Pemetaan extends AuditMetaData {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
+    @Min(value = 2000, message = "Tahun harus minimal 2000.")
+    @Max(value = 2100, message = "tahun harus maximal 2100.")
     private int tahun;
 
     @ManyToOne(targetEntity = Bagian.class)
+    @NotNull(message = "Bagian harus diisi")
+    //@NotEmpty(message = "Bagian harus diisi")
     private Bagian bagian;
 
     @ManyToOne(targetEntity = OPD.class)
+    @NotNull(message = "OPD harus diisi")
+    //@NotEmpty(message = "OPD harus diisi")
     private OPD opd;
 
     @ManyToOne(targetEntity = JenisMitra.class)
     private JenisMitra jenisMitra;
 
+    @NotNull(message="Urusan Pemerintahan harus diisi.")
+    @NotEmpty(message="Urusan Pemerintahan harus diisi.")
     private String urusanPemerintahan;
 
     @Column(columnDefinition = "varchar(1024)")

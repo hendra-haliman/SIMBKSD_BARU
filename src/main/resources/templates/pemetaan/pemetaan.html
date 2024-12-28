@@ -28,7 +28,7 @@
                 </header>
                 <!-- Main page content-->
                 <div class="container-fluid px-4 mt-n10">
-                    <div th:if="${success_msg} != null" th:text="${success_msg}" class="alert alert-success" role="alert">
+                    <div th:if="${success_msg} != null" th:text="${success_msg}" class="alert alert-warning mt-2" role="alert">
                     </div>
 
                     <div class="card my-4">
@@ -77,7 +77,7 @@
                     <!--Confirmation Dialog sebelum delete-->
                     <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog"
                         aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
+                        <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="confirmationModalLabel">Konfirmasi</h5>
@@ -90,7 +90,7 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
                                         data-bs-dismiss="modal">Batal</button>
-                                    <button type="button" class="btn btn-primary" id="confirmAction">Ya</button>
+                                    <button type="button" class="btn btn-primary" id="confirmAction" onClick="confirmDelete();">Ya</button>
                                 </div>
                             </div>
                         </div>
@@ -108,6 +108,8 @@
     </script>
 
     <script>
+        var id_to_delete = 0;
+
         $(document).ready(function () {
 
             $("#logout").on("click", function (e) {
@@ -220,7 +222,7 @@
                             }
 
                             if (isAdmin) {
-                                actions += "<a class='btn btn-sm btn-danger mb-sm-1 inline-link ' id='delete'  onclick='showDeleteConfirmation(\"" + row.kegiatan + "\")' href='#' data-bs-toggle='tooltip' data-bs-placement='top' title='Hapus'><svg class='myicon'><use xlink:href='#trash-can'></use></svg> <span class='ms-sm-2'>Hapus</span></a>";
+                                actions += "<a class='btn btn-sm btn-danger mb-sm-1 inline-link ' id='delete'  onclick='showDeleteConfirmation(\"" + row.kegiatan.replace(/\s/g, '') +  "\"," + row.id + ")' href='#' data-bs-toggle='tooltip' data-bs-placement='top' title='Hapus'><svg class='myicon'><use xlink:href='#trash-can'></use></svg> <span class='ms-sm-2'>Hapus</span></a>";
                             }
                                 
                             return actions;
@@ -310,14 +312,6 @@
                 }
             });
 
-
-            // Handle confirmation button click (optional)
-            // document.getElementById('confirmAction').addEventListener('click', function (event) {
-            //     // Perform the intended action (e.g., redirect to the link)
-            //     window.location.href = 'your-link-url';
-            // });
-
-
             docTable.on('xhr', function () {
                 var data = docTable.ajax.params();
                 alert('Search term was: ' + data.search.value);
@@ -334,11 +328,6 @@
                 docTable.api().draw();
             });
 
-            // $('#filterTahun').on('change', function() {
-            //      //$('#KPTTable').DataTable.draw();
-            //      docTable.api().draw();
-            // });
-
             $('#filterBtn').on('click', function() {
                 var param = JSON.parse(docTable.api().ajax.params());
                 var filterTahun = $('#filterTahun').val();
@@ -351,9 +340,14 @@
             });
         });
 
-        function showDeleteConfirmation(title) {    
+        function showDeleteConfirmation(title, id) {   
+            id_to_delete = id; 
             $('#alertDokTitle').text(title);
             $('#deleteConfirmationModal').modal('show');
+        }
+
+        function confirmDelete() {
+            window.location.href = contextPath + "pemetaan/delete/" + id_to_delete;
         }
 
         function flattenJson(data, name, flattened) {

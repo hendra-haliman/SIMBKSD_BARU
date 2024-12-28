@@ -23,16 +23,29 @@
                                         <h4 class="fw-light my-2">Tambah Pemetaan</h4>
                                     </div>
                                     <div class="card-body">
-
-                                        <div class="row gx-3">
-                                            <div class="col-md-6">
-                                                <label class="small mb-1" for="tahun">Tahun</label>
+                                        <!-- display errors -->
+                                        <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+                                            <p>Ada error di dalam form:</p>
+                                            <ul>
+                                                <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+                                            </ul>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-md-2">
+                                                <label class="small mb-1" for="tahun">Tahun<span class="required">*</span></label>
                                                 <input th:field="*{tahun}" class="form-control form-control-md"
                                                     id="tahun" type="text" placeholder="Masukan Tahun" />
                                             </div>
-                                            <div class="col-md-6">
-                                                <label class="small mb-1" for="opd">Perangkat daerah</label>
-                                                <select class="form-select form-select-sm" th:field="*{opd}">
+                                            <div class="col-md-2">
+                                                <label class="small mb-1" for="opd">Bagian<span class="required">*</span></label>
+                                                <select class="form-select form-select-md" th:field="*{bagian}">
+                                                    <option th:each="bagian: ${bagianList}" th:value="${bagian.id}"
+                                                        th:text="${bagian.singkatan}"></option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <label class="small mb-1" for="opd">Perangkat daerah<span class="required">*</span></label>
+                                                <select class="form-select form-select-md" th:field="*{opd}">
                                                     <option th:each="opd: ${opdList}" th:value="${opd.id}"
                                                         th:text="${opd.nama}"></option>
                                                 </select>
@@ -40,7 +53,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label class="small mb-1" for="urusanPemerintahan">Urusan
-                                                Pemerintahan</label>
+                                                Pemerintahan<span class="required">*</span> (Masukkan NIHIL jika tidak ada)</label>
                                             <textarea th:field="*{urusanPemerintahan}"
                                                 class="form-control form-control-md" id="urusanPemerintahan"
                                                 placeholder="Masukkan Urusan Pemerintahan" spellcheck="false"></textarea>
@@ -157,6 +170,13 @@
     var counter = 1;
 
     $(document).ready(function () {
+        $("#tahun").datepicker({
+                format: "yyyy",
+                viewMode: "years", 
+                minViewMode: "years",
+                autoclose: true,
+                clearBtn: true
+            });
 
     });
 </script>

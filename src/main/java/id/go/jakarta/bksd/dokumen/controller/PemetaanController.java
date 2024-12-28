@@ -2,6 +2,7 @@ package id.go.jakarta.bksd.dokumen.controller;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.time.Year;
 import java.util.Date;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import id.go.jakarta.bksd.dokumen.domain.Bagian;
 import id.go.jakarta.bksd.dokumen.domain.OPD;
@@ -29,6 +32,7 @@ import id.go.jakarta.bksd.dokumen.service.BagianService;
 import id.go.jakarta.bksd.dokumen.service.OPDService;
 import id.go.jakarta.bksd.dokumen.service.PemetaanService;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/pemetaan")
@@ -78,23 +82,40 @@ public class PemetaanController {
 
     @GetMapping("/add")
     public String showAddPemetaan(Model model, @RequestParam(required = false) String mode) {
-        model.addAttribute("pemetaan", new Pemetaan());
+        int currentYear = Year.now().getValue();
+
+        Pemetaan pemetaan = new Pemetaan();
+        pemetaan.setTahun(currentYear);
+        model.addAttribute("pemetaan", pemetaan);
+
         List<OPD> opd = opdService.findAll();
+        List<Bagian> bagian = bagianService.findAll();
 
         if ("group".equals(mode)) {
             model.addAttribute("mode", mode);
         }
         model.addAttribute("opdList", opd);
+        model.addAttribute("bagianList", bagian);
 
         return "pemetaan/pemetaan-add";
     }
 
     @PostMapping("saveNew")
-    public String saveNewPemetaan(Model model, @ModelAttribute("pemetaan") Pemetaan pemetaan,
+    public String saveNewPemetaan(Model model, @Valid Pemetaan pemetaan, BindingResult result,
             @RequestParam(required = false) String mode) {
+
+        if (result.hasErrors()) {
+            List<OPD> opd = opdService.findAll();
+            List<Bagian> bagian = bagianService.findAll();
+            model.addAttribute("opdList", opd);
+            model.addAttribute("bagianList", bagian);
+
+            return "pemetaan/pemetaan-add";
+        }   
 
         pemetaanService.save(pemetaan);
         model.addAttribute("success_msg", "Pemetaan berhasil disimpan.");
+        
         if ("group".equals(mode)) {
             return "pemetaan-group";
         }
@@ -118,8 +139,16 @@ public class PemetaanController {
     }
 
     @PostMapping("saveEdit")
-    public String saveEditPemetaan(Model model,
-            @ModelAttribute("pemetaan") Pemetaan pemetaan, @RequestParam(required = false) String mode) {
+    public String saveEditPemetaan(Model model, @Valid Pemetaan pemetaan, BindingResult result,
+             @RequestParam(required = false) String mode) {
+
+        if (result.hasErrors()) {
+            List<OPD> opd = opdService.findAll();
+            List<Bagian> bagian = bagianService.findAll();
+            model.addAttribute("opdList", opd);
+            model.addAttribute("bagianList", bagian);
+            return "pemetaan/pemetaan-edit";
+        }   
 
         pemetaanService.save(pemetaan);
         model.addAttribute("success_msg", "Pemetaan berhasil disimpan.");
@@ -131,12 +160,13 @@ public class PemetaanController {
     }
 
     @GetMapping("/delete/{id}")
-    public String softDelete(@PathVariable Long id) {
+    public String softDelete(@PathVariable Long id, RedirectAttributes attributes) {
         Pemetaan pemetaan = pemetaanService.findById(id).get();
 
         if (pemetaan != null) {
             pemetaan.setDeleted(true);
             pemetaanService.save(pemetaan);
+            attributes.addFlashAttribute("success_msg", "Pemetaan berhasil dihapus.");
         }
 
         return "redirect:/pemetaan";

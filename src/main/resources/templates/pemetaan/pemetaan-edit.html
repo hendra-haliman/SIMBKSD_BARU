@@ -24,26 +24,30 @@
                                         <h4 class="fw-light my-2">Edit Pemetaan</h4>
                                     </div>
                                     <div class="card-body">
+                                        <!-- display errors -->
+                                        <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+                                            <p>Ada error di dalam form:</p>
+                                            <ul>
+                                                <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+                                            </ul>
+                                        </div>
 
-                                        <div class="row gx-3">
-                                            <div class="col-md-6">
-                                                <label class="small mb-1" for="tahun">Tahun</label>
+                                        <div class="row mb-3">
+                                            <div class="col-md-2">
+                                                <label class="small mb-1" for="tahun">Tahun<span class="required">*</span></label>
                                                 <input th:field="*{tahun}" class="form-control form-control-md"
                                                     id="tahun" type="text" placeholder="Masukan Tahun" />
                                             </div>
-                                        </div>
-                                        <div class="row gx-3">
-                                            <div class="col-md-6">
-                                                <label class="small mb-1" for="bagian">Bagian</label>
+                                            <div class="col-md-2">
+                                                <label class="small mb-1" for="bagian">Bagian<span class="required">*</span></label>
                                                 <select class="form-select form-select-sm" th:field="*{bagian}">
                                                     <option value="">Pilih Bagian</option>
                                                     <option th:each="bagian: ${bagianList}" th:value="${bagian.id}"
-                                                        th:text="${bagian.nama}"></option>
+                                                        th:text="${bagian.singkatan}"></option>
                                                 </select>
                                             </div>
-
-                                            <div class="col-md-6">
-                                                <label class="small mb-1" for="opd">Perangkat daerah</label>
+                                            <div class="col-md-8">
+                                                <label class="small mb-1" for="opd">Perangkat daerah<span class="required">*</span></label>
                                                 <select class="form-select form-select-sm" th:field="*{opd}">
                                                     <option value="">Pilih OPD</option>
                                                     <option th:each="opd: ${opdList}" th:value="${opd.id}"
@@ -53,7 +57,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label class="small mb-1" for="urusanPemerintahan">Urusan
-                                                Pemerintahan</label>
+                                                Pemerintahan<span class="required">*</span> (Masukkan NIHIL jika tidak ada)</label>
                                             <textarea th:field="*{urusanPemerintahan}"
                                                 class="form-control form-control-md" id="urusanPemerintahan"
                                                 placeholder="Masukkan Urusan Pemerintahan" spellcheck="false"></textarea>
@@ -72,7 +76,7 @@
                                         </div>
 
 
-                                        <div class="row gx-3">
+                                        <div class="row mb-3">
                                             <div class="col-md-6">
                                                 <label class="small mb-1" for="namaCalonMitra">Nama Calon Mitra</label>
                                                 <textarea th:field="*{namaCalonMitra}"
@@ -88,7 +92,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="row gx-3">
+                                        <div class="row mb-3">
                                             <div class="col-md-6">
                                                 <label class="small mb-1" for="skalaPrioritas">Skala Prioritas</label>
                                                 <input th:field="*{skalaPrioritas}" class="form-control form-control-md"
@@ -104,7 +108,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="row gx-3">
+                                        <div class="row mb-3">
                                             <div class="col-md-3">
                                                 <label class="small mb-1" for="waktuPelaksanaanTW1">TW1</label>
                                                 <input th:field="*{waktuPelaksanaanTW1}"
@@ -131,7 +135,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="row gx-3">
+                                        <div class="row mb-3">
                                             <div class="col-md-6">
                                                 <label class="small mb-1" for="pic">PIC</label>
                                                 <textarea th:field="*{pic}" class="form-control form-control-md"
