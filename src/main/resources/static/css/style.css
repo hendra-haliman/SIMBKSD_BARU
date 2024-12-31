@@ -1,4 +1,4 @@
-tbody tr td {
+/* tbody tr td {
     color:#000 !important;
     border-width: 1px;
     border-color: #000;
@@ -28,7 +28,7 @@ table.dataTable.table-bordered th:last-child, table.dataTable.table-bordered td:
 
 table.dataTable.table-bordered th:first-child, table.dataTable.table-bordered td:first-child {
     border-left: 1px solid #000;
-}
+} */
 
   
 
@@ -201,14 +201,14 @@ svg.feather {
     background-color: #fff !important;
 }
 
-#KPTTable td, #KPTTable th {
+/* #KPTTable td, #KPTTable th {
     border-left: 1px solid #000;
     border-bottom: solid 1px #000;
 }
 
 #KPTTable td:last-child, #KPTTable th:last-child {
     border-right: 1px solid #000 !important; 
-}
+} */
 
 .inline-link {
     display: flex;        /* Enables flexbox */
@@ -532,4 +532,12 @@ label > .required {
 
 input[required] + label .required {
     display: inline;
+}
+
+div.dt-container div.dt-layout-row div.dt-layout-cell {
+    display: block !important;
+}
+
+.action {
+    width: 84px;
 }

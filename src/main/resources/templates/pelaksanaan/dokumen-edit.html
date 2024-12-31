@@ -13,7 +13,7 @@
             <main>
                 <div class="container-fluid px-4 py-3 mt-auto">
                     <div class="row justify-content-center">
-                        <div class="col-lg-7">
+                        <div class="col-lg-10">
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
                                 <form th:action="@{/dokumen/saveEdit}" enctype="multipart/form-data" method="post" th:object="${dokumenKerjaSama}">
                                     <input type="hidden" th:field="*{id}"/>
@@ -21,67 +21,77 @@
                                         Edit Dokumen Kerja Sama
                                     </div>
                                     <div class="card-body">
-                                        <div class="mb-3">
-                                            <label class="small mb-1" for="tahun">Tahun</label>
-                                            <input class="form-control form-control-md" th:field="*{tahun}">
+                                         <!-- display errors -->
+                                         <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+                                            <p>Ada error di dalam form:</p>
+                                            <ul>
+                                                <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="row mb-3">
+                                            <div class="col-md-2">
+                                                <label class="small mb-1" for="tahun">Tahun<span class="required">*</span></label>
+                                                <input class="form-control form-control-md" th:field="*{tahun}">
+                                            </div>
                                         </div>
 
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="bagian">Bagian<span class="required">*</span></label>
+                                                <select class="form-select form-select-sm" th:field="*{bagian}">
+                                                    <option value="">Pilih Bagian</option>
+                                                    <option th:each="bagian: ${bagianList}"
+                                                            th:value="${bagian.id}"
+                                                            th:text="${bagian.nama}"></option>
+                                                </select>    
+                                            </div>                                            
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="opd">OPD<span class="required">*</span></label>
+                                                <select class="form-select form-select-sm" th:field="*{opd}" id="opd" name="opd[]" multiple="multiple">
+                                                    <!--option value="">Pilih OPD</option-->
+                                                    <option th:each="opd: ${opdList}"
+                                                            th:value="${opd.id}"
+                                                            th:text="${opd.nama}"></option>
+                                                </select>        
+                                            </div>
+                                        </div>
 
-                                        <div class="mb-3">
-                                            <label class="small mb-1" for="bagian">Bagian</label>
-                                            <select class="form-select form-select-sm" th:field="*{bagian}">
-                                                <option value="">Pilih Bagian</option>
-                                                <option th:each="bagian: ${bagianList}"
-                                                        th:value="${bagian.id}"
-                                                        th:text="${bagian.nama}"></option>
-                                            </select>    
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="rumpunopd">Rumpun OPD</label>
+                                                <select class="form-select form-select-sm" th:field="*{rumpun_opd}" id="rumpunopd" name="rumpunopd[]" multiple="multiple">
+                                                    <!--option value="">Pilih OPD</option-->
+                                                    <option th:each="rumpun_opd: ${rumpunOpdList}"
+                                                            th:value="${rumpun_opd.id}"
+                                                            th:text="${rumpun_opd.nama}"></option>
+                                                </select>    
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="jenisMitra">Jenis Mitra<span class="required">*</span></label>
+                                                <select class="form-select form-select-md" th:field="*{jenisMitra}">
+                                                    <option value="">Pilih Jenis Mitra</option>
+                                                    <option th:each="jenisMitra: ${jenisMitraList}"
+                                                            th:value="${jenisMitra.id}"
+                                                            th:text="${jenisMitra.nama}"></option>
+                                                </select>        
+                                            </div>
                                         </div>
 
                                         <div class="mb-3">
-                                            <label class="small mb-1" for="opd">OPD</label>
-                                            <select class="form-select form-select-sm" th:field="*{opd}" id="opd" name="opd[]" multiple="multiple">
-                                                <!--option value="">Pilih OPD</option-->
-                                                <option th:each="opd: ${opdList}"
-                                                        th:value="${opd.id}"
-                                                        th:text="${opd.nama}"></option>
-                                            </select>    
-                                        </div>
-
-
-                                        <div class="mb-3">
-                                            <label class="small mb-1" for="rumpunopd">Rumpun OPD</label>
-                                            <select class="form-select form-select-sm" th:field="*{rumpun_opd}" id="rumpunopd" name="rumpunopd[]" multiple="multiple">
-                                                <!--option value="">Pilih OPD</option-->
-                                                <option th:each="rumpun_opd: ${rumpunOpdList}"
-                                                        th:value="${rumpun_opd.id}"
-                                                        th:text="${rumpun_opd.nama}"></option>
-                                            </select>    
-                                        </div>
-
-
-                                        <div class="mb-3">
-                                            <label class="small mb-1" for="jenisMitra">Jenis Mitra</label>
-                                            <select class="form-select form-select-sm" th:field="*{jenisMitra}">
-                                                <option value="">Pilih Jenis Mitra</option>
-                                                <option th:each="jenisMitra: ${jenisMitraList}"
-                                                        th:value="${jenisMitra.id}"
-                                                        th:text="${jenisMitra.nama}"></option>
-                                            </select>    
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="small mb-1" for="mitraKerjaSama">Mitra Kerja Sama</label>
+                                            <label class="small mb-1" for="mitraKerjaSama">Mitra Kerja Sama<span class="required">*</span></label>
                                             <textarea th:field="*{mitraKerjaSama}" class="form-control form-control-md" id="mitraKerjaSama"
                                                 placeholder="Masukkan Mitra Kerja Sama" spellcheck="false"></textarea>
                                         </div>
 
                                         <div class="mb-3">
                                             <label class="small mb-1" for="judulDokumenPerjanjian">Judul Dokumen
-                                                Perjanjian</label>
+                                                Perjanjian<span class="required">*</span></label>
                                             <textarea th:field="*{judulDokumenPerjanjian}" class="form-control form-control-md" id="judulDokumenPerjanjian"
                                                 placeholder="Masukkan Judul Dokumen Perjanjian" spellcheck="false"></textarea>
                                         </div>
 
-                                        <div class="row gx-3">
+                                        <div class="row mb-3">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="small mb-1" for="noDokumenPerjanjian">No Dokumen
@@ -101,7 +111,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="row gx-3">
+                                        <div class="row mb-3">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="small mb-1"
@@ -114,7 +124,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label class="small mb-1" for="jenisDokumen">Jenis Dokumen</label>
+                                                    <label class="small mb-1" for="jenisDokumen">Jenis Dokumen<span class="required">*</span></label>
                                                     <select class="form-select form-select-sm" th:field="*{jenisDokumen}">
                                                         <option value="">Pilih Jenis Dokumen</option>
                                                         <option th:each="jenisNaskah: ${jenisNaskahList}"
@@ -125,12 +135,12 @@
                                             </div>
                                         </div>
 
-                                        <div class="row gx-3">
+                                        <div class="row mb-3">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="small mb-1" for="waktuPelaksanaanDimulai">Waktu
                                                         Pelaksanaan Dimulai</label>
-                                                    <input th:field="*{waktuPelaksanaanDimulai}" class="form-control form-control-md"
+                                                    <input th:field="*{waktuPelaksanaanDimulai}" class="form-control form-control-md mb-1"
                                                         id="waktuPelaksanaanDimulai" type="date" />
                                                     <a id="copyTglPenetapan" class="btn btn-sm btn-secondary">Copy dari Tgl Penetapan</a>    
                                                 </div>
@@ -139,7 +149,7 @@
                                                 <div class="mb-3">
                                                     <label class="small mb-1" for="waktuPelaksanaanBerakhir">Waktu
                                                         Pelaksanaan Berakhir</label>
-                                                    <input th:field="*{waktuPelaksanaanBerakhir}" class="form-control form-control-md"
+                                                    <input th:field="*{waktuPelaksanaanBerakhir}" class="form-control form-control-md mb-1"
                                                         id="waktuPelaksanaanBerakhir" type="date" />
                                                         <a id="1tahun" class="btn btn-sm btn-secondary">1 tahun</a>
                                                         <a id="2tahun" class="btn btn-sm btn-secondary">2 tahun</a>
@@ -165,14 +175,14 @@
 
                                         <div class="mb-3">
                                             <label class="small mb-1" for="linkDokumenKerjaSama">link Dokumen</label>
-                                            <textarea th:field="*{linkDokumenKerjaSama}" class="form-control form-control-md" id="linkDokumenKerjaSama"
+                                            <textarea th:field="*{linkDokumenKerjaSama}" class="form-control form-control-md mb-1" id="linkDokumenKerjaSama"
                                                 placeholder="Masukkan Link Dokumen"  spellcheck="false"></textarea>
                                                 <a id="copyLink" class="btn btn-sm btn-secondary">Copy</a>
                                         </div>
 
                                         <div class="mb-3">
-                                            <label class="small mb-1" for="linkDokumenKerjaSama">link Dokumen Asli</label>
-                                            <textarea th:field="*{keterangan}" class="form-control form-control-md" id="keterangan"
+                                            <label class="small mb-1" for="keterangan">link Dokumen Asli</label>
+                                            <textarea th:field="*{keterangan}" class="form-control form-control-md mb-1" id="keterangan"
                                                 placeholder="Masukkan Link Dokumen"  spellcheck="false"></textarea>
                                                 <a id="copyLinkAsli" class="btn btn-sm btn-secondary">Copy</a>
                                         </div>
@@ -189,25 +199,25 @@
                                             </ul> 
                                         </div>
                                         <!--input type="hidden" th:field="*{dokumen}"-->
-                                        <input type="hidden" th:field="*{keterangan}">
+                                        <!--input type="hidden" th:field="*{keterangan}"-->
                                         <input type="hidden" th:field="*{keterangan2}">
 
                                         <div class="mb-3">
-                                            <label class="small mb-1" for="keterangan3">Keterangan</label>
-                                            <textarea th:field="*{keterangan3}" class="form-control form-control-md" id="linkDokumenKerjaSama"
+                                            <label class="small mb-1" for="keterangan3">Keterangan 1</label>
+                                            <textarea th:field="*{keterangan3}" class="form-control form-control-md" id="keterangan3"
                                                 placeholder="Masukkan Keterangan"  spellcheck="false"></textarea>
                                         </div>
 
                                         <div class="mb-3">
-                                            <label class="small mb-1" for="keterangan4">Keterangan</label>
-                                            <textarea th:field="*{keterangan4}" class="form-control form-control-md" id="linkDokumenKerjaSama"
+                                            <label class="small mb-1" for="keterangan4">Keterangan 2</label>
+                                            <textarea th:field="*{keterangan4}" class="form-control form-control-md" id="keterangan4"
                                                 placeholder="Masukkan Keterangan"  spellcheck="false"></textarea>
                                         </div>
 
 
                                         <div class="mb-3">
                                             <label class="small mb-1" for="uploadDokumen">Upload Dokumen</label>
-                                            <input class="form-control form-control-md col col-sm-5" id="file_1"
+                                            <input class="form-control form-control-md col col-sm-5 mb-1" id="file_1"
                                                 name="files" type="file" multiple />
                                             <a type="button" id="add-more-file" class="btn btn-sm btn-primary"
                                                 href="#">Tambah file lagi</a>
@@ -237,6 +247,15 @@
     var counter = 1;
 
     $(document).ready(function () {
+        $("#tahun").datepicker({
+            format: "yyyy",
+            viewMode: "years", 
+            minViewMode: "years",
+            autoclose: true,
+            clearBtn: true,
+            orientation: "bottom"
+        });
+
         $("#add-more-file").click(function (e) {
             var fileHtml = '<div class="mb-3" id="file_' + (counter + 1) + '">' +
                 '<label for="file" class="small mb-1">&nbsp;</label>' +

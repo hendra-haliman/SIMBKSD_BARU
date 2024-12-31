@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
+import java.time.Year;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -22,8 +23,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -61,6 +62,7 @@ import id.go.jakarta.bksd.dokumen.service.PemakaiService;
 import id.go.jakarta.bksd.dokumen.service.TableDefinitionService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/dokumen")
@@ -156,7 +158,10 @@ public class DokumenController {
 
     @GetMapping("/add")
     public String showAddDocument(Model model) {
-        model.addAttribute("dokumenKerjaSama", new DokumenKerjaSama());
+        int currentYear = Year.now().getValue();
+        DokumenKerjaSama dok = new DokumenKerjaSama();
+        dok.setTahun(currentYear);
+        model.addAttribute("dokumenKerjaSama", dok);
         List<JenisMitra> jenisMitra = jenisMitraService.findAll();
         List<JenisNaskah> jenisNaskah = jenisNaskahService.findAll();
         List<OPD> opd = opdService.findAll();
@@ -174,8 +179,25 @@ public class DokumenController {
     }
 
     @PostMapping("saveNew")
-    public String saveNewDokumen(@RequestParam("files") MultipartFile[] files, Model model,
-            @ModelAttribute("dokumenKerjaSama") DokumenKerjaSama dokumenKerjaSama, RedirectAttributes redirectAttributes) {
+    public String saveNewDokumen(@RequestParam("files") MultipartFile[] files, Model model, @Valid DokumenKerjaSama dokumenKerjaSama,
+            BindingResult result, RedirectAttributes redirectAttributes) {
+        
+        if (result.hasErrors()) {
+            List<JenisMitra> jenisMitra = jenisMitraService.findAll();
+            List<JenisNaskah> jenisNaskah = jenisNaskahService.findAll();
+            List<OPD> opd = opdService.findAll();
+            List<Bagian> bagianList = bagianService.findAll();
+            List<AsistenSekretarisDaerah> rumpunOpdList = asistenService.findAll();
+    
+            model.addAttribute("jenisMitraList", jenisMitra);
+            model.addAttribute("jenisNaskahList", jenisNaskah);
+            model.addAttribute("opdList", opd);
+            model.addAttribute("bagianList", bagianList);
+            model.addAttribute("rumpunOpdList", rumpunOpdList);
+            model.addAttribute("currentPage", "pelaksanaan");
+    
+            return "pelaksanaan/dokumen-add";
+        }        
 
         for (MultipartFile file : files) {
             if (!file.getOriginalFilename().isEmpty()) {
@@ -201,14 +223,26 @@ public class DokumenController {
 
     @PostMapping("saveEdit")
     public String saveEditDokumen(@RequestParam("files") MultipartFile[] files, Model model,
-            @ModelAttribute("dokumenKerjaSama") DokumenKerjaSama dokumenKerjaSama,
+                                  @Valid DokumenKerjaSama dokumenKerjaSama,
+                                  BindingResult result,
             RedirectAttributes redirectAttributes) {
-        // for (Dokumen doc : dokumenKerjaSama.getDokumen()) {
-        // String filename = doc.getFilename();
-        // }
-
-        // Catatan: tidak menghapus file - file yg telah diupload.
-
+        if (result.hasErrors()) {
+            List<JenisMitra> jenisMitra = jenisMitraService.findAll();
+            List<JenisNaskah> jenisNaskah = jenisNaskahService.findAll();
+            List<OPD> opd = opdService.findAll();
+            List<Bagian> bagianList = bagianService.findAll();
+            List<AsistenSekretarisDaerah> rumpunOpdList = asistenService.findAll();
+    
+            model.addAttribute("jenisMitraList", jenisMitra);
+            model.addAttribute("jenisNaskahList", jenisNaskah);
+            model.addAttribute("opdList", opd);
+            model.addAttribute("bagianList", bagianList);
+            model.addAttribute("rumpunOpdList", rumpunOpdList);
+            model.addAttribute("currentPage", "pelaksanaan");
+    
+            return "pelaksanaan/dokumen-edit";
+        }        
+        
         for (MultipartFile file : files) {
             if (!file.getOriginalFilename().isEmpty()) {
 

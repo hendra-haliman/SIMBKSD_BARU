@@ -17,6 +17,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,21 +40,29 @@ public class DokumenKerjaSama extends AuditMetaData {
     private Long id;
 
     @ManyToOne(targetEntity = Bagian.class, optional = false)
+    @NotNull(message = "Bagian harus diisi")
     private Bagian bagian;
 
     @ManyToOne(targetEntity = JenisMitra.class)
+    @NotNull(message = "Jenis Mitra harus diisi")
     private JenisMitra jenisMitra;
 
     @Column(columnDefinition = "varchar(1024)")
+    @NotNull(message = "Mitra harus diisi")
+    @NotEmpty(message = "Mitra harus diisi")
     private String mitraKerjaSama;
 
     @ManyToMany(targetEntity = OPD.class, fetch = FetchType.LAZY)
+    @NotNull(message = "OPD harus diisi")
+    @Size(min = 1, message = "OPD harus diisi")
     private List<OPD> opd;
 
     @ManyToMany(targetEntity = AsistenSekretarisDaerah.class)
     private List<AsistenSekretarisDaerah> rumpun_opd;
 
     @Column(columnDefinition = "varchar(512)")
+    @NotNull(message = "Judul Dokumen harus diisi")
+    @NotEmpty(message = "Judul Dokumen harus diisi")
     private String judulDokumenPerjanjian;
 
     @Column(columnDefinition = "varchar(512)")
@@ -58,11 +71,15 @@ public class DokumenKerjaSama extends AuditMetaData {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date tglPenetapan;
 
+    @Column(nullable = false)
+    @Min(value = 2000, message = "Tahun harus minimal 2000.")
+    @Max(value = 2100, message = "Tahun harus maximal 2100.")
     private int tahun;
 
     private String urusanPemerintahanYgDikerjakan;
 
     @ManyToOne(targetEntity = JenisNaskah.class)
+    @NotNull(message = "Jenis Dokumen harus diisi")
     private JenisNaskah jenisDokumen;
 
     @Column(columnDefinition = "varchar(512)")
@@ -103,9 +120,5 @@ public class DokumenKerjaSama extends AuditMetaData {
 
     @Column(columnDefinition = "MEDIUMTEXT")
     private String fileContent;
-
-    // public void setFileContent(String value) {
-    //     this.fileContent = new String(value.getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1);
-    // }
 
 }

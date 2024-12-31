@@ -9,5 +9,5 @@ insert into asisten_sekretaris_daerah(nama) values('Pemerintah Daerah');
 
 insert into asisten_sekretaris_daerah(nama) values('Pemerintahan Provinsi DKI Jakarta');
 
-
+insert into asisten_sekretaris_daerah(nama) values('Sekretaris Daerah');
 

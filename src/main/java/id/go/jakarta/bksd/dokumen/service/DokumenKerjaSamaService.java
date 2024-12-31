@@ -521,7 +521,7 @@ public class DokumenKerjaSamaService {
 
         JpaCriteriaQuery<DokumenKerjaSama> cq = cb.createQuery(DokumenKerjaSama.class);
         Root<DokumenKerjaSama> dokumenKerjaSama = cq.from(DokumenKerjaSama.class);
-        Join<DokumenKerjaSama, Dokumen> childrenJoin = dokumenKerjaSama.join("dokumen", JoinType.LEFT);
+        //Join<DokumenKerjaSama, Dokumen> childrenJoin = dokumenKerjaSama.join("dokumen", JoinType.LEFT);
 
         // Filter bagian, opd, jenis mitra, tgl penetapan date range & year
         Predicate bagianPredicate = dokumenKerjaSama.get("bagian").get("id").in(filterBagian);

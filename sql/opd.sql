@@ -19,6 +19,10 @@ insert into opd(singkatan, nama, asisten_id) values('', 'Biro Kepala Daerah',1);
 insert into opd(singkatan, nama, asisten_id) values('', 'Biro Umum dan Administrasi Sekretariat Daerah',1);
 
 INSERT INTO opd(nama,asisten_id) VALUES('Sekretariat Kota Administrasi Jakarta Utara',1);
+INSERT INTO opd(nama,asisten_id) VALUES('Sekretariat Kota Administrasi Jakarta Selatan',1);
+INSERT INTO opd(nama,asisten_id) VALUES('Sekretariat Kota Administrasi Jakarta Timur',1);
+INSERT INTO opd(nama,asisten_id) VALUES('Sekretariat Kota Administrasi Jakarta Barat',1);
+INSERT INTO opd(nama,asisten_id) VALUES('Sekretariat Kota Administrasi Jakarta Pusat',1);
 INSERT INTO opd(nama,asisten_id) VALUES('Walikota Jakarta Selatan',1);
 INSERT INTO opd(nama,asisten_id) VALUES('Walikota Jakarta Utara',1);
 INSERT INTO opd(nama,asisten_id) VALUES('Walikota Jakarta Pusat',1);
@@ -67,6 +71,7 @@ insert into opd(singkatan, nama, asisten_id) values('', 'Pembangunan dan Lingkun
 insert into opd(singkatan, nama, asisten_id) values('', 'Kesejahteraan Rakyat', 5);
 
 insert into opd(singkatan, nama) values('', 'Sekretariat Daerah');
+insert into opd(singkatan, nama) values('', 'Sekretaris Daerah');
 
 insert into opd(singkatan, nama) values('', 'Pj. Gubernur');
 

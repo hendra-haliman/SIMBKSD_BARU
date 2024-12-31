@@ -21,9 +21,25 @@
                                         Tambah Dokumen Kerja Sama Baru
                                     </div>
                                     <div class="card-body">
-                                        <div class="row gx-3">
+                                        <!-- display errors -->
+                                        <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+                                            <p>Ada error di dalam form:</p>
+                                            <ul>
+                                                <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-md-2">
+                                                <label class="small mb-1" for="tahun">Tahun<span class="required">*</span></label>
+                                                <input th:field="*{tahun}" class="form-control form-control-sm"
+                                                id="tahun" type="text"
+                                                placeholder="Masukan tahun" />
+                                            </div>   
+                                        </div>
+                                        <div class="row mb-3">
                                             <div class="col-md-6">
-                                                <label class="small mb-1" for="jenisMitra">Bagian</label>
+                                                <label class="small mb-1" for="bagian">Bagian<span class="required">*</span></label>
                                                 <select class="form-select form-select-sm" th:field="*{bagian}">
                                                     <option value="">Masukkan pilihan</option>
                                                     <option th:each="bagian: ${bagianList}"
@@ -31,20 +47,8 @@
                                                             th:text="${bagian.nama}"></option>
                                                 </select>
                                             </div>   
-                                        </div>
-
-                                        <div class="row gx-3">
                                             <div class="col-md-6">
-                                                <label class="small mb-1" for="jenisMitra">Jenis Mitra</label>
-                                                <select class="form-select form-select-sm" th:field="*{jenisMitra}">
-                                                    <option value="">Masukkan pilihan</option>
-                                                    <option th:each="jenisMitra: ${jenisMitraList}"
-                                                            th:value="${jenisMitra.id}"
-                                                            th:text="${jenisMitra.nama}"></option>
-                                                </select>
-                                            </div>   
-                                            <div class="col-md-6">
-                                                <label class="small mb-1" for="opd">OPD</label>
+                                                <label class="small mb-1" for="opd">OPD<span class="required">*</span></label>
                                                 <select class="form-select form-select-sm" th:field="*{opd}">
                                                     <option value="">Masukkan pilihan</option>
                                                     <option th:each="opd: ${opdList}"
@@ -54,12 +58,15 @@
                                             </div>
                                         </div>
 
-                                        <div class="row gx-3">
+                                        <div class="row mb-3">
                                             <div class="col-md-6">
-                                                <label class="small mb-1" for="tahun">Tahun</label>
-                                                <input th:field="*{tahun}" class="form-control form-control-sm"
-                                                id="tahun" type="text"
-                                                placeholder="Masukan tahun" />
+                                                <label class="small mb-1" for="jenisMitra">Jenis Mitra<span class="required">*</span></label>
+                                                <select class="form-select form-select-sm" th:field="*{jenisMitra}">
+                                                    <option value="">Masukkan pilihan</option>
+                                                    <option th:each="jenisMitra: ${jenisMitraList}"
+                                                            th:value="${jenisMitra.id}"
+                                                            th:text="${jenisMitra.nama}"></option>
+                                                </select>
                                             </div>   
                                             <div class="col-md-6">
                                                 <label class="small mb-1" for="rumpunopd">Rumun OPD</label>
@@ -73,19 +80,19 @@
                                         </div>
 
                                         <div class="mb-3">
-                                            <label class="small mb-1" for="mitraKerjaSama">Mitra Kerja Sama</label>
+                                            <label class="small mb-1" for="mitraKerjaSama">Mitra Kerja Sama<span class="required">*</span></label>
                                             <textarea th:field="*{mitraKerjaSama}" class="form-control form-control-sm" id="mitraKerjaSama"
                                                 placeholder="Masukkan Mitra Kerja Sama" spellcheck="false"></textarea>
                                         </div>
 
                                         <div class="mb-3">
                                             <label class="small mb-1" for="judulDokumenPerjanjian">Judul Dokumen
-                                                Perjanjian</label>
+                                                Perjanjian<span class="required">*</span></label>
                                             <textarea th:field="*{judulDokumenPerjanjian}" class="form-control form-control-sm" id="judulDokumenPerjanjian"
                                                 placeholder="Masukkan Judul Dokumen Perjanjian" spellcheck="false"></textarea>
                                         </div>
 
-                                        <div class="row gx-3">
+                                        <div class="row mb-3">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="small mb-1" for="noDokumenPerjanjian">No Dokumen
@@ -105,7 +112,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="row gx-3">
+                                        <div class="row mb-3">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="small mb-1"
@@ -118,7 +125,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label class="small mb-1" for="jenisDokumen">Jenis Dokumen</label>
+                                                    <label class="small mb-1" for="jenisDokumen">Jenis Dokumen<span class="required">*</span></label>
                                                     <select class="form-select form-select-sm" th:field="*{jenisDokumen}">
                                                         <option value="">Masukkan pilihan</option>
                                                         <option th:each="jenisNaskah: ${jenisNaskahList}"
@@ -129,7 +136,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="row gx-3">
+                                        <div class="row mb-3">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="small mb-1" for="waktuPelaksanaanDimulai">Waktu
@@ -156,7 +163,7 @@
 
                                         <div class="mb-3">
                                             <label class="small mb-1" for="linkDokumenKerjaSama">link Dokumen</label>
-                                            <textarea th:field="*{linkDokumenKerjaSama}" class="form-control form-control-sm" id="linkDokumenKerjaSama"
+                                            <textarea th:field="*{linkDokumenKerjaSama}" class="form-control form-control-sm mb-1" id="linkDokumenKerjaSama"
                                                 placeholder="Masukkan Link Dokumen"  spellcheck="false"/>
                                                 <a id="copyLink" class="btn btn-sm btn-secondary">Copy</a>
                                         </div>
@@ -176,7 +183,7 @@
 
                                         <div class="mb-3">
                                             <label class="small mb-1" for="uploadDokumen">Upload Dokumen</label>
-                                            <input class="form-control form-control-sm col col-sm-5" id="file_1"
+                                            <input class="form-control form-control-sm col col-sm-5 mb-1" id="file_1"
                                                 name="files" type="file" multiple />
                                             <a type="button" id="add-more-file" class="btn btn-sm btn-primary"
                                                 href="#">Tambah file lagi</a>
@@ -206,6 +213,15 @@
     var counter = 1;
 
     $(document).ready(function () {
+        $("#tahun").datepicker({
+            format: "yyyy",
+            viewMode: "years", 
+            minViewMode: "years",
+            autoclose: true,
+            clearBtn: true,
+            orientation: "bottom"
+        });
+
         $("#add-more-file").click(function (e) {
             var fileHtml = '<div class="mb-3" id="file_' + (counter + 1) + '">' +
                 '<label for="file" class="small mb-1">&nbsp;</label>' +
