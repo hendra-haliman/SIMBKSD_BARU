@@ -22,22 +22,40 @@
                                         <h4 class="fw-light my-2">Rubah Dokumen Kolaborasi</h4>
                                     </div>
                                     <div class="card-body">
+                                        <!-- display errors -->
+                                        <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+                                            <p>Ada error di dalam form:</p>
+                                            <ul>
+                                                <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+                                            </ul>
+                                        </div>
 
-                                        <div class="mb-3">
-                                            <label class="small mb-1" for="tahun">Tahun</label>
-                                            <input th:field="*{tahun}" class="form-control form-control-sm"
-                                            id="tahun" type="text"
-                                            placeholder="Masukan tahun" />
+                                        <div class="row mb-3">
+                                            <div class="col-md-3">
+                                                <label class="small mb-1" for="tahun">Tahun<span class="required">*</span></label>
+                                                <input th:field="*{tahun}" class="form-control form-control-sm"
+                                                id="tahun" type="text"
+                                                placeholder="Masukan tahun" />
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="bagian">Bagian<span class="required">*</span></label>
+                                                <select class="form-select form-select-sm" th:field="*{bagian}" name="bagian[]" multiple="multiple">
+                                                    <option value="">Masukkan pilihan</option>
+                                                    <option th:each="bagian: ${bagianList}"
+                                                    th:value="${bagian.id}"
+                                                    th:text="${bagian.nama}"></option>
+                                                </select>        
+                                            </div>
                                         </div>
 
                                         <div class="mb-3">
-                                            <label class="small mb-1" for="mitraKerjaSama">Mitra Kerja Sama</label>
+                                            <label class="small mb-1" for="mitraKerjaSama">Mitra Kerja Sama<span class="required">*</span></label>
                                             <textarea th:field="*{mitraKerjaSama}" class="form-control form-control-sm" id="mitraKerjaSama"
                                                 placeholder="Masukkan Mitra Kerja Sama" spellcheck="false"></textarea>
                                         </div>
 
                                         <div class="mb-3">
-                                            <label class="small mb-1" for="namaTempatKejadian">Nama dan Tempat Kejadian</label>
+                                            <label class="small mb-1" for="namaTempatKejadian">Nama dan Tempat Kejadian<span class="required">*</span></label>
                                             <textarea th:field="*{namaDanTempatKejadian}" class="form-control form-control-sm" id="namaTempatKejadian"
                                                 placeholder="Masukkan Nama dan Tempat Kejadian" spellcheck="false"></textarea>
                                         </div>
@@ -46,15 +64,6 @@
                                             <label class="small mb-1" for="judulDokumenPerjanjian">Waktu</label>
                                             <textarea th:field="*{waktu}" class="form-control form-control-sm" id="waktu"
                                                 placeholder="Masukkan Waktu"></textarea>
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label class="small mb-1" for="bagian">Bagian</label>
-                                            <select class="form-select form-select-sm" th:field="*{bagian}" name="bagian[]" multiple="multiple">
-                                                <option th:each="bagian: ${bagianList}"
-                                                th:value="${bagian.id}"
-                                                th:text="${bagian.nama}"></option>
-                                            </select>    
                                         </div>
 
                                         <div class="mb-3">

@@ -15,27 +15,64 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-7">
                             <div class="card shadow-lg border-0 rounded-lg mt-3">
-                                <form th:action="@{/dokumen_luar_negeri/saveNew}" enctype="multipart/form-data" method="post" th:object="${dokumen}">
+                                <form th:action="@{/dokumen_luar_negeri/saveNew}" enctype="multipart/form-data" method="post" th:object="${dokumenKerjaSamaLuarNegeri}">
 
                                     <div class="card-header justify-content-center">
                                         <h4 class="fw-light my-2">Tambah Dokumen Kerja Sama Baru</h4>
                                     </div>
                                     <div class="card-body">
+                                        <!-- display errors -->
+                                        <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+                                            <p>Ada error di dalam form:</p>
+                                            <ul>
+                                                <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+                                            </ul>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-md-2">
+                                                <label class="small mb-1" for="tahun">Tahun<span class="required">*</span></label>
+                                                <input th:field="*{tahun}" class="form-control form-control-md"
+                                                id="tahun" type="text"
+                                                placeholder="Masukan tahun" />
+                                            </div>   
+                                            <div class="col-md-3">
+                                                <label class="small mb-1" for="tgl">Tanggal</label>
+                                                <input th:field="*{tgl}" class="form-control form-control-md" id="tgl"
+                                                    type="date" />
+    
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="small mb-1" for="tglDimulai">Tanggal Dimulai</label>
+                                                    <input th:field="*{tglDimulai}" class="form-control form-control-md mb-1"
+                                                        id="tglDimulai" type="date" />
+                                                    <a id="copyTgl" class="btn btn-sm btn-secondary">Copy dari Tgl</a>    
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="small mb-1" for="tglBerakhir">Tanggal Berakhir</label>
+                                                    <input th:field="*{tglBerakhir}" class="form-control form-control-md mb-1"
+                                                        id="tglBerakhir" type="date" />
+                                                        <a id="1tahun" class="btn btn-sm btn-secondary">1 tahun</a>
+                                                        <a id="2tahun" class="btn btn-sm btn-secondary">2 tahun</a>
+                                                        <a id="3tahun" class="btn btn-sm btn-secondary">3 tahun</a>
+                                                        <a id="4tahun" class="btn btn-sm btn-secondary">4 tahun</a>
+                                                        <a id="5tahun" class="btn btn-sm btn-secondary">5 tahun</a>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <div class="mb-3">
-                                            <label class="small mb-1" for="subjek">Subjek</label>
+                                            <label class="small mb-1" for="subjek">Subjek<span class="required">*</span></label>
                                             <textarea th:field="*{subjek}" class="form-control form-control-md" id="subjek"
                                                 placeholder="Masukkan Subjek" spellcheck="false"></textarea>
                                         </div>
 
                                         <div class="mb-3">
-                                            <label class="small mb-1" for="tgl">Tanggal</label>
-                                            <input th:field="*{tgl}" class="form-control form-control-md" id="tgl"
-                                                type="date" />
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label class="small mb-1" for="judulDokumen">Judul Dokumen</label>
+                                            <label class="small mb-1" for="judulDokumen">Judul Dokumen<span class="required">*</span></label>
                                             <textarea th:field="*{judulDokumen}" class="form-control form-control-md" id="judulDokumen"
                                                 placeholder="Masukkan Judul Dokumen" spellcheck="false"></textarea>
                                         </div>
@@ -46,12 +83,12 @@
                                                 placeholder="Masukkan Keterangan" spellcheck="false"></textarea>
                                         </div>
 
-
-                                        <div class="row gx-3">
+                                        <div class="row mb-3">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label class="small mb-1" for="jenisDokumen">Jenis Dokumen</label>
+                                                    <label class="small mb-1" for="jenisDokumen">Jenis Dokumen<span class="required">*</span></label>
                                                     <select class="form-select form-select-sm" th:field="*{jenisDokumen}">
+                                                        <option value="">Masukkan pilihan</option>
                                                         <option th:each="jenisNaskah: ${jenisNaskahList}"
                                                         th:value="${jenisNaskah.id}"
                                                         th:text="${jenisNaskah.nama}"></option>
@@ -60,15 +97,13 @@
                                             </div>
                                         </div>
 
-
                                         <div class="mb-3">
                                             <label class="small mb-1" for="uploadDokumen">Upload Dokumen</label>
-                                            <input class="form-control form-control-md col col-sm-5" id="file_1"
+                                            <input class="form-control form-control-md col col-sm-5 mb-1" id="file_1"
                                                 name="files" type="file" multiple />
                                             <a type="button" id="add-more-file" class="btn btn-sm btn-primary"
                                                 href="#">Tambah file lagi</a>
                                         </div>
-
 
                                     </div>
                                     <div class="card-footer text-center">
@@ -92,6 +127,19 @@
     var counter = 1;
 
     $(document).ready(function () {
+        $("#tahun").datepicker({
+            format: "yyyy",
+            viewMode: "years", 
+            minViewMode: "years",
+            autoclose: true,
+            clearBtn: true,
+            orientation: "bottom"
+        });
+
+        $('#copyTgl').click( function() {
+            $('#tglDimulai').val($('#tgl').val());
+        })
+
         $("#add-more-file").click(function (e) {
             var fileHtml = '<div class="mb-3" id="file_' + (counter + 1) + '">' +
                 '<label for="file" class="small mb-1">&nbsp;</label>' +
@@ -100,6 +148,53 @@
             $("#file_" + counter).after(fileHtml);
             counter = counter + 1;
         });
+
+        $('#1tahun').click( function() {
+            var dimulai = new Date($('#tglDimulai').val());
+            var satuTahun = new Date(dimulai.setFullYear(dimulai.getFullYear() + 1));
+            //satuTahun.setDate(satuTahun.getDate() - 1);
+            var formattedDate = satuTahun.toISOString().split('T')[0];
+
+            $('#tglBerakhir').val(formattedDate);
+        })
+
+        $('#2tahun').click( function() {
+            var dimulai = new Date($('#tglDimulai').val());
+            var satuTahun = new Date(dimulai.setFullYear(dimulai.getFullYear() + 2));
+            //satuTahun.setDate(satuTahun.getDate() - 1);
+            var formattedDate = satuTahun.toISOString().split('T')[0];
+
+            $('#tglBerakhir').val(formattedDate);
+        })
+
+        $('#3tahun').click( function() {
+            var dimulai = new Date($('#tglDimulai').val());
+            var satuTahun = new Date(dimulai.setFullYear(dimulai.getFullYear() + 3));
+            //satuTahun.setDate(satuTahun.getDate() - 1);
+            var formattedDate = satuTahun.toISOString().split('T')[0];
+
+            $('#tglBerakhir').val(formattedDate);
+        })
+
+        $('#4tahun').click( function() {
+            var dimulai = new Date($('#tglDimulai').val());
+            var satuTahun = new Date(dimulai.setFullYear(dimulai.getFullYear() + 4));
+            //satuTahun.setDate(satuTahun.getDate() - 1);
+            var formattedDate = satuTahun.toISOString().split('T')[0];
+
+            $('#tglBerakhir').val(formattedDate);
+        })
+
+        $('#5tahun').click( function() {
+            var dimulai = new Date($('#tglDimulai').val());
+            var satuTahun = new Date(dimulai.setFullYear(dimulai.getFullYear() + 5));
+            //satuTahun.setDate(satuTahun.getDate() - 1);
+            var formattedDate = satuTahun.toISOString().split('T')[0];
+
+            $('#tglBerakhir').val(formattedDate);
+        })
+
+
     });
 </script>
 

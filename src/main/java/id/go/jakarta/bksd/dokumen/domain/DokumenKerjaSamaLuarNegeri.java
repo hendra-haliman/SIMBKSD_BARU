@@ -16,6 +16,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,11 +35,16 @@ public class DokumenKerjaSamaLuarNegeri  extends AuditMetaData {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull(message = "Subjek harus diisi")
+    @NotEmpty(message = "Subjek harus diisi")
     private String subjek;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date tgl;
-
+    
+    @Column(nullable = false)
+    @Min(value = 2000, message = "Tahun harus minimal 2000.")
+    @Max(value = 2100, message = "Tahun harus maximal 2100.")
     private int tahun;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -45,6 +54,8 @@ public class DokumenKerjaSamaLuarNegeri  extends AuditMetaData {
     private Date tglBerakhir;
 
     @Column(columnDefinition = "varchar(2048)")
+    @NotNull(message = "Judul harus diisi")
+    @NotEmpty(message = "Judul harus diisi")
     private String judulDokumen;
 
     @Column(columnDefinition = "varchar(2048)")
@@ -59,6 +70,7 @@ public class DokumenKerjaSamaLuarNegeri  extends AuditMetaData {
     private boolean deleted;
 
     @ManyToOne(targetEntity = JenisNaskahLuarNegeri.class)
+    @NotNull(message = "Jenis Dokumen harus diisi")
     private JenisNaskahLuarNegeri jenisDokumen;
 
     @OneToMany(targetEntity = DokumenLuarNegeri.class, cascade = CascadeType.MERGE, fetch = FetchType.EAGER)

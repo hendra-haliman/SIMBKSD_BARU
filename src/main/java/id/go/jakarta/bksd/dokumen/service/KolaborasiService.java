@@ -100,9 +100,11 @@ public class KolaborasiService {
             tahunPredicate = cb.equal(kolaborasi.get("tahun"), tahun);
         }
 
+        Predicate deletedPredicate = cb.equal(kolaborasi.get("deleted"), false);
+
         Predicate searchPredicate = cb.like(kolaborasi.get("namaDanTempatKejadian"), searchTerm);
 
-        JpaPredicate predicate = cb.and(tahunPredicate, searchPredicate);
+        JpaPredicate predicate = cb.and(tahunPredicate, searchPredicate, deletedPredicate);
 
         cq.where(predicate);
 

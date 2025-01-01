@@ -184,7 +184,7 @@ public class DokumenKerjaSamaLuarNegeriService {
         dto.setKeterangan(dokumenKerjaSama.getKeterangan());
 
         if (canViewDocLink) {
-            dto.setLinkDokumen("N/A");
+            dto.setLinkDokumen(dokumenKerjaSama.getLinkDokumen());
             dto.setDokumen(dokumenKerjaSama.getDokumen());
         } else {
             dto.setLinkDokumen("N/A");
@@ -203,13 +203,13 @@ public class DokumenKerjaSamaLuarNegeriService {
         boolean canViewDocLink = pemakaiService.hasAuthority(PemakaiService.AUTH_CAN_VIEW_DOC_LINK);
 
         DokumenKerjaSamaLuarNegeri dkln = dklno.get();
-        dkln.setLinkDokumen("N/A");
 
         if (canViewDocLink) {
             return Optional.of(dkln);
         }
 
         dkln.setDokumen(new ArrayList<>());
+        dkln.setLinkDokumen("N/A");
 
         return Optional.of(dkln);
     }

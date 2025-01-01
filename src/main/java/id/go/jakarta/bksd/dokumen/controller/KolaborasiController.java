@@ -16,6 +16,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,6 +42,7 @@ import id.go.jakarta.bksd.dokumen.service.KolaborasiService;
 import id.go.jakarta.bksd.dokumen.service.PemakaiService;
 import id.go.jakarta.bksd.dokumen.service.TableDefinitionService;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/kolaborasi")
@@ -125,7 +127,13 @@ public class KolaborasiController {
 
     @PostMapping("/saveNew")
     public String saveNewDokumen(Model model,
-            @ModelAttribute("kolaborasi") Kolaborasi kolaborasi, RedirectAttributes redirectAttributes) {
+            @Valid Kolaborasi kolaborasi, BindingResult result, RedirectAttributes redirectAttributes) {
+        if (result.hasErrors()) {
+            List<Bagian> bagianList = bagianService.findAll();
+            model.addAttribute("bagianList", bagianList);
+            model.addAttribute("currentPage", "kolaborasi");
+            return "kolaborasi/kolaborasi-add";
+        }        
 
         kolaborasiService.save(kolaborasi);
         redirectAttributes.addFlashAttribute("success_msg", "Dokumen berhasil disimpan.");
@@ -160,8 +168,15 @@ public class KolaborasiController {
 
     @PostMapping("saveEdit")
     public String saveEditDokumen(Model model,
-            @ModelAttribute("kolaborasi") Kolaborasi kolaborasi,
+            @Valid Kolaborasi kolaborasi, BindingResult result,
             RedirectAttributes redirectAttributes) {
+        if (result.hasErrors()){
+            List<Bagian> bagianList = bagianService.findAll();
+
+            model.addAttribute("bagianList", bagianList);
+            model.addAttribute("currentPage", "kolaborasi");
+            return "kolaborasi/kolaborasi-edit";
+        }
 
         kolaborasiService.save(kolaborasi);
         redirectAttributes.addFlashAttribute("success_msg", "Dokumen berhasil disimpan.");

@@ -2,6 +2,7 @@ package id.go.jakarta.bksd.dokumen.controller;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.time.Year;
 import java.util.List;
 import java.util.Set;
 
@@ -13,6 +14,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,6 +42,7 @@ import id.go.jakarta.bksd.dokumen.service.JenisNaskahLuarNegeriService;
 import id.go.jakarta.bksd.dokumen.service.PemakaiService;
 import id.go.jakarta.bksd.dokumen.service.TableDefinitionService;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/dokumen_luar_negeri")
@@ -87,7 +90,7 @@ public class DokumenLuarNegeriController {
         List<JenisNaskahLuarNegeri> jenisNaskahList = jenisNaskahLuarNegeriService.findAll();
 
         model.addAttribute("jenisNaskahList", jenisNaskahList);
-        model.addAttribute("dokumenLN", dok);
+        model.addAttribute("dokumenKerjaSamaLuarNegeri", dok);
         model.addAttribute("currentPage", "pelaksanaanLN");
 
         return "pelaksanaanLN/dokumenLN-edit";
@@ -107,7 +110,10 @@ public class DokumenLuarNegeriController {
 
     @GetMapping("/add")
     public String showAddDocument(Model model) {
-        model.addAttribute("dokumen", new DokumenKerjaSamaLuarNegeri());
+        int currentYear = Year.now().getValue();
+        DokumenKerjaSamaLuarNegeri dok = new DokumenKerjaSamaLuarNegeri();
+        dok.setTahun(currentYear);
+        model.addAttribute("dokumenKerjaSamaLuarNegeri", dok);
         List<JenisNaskahLuarNegeri> jenisNaskah = jenisNaskahLuarNegeriService.findAll();
         model.addAttribute("jenisNaskahList", jenisNaskah);
         model.addAttribute("currentPage", "pelaksanaanLN");
@@ -116,9 +122,16 @@ public class DokumenLuarNegeriController {
     }
 
     @PostMapping("saveNew")
-    public String saveNewDokumen(@RequestParam("files") MultipartFile[] files, Model model,
-            @ModelAttribute("dokumen") DokumenKerjaSamaLuarNegeri dokumenKerjaSama,
+    public String saveNewDokumen(@RequestParam("files") MultipartFile[] files, Model model, @Valid DokumenKerjaSamaLuarNegeri dokumenKerjaSamaLuarNegeri, BindingResult result,
             RedirectAttributes redirectAttributes) {
+        if (result.hasErrors()) {
+            List<JenisNaskahLuarNegeri> jenisNaskah = jenisNaskahLuarNegeriService.findAll();
+            model.addAttribute("jenisNaskahList", jenisNaskah);
+            model.addAttribute("currentPage", "pelaksanaanLN");
+    
+            return "pelaksanaanLN/dokumenLN-add";
+        }        
+
 
         for (MultipartFile file : files) {
             if (!file.getOriginalFilename().isEmpty()) {
@@ -128,7 +141,7 @@ public class DokumenLuarNegeriController {
                     DokumenLuarNegeri dokumen = new DokumenLuarNegeri();
                     dokumen.setFilename(file.getOriginalFilename());
 
-                    dokumenKerjaSama.getDokumen().add(dokumen);
+                    dokumenKerjaSamaLuarNegeri.getDokumen().add(dokumen);
 
                 } catch (IOException ex) {
                     ex.printStackTrace();
@@ -136,7 +149,7 @@ public class DokumenLuarNegeriController {
             }
         }
 
-        dokumenKerjaSamaLuarNegeriService.save(dokumenKerjaSama);
+        dokumenKerjaSamaLuarNegeriService.save(dokumenKerjaSamaLuarNegeri);
         redirectAttributes.addFlashAttribute("success_msg", "Dokumen berhasil disimpan.");
 
         return "redirect:/pelaksanaan_luar_negeri";
@@ -144,13 +157,15 @@ public class DokumenLuarNegeriController {
 
     @PostMapping("saveEdit")
     public String saveEditDokumen(@RequestParam("files") MultipartFile[] files, Model model,
-            @ModelAttribute("dokumenLN") DokumenKerjaSamaLuarNegeri dokumenKerjaSama,
+            @Valid DokumenKerjaSamaLuarNegeri dokumenKerjaSamaLuarNegeri, BindingResult result,
             RedirectAttributes redirectAttributes) {
-        // for (Dokumen doc : dokumenKerjaSama.getDokumen()) {
-        // String filename = doc.getFilename();
-        // }
-
-        // Catatan: tidak menghapus file - file yg telah diupload.
+        if (result.hasErrors()) {
+            List<JenisNaskahLuarNegeri> jenisNaskah = jenisNaskahLuarNegeriService.findAll();
+            model.addAttribute("jenisNaskahList", jenisNaskah);
+            model.addAttribute("currentPage", "pelaksanaanLN");
+    
+            return "pelaksanaanLN/dokumenLN-edit";
+        }                
 
         for (MultipartFile file : files) {
             if (!file.getOriginalFilename().isEmpty()) {
@@ -160,7 +175,7 @@ public class DokumenLuarNegeriController {
                     DokumenLuarNegeri dokumen = new DokumenLuarNegeri();
                     dokumen.setFilename(file.getOriginalFilename());
 
-                    dokumenKerjaSama.getDokumen().add(dokumen);
+                    dokumenKerjaSamaLuarNegeri.getDokumen().add(dokumen);
 
                 } catch (IOException ex) {
                     ex.printStackTrace();
@@ -168,7 +183,7 @@ public class DokumenLuarNegeriController {
             }
         }
 
-        dokumenKerjaSamaLuarNegeriService.save(dokumenKerjaSama);
+        dokumenKerjaSamaLuarNegeriService.save(dokumenKerjaSamaLuarNegeri);
         redirectAttributes.addFlashAttribute("success_msg", "Dokumen berhasil disimpan.");
 
         return "redirect:/pelaksanaan_luar_negeri";

@@ -15,19 +15,27 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-7">
                             <div class="card shadow-lg border-0 rounded-lg mt-3">
-                                <form th:action="@{/dokumen_luar_negeri/saveEdit}" enctype="multipart/form-data" method="post" th:object="${dokumenLN}">
+                                <form th:action="@{/dokumen_luar_negeri/saveEdit}" enctype="multipart/form-data" method="post" th:object="${dokumenKerjaSamaLuarNegeri}">
                                     <input type="hidden" th:field="*{id}"/>
                                     <div class="card-header justify-content-center">
                                         <h4 class="fw-light my-2">Edit Dokumen Kerja Sama Luar Negeri</h4>
                                     </div>
                                     <div class="card-body">
+                                        <!-- display errors -->
+                                        <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+                                            <p>Ada error di dalam form:</p>
+                                            <ul>
+                                                <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+                                            </ul>
+                                        </div>
+
                                         <div class="mb-3">
-                                            <label class="small mb-1" for="tahun">Tahun</label>
+                                            <label class="small mb-1" for="tahun">Tahun<span class="required">*</span></label>
                                             <input class="form-control form-control-md" th:field="*{tahun}">
                                         </div>
 
                                         <div class="mb-3">
-                                            <label class="small mb-1" for="subjek">Subjek</label>
+                                            <label class="small mb-1" for="subjek">Subjek<span class="required">*</span></label>
                                             <textarea th:field="*{subjek}" class="form-control form-control-md" id="subjek"
                                                 placeholder="Masukkan Subjek" spellcheck="false"></textarea>
                                         </div>
@@ -38,11 +46,11 @@
                                                 type="date" />
                                         </div>
 
-                                        <div class="row gx-3">
+                                        <div class="row mb-3">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="small mb-1" for="tglDimulai">Tanggal Dimulai</label>
-                                                    <input th:field="*{tglDimulai}" class="form-control form-control-md"
+                                                    <input th:field="*{tglDimulai}" class="form-control form-control-md mb-1"
                                                         id="tglDimulai" type="date" />
                                                     <a id="copyTgl" class="btn btn-sm btn-secondary">Copy dari Tgl</a>    
                                                 </div>
@@ -50,7 +58,7 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="small mb-1" for="tglBerakhir">Tanggal Berakhir</label>
-                                                    <input th:field="*{tglBerakhir}" class="form-control form-control-md"
+                                                    <input th:field="*{tglBerakhir}" class="form-control form-control-md mb-1"
                                                         id="tglBerakhir" type="date" />
                                                         <a id="1tahun" class="btn btn-sm btn-secondary">1 tahun</a>
                                                         <a id="2tahun" class="btn btn-sm btn-secondary">2 tahun</a>
@@ -73,11 +81,10 @@
                                                 placeholder="Masukkan Keterangan" spellcheck="false"></textarea>
                                         </div>
 
-
-                                        <div class="row gx-3">
+                                        <div class="row mb-3">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label class="small mb-1" for="jenisDokumen">Jenis Dokumen</label>
+                                                    <label class="small mb-1" for="jenisDokumen">Jenis Dokumen<span class="required">*</span></label>
                                                     <select class="form-select form-select-md" th:field="*{jenisDokumen}">
                                                         <option value="">Masukkan Pilihan</option>
                                                         <option th:each="jenisNaskah: ${jenisNaskahList}"
@@ -108,12 +115,11 @@
 
                                         <div class="mb-3">
                                             <label class="small mb-1" for="uploadDokumen">Upload Dokumen</label>
-                                            <input class="form-control form-control-md col col-sm-5" id="file_1"
+                                            <input class="form-control form-control-md col col-sm-5 mb-1" id="file_1"
                                                 name="files" type="file" multiple />
                                             <a type="button" id="add-more-file" class="btn btn-sm btn-primary"
                                                 href="#">Tambah file lagi</a>
                                         </div>
-
 
                                     </div>
                                     <div class="card-footer text-center">
