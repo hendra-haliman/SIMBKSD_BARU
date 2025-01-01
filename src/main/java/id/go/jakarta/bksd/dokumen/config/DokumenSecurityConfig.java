@@ -28,9 +28,6 @@ import id.go.jakarta.bksd.dokumen.service.PemakaiService;
 @Configuration
 @EnableWebSecurity
 public class DokumenSecurityConfig {
-    // @Autowired
-    // private PemakaiService pemakaiService;
-
     @Value("${server.ssl.redirect-port}")
     private int redirectPort;
 
@@ -72,6 +69,7 @@ public class DokumenSecurityConfig {
                                         "resetPassword3",
                                         "/processForgotPassword",
                                         "/testSendMail",
+                                        "/docs", "/docs/**",
                                         "/error", "/css/**", "/static/css/**", "/static/css/fonts/**")
                                 .permitAll()
 

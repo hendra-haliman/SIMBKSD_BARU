@@ -67,17 +67,6 @@
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-test</artifactId>
-			<scope>test</scope>
-		</dependency>
 
 		<dependency>
 			<groupId>org.modelmapper</groupId>
@@ -204,11 +193,6 @@
 			<version>1.2.2</version>
 		</dependency>
 
-		<!-- <dependency>
-			<groupId>org.jacoco</groupId>
-			<artifactId>jacoco-maven-plugin</artifactId>
-			<version>0.8.12</version>
-		</dependency> -->
 	</dependencies>
 
 	<dependencyManagement>
@@ -247,17 +231,6 @@
 							<Profile-Info>${build.profile.id}</Profile-Info>
 						</manifestEntries>
 					</archive>
-					<webResources>
-						<resource>
-							<!-- Ini adalah Path untuk CHANGELOG.md file dalam folder project-->
-							<directory>${project.basedir}</directory>
-							<includes>
-								<include>CHANGELOG.md</include>
-							</includes>
-							<!-- Target path dalam WAR -->
-							<targetPath>docs</targetPath>
-						</resource>
-					</webResources>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -273,63 +246,6 @@
 				</configuration>
 			</plugin>
 
-			<!-- Untuk Test Coverage -->
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.12</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>report</id>
-						<phase>test</phase>
-						<goals>
-							<goal>report</goal>
-						</goals>
-						<configuration>
-							<formats>
-								<format>XML</format>
-								<format>HTML</format>
-							</formats>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.5.0</version>
-				<configuration>
-					<excludes>
-						<exclude>**/e2e/**</exclude>
-					</excludes>
-				</configuration>
-			</plugin>
-
-			<!--Untuk e2e test-->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>3.5.0</version>
-				<configuration>
-					<includes>
-						<include>**/e2e/**</include>
-					</includes>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>integration-test</goal>
-							<goal>verify</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 
 		<resources>
