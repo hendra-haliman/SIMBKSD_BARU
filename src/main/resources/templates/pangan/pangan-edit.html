@@ -15,7 +15,7 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-7">
                             <div class="card shadow-lg border-0 rounded-lg mt-3">
-                                <form th:action="@{/pangan/saveEdit}" method="post" th:object="${pangan}">
+                                <form th:action="@{/pangan/saveEdit}" method="post" th:object="${kerjaSamaPenyediaanPangan}">
                                     <input type="hidden" th:field="*{id}">
 
                                     <div class="card-header justify-content-center">
@@ -27,7 +27,7 @@
                                             <label class="small mb-1" for="tahun">Tahun</label>
                                             <input th:field="*{tahun}" class="form-control form-control-sm"
                                             id="tahun" type="text"
-                                            placeholder="Masukan tahun" />
+                                            placeholder="Masukan tahun" readonly/>
                                         </div>
 
                                         <div class="mb-3">
@@ -74,7 +74,7 @@
                                         </div>
 
                                         <div class="mb-3">
-                                            <label class="small mb-1" for="jenis">Jenis</label>
+                                            <label class="small mb-1" for="jenis">Jenis<span class="required">*</span></label>
                                             <select class="form-select form-select-sm" th:field="*{jenis}" name="jenis[]" multiple="multiple">
                                                 <option th:each="jenis: ${jenisList}"
                                                 th:value="${jenis.id}"
@@ -130,7 +130,7 @@
                 viewMode: "years", 
                 minViewMode: "years",
                 autoclose: true,
-                clearBtn: true
+                clearBtn: false
             })
 
     });

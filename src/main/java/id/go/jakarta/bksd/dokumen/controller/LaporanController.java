@@ -2,6 +2,7 @@ package id.go.jakarta.bksd.dokumen.controller;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.time.Year;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
@@ -34,9 +35,12 @@ public class LaporanController {
 
     @GetMapping("")
     public String laporanHome(Model model) {
+        Integer currentYear = Integer.valueOf(Year.now().getValue());
+
         List<AsistenSekretarisDaerah> asistenList = asistenSekretarisDaerahService.findAll();
         model.addAttribute("asistenList", asistenList);
         model.addAttribute("currentPage", "laporan");
+        model.addAttribute("currentYear", currentYear);
         return "laporan";
     }
 

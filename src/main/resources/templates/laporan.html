@@ -39,7 +39,7 @@
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div class="me-3">
-                                                    <div class="form-control-md ps-3">Tahun: <input id="rekapYear" name="tahun" value=""></div>
+                                                    <div class="form-control-md ps-3">Tahun: <input id="rekapYear" name="tahun" readonly></div>
                                                 </div>
                                                 <i class="feather-xl text-white-50" data-feather="calendar"></i>
                                             </div>
@@ -60,13 +60,13 @@
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="me-3">
-                                                <div class="form-control-md ps-3">Asisten: 
+                                                <!--div class="form-control-md ps-3">Asisten: 
                                                     <select id="filterAsisten" class="js-example-basic-multiple" name="asisten[]" multiple="multiple">
                                                         <option th:each="asisten : ${asistenList}"
                                                                 th:value="${asisten.id}"
                                                                 th:text="${asisten.nama}"></option>
                                                     </select>
-                                                </div>
+                                                </div-->
                                             </div>
                                             <i class="feather-xl text-white-50" data-feather="calendar"></i>
                                         </div>
@@ -103,7 +103,7 @@
                 viewMode: "years", 
                 minViewMode: "years",
                 autoclose: true,
-                clearBtn: true,
+                clearBtn: false,
                 orientation: "bottom right"
             })
 

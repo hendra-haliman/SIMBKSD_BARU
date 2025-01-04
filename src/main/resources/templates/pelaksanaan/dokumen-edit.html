@@ -32,7 +32,7 @@
                                         <div class="row mb-3">
                                             <div class="col-md-2">
                                                 <label class="small mb-1" for="tahun">Tahun<span class="required">*</span></label>
-                                                <input class="form-control form-control-md" th:field="*{tahun}">
+                                                <input class="form-control form-control-md" th:field="*{tahun}" readonly>
                                             </div>
                                         </div>
 
@@ -252,7 +252,7 @@
             viewMode: "years", 
             minViewMode: "years",
             autoclose: true,
-            clearBtn: true,
+            clearBtn: false,
             orientation: "bottom"
         });
 

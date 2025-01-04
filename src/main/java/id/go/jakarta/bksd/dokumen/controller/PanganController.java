@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,6 +45,7 @@ import id.go.jakarta.bksd.dokumen.service.pangan.KerjaSamaPenyediaanPanganServic
 import id.go.jakarta.bksd.dokumen.service.pangan.KotaKabupatenService;
 import id.go.jakarta.bksd.dokumen.service.pangan.PemdaService;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/pangan")
@@ -136,7 +138,7 @@ public class PanganController {
         List<Jenis> jenisList = jenisService.findAll();
         List<Kelompok> kelompokList = kelompokService.findAll();
 
-        model.addAttribute("pangan", pangan);
+        model.addAttribute("kerjaSamaPenyediaanPangan", pangan);
         model.addAttribute("pemdaList", pemdaList);
         model.addAttribute("bumdList", bumdList);
         model.addAttribute("kotaKabupatenList", kotaKabupatenList);
@@ -150,9 +152,26 @@ public class PanganController {
 
     @PostMapping("/saveNew")
     public String saveNewDokumen(Model model,
-            @ModelAttribute("pangan") KerjaSamaPenyediaanPangan pangan, RedirectAttributes redirectAttributes) {
+            @Valid KerjaSamaPenyediaanPangan kerjaSamaPenyediaanPangan, BindingResult result, RedirectAttributes redirectAttributes) {
+        if (result.hasErrors()) {
+            List<Pemda> pemdaList = pemdaService.findAll();
+            List<BUMD> bumdList = bumdService.findAll();
+            List<KotaKabupaten> kotaKabupatenList = kotaKabupatenService.findAll();
+            List<Jenis> jenisList = jenisService.findAll();
+            List<Kelompok> kelompokList = kelompokService.findAll();
+    
+            model.addAttribute("pemdaList", pemdaList);
+            model.addAttribute("bumdList", bumdList);
+            model.addAttribute("kotaKabupatenList", kotaKabupatenList);
+            model.addAttribute("jenisList", jenisList);
+            model.addAttribute("kelompokList", kelompokList);
+    
+            model.addAttribute("currentPage", "pangan");
 
-        kerjaSamaPenyediaanPanganService.save(pangan);
+            return "pangan/pangan-add";
+        }
+
+        kerjaSamaPenyediaanPanganService.save(kerjaSamaPenyediaanPangan);
         redirectAttributes.addFlashAttribute("success_msg", "Dokumen berhasil disimpan.");
 
         return "redirect:/pangan";
@@ -180,7 +199,7 @@ public class PanganController {
         List<Jenis> jenisList = jenisService.findAll();
         List<Kelompok> kelompokList = kelompokService.findAll();
 
-        model.addAttribute("pangan", pangan);
+        model.addAttribute("kerjaSamaPenyediaanPangan", pangan);
         model.addAttribute("pemdaList", pemdaList);
         model.addAttribute("bumdList", bumdList);
         model.addAttribute("kotaKabupatenList", kotaKabupatenList);
@@ -194,10 +213,27 @@ public class PanganController {
 
     @PostMapping("saveEdit")
     public String saveEditDokumen(Model model,
-            @ModelAttribute("pangan") KerjaSamaPenyediaanPangan pangan,
+            @Valid KerjaSamaPenyediaanPangan kerjaSamaPenyediaanPangan, BindingResult result,
             RedirectAttributes redirectAttributes) {
-
-        kerjaSamaPenyediaanPanganService.save(pangan);
+                if (result.hasErrors()) {
+                    List<Pemda> pemdaList = pemdaService.findAll();
+                    List<BUMD> bumdList = bumdService.findAll();
+                    List<KotaKabupaten> kotaKabupatenList = kotaKabupatenService.findAll();
+                    List<Jenis> jenisList = jenisService.findAll();
+                    List<Kelompok> kelompokList = kelompokService.findAll();
+            
+                    model.addAttribute("pemdaList", pemdaList);
+                    model.addAttribute("bumdList", bumdList);
+                    model.addAttribute("kotaKabupatenList", kotaKabupatenList);
+                    model.addAttribute("jenisList", jenisList);
+                    model.addAttribute("kelompokList", kelompokList);
+            
+                    model.addAttribute("currentPage", "pangan");
+        
+                    return "pangan/pangan-edit";
+                }
+        
+        kerjaSamaPenyediaanPanganService.save(kerjaSamaPenyediaanPangan);
         redirectAttributes.addFlashAttribute("success_msg", "Dokumen berhasil disimpan.");
 
         return "redirect:/pangan";

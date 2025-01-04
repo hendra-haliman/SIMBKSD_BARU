@@ -33,7 +33,7 @@
                                                 <label class="small mb-1" for="tahun">Tahun<span class="required">*</span></label>
                                                 <input th:field="*{tahun}" class="form-control form-control-md"
                                                 id="tahun" type="text"
-                                                placeholder="Masukan tahun" />
+                                                placeholder="Masukan tahun" readonly/>
                                             </div>   
                                             <div class="col-md-3">
                                                 <label class="small mb-1" for="tgl">Tanggal</label>
@@ -132,7 +132,7 @@
             viewMode: "years", 
             minViewMode: "years",
             autoclose: true,
-            clearBtn: true,
+            clearBtn: false,
             orientation: "bottom"
         });
 

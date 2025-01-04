@@ -26,7 +26,7 @@
                                                 <label class="small mb-1" for="tahun">Tahun</label>
                                                 <input th:field="*{tahun}" class="form-control form-control-sm"
                                                     id="tahun" type="text"
-                                                    placeholder="Masukan tahun" />    
+                                                    placeholder="Masukan tahun" readonly/>    
                                             </div>
                                             <div class="col-md-11">
                                                 <label class="small mb-1" for="objek">Objek</label>
@@ -104,6 +104,20 @@
     </div>
 
     <div th:replace="~{fragments/general.html :: script}"></div>
+    <script>
+    $(document).ready(function () {
+        $("#tahun").datepicker({
+            format: "yyyy",
+            viewMode: "years", 
+            minViewMode: "years",
+            autoclose: true,
+            clearBtn: false,
+            orientation: "bottom"
+        });
+
+    });
+    </script>
+
 </body>
 
 </html>

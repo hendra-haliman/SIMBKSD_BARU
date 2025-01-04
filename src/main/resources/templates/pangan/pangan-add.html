@@ -15,41 +15,47 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-7">
                             <div class="card shadow-lg border-0 rounded-lg mt-3">
-                                <form th:action="@{/pangan/saveNew}" method="post" th:object="${pangan}">
+                                <form th:action="@{/pangan/saveNew}" method="post" th:object="${kerjaSamaPenyediaanPangan}">
 
                                     <div class="card-header justify-content-center">
                                         <h4 class="fw-light my-2">Tambah Dokumen Penyediaan Pangan Baru</h4>
                                     </div>
                                     <div class="card-body">
+                                        <!-- display errors -->
+                                        <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+                                            <p>Ada error di dalam form:</p>
+                                            <ul>
+                                                <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+                                            </ul>
+                                        </div>
 
-                                        <div class="mb-3">
-                                            <label class="small mb-1" for="tahun">Tahun</label>
-                                            <input th:field="*{tahun}" class="form-control form-control-sm"
-                                            id="tahun" type="text"
-                                            placeholder="Masukan tahun" />
+                                        <div class="row mb-3">
+                                            <div class="col-md-3">
+                                                <label class="small mb-1" for="tahun">Tahun<span class="required">*</span></label>
+                                                <input th:field="*{tahun}" class="form-control form-control-sm"
+                                                id="tahun" type="text"
+                                                placeholder="Masukan tahun" readonly/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="small mb-1" for="kelompok">Kelompok<span class="required">*</span></label>
+                                                <select class="form-select form-select-sm" th:field="*{kelompok}" name="kelompok[]" multiple="multiple">
+                                                    <option th:each="kelompok: ${kelompokList}"
+                                                    th:value="${kelompok.id}"
+                                                    th:text="${kelompok.nama}"></option>
+                                                </select>        
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label class="small mb-1" for="pemda">Pemda<span class="required">*</span></label>
+                                                <select class="form-select form-select-sm" th:field="*{pemda}" name="pemda[]" multiple="multiple">
+                                                    <option th:each="pemda: ${pemdaList}"
+                                                    th:value="${pemda.id}"
+                                                    th:text="${pemda.nama}"></option>
+                                                </select>        
+                                            </div>
                                         </div>
 
                                         <div class="mb-3">
-                                            <label class="small mb-1" for="kelompok">Kelompok</label>
-                                            <select class="form-select form-select-sm" th:field="*{kelompok}" name="kelompok[]" multiple="multiple">
-                                                <option th:each="kelompok: ${kelompokList}"
-                                                th:value="${kelompok.id}"
-                                                th:text="${kelompok.nama}"></option>
-                                            </select>    
-                                        </div>
-
-
-                                        <div class="mb-3">
-                                            <label class="small mb-1" for="pemda">Pemda</label>
-                                            <select class="form-select form-select-sm" th:field="*{pemda}" name="pemda[]" multiple="multiple">
-                                                <option th:each="pemda: ${pemdaList}"
-                                                th:value="${pemda.id}"
-                                                th:text="${pemda.nama}"></option>
-                                            </select>    
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label class="small mb-1" for="bumd">BUMD</label>
+                                            <label class="small mb-1" for="bumd">BUMD<span class="required">*</span></label>
                                             <select class="form-select form-select-sm" th:field="*{bumd}" name="bumd[]" multiple="multiple">
                                                 <option th:each="bumd: ${bumdList}"
                                                 th:value="${bumd.id}"
@@ -73,7 +79,7 @@
                                         </div>
 
                                         <div class="mb-3">
-                                            <label class="small mb-1" for="jenis">Jenis</label>
+                                            <label class="small mb-1" for="jenis">Jenis<span class="required">*</span></label>
                                             <select class="form-select form-select-sm" th:field="*{jenis}" name="jenis[]" multiple="multiple">
                                                 <option th:each="jenis: ${jenisList}"
                                                 th:value="${jenis.id}"
@@ -129,7 +135,7 @@
                 viewMode: "years", 
                 minViewMode: "years",
                 autoclose: true,
-                clearBtn: true
+                clearBtn: false
             })
 
     });

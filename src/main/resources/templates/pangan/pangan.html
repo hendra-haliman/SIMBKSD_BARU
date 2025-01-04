@@ -27,7 +27,7 @@
                     th:replace="~{fragments/content-header.html :: content-header('Kerja Sama Penyediaan Pangan','','')}">
                 </header>
                 <!-- Main page content-->
-                <div class="container-fluid px-4 mt-n10">
+                <div class="container-fluid px-4 mt-3">
                     <div th:if="${success_msg} != null" th:text="${success_msg}" class="alert alert-warning mt-3" role="alert">
                     </div>
 
@@ -42,7 +42,7 @@
                                         <label for="yearpicker" class="form-text ml-3">Tahun</label> 
                                     </div>
                                     <div class="col col-md-2">
-                                        <input type="text" id="yearpicker" class="form-control form-control-sm" style="width:100px;"/>                                        
+                                        <input type="text" id="yearpicker" class="form-control form-control-sm" style="width:100px;" readonly/>                                        
                                     </div>
                                     <div class="col col-md-1">
                                         <label for="filterKelompok"  class="form-text ml-3">Kelompok</label> 

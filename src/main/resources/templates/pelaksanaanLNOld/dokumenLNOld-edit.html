@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
     xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head th:replace="~{fragments/general.html :: header('Tambah Dokumen KLN (2020 & 2021)')}"></head>
+<head th:replace="~{fragments/general.html :: header('Edit Dokumen KLN (2020 & 2021)')}"></head>
 
 <body class="sb-nav-fixed">
     <nav th:replace="~{fragments/general.html :: navigation}"></nav>
@@ -19,7 +19,7 @@
                                     <input type="hidden" th:field="*{id}"/>
 
                                     <div class="card-header justify-content-center">
-                                        <h4 class="fw-light my-2">Tambah Dokumen Kerja Sama Luar Negeri (2020/2021) Baru</h4>
+                                        <h4 class="fw-light my-2">Edit Dokumen Kerja Sama Luar Negeri (2020/2021)</h4>
                                     </div>
                                     <div class="card-body">
                                         <div class="mb-3 row">
@@ -27,7 +27,7 @@
                                                 <label class="small mb-1" for="tahun">Tahun</label>
                                                 <input th:field="*{tahun}" class="form-control form-control-sm"
                                                     id="tahun" type="text"
-                                                    placeholder="Masukan tahun" />    
+                                                    placeholder="Masukan tahun" readonly/>    
                                             </div>
                                             <div class="col-md-11">
                                                 <label class="small mb-1" for="objek">Objek</label>
@@ -105,6 +105,20 @@
     </div>
 
     <div th:replace="~{fragments/general.html :: script}"></div>
+    <script>
+        $(document).ready(function () {
+            $("#tahun").datepicker({
+                format: "yyyy",
+                viewMode: "years", 
+                minViewMode: "years",
+                autoclose: true,
+                clearBtn: false,
+                orientation: "bottom"
+            });
+    
+        });
+        </script>
+    
 </body>
 
 </html>
