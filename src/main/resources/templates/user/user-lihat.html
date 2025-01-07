@@ -73,7 +73,7 @@
                                         <td>
                                             <div th:each="role : ${pemakai.roles}">
                                                 <ul>
-                                                    <li th:each="priv : ${role}" th:text="${priv.name}"></li>
+                                                    <li th:each="priv : ${role.privileges}" th:text="${priv.name}"></li>
                                                 </ul>
                                             </div>
                                         </td>

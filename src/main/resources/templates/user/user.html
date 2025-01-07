@@ -140,8 +140,17 @@
                             }
                         }
                     },
-                    {   "data": null,
+                    {   "data": "privileges",
                         "render": function (data, type, row, meta) {
+                            if (data && data.length > 0) {
+                                var result = "";
+                                for ( n = 0; n < data.length; n++) {
+                                    result += data[n] + "<br>";
+                                }
+
+                                return result;
+                            }
+
                             return "N/A";
                         }
                     },

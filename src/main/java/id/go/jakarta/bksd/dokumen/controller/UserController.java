@@ -81,6 +81,8 @@ public class UserController {
     public String saveEditUser(Model model,
             @ModelAttribute("pemakai") Pemakai pemakai) {
 
+        Pemakai savedPemakai = pemakaiService.findByEmail(pemakai.getEmail());
+        pemakai.setPassword(savedPemakai.getPassword());        
         pemakaiService.save(pemakai);
         model.addAttribute("success_msg", "User berhasil disimpan.");
 

@@ -159,6 +159,11 @@ public class PemakaiService<T> implements UserDetailsService {
 
     private PemakaiDTO convertToDto(Pemakai pemakai) {
         PemakaiDTO pemakaiDTO = modelMapper.map(pemakai, PemakaiDTO.class);
+        pemakaiDTO.setPrivileges( pemakai.getRoles().stream()
+                                                    .flatMap(role -> role.getPrivileges().stream())
+                                                    .map(Privilege::getName)
+                                                    .distinct()
+                                                    .collect(Collectors.toList()));         
         return pemakaiDTO;
     }
 

@@ -1,5 +1,6 @@
 package id.go.jakarta.bksd.dokumen.domain.dto;
 
+import java.util.List;
 import java.util.Set;
 
 import lombok.Data;
@@ -13,12 +14,7 @@ public class PemakaiDTO {
     private String namaDepan;
     private String namaKeluarga;
     private String email;
-    //private String password;
     private Boolean enabled;
-    //private AlamatDTO alamat;
     private Set<RoleDTO> roles;
-
-    //private String hidden;
-    //private String captcha;
-
+    private List<String> privileges;
 }

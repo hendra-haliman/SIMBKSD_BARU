@@ -11,7 +11,6 @@ import cn.apiclub.captcha.Captcha;
 import cn.apiclub.captcha.backgrounds.GradiatedBackgroundProducer;
 import cn.apiclub.captcha.noise.CurvedLineNoiseProducer;
 import cn.apiclub.captcha.text.producer.DefaultTextProducer;
-import cn.apiclub.captcha.text.renderer.ColoredEdgesWordRenderer;
 import cn.apiclub.captcha.text.renderer.DefaultWordRenderer;
 
 // https://github.com/abdamah/SimpleCaptchainSpringboot/blob/master/SpringBootSimpleCaptcha/src/main/java/com/riigsoft/captcha/CaptchaUtils.java
