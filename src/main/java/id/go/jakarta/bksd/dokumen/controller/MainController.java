@@ -55,6 +55,9 @@ public class MainController {
     private LaporanService laporanService;
     private RoleService roleService;
 
+    @Autowired
+    private String profileLogo;
+
     @Value("${useRecaptcha}")
     private boolean useRecaptcha;
 
@@ -81,6 +84,7 @@ public class MainController {
     public String home(Model model) {
         model.addAttribute("currentPage", "home");
         model.addAttribute("enableKolaborasi", enableKolaborasi);
+        model.addAttribute("profileLogo", profileLogo);
         return "home";
     }
 
@@ -88,6 +92,7 @@ public class MainController {
     public String home2(Model model) {
         model.addAttribute("currentPage", "home");
         model.addAttribute("enableKolaborasi", enableKolaborasi);
+        model.addAttribute("profileLogo", profileLogo);
         return "home";
     }
 

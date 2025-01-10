@@ -80,7 +80,7 @@
 
         <a class="navbar-brand pe-3 ps-4 ps-lg-2" th:href="@{/}">
             <img th:src="@{/static/assets/img/favicon.png}" alt="Logo" class="d-inline-block align-text-top nav-logo"/>
-            <span>SIMBKSD</span>
+            <span th:text="${profileLogo}"></span>
         </a>
 
         <div class="collapse navbar-collapse" id="navbarResponsive">

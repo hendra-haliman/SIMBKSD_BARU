@@ -24,6 +24,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -54,6 +55,9 @@ public class PemakaiService<T> implements UserDetailsService {
     private SessionFactory sessionFactory;
 
     private ModelMapper modelMapper;
+
+    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private Random random = new Random();
 
     private static final Comparator<Pemakai> EMPTY_COMPARATOR = (e1, e2) -> 0;
 
@@ -307,5 +311,23 @@ public class PemakaiService<T> implements UserDetailsService {
             return null;
         }
         return authentication.getName(); // Get the username of the authenticated user
+    }
+
+    private String generateRandomPassword() {
+        // Generate a random alphanumeric password of length 10
+        return random.ints(48, 122)
+                     .filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97))
+                     .limit(10)
+                     .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                     .toString();
+    }
+
+    private String encryptPassword(String password) {
+        return passwordEncoder.encode(password);
+    }
+
+    public Pemakai assignRandomPassword(Pemakai pemakai) {
+        pemakai.setPassword(encryptPassword(generateRandomPassword()));
+        return pemakai;
     }
 }

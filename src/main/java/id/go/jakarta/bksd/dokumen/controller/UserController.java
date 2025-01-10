@@ -71,7 +71,7 @@ public class UserController {
 
     @PostMapping("saveNew")
     public String saveNewUser(Model model, @ModelAttribute("pemakai") Pemakai pemakai) {
-
+        pemakai = pemakaiService.assignRandomPassword(pemakai);
         pemakaiService.save(pemakai);
         model.addAttribute("success_msg", "User berhasil disimpan.");
         return "user/user";
