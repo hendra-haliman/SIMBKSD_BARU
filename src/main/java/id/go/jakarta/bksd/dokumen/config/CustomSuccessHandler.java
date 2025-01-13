@@ -3,6 +3,7 @@ package id.go.jakarta.bksd.dokumen.config;
 import java.io.IOException;
 import java.util.Collection;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.DefaultRedirectStrategy;
@@ -10,6 +11,8 @@ import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.stereotype.Component;
+
+import com.google.common.cache.LoadingCache;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,6 +23,13 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
 
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
+    
+    private LoadingCache<String, Integer> loginAttemptCache;
+
+    public void setLoginAttemptCache(LoadingCache<String, Integer> loginAttemptCache) {
+        this.loginAttemptCache = loginAttemptCache;
+    }
+
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
             Authentication authentication) throws IOException, ServletException {
@@ -28,6 +38,8 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
 
         boolean isKolaborator = authorities.stream()
             .anyMatch(grantedAuthority -> grantedAuthority.getAuthority().equals("ROLES_KOLABORATOR"));
+
+        loginAttemptCache.invalidate(request.getParameter("email"));
 
         if (isKolaborator) {
             redirectStrategy.sendRedirect(request, response, "/kolaborator/dashboardKolab");

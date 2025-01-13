@@ -1,5 +1,7 @@
 package id.go.jakarta.bksd.dokumen.config;
 
+import java.util.concurrent.TimeUnit;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -21,9 +23,16 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.web.RedirectStrategy;
+import org.springframework.security.web.DefaultRedirectStrategy;
+
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
 
 import id.go.jakarta.bksd.dokumen.domain.EntityAuditorAware;
 import id.go.jakarta.bksd.dokumen.service.PemakaiService;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Configuration
 @EnableWebSecurity
@@ -41,9 +50,25 @@ public class DokumenSecurityConfig {
     @Autowired
     CustomSuccessHandler customSuccessHandler;
 
+    private LoadingCache<String, Integer> loginAttemptCache;
+
+    @Bean
+    public LoadingCache<String, Integer> loginAttemptCache() {
+        loginAttemptCache = CacheBuilder.newBuilder()
+                            .expireAfterWrite(1, TimeUnit.HOURS)
+                            .build(new CacheLoader<String, Integer>() {
+                                public Integer load(String key) {
+                                    return 0;
+                                }
+                            });
+        return loginAttemptCache;                    
+    }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http,
             AuthenticationSuccessHandler customAuthenticationSuccessHandler) throws Exception {
+        RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
+        customSuccessHandler.setLoginAttemptCache(loginAttemptCache());
 
         http
                 .csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
@@ -68,6 +93,7 @@ public class DokumenSecurityConfig {
                                         "resetPassword2",
                                         "resetPassword3",
                                         "/processForgotPassword",
+                                        "/showLoginPage",
                                         "/testSendMail",
                                         "/docs", "/docs/**",
                                         "/error", "/css/**", "/static/css/**", "/static/css/fonts/**")
@@ -97,6 +123,17 @@ public class DokumenSecurityConfig {
                 .formLogin(form -> form.loginPage("/showLoginPage")
                         .loginProcessingUrl("/authenticateUser")
                         .successHandler(customSuccessHandler)
+                        .failureHandler((request, response, authhentication) -> {
+                            String username = request.getParameter("email");
+                            int attempts = loginAttemptCache.getUnchecked(username) + 1;
+                            loginAttemptCache.put(username, attempts);
+
+                            if (attempts > 3) {
+                                response.sendError(HttpServletResponse.SC_FORBIDDEN, "Terlalu banyak login yang salah. Coba lagi dalam 1 jam.");
+                            } else {
+                                redirectStrategy.sendRedirect(request, response, "/showLoginPage?error=true");
+                            }
+                        })
                         .usernameParameter("email")
                         .permitAll())
                 .logout(logout -> logout
@@ -108,6 +145,8 @@ public class DokumenSecurityConfig {
                 .requiresChannel(channel -> channel.anyRequest().requiresSecure());
 
         SecurityFilterChain chain = http.build();
+
+                
 
         return chain;
     }

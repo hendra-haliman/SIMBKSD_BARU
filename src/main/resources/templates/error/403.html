@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragments/general.html :: header('SIMBKSD - 403')}"></head>
+
+<body class="sb-topnav"> 
+    <nav th:replace="~{fragments/general.html :: navigation}"></nav>
+    <main>
+        <!-- error -->
+        <section class="page-section bg-error">
+            <div class="container px-4 px-lg-5 text-center">
+                <img th:src="@{/static/assets/img/illustrations/403.svg}" class="error">
+                <h4 class="mb-1 mt-4">Maaf, Akses ditolak.</h4>
+                <h4  class="mb-1 mt-4" th:text="${errorMessage}"></h4>
+            </div>
+        </section>
+    </main>
+    <footer th:replace="~{fragments/general.html :: footer}"></footer>
+    <script>
+        $(document).ready(function () {
+            $("#logout").on("click", function (e) {
+                $("#logout-form").submit();
+            });
+
+        });
+
+    </script>
+</body>
+
+</html>
