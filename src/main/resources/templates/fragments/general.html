@@ -86,9 +86,9 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto my-2 my-lg-0">
                 <li class="nav-item topnav"  th:classappend="${currentPage == 'home' ? 'active' : ''}"><a class="nav-link" th:href="@{/}">Beranda</a></li>
-                <li class="nav-item topnav"  th:classappend="${currentPage == 'kolaborasi' ? 'active' : ''}"><a class="nav-link" href="#kolaborasi_tayang">Kolaborasi</a></li>
+                <li class="nav-item topnav" th:if="${enableKolaborasi}" th:classappend="${currentPage == 'kolaborasi' ? 'active' : ''}"><a class="nav-link" href="#kolaborasi_tayang">Kolaborasi</a></li>
 
-                <li class="nav-item topnav"  th:classappend="${currentPage == 'agendakota' ? 'active' : ''}"><a class="nav-link" th:href="@{/agendaKota}">Agenda Kota</a></li>
+                <li class="nav-item topnav"  th:if="${enableKolaborasi}" th:classappend="${currentPage == 'agendakota' ? 'active' : ''}"><a class="nav-link" th:href="@{/agendaKota}">Agenda Kota</a></li>
 
                 <li class="nav-item topnav" th:if="${currentPage=='home'}"><a class="nav-link" href="#about">Tentang Kami</a></li>
                 <li class="nav-item topnav" th:if="${currentPage=='home'}"><a class="nav-link" href="#services">Layanan</a></li>

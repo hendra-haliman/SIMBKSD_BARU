@@ -2,6 +2,8 @@ package id.go.jakarta.bksd.dokumen.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +28,7 @@ import id.go.jakarta.bksd.dokumen.service.kolaborasi.PengajuanKolaborasiService;
 
 @Controller
 @RequestMapping("/kolaborator")
+@ConditionalOnProperty(name = "enable.kolaborasi")
 public class KolaboratorController {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
