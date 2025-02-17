@@ -84,7 +84,7 @@ public class MainController {
     public String home(Model model) {
         model.addAttribute("currentPage", "home");
         model.addAttribute("enableKolaborasi", enableKolaborasi);
-       // model.addAttribute("profileLogo", profileLogo);
+        // model.addAttribute("profileLogo", profileLogo);
         return "home";
     }
 
@@ -92,11 +92,11 @@ public class MainController {
     public String home2(Model model) {
         model.addAttribute("currentPage", "home");
         model.addAttribute("enableKolaborasi", enableKolaborasi);
-        //model.addAttribute("profileLogo", profileLogo);
+        // model.addAttribute("profileLogo", profileLogo);
         return "home";
     }
 
-    @GetMapping("/agendaKota") 
+    @GetMapping("/agendaKota")
     public String agendaKota(Model model) {
         model.addAttribute("currentPage", "agendakota");
         model.addAttribute("enableKolaborasi", enableKolaborasi);
@@ -110,7 +110,7 @@ public class MainController {
     }
 
     @GetMapping("/dashboard")
-    public String dashboard(Model model,  @AuthenticationPrincipal UserDetails userDetails) {
+    public String dashboard(Model model, @AuthenticationPrincipal UserDetails userDetails) {
         String userName = userDetails.getUsername();
         logger.info("Username : [{}]", userName);
         Pemakai pemakai = pemakaiService.findByUserName(userName);
@@ -125,7 +125,7 @@ public class MainController {
 
         Bagian KPT = bagianService.findBySingkatan("KPT").get();
         Bagian KDN = bagianService.findBySingkatan("KDN").get();
-        //Bagian KLN = bagianService.findBySingkatan("KLN").get();
+        // Bagian KLN = bagianService.findBySingkatan("KLN").get();
 
         // This year
         Long KPTExpiredinFirstSemesterCount = dokumenKerjaSamaService.getExpiredInFirstSemesterByBagianCount(KPT, year);
@@ -200,7 +200,6 @@ public class MainController {
         }
     }
 
-
     @GetMapping("/forgotPassword")
     public String forgotPassword() {
         return "forgot-password";
@@ -217,7 +216,7 @@ public class MainController {
             String resetLink = pemakaiService.generateResetPasswordLink(pemakai);
             // pemakai.setResetStr(resetLink);
             // pemakaiService.save(pemakai);
-            
+
             Map<String, Object> templateModel = new HashMap<String, Object>();
             templateModel.put("recipientName", pemakai.getFullName());
             templateModel.put("resetLink", resetLink);

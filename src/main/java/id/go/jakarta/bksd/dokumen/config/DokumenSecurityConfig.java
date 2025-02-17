@@ -55,13 +55,13 @@ public class DokumenSecurityConfig {
     @Bean
     public LoadingCache<String, Integer> loginAttemptCache() {
         loginAttemptCache = CacheBuilder.newBuilder()
-                            .expireAfterWrite(1, TimeUnit.HOURS)
-                            .build(new CacheLoader<String, Integer>() {
-                                public Integer load(String key) {
-                                    return 0;
-                                }
-                            });
-        return loginAttemptCache;                    
+                .expireAfterWrite(1, TimeUnit.HOURS)
+                .build(new CacheLoader<String, Integer>() {
+                    public Integer load(String key) {
+                        return 0;
+                    }
+                });
+        return loginAttemptCache;
     }
 
     @Bean
@@ -98,6 +98,8 @@ public class DokumenSecurityConfig {
                                         "/docs", "/docs/**",
                                         "/error", "/css/**", "/static/css/**", "/static/css/fonts/**")
                                 .permitAll()
+                                // .requestMatchers("/swagger-ui/**")
+                                // .permitAll()
 
                                 .requestMatchers("/fonts/**", "/static/fonts/**")
                                 .permitAll()
@@ -118,7 +120,8 @@ public class DokumenSecurityConfig {
 
                                 .anyRequest().authenticated())
                 // .rememberMe()
-                //.addFilterBefore(customAuthenticationFilter(authenticationManagerBean(http)), CustomLoginFilter2.class)
+                // .addFilterBefore(customAuthenticationFilter(authenticationManagerBean(http)),
+                // CustomLoginFilter2.class)
                 .addFilterBefore(customLoginFilter2(), UsernamePasswordAuthenticationFilter.class)
                 .formLogin(form -> form.loginPage("/showLoginPage")
                         .loginProcessingUrl("/authenticateUser")
@@ -129,7 +132,8 @@ public class DokumenSecurityConfig {
                             loginAttemptCache.put(username, attempts);
 
                             if (attempts > 3) {
-                                response.sendError(HttpServletResponse.SC_FORBIDDEN, "Terlalu banyak login yang salah. Coba lagi dalam 1 jam.");
+                                response.sendError(HttpServletResponse.SC_FORBIDDEN,
+                                        "Terlalu banyak login yang salah. Coba lagi dalam 1 jam.");
                             } else {
                                 redirectStrategy.sendRedirect(request, response, "/showLoginPage?error=true");
                             }
@@ -145,8 +149,6 @@ public class DokumenSecurityConfig {
                 .requiresChannel(channel -> channel.anyRequest().requiresSecure());
 
         SecurityFilterChain chain = http.build();
-
-                
 
         return chain;
     }
@@ -238,30 +240,9 @@ public class DokumenSecurityConfig {
 
     }
 
-    // @Bean
-    // public CustomAuthenticationFilter customAuthenticationFilter(AuthenticationManager authenticationManager) throws Exception {
-    //     CustomAuthenticationFilter filter = new CustomAuthenticationFilter(authenticationManager);
-    //     return filter;
-
-    // }
-
-
     @Bean
     public AuditorAware<String> auditorAware() {
         return new EntityAuditorAware();
     }
-
-
-    // @Autowired
-    // public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-    //     // Configure global authentication manager with user details service and password encoder
-    //     //auth.userDetailsService(pemakaiService).passwordEncoder(passwordEncoder());
-    //     auth.authenticationProvider(authenticationProvider(pemakaiService));
-    // }
-
-    // @Bean
-    // public AuthenticationManager authenticationManagerBean(HttpSecurity http) throws Exception {
-    //     return http.getSharedObject(AuthenticationManagerBuilder.class).build();
-    // }
 
 }
