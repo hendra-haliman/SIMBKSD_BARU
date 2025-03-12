@@ -74,13 +74,13 @@ public class PemakaiService<T> implements UserDetailsService {
             throw new UsernameNotFoundException("Invalid email atau password");
         }
 
-        return new User(pemakai.getEmail(), 
-                        pemakai.getPassword(), 
-                        pemakai.isEnabled(), 
-                        true, 
-                        true, 
-                        true,
-                        getAuthorities(pemakai.getRoles()));
+        return new User(pemakai.getEmail(),
+                pemakai.getPassword(),
+                pemakai.isEnabled(),
+                true,
+                true,
+                true,
+                getAuthorities(pemakai.getRoles()));
 
     }
 
@@ -117,6 +117,10 @@ public class PemakaiService<T> implements UserDetailsService {
 
     public Pemakai findById(Long id) {
         return pemakaiRepository.findById(id).get();
+    }
+
+    public List<Pemakai> findAll() {
+        return pemakaiRepository.findAll();
     }
 
     public Pemakai save(Pemakai pemakai) {
@@ -163,11 +167,11 @@ public class PemakaiService<T> implements UserDetailsService {
 
     private PemakaiDTO convertToDto(Pemakai pemakai) {
         PemakaiDTO pemakaiDTO = modelMapper.map(pemakai, PemakaiDTO.class);
-        pemakaiDTO.setPrivileges( pemakai.getRoles().stream()
-                                                    .flatMap(role -> role.getPrivileges().stream())
-                                                    .map(Privilege::getName)
-                                                    .distinct()
-                                                    .collect(Collectors.toList()));         
+        pemakaiDTO.setPrivileges(pemakai.getRoles().stream()
+                .flatMap(role -> role.getPrivileges().stream())
+                .map(Privilege::getName)
+                .distinct()
+                .collect(Collectors.toList()));
         return pemakaiDTO;
     }
 
@@ -316,10 +320,10 @@ public class PemakaiService<T> implements UserDetailsService {
     private String generateRandomPassword() {
         // Generate a random alphanumeric password of length 10
         return random.ints(48, 122)
-                     .filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97))
-                     .limit(10)
-                     .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
-                     .toString();
+                .filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97))
+                .limit(10)
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                .toString();
     }
 
     private String encryptPassword(String password) {
