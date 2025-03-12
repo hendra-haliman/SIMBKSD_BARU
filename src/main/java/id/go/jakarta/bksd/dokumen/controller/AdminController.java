@@ -5,10 +5,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.security.GeneralSecurityException;
+import java.util.HashMap;
+import java.util.List;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +30,11 @@ import id.go.jakarta.bksd.dokumen.service.FileManager;
 import id.go.jakarta.bksd.dokumen.service.PemakaiService;
 import id.go.jakarta.bksd.dokumen.service.RoleService;
 import jakarta.servlet.http.HttpServletResponse;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 @Controller
 @RequestMapping("/admin")
@@ -34,22 +43,22 @@ public class AdminController {
 
     private PemakaiService pemakaiService;
     private DataUploaderService dataUploaderService;
-    //private DevUtilityService devUtilityService;
+    // private DevUtilityService devUtilityService;
     private FileManager fileManager;
-    private  BUMDPanganDataUploaderService bumdPanganDataUploaderService;
+    private BUMDPanganDataUploaderService bumdPanganDataUploaderService;
 
     private RoleService roleService;
 
     public AdminController(PemakaiService pemakaiService,
             RoleService roleService,
             DataUploaderService dataUploaderService,
-    //        DevUtilityService devUtilityService,
+            // DevUtilityService devUtilityService,
             FileManager fileManager,
             BUMDPanganDataUploaderService bumdPanganDataUploaderService) {
         this.pemakaiService = pemakaiService;
         this.roleService = roleService;
         this.dataUploaderService = dataUploaderService;
-    //    this.devUtilityService = devUtilityService;
+        // this.devUtilityService = devUtilityService;
         this.fileManager = fileManager;
         this.bumdPanganDataUploaderService = bumdPanganDataUploaderService;
     }
@@ -115,7 +124,6 @@ public class AdminController {
         return "finish KSD2021";
     }
 
-
     @GetMapping("/uploadKSD2020")
     @ResponseBody
     public String uploadKSD2020() {
@@ -144,7 +152,7 @@ public class AdminController {
     @ResponseBody
     public String uploadKDN2022() {
         try {
-            dataUploaderService.uploadFromWorksheet(2022,"KDN");
+            dataUploaderService.uploadFromWorksheet(2022, "KDN");
         } catch (IOException | InvalidFormatException ex) {
             ex.printStackTrace();
         }
@@ -188,7 +196,6 @@ public class AdminController {
         return "finish Pemetaan2023";
     }
 
-
     @GetMapping("/uploadPemetaan2024")
     @ResponseBody
     public String uploadPemetaan2024() {
@@ -200,7 +207,6 @@ public class AdminController {
 
         return "finish Pemetaan2024";
     }
-
 
     @GetMapping("/testCheckRekap2021")
     @ResponseBody
@@ -240,11 +246,10 @@ public class AdminController {
     public String updateRekap2020() throws IOException, InvalidFormatException {
         String folder = "D:/testrekap";
 
-        dataUploaderService.updateRekap(2020, folder,  "report2020.txt");
+        dataUploaderService.updateRekap(2020, folder, "report2020.txt");
 
         return "Finish updating Rekap 2020";
     }
-
 
     @GetMapping("/updateRekap2021")
     @ResponseBody
@@ -283,7 +288,7 @@ public class AdminController {
     @ResponseBody
     public String downloadMissingFile() throws IOException, InvalidFormatException {
 
-        //devUtilityService.downloadMissingFile();
+        // devUtilityService.downloadMissingFile();
 
         return "Finish download missing files";
     }
@@ -315,6 +320,18 @@ public class AdminController {
         }
 
         return "finish uploadPangan";
+    }
+
+    @GetMapping("/testReport")
+    public ResponseEntity<byte[]> testReport() throws GeneralSecurityException, IOException, JRException {
+        List<Pemakai> pemakais = pemakaiService.findAll();
+        JRBeanCollectionDataSource datasrc = new JRBeanCollectionDataSource(pemakais);
+        JasperPrint jasperPrint = JasperFillManager.fillReport("D:/testrekap/report.jasper", new HashMap<>(), datasrc);
+        byte[] report = JasperExportManager.exportReportToPdf(jasperPrint);
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(report);
     }
 
 }
