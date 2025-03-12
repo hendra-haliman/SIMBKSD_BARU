@@ -30,6 +30,11 @@ public class ProfileConfig {
         return "SIMBKSD-DEV";
     }
 
+    @Bean
+    @Profile("devzorro")
+    public String profileLogoDevzorro() {
+        return "SIMBKSD-DEV";
+    }
 
     @Bean
     @Profile("uat")
