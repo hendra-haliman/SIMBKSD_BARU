@@ -36,7 +36,6 @@ public class ProfileConfig {
         return "SIMBKSD-DEV";
     }
 
-
     @Bean
     @Profile("uat")
     public String profileLogoUat() {
