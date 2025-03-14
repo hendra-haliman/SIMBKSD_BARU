@@ -15,8 +15,9 @@
 	<name>SIMBKSD</name>
 	<description>Sistim Informasi Biro KSD Setda DKI Jakarta</description>
 	<properties>
-		<java.version>21</java.version>
+		<java.version>23</java.version>
 		<spring-shell.version>3.3.1</spring-shell.version>
+		<maven.compiler.proc>full</maven.compiler.proc>
 	</properties>
 
 	<dependencies>
@@ -337,8 +338,8 @@
 						<artifactId>maven-compiler-plugin</artifactId>
 						<version>3.13.0</version>
 						<configuration>
-							<source>21</source>
-							<target>21</target>
+							<!--source>21</source>
+							<target>21</target-->
 							<excludes>
 								<!--exclude>**/Dev*.java</exclude-->
 								<exclude>**/DokumenShellCommands.java</exclude>
@@ -383,8 +384,8 @@
 						<artifactId>maven-compiler-plugin</artifactId>
 						<version>3.13.0</version>
 						<configuration>
-							<source>21</source>
-							<target>21</target>
+							<!--source>21</source>
+							<target>21</target-->
 							<excludes>
 								<!--exclude>**/Dev*.java</exclude-->
 								<exclude>**/DokumenShellCommands.java</exclude>
